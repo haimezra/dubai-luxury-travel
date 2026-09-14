@@ -309,6 +309,14 @@
   .exp-card h3{ font-size: 1.15rem; margin-bottom: 10px; font-weight:700; }
   .exp-card p{ color: var(--muted); font-size: .92rem; font-weight:300; }
   .exp-card.clickable{ cursor: pointer; }
+  .exp-body.clickable{ cursor: pointer; }
+  .exp-card .img-wrap.video-cube{
+    aspect-ratio: auto;
+    cursor: default;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .exp-card .img-wrap.video-cube:hover{ box-shadow: none; transform: none; }
   .exp-link{
     display:inline-block; margin-top:14px; font-size:.85rem; font-weight:700;
     color: var(--gold-bright); text-shadow: 0 0 12px var(--gold-glow);
@@ -699,9 +707,16 @@
           <span class="exp-link">לצפייה בגלריה ←</span>
         </div>
       </div>
-      <div class="exp-card clickable" onclick="openGalleryModal('luxurycars','מכוניות יוקרה','תמונות רכבי יוקרה מדובאי. לחצו על &quot;+&quot; כדי להוסיף תמונות משלכם.')">
-        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1728415916907-e91c1db8015c?q=80&w=900&auto=format&fit=crop" alt="מכונית יוקרה בדובאי"></div>
-        <div class="exp-body">
+      <div class="exp-card">
+        <div class="img-wrap video-cube" data-slot="4">
+          <video autoplay muted loop playsinline></video>
+          <div class="video-upload-tile">
+            <div class="plus">+</div>
+            <span>העלאת סרטון</span>
+          </div>
+          <input type="file" accept="video/*" style="display:none">
+        </div>
+        <div class="exp-body clickable" onclick="openGalleryModal('luxurycars','מכוניות יוקרה','תמונות רכבי יוקרה מדובאי. לחצו על &quot;+&quot; כדי להוסיף תמונות משלכם.')">
           <h3>מכוניות יוקרה</h3>
           <p>להשכרת רכב יוקרה בדובאי נדרשים רישיון נהיגה בינלאומי, גיל מינימום (בדרך כלל 25), כרטיס אשראי לפיקדון וביטוח מקיף. המחירים בדובאי גבוהים, אבל אנחנו דואגים לכם למחירים הכי משתלמים שיש.</p>
           <span class="exp-link">לצפייה בגלריה ←</span>
