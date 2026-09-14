@@ -108,13 +108,13 @@
   /* ---------- HERO ---------- */
   .hero{
     position:relative;
-    height: 100svh;
-    min-height: 600px;
+    min-height: 100svh;
     display:flex;
     align-items:flex-end;
     background-image: linear-gradient(180deg, rgba(6,6,7,0.4) 0%, rgba(6,6,7,0.6) 55%, rgba(6,6,7,0.98) 100%), url('https://images.unsplash.com/photo-1634007626524-f47fa37810a7?q=80&w=2000&auto=format&fit=crop');
     background-size: cover;
     background-position: center 65%;
+    padding-top: 110px;
   }
   .hero-inner{
     padding-bottom: 100px;
@@ -133,8 +133,8 @@
     text-shadow: 0 0 18px var(--gold-glow);
   }
   .hero h1{
-    font-size: clamp(2.5rem, 6vw, 4.4rem);
-    line-height: 1.12;
+    font-size: clamp(2rem, 6vw, 4.4rem);
+    line-height: 1.16;
     text-shadow: 0 0 30px rgba(217,178,92,0.25);
   }
   .hero h1 .glow{
@@ -150,6 +150,13 @@
   }
   .hero-actions{
     display:flex; gap:18px; margin-top: 36px; flex-wrap: wrap;
+  }
+  @media (max-width: 480px){
+    .hero{ padding-top: 90px; }
+    .hero-inner{ padding-bottom: 60px; }
+    .hero h1{ font-size: 1.9rem; line-height: 1.25; }
+    .hero p{ font-size: 1rem; margin-top: 18px; }
+    .hero-kicker{ font-size: .9rem; margin-bottom: 14px; }
   }
   .btn{
     display:inline-block;
@@ -194,6 +201,48 @@
   }
   .section-head p{ color: var(--muted); margin-top: 18px; font-size: 1.05rem; font-weight:300; }
 
+  /* ---------- VIDEO CUBES ---------- */
+  .video-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .video-cube{
+    position: relative;
+    aspect-ratio: 9/16;
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--surface-2);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    transition: box-shadow .3s ease, transform .3s ease;
+    cursor: pointer;
+  }
+  .video-cube:hover{
+    box-shadow: 0 0 0 1px rgba(217,178,92,0.35), 0 0 40px rgba(217,178,92,0.16), 0 20px 50px rgba(0,0,0,0.35);
+    transform: translateY(-4px);
+  }
+  .video-cube video{
+    width:100%; height:100%; object-fit: cover; display:none;
+  }
+  .video-cube.has-video video{ display:block; }
+  .video-cube.has-video .video-upload-tile{ display:none; }
+  .video-upload-tile{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap: 10px; color: var(--muted); background: rgba(217,178,92,0.05);
+  }
+  .video-upload-tile .plus{ font-size: 2rem; color: var(--gold-bright); font-weight:800; text-shadow: 0 0 16px var(--gold-glow); }
+  .video-upload-tile span{ font-size: .85rem; font-weight:500; }
+
+  @media (max-width: 760px){
+    .video-grid{ grid-template-columns: 1fr 1fr; }
+    .video-cube:nth-child(3){ grid-column: span 2; }
+  }
+  @media (max-width: 480px){
+    .video-grid{ grid-template-columns: 1fr; }
+    .video-cube:nth-child(3){ grid-column: span 1; }
+  }
+
   /* ---------- JOURNEY ---------- */
   .journey{ background: var(--surface); }
   .journey-grid{
@@ -231,7 +280,7 @@
   /* ---------- EXPERIENCES ---------- */
   .exp-grid{
     display:grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     gap: 24px;
   }
   .exp-card{
@@ -347,6 +396,7 @@
     box-shadow: 0 0 0 1px rgba(217,178,92,0.35), 0 0 34px rgba(217,178,92,0.16);
     transform: translateY(-4px);
   }
+  .hotel-card.clickable{ cursor: pointer; }
   .hotel-card img{ width:100%; height:150px; object-fit:cover; }
   .hotel-card-body{ padding: 16px 18px 20px; }
   .hotel-card-body h3{ font-size: 1.02rem; font-weight:700; }
@@ -522,7 +572,7 @@
     <a href="#hotels">מלונות</a>
     <a href="#gallery">גלריה</a>
   </nav>
-  <a class="nav-cta" href="tel:0543771767">0543771767</a>
+  <a class="nav-cta" href="tel:029999119">029999119</a>
 </header>
 
 <section class="hero">
@@ -531,8 +581,44 @@
     <h1>דובאי בגרסה הכי מפוארת שלה, <span class="glow">מחכה לכם</span></h1>
     <p>מלווה אתכם אישית מהרגע שאתם מחליטים לטוס, במלון המושלם, בחוויות שלא שוכחים, ובזמינות מלאה לאורך כל הדרך.</p>
     <div class="hero-actions">
-      <a class="btn btn-gold" href="tel:0543771767">בואו נתחיל לתכנן</a>
+      <a class="btn btn-gold" href="tel:029999119">בואו נתחיל לתכנן</a>
       <a class="btn btn-outline" href="#experiences">לצפייה בחוויות</a>
+    </div>
+  </div>
+</section>
+
+<section class="videos" id="videos">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">רגעים חיים מדובאי</div>
+      <h2>הסרטונים שמדברים בעד עצמם</h2>
+      <p>קצת מהאווירה, ישירות מהשטח.</p>
+    </div>
+    <div class="video-grid">
+      <div class="video-cube" data-slot="1">
+        <video autoplay muted loop playsinline></video>
+        <div class="video-upload-tile">
+          <div class="plus">+</div>
+          <span>העלאת סרטון</span>
+        </div>
+        <input type="file" accept="video/*" style="display:none">
+      </div>
+      <div class="video-cube" data-slot="2">
+        <video autoplay muted loop playsinline></video>
+        <div class="video-upload-tile">
+          <div class="plus">+</div>
+          <span>העלאת סרטון</span>
+        </div>
+        <input type="file" accept="video/*" style="display:none">
+      </div>
+      <div class="video-cube" data-slot="3">
+        <video autoplay muted loop playsinline></video>
+        <div class="video-upload-tile">
+          <div class="plus">+</div>
+          <span>העלאת סרטון</span>
+        </div>
+        <input type="file" accept="video/*" style="display:none">
+      </div>
     </div>
   </div>
 </section>
@@ -572,11 +658,12 @@
       <p>מהמרינה אל החולות, ומהחולות אל תוך חדר מלון שנראה כמו ארמון.</p>
     </div>
     <div class="exp-grid">
-      <div class="exp-card">
+      <div class="exp-card clickable" onclick="openGalleryModal('jetski','אופנועי ים','רגעים מהמרינה. לחצו על &quot;+&quot; כדי להוסיף תמונות משלכם.')">
         <div class="img-wrap"><img src="https://images.unsplash.com/photo-1673878391998-50a50a51977b?q=80&w=900&auto=format&fit=crop" alt="אופנועי ים בדובאי מרינה"></div>
         <div class="exp-body">
           <h3>אופנועי ים במרינה</h3>
           <p>דהירה על המים מול קו הרקיע של דובאי, עם הדרכה מקצועית וציוד בטיחות מלא.</p>
+          <span class="exp-link">לצפייה בגלריה ←</span>
         </div>
       </div>
       <div class="exp-card">
@@ -586,7 +673,7 @@
           <p>דיונות אינסופיות, רכיבה על גמלים, וערב ערבי אותנטי תחת כיפת השמיים.</p>
         </div>
       </div>
-      <div class="exp-card clickable" id="palaceCard">
+      <div class="exp-card clickable" onclick="openGalleryModal('palace','ארמונות של מלונות','רגעים מהמלונות המפוארים ביותר בדובאי. לחצו על &quot;+&quot; כדי להוסיף תמונות משלכם.')">
         <div class="img-wrap"><img src="https://images.unsplash.com/photo-1546412414-e1885259563a?q=80&w=900&auto=format&fit=crop" alt="ארמונות המלונות המפוארים בדובאי"></div>
         <div class="exp-body">
           <h3>ארמונות של מלונות</h3>
@@ -594,11 +681,20 @@
           <span class="exp-link">לצפייה בגלריה ←</span>
         </div>
       </div>
-      <div class="exp-card">
+      <div class="exp-card clickable" onclick="openGalleryModal('rooms','חדרים וסוויטות','סוויטות שיפנקו אתכם עד הרגע האחרון. לחצו על &quot;+&quot; כדי להוסיף תמונות משלכם.')">
         <div class="img-wrap"><img src="https://images.unsplash.com/photo-1527530462287-d0438a5819fe?q=80&w=900&auto=format&fit=crop" alt="חדר מלון מפואר בדובאי"></div>
         <div class="exp-body">
           <h3>חדרים וסוויטות</h3>
           <p>סוויטות מפוארות עם כל הפינוק, מנוף לעיר ועד ג'קוזי פרטי בחדר.</p>
+          <span class="exp-link">לצפייה בגלריה ←</span>
+        </div>
+      </div>
+      <div class="exp-card clickable" onclick="openGalleryModal('extreme','אקסטרים: אופנועי ים ומכוניות יוקרה','אדרנלין בקצב של דובאי. לחצו על &quot;+&quot; כדי להוסיף תמונות משלכם.')">
+        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1728415916907-e91c1db8015c?q=80&w=900&auto=format&fit=crop" alt="מכונית יוקרה בדובאי"></div>
+        <div class="exp-body">
+          <h3>אקסטרים</h3>
+          <p>אופנועי ים ומכוניות יוקרה, לחוויית אדרנלין שמתאימה בדיוק לכם.</p>
+          <span class="exp-link">לצפייה בגלריה ←</span>
         </div>
       </div>
     </div>
@@ -614,7 +710,7 @@
       <div>
         <div class="eyebrow">איפה תישנו</div>
         <h2>מבחר מלונות היוקרה של דובאי</h2>
-        <p style="color:var(--muted); margin-top:14px; font-weight:300;">משריינים עבורכם חדרים וסוויטות במלונות המובילים בעולם, לפי התקציב והחוויה שאתם מחפשים.</p>
+        <p style="color:var(--muted); margin-top:14px; font-weight:300;">אנחנו מכירים את המלונות עם הנופים והמסיבות הכי טובות בדובאי. נגלה לכם איפה נמצאת כל מסיבה, בהתאמה אישית, לחוויה הכי מטורפת שתקבלו.</p>
       </div>
     </div>
     <div class="hotel-cards">
@@ -625,14 +721,14 @@
           <span class="tag">אייקוני, 7 כוכבים</span>
         </div>
       </div>
-      <div class="hotel-card">
+      <div class="hotel-card clickable" onclick="openGalleryModal('atlantis','אטלנטיס דה רויאל','רגעים מאטלנטיס דה רויאל. לחצו על &quot;+&quot; כדי להוסיף תמונות משלכם.')">
         <img src="https://images.unsplash.com/photo-1764212193268-dba11709dc38?q=80&w=700&auto=format&fit=crop" alt="אטלנטיס דה רויאל">
         <div class="hotel-card-body">
           <h3>אטלנטיס דה רויאל</h3>
           <span class="tag">פאלם ג'ומיירה</span>
         </div>
       </div>
-      <div class="hotel-card">
+      <div class="hotel-card clickable" onclick="openGalleryModal('address','אדרס סקיי ויו','רגעים מאדרס סקיי ויו. לחצו על &quot;+&quot; כדי להוסיף תמונות משלכם.')">
         <img src="https://images.unsplash.com/photo-1765741836851-8071475d4911?q=80&w=700&auto=format&fit=crop" alt="אדרס סקיי ויו">
         <div class="hotel-card-body">
           <h3>אדרס סקיי ויו</h3>
@@ -685,10 +781,10 @@
       <div>
         <h2>בואו נתכנן את הטיול שלכם</h2>
         <p>שיחה קצרה מספיקה כדי להתחיל. אני זמין לכל שאלה, בכל שעה.</p>
-        <div class="phone-line">054-377-1767</div>
+        <div class="phone-line">02-999-9119</div>
         <div class="contact-actions">
-          <a class="btn btn-gold" href="tel:0543771767">התקשרו עכשיו</a>
-          <a class="btn btn-outline" href="https://wa.me/972543771767" target="_blank" rel="noopener">וואטסאפ</a>
+          <a class="btn btn-gold" href="tel:029999119">התקשרו עכשיו</a>
+          <a class="btn btn-outline" href="https://wa.me/97229999119" target="_blank" rel="noopener">וואטסאפ</a>
         </div>
       </div>
       <form class="contact-form" action="https://formsubmit.co/dubaiisl80@gmail.com" method="POST">
@@ -734,31 +830,28 @@
 <footer>
   <div class="brand">פנינת דובאי</div>
   <div>ליווי אישי לטיולי יוקרה בדובאי</div>
-  <div style="margin-top:6px;">054-377-1767</div>
+  <div style="margin-top:6px;">02-999-9119</div>
   <div class="footer-links">
     <a href="privacy.html">מדיניות פרטיות</a>
     <a href="terms.html">תנאי שימוש</a>
   </div>
 </footer>
 
-<a class="float-cta" href="https://wa.me/972543771767" target="_blank" rel="noopener" aria-label="וואטסאפ">💬</a>
+<a class="float-cta" href="https://wa.me/97229999119" target="_blank" rel="noopener" aria-label="וואטסאפ">💬</a>
 
-<div class="modal-overlay" id="palaceModal">
+<div class="modal-overlay" id="galleryModal">
   <div class="modal-box">
-    <button class="modal-close" id="palaceClose" aria-label="סגירה">×</button>
-    <h3>ארמונות של מלונות</h3>
-    <p class="modal-sub">רגעים מהמלונות המפוארים ביותר בדובאי. לחצו על "+" כדי להוסיף תמונות משלכם.</p>
-    <div class="modal-grid" id="palaceGrid">
-      <figure><img src="https://images.unsplash.com/photo-1546412414-e1885259563a?q=80&w=700&auto=format&fit=crop" alt="בורג' אל ערב"></figure>
-      <figure><img src="https://images.unsplash.com/photo-1527530462287-d0438a5819fe?q=80&w=700&auto=format&fit=crop" alt="סוויטת מלון מפוארת"></figure>
-      <figure><img src="https://images.unsplash.com/photo-1634007626524-f47fa37810a7?q=80&w=700&auto=format&fit=crop" alt="קו רקיע דובאי בלילה"></figure>
-      <figure class="upload-tile" id="palaceUploadTile">
+    <button class="modal-close" id="modalClose" aria-label="סגירה">×</button>
+    <h3 id="modalTitle"></h3>
+    <p class="modal-sub" id="modalSub"></p>
+    <div class="modal-grid" id="modalGrid">
+      <figure class="upload-tile" id="modalUploadTile">
         <div class="plus">+</div>
         <span>הוסיפו תמונה</span>
         <span class="small">נראה לכל המבקרים באתר</span>
       </figure>
     </div>
-    <input type="file" id="palaceFileInput" accept="image/*" multiple style="display:none">
+    <input type="file" id="modalFileInput" accept="image/*" multiple style="display:none">
   </div>
 </div>
 
@@ -864,59 +957,108 @@
     if (e.key === 'Escape') closeLightbox();
   });
 
-  // ---------- Palace modal gallery (shared, category: 'palace') ----------
-  const palaceModal = document.getElementById('palaceModal');
-  const palaceGrid = document.getElementById('palaceGrid');
-  const palaceUploadTile = document.getElementById('palaceUploadTile');
-  const palaceFileInput = document.getElementById('palaceFileInput');
-  const palaceCard = document.getElementById('palaceCard');
-  const palaceClose = document.getElementById('palaceClose');
+  // ---------- Generic gallery modal (used by jetski, palace, rooms, extreme, atlantis, address) ----------
+  const galleryModal = document.getElementById('galleryModal');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalSub = document.getElementById('modalSub');
+  const modalGrid = document.getElementById('modalGrid');
+  const modalUploadTile = document.getElementById('modalUploadTile');
+  const modalFileInput = document.getElementById('modalFileInput');
+  const modalClose = document.getElementById('modalClose');
+  let currentModalCategory = null;
 
-  async function refreshPalaceGallery(){
-    document.querySelectorAll('#palaceGrid figure.lightbox-item.user-added').forEach(f => f.remove());
-    const urls = await loadSharedPhotos('palace');
+  async function refreshModalGallery(){
+    document.querySelectorAll('#modalGrid figure:not(.upload-tile)').forEach(f => f.remove());
+    const urls = await loadSharedPhotos(currentModalCategory);
     urls.forEach(url => {
       const fig = document.createElement('figure');
-      fig.className = 'lightbox-item user-added';
+      fig.className = 'lightbox-item';
       const img = document.createElement('img');
       img.src = url;
-      img.alt = 'תמונה מארמונות המלונות';
+      img.alt = modalTitle.textContent;
       fig.appendChild(img);
-      palaceGrid.insertBefore(fig, palaceUploadTile);
+      modalGrid.insertBefore(fig, modalUploadTile);
     });
   }
 
-  function openPalaceModal(){
-    palaceModal.classList.add('active');
+  async function openGalleryModal(category, title, sub){
+    currentModalCategory = category;
+    modalTitle.textContent = title;
+    modalSub.textContent = sub;
+    galleryModal.classList.add('active');
+    modalUploadTile.querySelector('.small').textContent = 'נראה לכל המבקרים באתר';
+    await refreshModalGallery();
   }
-  function closePalaceModal(){
-    palaceModal.classList.remove('active');
+  function closeGalleryModal(){
+    galleryModal.classList.remove('active');
   }
 
-  palaceCard.addEventListener('click', openPalaceModal);
-  palaceClose.addEventListener('click', closePalaceModal);
-  palaceModal.addEventListener('click', (e) => {
-    if (e.target === palaceModal) closePalaceModal();
+  modalClose.addEventListener('click', closeGalleryModal);
+  galleryModal.addEventListener('click', (e) => {
+    if (e.target === galleryModal) closeGalleryModal();
   });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closePalaceModal();
+    if (e.key === 'Escape') closeGalleryModal();
   });
 
-  palaceUploadTile.addEventListener('click', () => palaceFileInput.click());
+  modalUploadTile.addEventListener('click', () => modalFileInput.click());
 
-  palaceFileInput.addEventListener('change', async (e) => {
+  modalFileInput.addEventListener('change', async (e) => {
     const files = Array.from(e.target.files || []);
-    if (!files.length) return;
-    palaceUploadTile.querySelector('.small').textContent = 'מעלה...';
+    if (!files.length || !currentModalCategory) return;
+    modalUploadTile.querySelector('.small').textContent = 'מעלה...';
     for (const file of files){
-      await uploadSharedPhoto(file, 'palace');
+      await uploadSharedPhoto(file, currentModalCategory);
     }
-    palaceUploadTile.querySelector('.small').textContent = 'נראה לכל המבקרים באתר';
-    await refreshPalaceGallery();
-    palaceFileInput.value = '';
+    modalUploadTile.querySelector('.small').textContent = 'נראה לכל המבקרים באתר';
+    await refreshModalGallery();
+    modalFileInput.value = '';
   });
 
-  refreshPalaceGallery();
+  // ---------- Video cubes (3 fixed slots, shared via Supabase) ----------
+  document.querySelectorAll('.video-cube').forEach(cube => {
+    const slot = cube.dataset.slot;
+    const videoEl = cube.querySelector('video');
+    const uploadTileEl = cube.querySelector('.video-upload-tile');
+    const inputEl = cube.querySelector('input[type="file"]');
+
+    async function loadSlotVideo(){
+      const { data, error } = await supabaseClient
+        .from('site_videos')
+        .select('video_url')
+        .eq('slot', Number(slot))
+        .maybeSingle();
+      if (!error && data && data.video_url){
+        videoEl.src = data.video_url;
+        cube.classList.add('has-video');
+        videoEl.play().catch(() => {});
+      }
+    }
+
+    uploadTileEl.addEventListener('click', () => inputEl.click());
+
+    inputEl.addEventListener('change', async (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      uploadTileEl.querySelector('span').textContent = 'מעלה...';
+      const ext = (file.name.split('.').pop() || 'mp4').toLowerCase();
+      const path = `slot-${slot}/${Date.now()}.${ext}`;
+      const { error: uploadError } = await supabaseClient.storage.from('site-videos').upload(path, file);
+      if (uploadError){
+        console.error(uploadError);
+        uploadTileEl.querySelector('span').textContent = 'שגיאה, נסו שוב';
+        return;
+      }
+      const { data: urlData } = supabaseClient.storage.from('site-videos').getPublicUrl(path);
+      await supabaseClient.from('site_videos').upsert({ slot: Number(slot), video_url: urlData.publicUrl, updated_at: new Date().toISOString() });
+      videoEl.src = urlData.publicUrl;
+      cube.classList.add('has-video');
+      videoEl.play().catch(() => {});
+      inputEl.value = '';
+    });
+
+    loadSlotVideo();
+  });
 
   // subtle nav background on scroll
   const nav = document.querySelector('.site-nav');
