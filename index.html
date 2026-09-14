@@ -243,6 +243,19 @@
   .video-upload-tile .plus{ font-size: 2rem; color: var(--gold-bright); font-weight:800; text-shadow: 0 0 16px var(--gold-glow); }
   .video-upload-tile span{ font-size: .85rem; font-weight:500; }
 
+  .video-item{
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+  }
+  .video-caption{
+    text-align:center;
+    font-size: .78rem;
+    color: var(--gold-bright);
+    line-height: 1.5;
+    text-shadow: 0 0 10px var(--gold-glow);
+  }
+
   @media (max-width: 760px){
     .video-grid{ grid-template-columns: 1fr 1fr; }
     .video-cube:nth-child(3){ grid-column: span 2; }
@@ -621,13 +634,16 @@
         </div>
         <input type="file" accept="video/*" style="display:none">
       </div>
-      <div class="video-cube" data-slot="2">
-        <video autoplay muted loop playsinline></video>
-        <div class="video-upload-tile">
-          <div class="plus">+</div>
-          <span>העלאת סרטון</span>
+      <div class="video-item">
+        <div class="video-cube" data-slot="2">
+          <video autoplay muted loop playsinline></video>
+          <div class="video-upload-tile">
+            <div class="plus">+</div>
+            <span>העלאת סרטון</span>
+          </div>
+          <input type="file" accept="video/*" style="display:none">
         </div>
-        <input type="file" accept="video/*" style="display:none">
+        <p class="video-caption">לא סתם עוד השכרת אופנוע ים. אנחנו דואגים לכם לנוף הכי מושלם, לחוויה הכי מקסימלית שיש.</p>
       </div>
       <div class="video-cube" data-slot="3">
         <video autoplay muted loop playsinline></video>
