@@ -667,7 +667,7 @@
       <figure class="upload-tile" id="uploadTile">
         <div class="plus">+</div>
         <span>הוסיפו תמונה מהטיול</span>
-        <span class="small">נשמר בדפדפן שלכם בלבד</span>
+        <span class="small">נראה לכל המבקרים באתר</span>
       </figure>
     </div>
     <input type="file" id="fileInput" accept="image/*" multiple style="display:none">
@@ -755,79 +755,84 @@
       <figure class="upload-tile" id="palaceUploadTile">
         <div class="plus">+</div>
         <span>הוסיפו תמונה</span>
-        <span class="small">נשמר בדפדפן שלכם בלבד</span>
+        <span class="small">נראה לכל המבקרים באתר</span>
       </figure>
     </div>
     <input type="file" id="palaceFileInput" accept="image/*" multiple style="display:none">
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  // User-uploaded gallery photos, stored locally in this browser only (localStorage).
-  const STORAGE_KEY = 'dubai-gallery-photos';
+  const SUPABASE_URL = 'https://bhxatigravmoouickbsh.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJoeGF0aWdyYXZtb291aWNrYnNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkzNDU5NTgsImV4cCI6MjEwNDkyMTk1OH0.pOP7FAgSdutvCrONGF4tByfofuVEm1EHaqbd6Xq2_Cc';
+  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  // Uploads a file to shared storage and records it in the shared gallery table.
+  // "category" separates the main gallery ('general') from the palace modal gallery ('palace').
+  async function uploadSharedPhoto(file, category){
+    const ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
+    const path = `${category}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+    const { error: uploadError } = await supabaseClient.storage.from('gallery-photos').upload(path, file);
+    if (uploadError) { console.error(uploadError); return null; }
+    const { data: urlData } = supabaseClient.storage.from('gallery-photos').getPublicUrl(path);
+    const publicUrl = urlData.publicUrl;
+    const { error: insertError } = await supabaseClient.from('gallery_photos').insert({ image_url: publicUrl, category });
+    if (insertError) { console.error(insertError); return null; }
+    return publicUrl;
+  }
+
+  async function loadSharedPhotos(category){
+    const { data, error } = await supabaseClient
+      .from('gallery_photos')
+      .select('image_url')
+      .eq('category', category)
+      .order('created_at', { ascending: true });
+    if (error) { console.error(error); return []; }
+    return data.map(row => row.image_url);
+  }
+</script>
+<script>
+  // Shared gallery photos, stored in Supabase so every visitor sees the same uploads.
   const grid = document.getElementById('galleryGrid');
   const uploadTile = document.getElementById('uploadTile');
   const fileInput = document.getElementById('fileInput');
 
-  function loadPhotos(){
-    try{
-      const raw = localStorage.getItem(STORAGE_KEY);
-      return raw ? JSON.parse(raw) : [];
-    }catch(e){ return []; }
-  }
-
-  function savePhotos(photos){
-    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(photos)); }
-    catch(e){ console.warn('לא ניתן לשמור תמונות (יתכן שהאחסון מלא).'); }
-  }
-
-  function renderUserPhoto(dataUrl, index){
+  function renderSharedPhoto(container, beforeEl, url){
     const fig = document.createElement('figure');
     fig.className = 'lightbox-item';
     const img = document.createElement('img');
-    img.src = dataUrl;
-    img.alt = 'תמונה שהועלתה על ידי המשתמש';
-    const remove = document.createElement('div');
-    remove.className = 'gallery-remove';
-    remove.textContent = '×';
-    remove.title = 'הסרת תמונה';
-    remove.addEventListener('click', () => {
-      const photos = loadPhotos();
-      photos.splice(index, 1);
-      savePhotos(photos);
-      refreshGallery();
-    });
+    img.src = url;
+    img.alt = 'תמונה מהגלריה';
     fig.appendChild(img);
-    fig.appendChild(remove);
-    grid.insertBefore(fig, uploadTile);
+    container.insertBefore(fig, beforeEl);
   }
 
-  function refreshGallery(){
-    document.querySelectorAll('#galleryGrid figure:not(.upload-tile)').forEach(f => {
-      if (f.querySelector('.gallery-remove')) f.remove();
+  async function refreshGallery(){
+    document.querySelectorAll('#galleryGrid figure.lightbox-item.user-added').forEach(f => f.remove());
+    const urls = await loadSharedPhotos('general');
+    urls.forEach(url => {
+      const fig = document.createElement('figure');
+      fig.className = 'lightbox-item user-added';
+      const img = document.createElement('img');
+      img.src = url;
+      img.alt = 'תמונה מהגלריה';
+      fig.appendChild(img);
+      grid.insertBefore(fig, uploadTile);
     });
-    loadPhotos().forEach((dataUrl, i) => renderUserPhoto(dataUrl, i));
   }
 
   uploadTile.addEventListener('click', () => fileInput.click());
 
-  fileInput.addEventListener('change', (e) => {
+  fileInput.addEventListener('change', async (e) => {
     const files = Array.from(e.target.files || []);
-    const photos = loadPhotos();
-    let remaining = files.length;
-    if (!remaining) return;
-    files.forEach(file => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        photos.push(reader.result);
-        remaining -= 1;
-        if (remaining === 0){
-          savePhotos(photos);
-          refreshGallery();
-        }
-      };
-      reader.readAsDataURL(file);
-    });
+    if (!files.length) return;
+    uploadTile.querySelector('.small').textContent = 'מעלה...';
+    for (const file of files){
+      await uploadSharedPhoto(file, 'general');
+    }
+    uploadTile.querySelector('.small').textContent = 'נראה לכל המבקרים באתר';
+    await refreshGallery();
     fileInput.value = '';
   });
 
@@ -859,8 +864,7 @@
     if (e.key === 'Escape') closeLightbox();
   });
 
-  // ---------- Palace modal gallery ----------
-  const PALACE_KEY = 'palace-gallery-photos';
+  // ---------- Palace modal gallery (shared, category: 'palace') ----------
   const palaceModal = document.getElementById('palaceModal');
   const palaceGrid = document.getElementById('palaceGrid');
   const palaceUploadTile = document.getElementById('palaceUploadTile');
@@ -868,44 +872,18 @@
   const palaceCard = document.getElementById('palaceCard');
   const palaceClose = document.getElementById('palaceClose');
 
-  function loadPalacePhotos(){
-    try{
-      const raw = localStorage.getItem(PALACE_KEY);
-      return raw ? JSON.parse(raw) : [];
-    }catch(e){ return []; }
-  }
-
-  function savePalacePhotos(photos){
-    try{ localStorage.setItem(PALACE_KEY, JSON.stringify(photos)); }
-    catch(e){ console.warn('לא ניתן לשמור תמונות (יתכן שהאחסון מלא).'); }
-  }
-
-  function renderPalaceUserPhoto(dataUrl, index){
-    const fig = document.createElement('figure');
-    const img = document.createElement('img');
-    img.src = dataUrl;
-    img.alt = 'תמונה שהועלתה על ידי המשתמש';
-    const remove = document.createElement('div');
-    remove.className = 'gallery-remove';
-    remove.textContent = '×';
-    remove.title = 'הסרת תמונה';
-    remove.addEventListener('click', (ev) => {
-      ev.stopPropagation();
-      const photos = loadPalacePhotos();
-      photos.splice(index, 1);
-      savePalacePhotos(photos);
-      refreshPalaceGallery();
+  async function refreshPalaceGallery(){
+    document.querySelectorAll('#palaceGrid figure.lightbox-item.user-added').forEach(f => f.remove());
+    const urls = await loadSharedPhotos('palace');
+    urls.forEach(url => {
+      const fig = document.createElement('figure');
+      fig.className = 'lightbox-item user-added';
+      const img = document.createElement('img');
+      img.src = url;
+      img.alt = 'תמונה מארמונות המלונות';
+      fig.appendChild(img);
+      palaceGrid.insertBefore(fig, palaceUploadTile);
     });
-    fig.appendChild(img);
-    fig.appendChild(remove);
-    palaceGrid.insertBefore(fig, palaceUploadTile);
-  }
-
-  function refreshPalaceGallery(){
-    document.querySelectorAll('#palaceGrid figure:not(.upload-tile)').forEach(f => {
-      if (f.querySelector('.gallery-remove')) f.remove();
-    });
-    loadPalacePhotos().forEach((dataUrl, i) => renderPalaceUserPhoto(dataUrl, i));
   }
 
   function openPalaceModal(){
@@ -926,23 +904,15 @@
 
   palaceUploadTile.addEventListener('click', () => palaceFileInput.click());
 
-  palaceFileInput.addEventListener('change', (e) => {
+  palaceFileInput.addEventListener('change', async (e) => {
     const files = Array.from(e.target.files || []);
-    const photos = loadPalacePhotos();
-    let remaining = files.length;
-    if (!remaining) return;
-    files.forEach(file => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        photos.push(reader.result);
-        remaining -= 1;
-        if (remaining === 0){
-          savePalacePhotos(photos);
-          refreshPalaceGallery();
-        }
-      };
-      reader.readAsDataURL(file);
-    });
+    if (!files.length) return;
+    palaceUploadTile.querySelector('.small').textContent = 'מעלה...';
+    for (const file of files){
+      await uploadSharedPhoto(file, 'palace');
+    }
+    palaceUploadTile.querySelector('.small').textContent = 'נראה לכל המבקרים באתר';
+    await refreshPalaceGallery();
     palaceFileInput.value = '';
   });
 
