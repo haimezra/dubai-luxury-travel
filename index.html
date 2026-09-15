@@ -212,8 +212,8 @@
   .video-grid{
     display:grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    max-width: 720px;
+    gap: 16px;
+    max-width: 820px;
     margin: 0 auto;
   }
   .video-cube{
@@ -257,7 +257,7 @@
   }
 
   @media (max-width: 640px){
-    .video-grid{ grid-template-columns: 1fr 1fr; max-width: 400px; }
+    .video-grid{ grid-template-columns: 1fr 1fr; max-width: 460px; }
   }
 
   /* ---------- JOURNEY ---------- */
@@ -638,23 +638,29 @@
           </div>
           <input type="file" accept="video/*" style="display:none">
         </div>
-        <p class="video-caption">לא סתם עוד השכרת אופנוע ים. אנחנו דואגים לכם לנוף הכי מושלם, לחוויה הכי מקסימלית שיש.</p>
+        <p class="video-caption">מקומות VIP</p>
       </div>
-      <div class="video-cube" data-slot="3">
-        <video autoplay muted loop playsinline></video>
-        <div class="video-upload-tile">
-          <div class="plus">+</div>
-          <span>העלאת סרטון</span>
+      <div class="video-item">
+        <div class="video-cube" data-slot="3">
+          <video autoplay muted loop playsinline></video>
+          <div class="video-upload-tile">
+            <div class="plus">+</div>
+            <span>העלאת סרטון</span>
+          </div>
+          <input type="file" accept="video/*" style="display:none">
         </div>
-        <input type="file" accept="video/*" style="display:none">
+        <p class="video-caption">מסיבות VIP</p>
       </div>
-      <div class="video-cube" data-slot="5">
-        <video autoplay muted loop playsinline></video>
-        <div class="video-upload-tile">
-          <div class="plus">+</div>
-          <span>העלאת סרטון</span>
+      <div class="video-item">
+        <div class="video-cube" data-slot="5">
+          <video autoplay muted loop playsinline></video>
+          <div class="video-upload-tile">
+            <div class="plus">+</div>
+            <span>העלאת סרטון</span>
+          </div>
+          <input type="file" accept="video/*" style="display:none">
         </div>
-        <input type="file" accept="video/*" style="display:none">
+        <p class="video-caption">מקומות מנצחים</p>
       </div>
     </div>
   </div>
