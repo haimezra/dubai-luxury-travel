@@ -325,6 +325,30 @@
 
   /* ---------- JOURNEY ---------- */
   .journey{ background: var(--surface); }
+
+  /* ---------- TRUST SECTION ---------- */
+  .trust-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+  .trust-item{
+    background: var(--surface-2);
+    border-radius: 16px;
+    padding: 28px 22px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+    transition: box-shadow .3s ease, transform .3s ease;
+  }
+  .trust-item:hover{
+    box-shadow: 0 0 0 1px rgba(217,178,92,0.3), 0 0 34px rgba(217,178,92,0.14);
+    transform: translateY(-3px);
+  }
+  .trust-icon{ font-size: 1.7rem; margin-bottom: 14px; }
+  .trust-item h3{ font-size: 1.05rem; margin-bottom: 10px; font-weight: 700; }
+  .trust-item p{ color: var(--muted); font-size: .92rem; font-weight: 300; }
+
+  @media (max-width: 980px){ .trust-grid{ grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px){ .trust-grid{ grid-template-columns: 1fr; } }
   .journey-grid{
     display:grid;
     grid-template-columns: repeat(3, 1fr);
@@ -961,6 +985,38 @@
           <h3>יאס איילנד</h3>
           <span class="tag">פארקי שעשועים ומים</span>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">בלי דאגות</div>
+      <h2>טסים לבד? יש על מי לסמוך</h2>
+      <p>רוב האנשים שמתכננים טיול ראשון לדובאי קצת חוששים, בעיקר כשטסים לבד. בדיוק בשביל זה אנחנו כאן: לא הזמנה ותפילה שהכל יסתדר, אלא בן אדם אמיתי שזמין לכם מהרגע הראשון ועד הרגע האחרון.</p>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-item">
+        <div class="trust-icon">📞</div>
+        <h3>זמינות אמיתית, 24/7</h3>
+        <p>תמיד יש מי שעונה, גם בשעה 3 בלילה. אתם לא לבד בשום שלב של הטיול.</p>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">📍</div>
+        <h3>נמצאים בשטח</h3>
+        <p>יש לנו סוכנים פיזית בדובאי ובאבו דאבי, לא רק מענה טלפוני ממרחק. אם קורה משהו, מישהו קרוב יכול להגיע.</p>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🤝</div>
+        <h3>מתאימים את הטיול אליכם</h3>
+        <p>טסים לבד, בזוג או עם חברים? הליווי מותאם בדיוק לסגנון שלכם, כולל המלצות שמתאימות למי שמטייל לבד.</p>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">💬</div>
+        <h3>לקוחות אמיתיים, לא הבטחות</h3>
+        <p>תראו בעצמכם בגלריית "לקוחות ממליצים" למעלה, תמונות אמיתיות מלקוחות שכבר טסו איתנו.</p>
       </div>
     </div>
   </div>
