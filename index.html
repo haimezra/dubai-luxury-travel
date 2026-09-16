@@ -332,6 +332,38 @@
   /* ---------- JOURNEY ---------- */
   .journey{ background: var(--surface); }
 
+  /* ---------- ABOUT ME ---------- */
+  .about-me{ padding: 50px 0; }
+  .about-me-card{
+    display:flex;
+    align-items:center;
+    gap: 22px;
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--surface-2);
+    border-radius: 20px;
+    padding: 26px 30px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+  }
+  .about-me-photo{
+    width: 76px; height:76px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 2px rgba(217,178,92,0.4);
+  }
+  .about-me-name{
+    font-weight:700; font-size:1.02rem; color: var(--ivory);
+    display:flex; align-items:center; gap:6px;
+  }
+  .about-me-role{ color: var(--gold-bright); font-size:.85rem; margin-top:2px; }
+  .about-me-text{ color: var(--muted); font-size:.92rem; margin-top:10px; line-height:1.6; }
+
+  @media (max-width: 560px){
+    .about-me-card{ flex-direction: column; text-align:center; padding: 26px 22px; }
+    .about-me-name{ justify-content:center; }
+  }
+
   /* ---------- SCROLL REVEAL ---------- */
   .reveal{
     opacity: 0;
@@ -1159,6 +1191,19 @@
   <button class="lightbox-close" id="lightboxClose" aria-label="סגירה">×</button>
   <img id="lightboxImg" src="" alt="תמונה מוגדלת" loading="lazy">
 </div>
+
+<section class="about-me">
+  <div class="container">
+    <div class="about-me-card">
+      <img src="images/founder.png" alt="מייסד פנינת דובאי" class="about-me-photo" loading="lazy">
+      <div>
+        <div class="about-me-name">[השם שלך] <span class="verified-badge" title="מאומת">✓</span></div>
+        <div class="about-me-role">מייסד פנינת דובאי</div>
+        <p class="about-me-text">מכיר את דובאי כמו כף היד, וזמין לכם אישית מהרגע הראשון ועד האחרון. לא סוכנות גדולה עם עשרות נציגים, אלא ליווי אמיתי מבן אדם אחד שאכפת לו.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="contact" id="contact">
   <div class="container">
