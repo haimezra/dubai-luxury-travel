@@ -474,6 +474,53 @@
     .modal-box{ padding: 28px 22px; }
   }
 
+  /* ---------- TESTIMONIAL CARDS ---------- */
+  .modal-grid.testimonial-mode{
+    grid-template-columns: 1fr;
+  }
+  .testimonial-card{
+    background: var(--surface);
+    border-radius: 16px;
+    overflow: hidden;
+    display:flex;
+    flex-direction: column;
+  }
+  .testimonial-photo{
+    aspect-ratio: 16/9;
+    background: var(--surface-2);
+    margin: 0;
+  }
+  .testimonial-photo img{ width:100%; height:100%; object-fit:cover; display:block; cursor:pointer; }
+  .testimonial-info{
+    display:flex;
+    align-items:flex-start;
+    gap: 12px;
+    padding: 16px 18px 20px;
+  }
+  .testimonial-avatar{
+    width: 40px; height:40px; border-radius:50%;
+    background: var(--surface-2);
+    display:flex; align-items:center; justify-content:center;
+    font-size: 1.2rem;
+    flex-shrink:0;
+  }
+  .testimonial-name{
+    font-weight:700; font-size:.95rem; color: var(--ivory);
+    display:flex; align-items:center; gap:6px;
+  }
+  .verified-badge{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:16px; height:16px; border-radius:50%;
+    background: #3897f0; color:#fff; font-size:.65rem; font-weight:800;
+  }
+  .testimonial-text{ margin: 6px 0 0; color: var(--muted); font-size:.88rem; line-height:1.5; }
+
+  @media (min-width: 640px){
+    .testimonial-card{ flex-direction: row; }
+    .testimonial-photo{ width: 42%; aspect-ratio: auto; }
+    .testimonial-info{ flex: 1; align-items:center; }
+  }
+
   /* ---------- TRIP QUIZ ---------- */
   .quiz-box{ max-width: 520px; }
   .quiz-progress{
@@ -1253,16 +1300,37 @@
 
   async function refreshModalGallery(){
     document.querySelectorAll('#modalGrid figure:not(.upload-tile)').forEach(f => f.remove());
+    document.querySelectorAll('#modalGrid .testimonial-card').forEach(f => f.remove());
     const urls = await loadSharedPhotos(currentModalCategory);
-    urls.forEach(url => {
-      const fig = document.createElement('figure');
-      fig.className = 'lightbox-item';
-      const img = document.createElement('img');
-      img.src = url;
-      img.alt = modalTitle.textContent;
-      fig.appendChild(img);
-      modalGrid.insertBefore(fig, modalUploadTile);
-    });
+
+    if (currentModalCategory === 'testimonials'){
+      modalGrid.classList.add('testimonial-mode');
+      urls.forEach(url => {
+        const card = document.createElement('div');
+        card.className = 'testimonial-card';
+        card.innerHTML = `
+          <div class="testimonial-photo lightbox-item"><img src="${url}" alt="תמונה מלקוח"></div>
+          <div class="testimonial-info">
+            <div class="testimonial-avatar">👤</div>
+            <div class="testimonial-text-wrap">
+              <div class="testimonial-name">[השם שלך כאן] <span class="verified-badge" title="מאומת">✓</span></div>
+              <p class="testimonial-text">[תגובת לקוח לדוגמה, להחליף]</p>
+            </div>
+          </div>`;
+        modalGrid.insertBefore(card, modalUploadTile);
+      });
+    } else {
+      modalGrid.classList.remove('testimonial-mode');
+      urls.forEach(url => {
+        const fig = document.createElement('figure');
+        fig.className = 'lightbox-item';
+        const img = document.createElement('img');
+        img.src = url;
+        img.alt = modalTitle.textContent;
+        fig.appendChild(img);
+        modalGrid.insertBefore(fig, modalUploadTile);
+      });
+    }
   }
 
   async function openGalleryModal(category, title, sub){
