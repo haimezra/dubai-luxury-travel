@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>הזמנות | פנינת דובאי</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #08090b; --surface: #101215; --surface-2: #15181c;
+    --gold: #d9b25c; --gold-bright: #f3d488; --gold-glow: rgba(217,178,92,0.45);
+    --ivory: #ece7dd; --muted: #98999f;
+  }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--bg); color:var(--ivory); font-family:'Heebo',sans-serif; font-weight:300; line-height:1.85; }
+  h1,h2,h3,.brand{ font-family:'Rubik',sans-serif; font-weight:800; color:var(--ivory); }
+  a{ color: var(--gold-bright); text-decoration:none; }
+  .container{ max-width: 1080px; margin:0 auto; padding: 0 26px; }
+  header{ padding: 30px 0 10px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; }
+  .brand{ font-size:1.2rem; display:flex; align-items:center; gap:10px; }
+  .brand .mark{ width:9px; height:9px; border-radius:50%; background:var(--gold); box-shadow:0 0 10px var(--gold-glow); }
+  .back{ display:inline-block; font-size:.92rem; color:var(--muted); }
+  .back:hover{ color:var(--gold-bright); }
+  main{ padding: 30px 0 90px; }
+  h1{ font-size: clamp(1.9rem, 4vw, 2.6rem); margin-bottom: 10px; }
+  .page-sub{ color: var(--muted); font-size: 1.02rem; max-width: 680px; margin-bottom: 46px; }
+  footer{ text-align:center; padding: 40px 0; color: var(--muted); font-size:.85rem; }
+
+  .btn{
+    display:inline-block; padding: 13px 26px; border-radius: 999px;
+    font-size: .95rem; font-weight: 700; border:none; cursor:pointer; font-family:inherit;
+    background: var(--gold); color:#14110c; box-shadow: 0 0 18px var(--gold-glow);
+    transition: all .3s ease;
+  }
+  .btn:hover{ background: var(--gold-bright); box-shadow: 0 0 26px var(--gold-glow); }
+
+  /* ---------- OFFER CARDS ---------- */
+  .offers-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .offer-card{
+    background: var(--surface-2);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  }
+  .offer-photo{
+    position: relative;
+    aspect-ratio: 4/3;
+    background: var(--surface);
+    overflow: hidden;
+  }
+  .offer-photo img{ width:100%; height:100%; object-fit:cover; display:none; }
+  .offer-photo.has-photo img{ display:block; }
+  .offer-photo.has-photo .offer-photo-tile{ display:none; }
+  .offer-photo-tile{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap: 8px; color: var(--muted); background: rgba(120,180,255,0.05); cursor:pointer;
+  }
+  .offer-photo-tile .plus{ font-size: 1.6rem; color: #a9d4ff; font-weight:800; text-shadow: 0 0 12px rgba(120,180,255,0.6); }
+  .offer-photo-tile span{ font-size: .78rem; font-weight:500; text-align:center; padding: 0 10px; }
+  .offer-photo-edit{
+    position:absolute; bottom:10px; left:10px;
+    background: rgba(8,9,11,0.75);
+    color:#a9d4ff; border:none; border-radius:999px;
+    padding: 7px 14px; font-size:.78rem; cursor:pointer; opacity:0; transition:opacity .2s ease;
+  }
+  .offer-photo.has-photo:hover .offer-photo-edit{ opacity:1; }
+  .offer-body{ padding: 22px 22px 26px; }
+  .offer-body h3{ font-size: 1.15rem; margin-bottom:10px; }
+  .offer-price{
+    color: #a9d4ff;
+    font-weight: 800;
+    font-size: 1.25rem;
+    text-shadow: 0 0 10px rgba(120,180,255,0.6);
+    margin-bottom: 14px;
+  }
+  .offer-features{ margin:0; padding-right: 20px; color: var(--muted); font-size: .92rem; line-height:1.95; font-weight:300; }
+  @media (max-width: 900px){
+    .offers-grid{ grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<header class="container">
+  <div class="brand"><span class="mark"></span> פנינת דובאי</div>
+  <a class="back" href="index.html">→ חזרה לדף הבית</a>
+</header>
+
+<main class="container">
+  <h1>הזמנות</h1>
+  <p class="page-sub">3 מלונות שעברו את הבדיקה שלנו, בחבילה מלאה: כרטיסי טיסה, כבודה, 5 לילות, שירות העברות, וצ'ק אין ללא תור בשירות אחד הסוכנים שלנו בשעות הפעילות.</p>
+
+  <div class="offers-grid">
+    <div class="offer-card">
+      <div class="offer-photo" id="offerPhoto1">
+        <img id="offerImg1" alt="הצעה 1">
+        <div class="offer-photo-tile" id="offerTile1">
+          <div class="plus">+</div>
+          <span>הוספת תמונה</span>
+        </div>
+        <button type="button" class="offer-photo-edit" id="offerEdit1">✎ החלפת תמונה</button>
+        <input type="file" accept="image/*" id="offerFile1" style="display:none">
+      </div>
+      <div class="offer-body">
+        <h3>הצעה 1</h3>
+        <div class="offer-price">5,200 ₪ בלבד</div>
+        <ul class="offer-features">
+          <li>כולל כרטיסי טיסה</li>
+          <li>כולל כבודה</li>
+          <li>5 לילות</li>
+          <li>כולל שירות העברות</li>
+          <li>צ'ק אין ללא תור, בשירות אחד הסוכנים שלנו בשעות הפעילות</li>
+        </ul>
+      </div>
+    </div>
+    <div class="offer-card">
+      <div class="offer-photo" id="offerPhoto2">
+        <img id="offerImg2" alt="הצעה 2">
+        <div class="offer-photo-tile" id="offerTile2">
+          <div class="plus">+</div>
+          <span>הוספת תמונה</span>
+        </div>
+        <button type="button" class="offer-photo-edit" id="offerEdit2">✎ החלפת תמונה</button>
+        <input type="file" accept="image/*" id="offerFile2" style="display:none">
+      </div>
+      <div class="offer-body">
+        <h3>הצעה 2</h3>
+        <div class="offer-price">5,200 ₪ בלבד</div>
+        <ul class="offer-features">
+          <li>כולל כרטיסי טיסה</li>
+          <li>כולל כבודה</li>
+          <li>5 לילות</li>
+          <li>כולל שירות העברות</li>
+          <li>צ'ק אין ללא תור, בשירות אחד הסוכנים שלנו בשעות הפעילות</li>
+        </ul>
+      </div>
+    </div>
+    <div class="offer-card">
+      <div class="offer-photo" id="offerPhoto3">
+        <img id="offerImg3" alt="הצעה 3">
+        <div class="offer-photo-tile" id="offerTile3">
+          <div class="plus">+</div>
+          <span>הוספת תמונה</span>
+        </div>
+        <button type="button" class="offer-photo-edit" id="offerEdit3">✎ החלפת תמונה</button>
+        <input type="file" accept="image/*" id="offerFile3" style="display:none">
+      </div>
+      <div class="offer-body">
+        <h3>הצעה 3</h3>
+        <div class="offer-price">5,200 ₪ בלבד</div>
+        <ul class="offer-features">
+          <li>כולל כרטיסי טיסה</li>
+          <li>כולל כבודה</li>
+          <li>5 לילות</li>
+          <li>כולל שירות העברות</li>
+          <li>צ'ק אין ללא תור, בשירות אחד הסוכנים שלנו בשעות הפעילות</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div>פנינת דובאי</div>
+  <div style="margin-top:6px;"><a href="index.html">חזרה לדף הבית</a></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = 'https://bhxatigravmoouickbsh.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJoeGF0aWdyYXZtb291aWNrYnNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkzNDU5NTgsImV4cCI6MjEwNDkyMTk1OH0.pOP7FAgSdutvCrONGF4tByfofuVEm1EHaqbd6Xq2_Cc';
+  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  async function uploadSharedPhoto(file, category){
+    const ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
+    const path = `${category}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+    const { error: uploadError } = await supabaseClient.storage.from('gallery-photos').upload(path, file);
+    if (uploadError) { console.error(uploadError); return null; }
+    const { data: urlData } = supabaseClient.storage.from('gallery-photos').getPublicUrl(path);
+    const publicUrl = urlData.publicUrl;
+    const { error: insertError } = await supabaseClient.from('gallery_photos').insert({ image_url: publicUrl, category });
+    if (insertError) { console.error(insertError); return null; }
+    return publicUrl;
+  }
+
+  async function loadSharedPhotos(category){
+    const { data, error } = await supabaseClient
+      .from('gallery_photos')
+      .select('image_url')
+      .eq('category', category)
+      .order('created_at', { ascending: true });
+    if (error) { console.error(error); return []; }
+    return data.map(row => row.image_url);
+  }
+
+  // ---------- Offer photos: 3 fixed slots, each shows its most recently uploaded photo ----------
+  const OFFER_SLOTS = [1, 2, 3];
+
+  async function loadOfferPhoto(slot){
+    const category = `offer-${slot}`;
+    const urls = await loadSharedPhotos(category);
+    const photoEl = document.getElementById(`offerPhoto${slot}`);
+    const imgEl = document.getElementById(`offerImg${slot}`);
+    if (urls.length){
+      imgEl.src = urls[urls.length - 1];
+      photoEl.classList.add('has-photo');
+    } else {
+      photoEl.classList.remove('has-photo');
+      imgEl.removeAttribute('src');
+    }
+  }
+
+  OFFER_SLOTS.forEach(slot => {
+    const tile = document.getElementById(`offerTile${slot}`);
+    const editBtn = document.getElementById(`offerEdit${slot}`);
+    const input = document.getElementById(`offerFile${slot}`);
+    tile.addEventListener('click', () => input.click());
+    editBtn.addEventListener('click', () => input.click());
+    input.addEventListener('change', async (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      await uploadSharedPhoto(file, `offer-${slot}`);
+      await loadOfferPhoto(slot);
+      input.value = '';
+    });
+    loadOfferPhoto(slot);
+  });
+</script>
+</body>
+</html>
