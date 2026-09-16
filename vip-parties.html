@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מסיבות VIP בדובאי | פנינת דובאי</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #08090b; --surface: #101215; --surface-2: #15181c;
+    --gold: #d9b25c; --gold-bright: #f3d488; --gold-glow: rgba(217,178,92,0.45);
+    --ivory: #ece7dd; --muted: #94969c;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior: smooth; overflow-x: hidden; }
+  body{ margin:0; background:var(--bg); color:var(--ivory); font-family:'Heebo',sans-serif; font-weight:300; line-height:1.8; overflow-x:hidden; }
+  h1,h2,h3,.brand{ font-family:'Rubik',sans-serif; font-weight:800; color:var(--ivory); }
+  a{ color: inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .container{ max-width: 1000px; margin:0 auto; padding: 0 26px; }
+
+  header.site-nav{
+    position: fixed; top:0; right:0; left:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 20px 36px;
+    background: rgba(8,9,11,0.9);
+  }
+  .brand{ font-size:1.2rem; display:flex; align-items:center; gap:10px; }
+  .brand .mark{ width:9px; height:9px; border-radius:50%; background:var(--gold); box-shadow:0 0 10px var(--gold-glow); }
+  .nav-cta{
+    padding: 10px 22px; border-radius: 999px; color:#10120c; background: var(--gold);
+    font-size:.9rem; font-weight:700; box-shadow: 0 0 18px var(--gold-glow);
+  }
+
+  .hero{
+    position:relative; min-height: 46vh;
+    display:flex; align-items:flex-end;
+    padding-top: 120px; padding-bottom: 50px;
+    background-image: linear-gradient(180deg, rgba(6,6,7,0.4) 0%, rgba(6,6,7,0.75) 65%, rgba(6,6,7,0.98) 100%), url('https://images.unsplash.com/photo-1578736641330-3155e606cd40?q=80&w=2000&auto=format&fit=crop');
+    background-size: cover; background-position: center 40%;
+  }
+  .hero h1{ font-size: clamp(2rem, 6vw, 3.4rem); }
+  .hero p{ color: var(--muted); font-size: 1.02rem; margin-top: 14px; max-width: 600px; }
+
+  section{ padding: 60px 0; position:relative; }
+
+  .intro-box{
+    background: var(--surface-2);
+    border-radius: 20px;
+    padding: 30px 32px;
+    text-align:center;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+  }
+  .intro-box h2{ color: var(--gold-bright); font-size: 1.3rem; margin-bottom: 12px; text-shadow: 0 0 10px var(--gold-glow); }
+  .intro-box p{ color: var(--ivory); font-size: .98rem; max-width: 640px; margin: 0 auto; }
+
+  .club-card{
+    background: var(--surface-2);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 26px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    display:flex;
+    flex-direction: column;
+  }
+  @media (min-width: 760px){
+    .club-card{ flex-direction: row; }
+    .club-image{ flex: 1; }
+    .club-content{ flex: 1.3; }
+  }
+  .club-image img{ width:100%; height:100%; object-fit:cover; min-height: 240px; }
+  .club-content{ padding: 28px 30px; }
+  .club-content h3{ font-size: 1.5rem; margin-bottom: 6px; }
+  .club-location{ color: var(--muted); font-size:.88rem; margin-bottom: 14px; }
+  .club-description{ color: var(--ivory); font-size: .96rem; margin-bottom: 18px; }
+  .club-note{
+    display:inline-block;
+    background: rgba(217,178,92,0.08);
+    color: var(--gold-bright);
+    font-size: .85rem;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 999px;
+    box-shadow: inset 0 0 0 1px rgba(217,178,92,0.3);
+  }
+
+  .cta-box{
+    text-align:center;
+    background: radial-gradient(ellipse at 50% 0%, rgba(217,178,92,0.1), transparent 60%), var(--surface-2);
+    border-radius: 24px;
+    padding: 50px 30px;
+  }
+  .cta-box h2{ font-size: clamp(1.5rem, 3.2vw, 2rem); margin-bottom: 12px; }
+  .cta-box p{ color: var(--muted); margin-bottom: 24px; font-size: .95rem; }
+  .cta-actions{ display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
+
+  .btn{
+    display:inline-block; padding: 14px 28px; border-radius: 999px;
+    font-size: .95rem; font-weight: 700; border:none; cursor:pointer; font-family:inherit;
+    background: var(--gold); color:#14110c; box-shadow: 0 0 22px var(--gold-glow);
+    transition: all .3s ease;
+  }
+  .btn:hover{ background: var(--gold-bright); box-shadow: 0 0 30px var(--gold-glow), 0 0 60px rgba(217,178,92,0.4); }
+  .btn-outline{
+    background: rgba(217,178,92,0.06); color: var(--gold-bright);
+    box-shadow: inset 0 0 0 1px rgba(217,178,92,0.4);
+  }
+  .btn-outline:hover{ box-shadow: inset 0 0 0 1px var(--gold-bright), 0 0 26px var(--gold-glow); background: rgba(217,178,92,0.1); }
+
+  footer{ padding: 46px 0; text-align:center; color: var(--muted); font-size:.86rem; }
+  footer .brand{ justify-content:center; margin-bottom: 14px; font-size: 1.05rem; }
+  .footer-links{ margin-top: 14px; display:flex; justify-content:center; gap: 22px; }
+  .footer-links a{ color: var(--muted); font-size:.85rem; }
+  .footer-links a:hover{ color: var(--gold-bright); }
+
+  /* ---------- QUIZ MODAL ---------- */
+  .modal-overlay{
+    position: fixed; inset:0; z-index:100; background: rgba(6,6,7,0.85); backdrop-filter: blur(6px);
+    display:none; align-items:center; justify-content:center; padding: 28px;
+  }
+  .modal-overlay.active{ display:flex; }
+  .quiz-box{
+    max-width: 520px; width:100%; max-height: 86vh; overflow-y:auto;
+    background: var(--surface-2); border-radius: 22px; padding: 40px; position:relative;
+    box-shadow: 0 0 0 1px rgba(217,178,92,0.25), 0 0 60px rgba(217,178,92,0.15), 0 30px 80px rgba(0,0,0,0.6);
+  }
+  .modal-close{
+    position:absolute; top:22px; left:22px; width:38px; height:38px; border-radius:50%;
+    background: rgba(217,178,92,0.1); color: var(--gold-bright); border:none; font-size:1.2rem; cursor:pointer;
+  }
+  .quiz-progress{ height:4px; background: var(--surface); border-radius:999px; overflow:hidden; margin-bottom:28px; margin-top:6px; }
+  .quiz-progress-bar{ height:100%; background: var(--gold); box-shadow: 0 0 10px var(--gold-glow); transition: width .3s ease; width:0%; }
+  .quiz-question{ font-size: 1.3rem; margin-bottom: 22px; }
+  .quiz-options{ display:flex; flex-direction:column; gap: 12px; }
+  .quiz-option-btn{
+    text-align:right; padding: 15px 20px; border-radius: 12px; background: var(--surface);
+    color: var(--ivory); border:none; font-family:'Heebo',sans-serif; font-size:.98rem; cursor:pointer;
+    transition: box-shadow .2s ease;
+  }
+  .quiz-option-btn:hover{ box-shadow: 0 0 0 1px rgba(217,178,92,0.35), 0 0 20px rgba(217,178,92,0.14); }
+  .quiz-option-btn.selected{ background: var(--gold); color:#14110c; font-weight:700; }
+  .quiz-input{
+    width:100%; background: var(--surface); border:none; border-radius:10px; padding: 14px 16px;
+    color: var(--ivory); font-family:'Heebo',sans-serif; font-size:.98rem; outline:none; margin-bottom: 22px;
+  }
+  .quiz-nav{ display:flex; justify-content:space-between; align-items:center; margin-top:24px; }
+  .quiz-back{ background:none; border:none; color:var(--muted); font-family:'Heebo',sans-serif; font-size:.9rem; cursor:pointer; }
+  .quiz-back:hover{ color: var(--gold-bright); }
+  .quiz-step-label{ color: var(--muted); font-size:.82rem; margin-bottom:8px; }
+  .quiz-thanks{ text-align:center; padding: 20px 0; }
+  .quiz-thanks .quiz-thanks-icon{ font-size:2.6rem; margin-bottom:18px; }
+  .quiz-thanks h3{ font-size:1.4rem; margin-bottom:12px; }
+  .quiz-thanks p{ color: var(--muted); font-size:.98rem; }
+  .quiz-error{ color:#e08a8a; font-size:.85rem; margin-top:-14px; margin-bottom:16px; }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="brand"><span class="mark"></span> פנינת דובאי</div>
+  <a class="nav-cta" href="index.html">← לדף הבית</a>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>חיי הלילה של דובאי</h1>
+    <p>המועדונים, הלאונג'ים והמסיבות שהכי שווה להכיר, ואיך אנחנו דואגים שתקבלו את הכניסה והמחיר הכי טובים שיש.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="intro-box">
+      <h2>✨ לא כל מקום עולה הון</h2>
+      <p>חשוב לדעת: לא בכל מקום צריך שולחן יקר או מינימום הזמנה גבוה. יש בדובאי גם פאבים ומועדונים עם כניסה חופשית. אנחנו כאן כדי לכוון אתכם למקום הנכון לפי התקציב שלכם, לסדר רשימת אורחים כשצריך, ולוודא שאתם לא משלמים יותר ממה שצריך.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="club-card">
+      <div class="club-image">
+        <img src="https://images.unsplash.com/photo-1578736641330-3155e606cd40?q=80&w=800&auto=format&fit=crop" alt="BLU Dubai" loading="lazy">
+      </div>
+      <div class="club-content">
+        <h3>BLU Dubai</h3>
+        <div class="club-location">📍 Al Habtoor City, מלון V, קומה 32, שייח' זאיד רואד</div>
+        <p class="club-description">מועדון בקומה ה-32 עם תצפית פנורמית על קו הרקיע ותעלת המים של דובאי. מוזיקת היפ-הופ ו-R&B, תאורה מרשימה ואווירת לילה תוססת.</p>
+        <span class="club-note">שולחנות בכל התקציבים, מאזור לאונג' ועד VIP מרכזי</span>
+      </div>
+    </div>
+
+    <div class="club-card">
+      <div class="club-image">
+        <img src="https://images.unsplash.com/photo-1746333578342-3e661512a14d?q=80&w=800&auto=format&fit=crop" alt="Be Beach Dubai" loading="lazy">
+      </div>
+      <div class="club-content">
+        <h3>Be Beach</h3>
+        <div class="club-location">📍 Dubai Harbour, סמוך לדובאי מרינה</div>
+        <p class="club-description">מועדון חוף ובריכה בהשראה ים-תיכונית, עם בריכת אינסוף, מיטות שיזוף מפוארות ובקתות פרטיות מול קו הרקיע של המרינה. מתאים ליום שלם של שמש ומוזיקה.</p>
+        <span class="club-note">מיטות ובקתות בכל הרמות, לפי מספר האורחים</span>
+      </div>
+    </div>
+
+    <div class="club-card">
+      <div class="club-image">
+        <img src="https://images.unsplash.com/photo-1765741836851-8071475d4911?q=80&w=800&auto=format&fit=crop" alt="Bagatelle Dubai" loading="lazy">
+      </div>
+      <div class="club-content">
+        <h3>Bagatelle Dubai</h3>
+        <div class="club-location">📍 מלון Fairmont, קומה 1, שייח' זאיד רואד</div>
+        <p class="club-description">האנרגיה של הריביירה הצרפתית בלב דובאי. ארוחת גורמה צרפתית-ים תיכונית שהופכת במהלך הערב לחוויית חיי לילה תוססת, עם דיג'ייז מובילים.</p>
+        <span class="club-note">שולחנות לזוגות, לקבוצות קטנות ולחגיגות גדולות</span>
+      </div>
+    </div>
+
+    <div class="club-card">
+      <div class="club-image">
+        <img src="https://images.unsplash.com/photo-1546412414-e1885259563a?q=80&w=800&auto=format&fit=crop" alt="Billionaire Dubai" loading="lazy">
+      </div>
+      <div class="club-content">
+        <h3>Billionaire Dubai</h3>
+        <div class="club-location">📍 מלון Taj Dubai, Business Bay</div>
+        <p class="club-description">יעד בידור אקסקלוסיבי המשלב ארוחת ערב ראוותנית, מופעים חיים ומסיבת לילה נוצצת, מול קהל סטייליסטי. חוויה שמתחילה בשולחן ונגמרת על רחבת הריקודים.</p>
+        <span class="club-note">מומלץ להזמין מראש, מקומות מוגבלים בסופי שבוע</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="cta-box">
+      <h2>רוצים לדעת בדיוק כמה זה עולה ואיפה הכי שווה הלילה?</h2>
+      <p>המחירים משתנים לפי ערב, עונה ותפוסה. שלחו לנו הודעה, ואנחנו נסגור לכם את הדיל הכי משתלם, ונדאג לרשימת האורחים.</p>
+      <div class="cta-actions">
+        <a class="btn" href="https://wa.me/97229999119" target="_blank" rel="noopener">💬 לפרטים בוואטסאפ</a>
+        <button class="btn btn-outline" onclick="openQuizModal()">בואו נתחיל לתכנן</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand">פנינת דובאי</div>
+  <div>ליווי אישי לטיולי יוקרה בדובאי</div>
+  <div style="margin-top:6px;">02-9999119</div>
+  <div class="footer-links">
+    <a href="privacy.html">מדיניות פרטיות</a>
+    <a href="terms.html">תנאי שימוש</a>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="quizModal">
+  <div class="quiz-box">
+    <button class="modal-close" id="quizClose" aria-label="סגירה">×</button>
+    <div class="quiz-progress"><div class="quiz-progress-bar" id="quizProgressBar"></div></div>
+    <div id="quizContent"></div>
+  </div>
+</div>
+
+<script>
+  const quizQuestions = [
+    { id: 'budget', question: 'מה התקציב המשוער לטיול?', type: 'single', options: ['עד 5,000₪', '5,000–15,000₪', '15,000–30,000₪', 'מעל 30,000₪'] },
+    { id: 'firstTime', question: 'זו הפעם הראשונה שלכם בדובאי?', type: 'single', options: ['כן, פעם ראשונה', 'לא, כבר הייתי בעבר'] },
+    { id: 'style', question: 'באיזה סגנון חופשה מדובר?', type: 'single', options: ['לבד', 'זוג', 'משפחה עם ילדים', 'חבורת חברים'] },
+    { id: 'duration', question: 'כמה ימים אתם מתכננים להישאר?', type: 'single', options: ['עד שבוע', 'שבוע עד 10 ימים', 'שבועיים', 'עדיין לא בטוח/ה'] },
+    { id: 'purpose', question: 'מה מטרת הנסיעה?', type: 'single', options: ['נופש', 'עסקים', 'שילוב של נופש ועסקים'] },
+    { id: 'name', question: 'איך קוראים לכם?', type: 'text', placeholder: 'שם מלא' },
+    { id: 'phone', question: 'מה מספר הטלפון שלכם?', type: 'tel', placeholder: '05X-XXXXXXX' },
+  ];
+  let quizStep = 0;
+  let quizAnswers = {};
+  const quizModal = document.getElementById('quizModal');
+  const quizContent = document.getElementById('quizContent');
+  const quizProgressBar = document.getElementById('quizProgressBar');
+  const quizCloseBtn = document.getElementById('quizClose');
+
+  function openQuizModal(){
+    quizStep = 0;
+    quizAnswers = {};
+    quizModal.classList.add('active');
+    renderQuizStep();
+  }
+  function closeQuizModal(){ quizModal.classList.remove('active'); }
+  quizCloseBtn.addEventListener('click', closeQuizModal);
+  quizModal.addEventListener('click', (e) => { if (e.target === quizModal) closeQuizModal(); });
+
+  function renderQuizStep(){
+    const total = quizQuestions.length;
+    quizProgressBar.style.width = `${(quizStep / total) * 100}%`;
+    const q = quizQuestions[quizStep];
+    let html = `<div class="quiz-step-label">שאלה ${quizStep + 1} מתוך ${total}</div>`;
+    html += `<div class="quiz-question">${q.question}</div>`;
+
+    if (q.type === 'single'){
+      html += '<div class="quiz-options">';
+      q.options.forEach(opt => {
+        const selected = quizAnswers[q.id] === opt ? 'selected' : '';
+        html += `<button type="button" class="quiz-option-btn ${selected}" data-value="${opt}">${opt}</button>`;
+      });
+      html += '</div>';
+      html += `<div class="quiz-nav">${quizStep > 0 ? '<button type="button" class="quiz-back" id="quizBack">→ הקודם</button>' : '<span></span>'}<span></span></div>`;
+    } else {
+      const value = quizAnswers[q.id] || '';
+      html += `<input class="quiz-input" id="quizFieldInput" type="${q.type}" placeholder="${q.placeholder}" value="${value}">`;
+      html += `<div class="quiz-error" id="quizFieldError" style="display:none;"></div>`;
+      const isLast = quizStep === total - 1;
+      html += `<div class="quiz-nav">${quizStep > 0 ? '<button type="button" class="quiz-back" id="quizBack">→ הקודם</button>' : '<span></span>'}<button type="button" class="btn" id="quizNext">${isLast ? 'שליחה' : 'הבא'}</button></div>`;
+    }
+
+    quizContent.innerHTML = html;
+
+    if (q.type === 'single'){
+      quizContent.querySelectorAll('.quiz-option-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          quizAnswers[q.id] = btn.dataset.value;
+          quizStep += 1;
+          if (quizStep >= total){ submitQuiz(); } else { renderQuizStep(); }
+        });
+      });
+    } else {
+      const input = document.getElementById('quizFieldInput');
+      input.focus();
+      const goNext = () => {
+        const val = input.value.trim();
+        const errorEl = document.getElementById('quizFieldError');
+        if (!val){ errorEl.textContent = 'שדה חובה'; errorEl.style.display = 'block'; return; }
+        quizAnswers[q.id] = val;
+        quizStep += 1;
+        if (quizStep >= total){ submitQuiz(); } else { renderQuizStep(); }
+      };
+      document.getElementById('quizNext').addEventListener('click', goNext);
+      input.addEventListener('keydown', (e) => { if (e.key === 'Enter') goNext(); });
+    }
+
+    const backBtn = document.getElementById('quizBack');
+    if (backBtn){ backBtn.addEventListener('click', () => { quizStep -= 1; renderQuizStep(); }); }
+  }
+
+  async function submitQuiz(){
+    quizProgressBar.style.width = '100%';
+    quizContent.innerHTML = `<div class="quiz-thanks"><div class="quiz-thanks-icon">✨</div><h3>שולח את הפרטים...</h3></div>`;
+    try{
+      await fetch('https://formsubmit.co/ajax/dubaiisl80@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: 'שאלון תכנון טיול חדש, פנינת דובאי',
+          'תקציב': quizAnswers.budget || '',
+          'פעם ראשונה בדובאי': quizAnswers.firstTime || '',
+          'סגנון חופשה': quizAnswers.style || '',
+          'משך הטיול': quizAnswers.duration || '',
+          'מטרת הנסיעה': quizAnswers.purpose || '',
+          'שם מלא': quizAnswers.name || '',
+          'טלפון': quizAnswers.phone || ''
+        })
+      });
+    } catch(err){ console.error(err); }
+    quizContent.innerHTML = `
+      <div class="quiz-thanks">
+        <div class="quiz-thanks-icon">🙏</div>
+        <h3>תודה רבה!</h3>
+        <p>נבנה לכם את החופשה המושלמת ונחזור אליכם בהקדם.</p>
+      </div>`;
+  }
+</script>
+
+</body>
+</html>

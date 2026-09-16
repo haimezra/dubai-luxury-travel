@@ -1483,7 +1483,6 @@
   const videoToastMessages = {
     '1': 'לצפות במזרקה ובבורג\' ח\'ליפה? זה הקל. לארגן לכם מקום VIP מול המופע, בזמן הכי טוב שיש? זה כבר הקטע שלנו.',
     '2': 'דובאי היא בעצם אגם ענק אחד. אבל כדי להרגיש את הים האמיתי, אנחנו יודעים בדיוק איפה לרכוב בשיא הכיף, עם החברה המובילה בדובאי.',
-    '3': 'בדובאי, רוב המסיבות הכי טובות מתקיימות בתוך בתי המלון. אנחנו יודעים בדיוק באיזה מלון נמצאת המסיבה הכי משתלמת והשווה ביותר.',
     '5': 'בדובאי יש חופים, ויש חופים. דברו איתנו, ותגיעו ישר למקום המושלם.'
   };
   let videoToastTimer = null;
@@ -1530,7 +1529,11 @@
     const uploadTileEl = cube.querySelector('.video-upload-tile');
     const inputEl = cube.querySelector('input[type="file"]');
 
-    if (videoToastMessages[slot]){
+    if (slot === '3'){
+      videoEl.addEventListener('click', () => {
+        if (cube.classList.contains('has-video')) window.location.href = 'vip-parties.html';
+      });
+    } else if (videoToastMessages[slot]){
       videoEl.addEventListener('click', () => {
         if (cube.classList.contains('has-video')) showVideoToast(videoToastMessages[slot]);
       });
