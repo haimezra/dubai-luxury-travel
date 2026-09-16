@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>פנינת דובאי | ליווי אישי לטיולי יוקרה</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏙️</text></svg>">
+<meta name="description" content="ליווי אישי לטיולי יוקרה בדובאי ואבו דאבי: מלונות פאר, אופנועי ים, מסיבות VIP וחופים מנצחים. זמינים לכם 24/7, מהתכנון ועד החזרה.">
+<meta property="og:title" content="פנינת דובאי | ליווי אישי לטיולי יוקרה">
+<meta property="og:description" content="דובאי בגרסה הכי מפוארת שלה, עם מישהו שדואג לכם לכל דבר, מהרגע הראשון ועד האחרון.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1634007626524-f47fa37810a7?q=80&w=1200&auto=format&fit=crop">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -325,6 +331,29 @@
 
   /* ---------- JOURNEY ---------- */
   .journey{ background: var(--surface); }
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .8s ease, transform .8s ease;
+  }
+  .reveal.in-view{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---------- AMBIENT GLOW ORBS ---------- */
+  .glow-orb{
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(217,178,92,0.16), transparent 70%);
+    pointer-events: none;
+    filter: blur(10px);
+    z-index: 0;
+  }
+  section{ position: relative; }
+  section > .container{ position: relative; z-index: 1; }
 
   /* ---------- TRUST SECTION ---------- */
   .trust-grid{
@@ -800,6 +829,37 @@
     50%{ box-shadow: 0 0 36px var(--gold-glow), 0 0 60px rgba(217,178,92,0.3), 0 8px 24px rgba(0,0,0,0.5); }
   }
   .float-cta:hover{ background: var(--gold-bright); }
+
+  /* ---------- MOBILE STICKY CTA BAR ---------- */
+  .mobile-cta-bar{
+    display: none;
+    position: fixed;
+    bottom: 0; right: 0; left: 0;
+    z-index: 59;
+    background: rgba(8,9,11,0.96);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 -8px 24px rgba(0,0,0,0.4);
+  }
+  .mobile-cta-btn{
+    flex: 1;
+    text-align: center;
+    padding: 14px 10px;
+    font-weight: 700;
+    font-size: .92rem;
+  }
+  .mobile-cta-btn.call{
+    background: var(--gold);
+    color: #14110c;
+  }
+  .mobile-cta-btn.wa{
+    background: var(--surface-2);
+    color: var(--gold-bright);
+  }
+  @media (max-width: 760px){
+    .mobile-cta-bar{ display:flex; }
+    body{ padding-bottom: 54px; }
+    .float-cta{ bottom: 80px; }
+  }
 </style>
 </head>
 <body>
@@ -892,6 +952,7 @@
 </section>
 
 <section class="journey" id="journey">
+  <div class="glow-orb" style="width:420px; height:420px; top:-100px; left:-120px;"></div>
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">איך זה עובד</div>
@@ -927,7 +988,7 @@
     </div>
     <div class="exp-grid">
       <div class="exp-card clickable" onclick="openGalleryModal('jetski','אופנועי ים','רגעים מהמרינה.')">
-        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1673878391998-50a50a51977b?q=80&w=900&auto=format&fit=crop" alt="אופנועי ים בדובאי מרינה"></div>
+        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1673878391998-50a50a51977b?q=80&w=900&auto=format&fit=crop" alt="אופנועי ים בדובאי מרינה" loading="lazy"></div>
         <div class="exp-body">
           <h3>אופנועי ים במרינה</h3>
           <p>דהירה על המים מול קו הרקיע של דובאי, עם הדרכה מקצועית וציוד בטיחות מלא.</p>
@@ -935,14 +996,14 @@
         </div>
       </div>
       <div class="exp-card">
-        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1645941458084-4c53163b9276?q=80&w=900&auto=format&fit=crop" alt="ספארי במדבר דובאי"></div>
+        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1645941458084-4c53163b9276?q=80&w=900&auto=format&fit=crop" alt="ספארי במדבר דובאי" loading="lazy"></div>
         <div class="exp-body">
           <h3>ספארי מדברי בשקיעה</h3>
           <p>דיונות אינסופיות, רכיבה על גמלים, וערב ערבי אותנטי תחת כיפת השמיים.</p>
         </div>
       </div>
       <div class="exp-card clickable" onclick="openGalleryModal('palace','ארמונות של מלונות','המלונות עם הנופים הכי יפים בדובאי. נגלה לכם איפה נמצאים המקומות שלא כל תייר מגיע אליהם.')">
-        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1546412414-e1885259563a?q=80&w=900&auto=format&fit=crop" alt="ארמונות המלונות המפוארים בדובאי"></div>
+        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1546412414-e1885259563a?q=80&w=900&auto=format&fit=crop" alt="ארמונות המלונות המפוארים בדובאי" loading="lazy"></div>
         <div class="exp-body">
           <h3>ארמונות של מלונות</h3>
           <p>מלונות פאר שנראים כמו סרט, עם עיצוב מהמם, שירות ברמה עולמית ונוף שלא נגמר.</p>
@@ -950,7 +1011,7 @@
         </div>
       </div>
       <div class="exp-card clickable" onclick="openGalleryModal('rooms','חדרים וסוויטות','סוויטות שיפנקו אתכם עד הרגע האחרון.')">
-        <div class="img-wrap"><img src="images/room-burj-view.jpg" alt="חדר מלון מפואר עם נוף לבורג' ח'ליפה"></div>
+        <div class="img-wrap"><img src="images/room-burj-view.jpg" alt="חדר מלון מפואר עם נוף לבורג' ח'ליפה" loading="lazy"></div>
         <div class="exp-body">
           <h3>חדרים וסוויטות</h3>
           <p>סוויטות מפוארות עם כל הפינוק, מנוף לעיר ועד ג'קוזי פרטי בחדר.</p>
@@ -958,7 +1019,7 @@
         </div>
       </div>
       <div class="exp-card clickable" onclick="openGalleryModal('extreme','אקסטרים: אופנועי ים ומכוניות יוקרה','אדרנלין בקצב של דובאי.')">
-        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1686917438932-b53e0f49f6db?q=80&w=900&auto=format&fit=crop" alt="רכב RZR במדבר דובאי"></div>
+        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1686917438932-b53e0f49f6db?q=80&w=900&auto=format&fit=crop" alt="רכב RZR במדבר דובאי" loading="lazy"></div>
         <div class="exp-body">
           <h3>אקסטרים</h3>
           <p>אופנועי ים, RZR ומכוניות יוקרה. אנחנו דואגים לכם למסלולים עם המחירים הכי משתלמים שיש.</p>
@@ -981,7 +1042,7 @@
         </div>
       </div>
       <div class="exp-card clickable" onclick="openGalleryModal('testimonials','לקוחות ממליצים','רגעים מלקוחות מרוצים שכבר טסו איתנו לדובאי.')">
-        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1758275557275-eeec6a1e654e?q=80&w=900&auto=format&fit=crop" alt="לקוחות ממליצים"></div>
+        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1758275557275-eeec6a1e654e?q=80&w=900&auto=format&fit=crop" alt="לקוחות ממליצים" loading="lazy"></div>
         <div class="exp-body">
           <h3>לקוחות ממליצים</h3>
           <p>לא רק אנחנו אומרים שזה שווה. תראו מה הלקוחות שכבר היו שם אומרים, בתמונות שלהם.</p>
@@ -996,7 +1057,7 @@
   <div class="container">
     <div class="hotels-layout">
       <div class="hotels-photo">
-        <img src="https://images.unsplash.com/photo-1512632578888-169bbbc64f33?q=80&w=1200&auto=format&fit=crop" alt="אבו דאבי">
+        <img src="https://images.unsplash.com/photo-1512632578888-169bbbc64f33?q=80&w=1200&auto=format&fit=crop" alt="אבו דאבי" loading="lazy">
       </div>
       <div>
         <div class="eyebrow">מעבר לדובאי</div>
@@ -1006,28 +1067,28 @@
     </div>
     <div class="hotel-cards">
       <div class="hotel-card clickable" onclick="openGalleryModal('ferrariworld','פרארי וורלד אבו דאבי','רגעים מפרארי וורלד, אבו דאבי.')">
-        <img src="https://images.unsplash.com/photo-1589458124741-2143cf2d1a08?q=80&w=700&auto=format&fit=crop" alt="פרארי וורלד אבו דאבי">
+        <img src="https://images.unsplash.com/photo-1589458124741-2143cf2d1a08?q=80&w=700&auto=format&fit=crop" alt="פרארי וורלד אבו דאבי" loading="lazy">
         <div class="hotel-card-body">
           <h3>פרארי וורלד</h3>
           <span class="tag">סגירת מקומות, אדרנלין בשיא ההנאה</span>
         </div>
       </div>
       <div class="hotel-card clickable" onclick="openGalleryModal('grandmosque','מסגד שיח\' זאיד הגדול','רגעים ממסגד שיח\' זאיד, אבו דאבי.')">
-        <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=700&auto=format&fit=crop" alt="מסגד שיח' זאיד הגדול">
+        <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=700&auto=format&fit=crop" alt="מסגד שיח' זאיד הגדול" loading="lazy">
         <div class="hotel-card-body">
           <h3>מסגד שיח' זאיד</h3>
           <span class="tag">פאר אדריכלי מרהיב</span>
         </div>
       </div>
       <div class="hotel-card clickable" onclick="openGalleryModal('louvre','לובר אבו דאבי','רגעים מלובר אבו דאבי.')">
-        <img src="https://images.unsplash.com/photo-1580418827493-f2b22c0a76cb?q=80&w=700&auto=format&fit=crop" alt="לובר אבו דאבי">
+        <img src="https://images.unsplash.com/photo-1580418827493-f2b22c0a76cb?q=80&w=700&auto=format&fit=crop" alt="לובר אבו דאבי" loading="lazy">
         <div class="hotel-card-body">
           <h3>לובר אבו דאבי</h3>
           <span class="tag">אמנות ותרבות עולמית</span>
         </div>
       </div>
       <div class="hotel-card clickable" onclick="openGalleryModal('yasisland','יאס איילנד','רגעים מיאס איילנד, אבו דאבי.')">
-        <img src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?q=80&w=700&auto=format&fit=crop" alt="יאס איילנד">
+        <img src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?q=80&w=700&auto=format&fit=crop" alt="יאס איילנד" loading="lazy">
         <div class="hotel-card-body">
           <h3>יאס איילנד</h3>
           <span class="tag">פארקי שעשועים ומים</span>
@@ -1038,6 +1099,7 @@
 </section>
 
 <section class="trust-section">
+  <div class="glow-orb" style="width:380px; height:380px; bottom:-80px; right:-100px;"></div>
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">בלי דאגות</div>
@@ -1077,11 +1139,11 @@
       <p>תמונות מהחוויות שלנו בדובאי, ומקום שמור בשבילכם. לחצו על תמונה כדי להגדיל, או על "+" כדי להעלות תמונות משלכם מהטיול.</p>
     </div>
     <div class="gallery-grid" id="galleryGrid">
-      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1673878391998-50a50a51977b?q=80&w=600&auto=format&fit=crop" alt="אופנוע ים"></figure>
-      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1546412414-e1885259563a?q=80&w=600&auto=format&fit=crop" alt="בורג' אל ערב"></figure>
-      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1527530462287-d0438a5819fe?q=80&w=600&auto=format&fit=crop" alt="חדר מלון מפואר"></figure>
-      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1645941458084-4c53163b9276?q=80&w=600&auto=format&fit=crop" alt="מדבר דובאי"></figure>
-      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1634007626524-f47fa37810a7?q=80&w=600&auto=format&fit=crop" alt="קו רקיע דובאי"></figure>
+      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1673878391998-50a50a51977b?q=80&w=600&auto=format&fit=crop" alt="אופנוע ים" loading="lazy"></figure>
+      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1546412414-e1885259563a?q=80&w=600&auto=format&fit=crop" alt="בורג' אל ערב" loading="lazy"></figure>
+      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1527530462287-d0438a5819fe?q=80&w=600&auto=format&fit=crop" alt="חדר מלון מפואר" loading="lazy"></figure>
+      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1645941458084-4c53163b9276?q=80&w=600&auto=format&fit=crop" alt="מדבר דובאי" loading="lazy"></figure>
+      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1634007626524-f47fa37810a7?q=80&w=600&auto=format&fit=crop" alt="קו רקיע דובאי" loading="lazy"></figure>
       <!-- user uploaded photos are inserted here by JS -->
       <figure class="upload-tile" id="uploadTile">
         <div class="plus">+</div>
@@ -1095,7 +1157,7 @@
 
 <div class="lightbox-overlay" id="lightboxOverlay">
   <button class="lightbox-close" id="lightboxClose" aria-label="סגירה">×</button>
-  <img id="lightboxImg" src="" alt="תמונה מוגדלת">
+  <img id="lightboxImg" src="" alt="תמונה מוגדלת" loading="lazy">
 </div>
 
 <section class="contact" id="contact">
@@ -1161,6 +1223,11 @@
 </footer>
 
 <a class="float-cta" href="https://wa.me/97229999119" target="_blank" rel="noopener" aria-label="וואטסאפ">💬</a>
+
+<div class="mobile-cta-bar">
+  <a class="mobile-cta-btn call" href="tel:029999119">📞 התקשרו</a>
+  <a class="mobile-cta-btn wa" href="https://wa.me/97229999119" target="_blank" rel="noopener">💬 וואטסאפ</a>
+</div>
 
 <div class="modal-overlay" id="galleryModal">
   <div class="modal-box">
@@ -1309,7 +1376,7 @@
         const card = document.createElement('div');
         card.className = 'testimonial-card';
         card.innerHTML = `
-          <div class="testimonial-photo lightbox-item"><img src="${url}" alt="תמונה מלקוח"></div>
+          <div class="testimonial-photo lightbox-item"><img src="${url}" alt="תמונה מלקוח" loading="lazy"></div>
           <div class="testimonial-info">
             <div class="testimonial-avatar">👤</div>
             <div class="testimonial-text-wrap">
@@ -1588,6 +1655,19 @@
         <p>נבנה לכם את החופשה המושלמת ונחזור אליכם בהקדם.</p>
       </div>`;
   }
+
+  // ---------- Scroll reveal ----------
+  const revealTargets = document.querySelectorAll('.section-head, .exp-card, .hotel-card, .journey-item, .trust-item, .video-item, .video-cube');
+  revealTargets.forEach(el => el.classList.add('reveal'));
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealTargets.forEach(el => revealObserver.observe(el));
 
   // subtle nav background on scroll
   const nav = document.querySelector('.site-nav');
