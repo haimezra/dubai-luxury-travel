@@ -32,12 +32,62 @@
   ul{ padding-inline-start: 20px; }
   .note{ font-size:.85rem; color: var(--muted); margin-top: 30px; border-top: none; }
   footer{ text-align:center; padding: 40px 0; color: var(--muted); font-size:.85rem; }
+
+  .btn{
+    display:inline-block; padding: 13px 26px; border-radius: 999px;
+    font-size: .95rem; font-weight: 700; border:none; cursor:pointer; font-family:inherit;
+    background: var(--gold); color:#14110c; box-shadow: 0 0 18px var(--gold-glow);
+    transition: all .3s ease; margin-top: 16px;
+  }
+  .btn:hover{ background: var(--gold-bright); box-shadow: 0 0 26px var(--gold-glow); }
+
+  /* ---------- QUIZ MODAL ---------- */
+  .modal-overlay{
+    position: fixed; inset:0; z-index:100; background: rgba(6,6,7,0.85); backdrop-filter: blur(6px);
+    display:none; align-items:center; justify-content:center; padding: 28px;
+  }
+  .modal-overlay.active{ display:flex; }
+  .quiz-box{
+    max-width: 520px; width:100%; max-height: 86vh; overflow-y:auto;
+    background: var(--surface-2); border-radius: 22px; padding: 40px; position:relative;
+    box-shadow: 0 0 0 1px rgba(217,178,92,0.25), 0 0 60px rgba(217,178,92,0.15), 0 30px 80px rgba(0,0,0,0.6);
+  }
+  .modal-close{
+    position:absolute; top:22px; left:22px; width:38px; height:38px; border-radius:50%;
+    background: rgba(217,178,92,0.1); color: var(--gold-bright); border:none; font-size:1.2rem; cursor:pointer;
+  }
+  .quiz-progress{ height:4px; background: var(--surface); border-radius:999px; overflow:hidden; margin-bottom:28px; margin-top:6px; }
+  .quiz-progress-bar{ height:100%; background: var(--gold); box-shadow: 0 0 10px var(--gold-glow); transition: width .3s ease; width:0%; }
+  .quiz-question{ font-size: 1.3rem; margin-bottom: 22px; font-family:'Rubik',sans-serif; font-weight:800; }
+  .quiz-options{ display:flex; flex-direction:column; gap: 12px; }
+  .quiz-option-btn{
+    text-align:right; padding: 15px 20px; border-radius: 12px; background: var(--surface);
+    color: var(--ivory); border:none; font-family:'Heebo',sans-serif; font-size:.98rem; cursor:pointer;
+    transition: box-shadow .2s ease;
+  }
+  .quiz-option-btn:hover{ box-shadow: 0 0 0 1px rgba(217,178,92,0.35), 0 0 20px rgba(217,178,92,0.14); }
+  .quiz-option-btn.selected{ background: var(--gold); color:#14110c; font-weight:700; }
+  .quiz-input{
+    width:100%; background: var(--surface); border:none; border-radius:10px; padding: 14px 16px;
+    color: var(--ivory); font-family:'Heebo',sans-serif; font-size:.98rem; outline:none; margin-bottom: 22px;
+  }
+  .quiz-nav{ display:flex; justify-content:space-between; align-items:center; margin-top:24px; }
+  .quiz-back{ background:none; border:none; color:var(--muted); font-family:'Heebo',sans-serif; font-size:.9rem; cursor:pointer; }
+  .quiz-back:hover{ color: var(--gold-bright); }
+  .quiz-step-label{ color: var(--muted); font-size:.82rem; margin-bottom:8px; }
+  .quiz-thanks{ text-align:center; padding: 20px 0; }
+  .quiz-thanks .quiz-thanks-icon{ font-size:2.6rem; margin-bottom:18px; }
+  .quiz-thanks h3{ font-size:1.4rem; margin-bottom:12px; font-family:'Rubik',sans-serif; }
+  .quiz-thanks p{ color: var(--muted); font-size:.98rem; }
+  .quiz-error{ color:#e08a8a; font-size:.85rem; margin-top:-14px; margin-bottom:16px; }
+
 </style>
 </head>
 <body>
 <header class="container">
   <div class="brand"><span class="mark"></span> פנינת דובאי</div>
   <a class="back" href="index.html">→ חזרה לדף הבית</a>
+  <div><button class="btn" onclick="openQuizModal()">בואו נתחיל לתכנן</button></div>
 </header>
 
 <main class="container">
@@ -95,5 +145,121 @@
   <div>פנינת דובאי</div>
   <div style="margin-top:6px;"><a href="terms.html">תנאי שימוש</a></div>
 </footer>
+
+<div class="modal-overlay" id="quizModal">
+  <div class="quiz-box">
+    <button class="modal-close" id="quizClose" aria-label="סגירה">×</button>
+    <div class="quiz-progress"><div class="quiz-progress-bar" id="quizProgressBar"></div></div>
+    <div id="quizContent"></div>
+  </div>
+</div>
+
+<script>
+  const quizQuestions = [
+    { id: 'budget', question: 'מה התקציב המשוער לטיול?', type: 'single', options: ['עד 5,000₪', '5,000–15,000₪', '15,000–30,000₪', 'מעל 30,000₪'] },
+    { id: 'firstTime', question: 'זו הפעם הראשונה שלכם בדובאי?', type: 'single', options: ['כן, פעם ראשונה', 'לא, כבר הייתי בעבר'] },
+    { id: 'style', question: 'באיזה סגנון חופשה מדובר?', type: 'single', options: ['לבד', 'זוג', 'משפחה עם ילדים', 'חבורת חברים'] },
+    { id: 'duration', question: 'כמה ימים אתם מתכננים להישאר?', type: 'single', options: ['עד שבוע', 'שבוע עד 10 ימים', 'שבועיים', 'עדיין לא בטוח/ה'] },
+    { id: 'purpose', question: 'מה מטרת הנסיעה?', type: 'single', options: ['נופש', 'עסקים', 'שילוב של נופש ועסקים'] },
+    { id: 'name', question: 'איך קוראים לכם?', type: 'text', placeholder: 'שם מלא' },
+    { id: 'phone', question: 'מה מספר הטלפון שלכם?', type: 'tel', placeholder: '05X-XXXXXXX' },
+  ];
+  let quizStep = 0;
+  let quizAnswers = {};
+  const quizModal = document.getElementById('quizModal');
+  const quizContent = document.getElementById('quizContent');
+  const quizProgressBar = document.getElementById('quizProgressBar');
+  const quizCloseBtn = document.getElementById('quizClose');
+
+  function openQuizModal(){
+    quizStep = 0;
+    quizAnswers = {};
+    quizModal.classList.add('active');
+    renderQuizStep();
+  }
+  function closeQuizModal(){ quizModal.classList.remove('active'); }
+  quizCloseBtn.addEventListener('click', closeQuizModal);
+  quizModal.addEventListener('click', (e) => { if (e.target === quizModal) closeQuizModal(); });
+
+  function renderQuizStep(){
+    const total = quizQuestions.length;
+    quizProgressBar.style.width = `${(quizStep / total) * 100}%`;
+    const q = quizQuestions[quizStep];
+    let html = `<div class="quiz-step-label">שאלה ${quizStep + 1} מתוך ${total}</div>`;
+    html += `<div class="quiz-question">${q.question}</div>`;
+
+    if (q.type === 'single'){
+      html += '<div class="quiz-options">';
+      q.options.forEach(opt => {
+        const selected = quizAnswers[q.id] === opt ? 'selected' : '';
+        html += `<button type="button" class="quiz-option-btn ${selected}" data-value="${opt}">${opt}</button>`;
+      });
+      html += '</div>';
+      html += `<div class="quiz-nav">${quizStep > 0 ? '<button type="button" class="quiz-back" id="quizBack">→ הקודם</button>' : '<span></span>'}<span></span></div>`;
+    } else {
+      const value = quizAnswers[q.id] || '';
+      html += `<input class="quiz-input" id="quizFieldInput" type="${q.type}" placeholder="${q.placeholder}" value="${value}">`;
+      html += `<div class="quiz-error" id="quizFieldError" style="display:none;"></div>`;
+      const isLast = quizStep === total - 1;
+      html += `<div class="quiz-nav">${quizStep > 0 ? '<button type="button" class="quiz-back" id="quizBack">→ הקודם</button>' : '<span></span>'}<button type="button" class="btn" id="quizNext">${isLast ? 'שליחה' : 'הבא'}</button></div>`;
+    }
+
+    quizContent.innerHTML = html;
+
+    if (q.type === 'single'){
+      quizContent.querySelectorAll('.quiz-option-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          quizAnswers[q.id] = btn.dataset.value;
+          quizStep += 1;
+          if (quizStep >= total){ submitQuiz(); } else { renderQuizStep(); }
+        });
+      });
+    } else {
+      const input = document.getElementById('quizFieldInput');
+      input.focus();
+      const goNext = () => {
+        const val = input.value.trim();
+        const errorEl = document.getElementById('quizFieldError');
+        if (!val){ errorEl.textContent = 'שדה חובה'; errorEl.style.display = 'block'; return; }
+        quizAnswers[q.id] = val;
+        quizStep += 1;
+        if (quizStep >= total){ submitQuiz(); } else { renderQuizStep(); }
+      };
+      document.getElementById('quizNext').addEventListener('click', goNext);
+      input.addEventListener('keydown', (e) => { if (e.key === 'Enter') goNext(); });
+    }
+
+    const backBtn = document.getElementById('quizBack');
+    if (backBtn){ backBtn.addEventListener('click', () => { quizStep -= 1; renderQuizStep(); }); }
+  }
+
+  async function submitQuiz(){
+    quizProgressBar.style.width = '100%';
+    quizContent.innerHTML = `<div class="quiz-thanks"><div class="quiz-thanks-icon">✨</div><h3>שולח את הפרטים...</h3></div>`;
+    try{
+      await fetch('https://formsubmit.co/ajax/dubaiisl80@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: 'שאלון תכנון טיול חדש, פנינת דובאי',
+          'תקציב': quizAnswers.budget || '',
+          'פעם ראשונה בדובאי': quizAnswers.firstTime || '',
+          'סגנון חופשה': quizAnswers.style || '',
+          'משך הטיול': quizAnswers.duration || '',
+          'מטרת הנסיעה': quizAnswers.purpose || '',
+          'שם מלא': quizAnswers.name || '',
+          'טלפון': quizAnswers.phone || ''
+        })
+      });
+    } catch(err){ console.error(err); }
+    quizContent.innerHTML = `
+      <div class="quiz-thanks">
+        <div class="quiz-thanks-icon">🙏</div>
+        <h3>תודה רבה!</h3>
+        <p>נבנה לכם את החופשה המושלמת ונחזור אליכם בהקדם.</p>
+      </div>`;
+  }
+</script>
+
 </body>
 </html>

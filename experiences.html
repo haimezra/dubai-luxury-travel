@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>חוויות דובאי | פנינת דובאי</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #08090b; --surface: #101215; --surface-2: #15181c;
+    --gold: #d9b25c; --gold-bright: #f3d488; --gold-glow: rgba(217,178,92,0.45);
+    --ivory: #ece7dd; --muted: #94969c;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior: smooth; }
+  body{ margin:0; background:var(--bg); color:var(--ivory); font-family:'Heebo',sans-serif; font-weight:300; line-height:1.8; }
+  h1,h2,h3,.brand{ font-family:'Rubik',sans-serif; font-weight:800; color:var(--ivory); }
+  a{ color: inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .container{ max-width: 1000px; margin:0 auto; padding: 0 26px; }
+
+  header.site-nav{
+    position: fixed; top:0; right:0; left:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 20px 36px;
+    background: rgba(8,9,11,0.9);
+  }
+  .brand{ font-size:1.2rem; display:flex; align-items:center; gap:10px; }
+  .brand .mark{ width:9px; height:9px; border-radius:50%; background:var(--gold); box-shadow:0 0 10px var(--gold-glow); }
+  .nav-cta{
+    padding: 10px 22px; border-radius: 999px; color:#10120c; background: var(--gold);
+    font-size:.9rem; font-weight:700; box-shadow: 0 0 18px var(--gold-glow);
+  }
+
+  .hero{
+    position:relative; min-height: 60vh;
+    display:flex; align-items:flex-end;
+    padding-top: 120px; padding-bottom: 60px;
+    background-image: linear-gradient(180deg, rgba(6,6,7,0.4) 0%, rgba(6,6,7,0.7) 60%, rgba(6,6,7,0.98) 100%), url('https://images.unsplash.com/photo-1634007626524-f47fa37810a7?q=80&w=2000&auto=format&fit=crop');
+    background-size: cover; background-position: center 65%;
+  }
+  .hero h1{ font-size: clamp(2rem, 6vw, 3.6rem); }
+  .hero p{ color: var(--muted); font-size: 1.05rem; margin-top: 16px; max-width: 620px; }
+
+  section{ padding: 70px 0; }
+  .exp-section{ border-top: none; }
+  .exp-head{ display:flex; align-items:center; gap: 14px; margin-bottom: 24px; }
+  .exp-head .icon{ font-size: 1.6rem; }
+  .exp-head h2{ font-size: clamp(1.5rem, 3vw, 2.1rem); }
+
+  .exp-layout{
+    display:grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items:start;
+  }
+  .exp-photo{ border-radius: 18px; overflow:hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.4); position: sticky; top: 100px; }
+  .exp-photo img{ width:100%; height: 320px; object-fit:cover; }
+
+  .rule-block{ margin-bottom: 22px; }
+  .rule-block h3{ font-size: 1.05rem; margin-bottom: 10px; color: var(--gold-bright); text-shadow: 0 0 10px var(--gold-glow); }
+  .rule-block ul{ margin:0; padding-inline-start: 20px; display:flex; flex-direction:column; gap: 6px; }
+  .rule-block p{ margin:0; color: var(--ivory); font-size: .98rem; }
+  .rule-note{ color: var(--muted); font-size: .9rem; margin-top: 18px; }
+
+  .beach-types{ display:flex; flex-direction:column; gap: 18px; margin-top: 6px; }
+  .beach-type{ background: var(--surface-2); border-radius: 14px; padding: 18px 20px; }
+  .beach-type h4{ color: var(--gold-bright); font-size: 1rem; margin: 0 0 8px; font-weight:700; }
+  .beach-type p{ margin:0; color: var(--ivory); font-size: .95rem; }
+
+  @media (max-width: 800px){
+    .exp-layout{ grid-template-columns: 1fr; }
+    .exp-photo{ position: static; }
+  }
+
+  .quiz-cta{
+    text-align:center;
+    background: radial-gradient(ellipse at 50% 0%, rgba(217,178,92,0.1), transparent 60%), var(--surface-2);
+    border-radius: 24px;
+    padding: 60px 30px;
+  }
+  .quiz-cta h2{ font-size: clamp(1.6rem, 3.4vw, 2.2rem); margin-bottom: 14px; }
+  .quiz-cta p{ color: var(--muted); margin-bottom: 26px; }
+  .btn{
+    display:inline-block; padding: 15px 30px; border-radius: 999px;
+    font-size: 1rem; font-weight: 700; border:none; cursor:pointer; font-family:inherit;
+    background: var(--gold); color:#14110c; box-shadow: 0 0 22px var(--gold-glow);
+    transition: all .3s ease;
+  }
+  .btn:hover{ background: var(--gold-bright); box-shadow: 0 0 30px var(--gold-glow), 0 0 60px rgba(217,178,92,0.4); }
+
+  footer{ padding: 46px 0; text-align:center; color: var(--muted); font-size:.86rem; }
+  footer .brand{ justify-content:center; margin-bottom: 14px; font-size: 1.05rem; }
+  .footer-links{ margin-top: 14px; display:flex; justify-content:center; gap: 22px; }
+  .footer-links a{ color: var(--muted); font-size:.85rem; }
+  .footer-links a:hover{ color: var(--gold-bright); }
+
+  /* ---------- QUIZ MODAL ---------- */
+  .modal-overlay{
+    position: fixed; inset:0; z-index:100; background: rgba(6,6,7,0.85); backdrop-filter: blur(6px);
+    display:none; align-items:center; justify-content:center; padding: 28px;
+  }
+  .modal-overlay.active{ display:flex; }
+  .quiz-box{
+    max-width: 520px; width:100%; max-height: 86vh; overflow-y:auto;
+    background: var(--surface-2); border-radius: 22px; padding: 40px; position:relative;
+    box-shadow: 0 0 0 1px rgba(217,178,92,0.25), 0 0 60px rgba(217,178,92,0.15), 0 30px 80px rgba(0,0,0,0.6);
+  }
+  .modal-close{
+    position:absolute; top:22px; left:22px; width:38px; height:38px; border-radius:50%;
+    background: rgba(217,178,92,0.1); color: var(--gold-bright); border:none; font-size:1.2rem; cursor:pointer;
+  }
+  .quiz-progress{ height:4px; background: var(--surface); border-radius:999px; overflow:hidden; margin-bottom:28px; margin-top:6px; }
+  .quiz-progress-bar{ height:100%; background: var(--gold); box-shadow: 0 0 10px var(--gold-glow); transition: width .3s ease; width:0%; }
+  .quiz-question{ font-size: 1.3rem; margin-bottom: 22px; }
+  .quiz-options{ display:flex; flex-direction:column; gap: 12px; }
+  .quiz-option-btn{
+    text-align:right; padding: 15px 20px; border-radius: 12px; background: var(--surface);
+    color: var(--ivory); border:none; font-family:'Heebo',sans-serif; font-size:.98rem; cursor:pointer;
+    transition: box-shadow .2s ease;
+  }
+  .quiz-option-btn:hover{ box-shadow: 0 0 0 1px rgba(217,178,92,0.35), 0 0 20px rgba(217,178,92,0.14); }
+  .quiz-option-btn.selected{ background: var(--gold); color:#14110c; font-weight:700; }
+  .quiz-input{
+    width:100%; background: var(--surface); border:none; border-radius:10px; padding: 14px 16px;
+    color: var(--ivory); font-family:'Heebo',sans-serif; font-size:.98rem; outline:none; margin-bottom: 22px;
+  }
+  .quiz-nav{ display:flex; justify-content:space-between; align-items:center; margin-top:24px; }
+  .quiz-back{ background:none; border:none; color:var(--muted); font-family:'Heebo',sans-serif; font-size:.9rem; cursor:pointer; }
+  .quiz-back:hover{ color: var(--gold-bright); }
+  .quiz-step-label{ color: var(--muted); font-size:.82rem; margin-bottom:8px; }
+  .quiz-thanks{ text-align:center; padding: 20px 0; }
+  .quiz-thanks .quiz-thanks-icon{ font-size:2.6rem; margin-bottom:18px; }
+  .quiz-thanks h3{ font-size:1.4rem; margin-bottom:12px; }
+  .quiz-thanks p{ color: var(--muted); font-size:.98rem; }
+  .quiz-error{ color:#e08a8a; font-size:.85rem; margin-top:-14px; margin-bottom:16px; }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="brand"><span class="mark"></span> פנינת דובאי</div>
+  <a class="nav-cta" href="index.html">← לדף הבית</a>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>חוויות דובאי</h1>
+    <p>כל מה שצריך לדעת לפני שיוצאים לדרך: מה מותר, מה אסור, ואיך אנחנו דואגים שתקבלו את החוויה הכי טובה שיש.</p>
+  </div>
+</section>
+
+<section class="exp-section">
+  <div class="container">
+    <div class="exp-head"><span class="icon">🚤</span><h2>אופנועי ים</h2></div>
+    <div class="exp-layout">
+      <div class="exp-photo">
+        <img src="https://images.unsplash.com/photo-1673878391998-50a50a51977b?q=80&w=900&auto=format&fit=crop" alt="אופנועי ים בדובאי מרינה">
+      </div>
+      <div>
+        <div class="rule-block">
+          <h3>מה מותר</h3>
+          <ul>
+            <li>שייט באזורים מוסדרים ומאושרים בלבד, תחת פיקוח המפעיל</li>
+            <li>שימוש באפוד הצלה לאורך כל השייט</li>
+            <li>תדריך בטיחות קצר לפני היציאה למים</li>
+            <li>שייט בליווי מדריך מוסמך או בקבוצה מפוקחת</li>
+          </ul>
+        </div>
+        <div class="rule-block">
+          <h3>מה אסור</h3>
+          <ul>
+            <li>שתיית אלכוהול לפני או במהלך השייט</li>
+            <li>חריגה מהאזור המותר או התקרבות למסלולי שיט של כלי שיט אחרים</li>
+            <li>נסיעה ללא אפוד הצלה או ללא הדרכה</li>
+          </ul>
+        </div>
+        <div class="rule-block">
+          <h3>גיל מינימלי</h3>
+          <p>בדרך כלל מגיל 16 לנהיגה בליווי מבוגר, ומגיל 18 לנהיגה עצמאית ללא ליווי. הגיל המדויק תלוי במפעיל הספציפי, ואנחנו נתאם עבורכם מראש את המפעיל שמתאים לגיל ולניסיון שלכם.</p>
+        </div>
+        <p class="rule-note">אנחנו יודעים בדיוק עם איזו חברה לעבוד בכל אזור במרינה, כדי שתקבלו את החוויה הכי בטוחה והכי כיפית שיש.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="exp-section" style="background: var(--surface);">
+  <div class="container">
+    <div class="exp-head"><span class="icon">🥂</span><h2>מסיבות VIP</h2></div>
+    <div class="exp-layout">
+      <div class="exp-photo">
+        <img src="https://images.unsplash.com/photo-1765741836851-8071475d4911?q=80&w=900&auto=format&fit=crop" alt="מסיבות VIP בדובאי">
+      </div>
+      <div>
+        <div class="rule-block">
+          <h3>איך זה עובד בדובאי</h3>
+          <p>בגלל חוקי מכירת האלכוהול המקומיים, רוב חיי הלילה והמסיבות הכי טובות בדובאי מתקיימות בתוך בתי מלון, לא ברחוב או במועדונים עצמאיים. זו הסיבה שהכרות טובה עם המלונות היא המפתח לחוויה הנכונה.</p>
+        </div>
+        <div class="rule-block">
+          <h3>מה כדאי לדעת</h3>
+          <ul>
+            <li>גיל שתיית אלכוהול חוקי בדובאי הוא 21, ולעיתים נדרש תעודת זהות בכניסה</li>
+            <li>קוד לבוש: סמארט קז'ואל. ברוב המקומות לא ייכנסו עם כפכפים, מכנסי ברמודה או גופיות</li>
+            <li>מסיבות ה"פריים טיים" הן בדרך כלל בימים חמישי-שבת (סוף השבוע המקומי)</li>
+            <li>במקומות המבוקשים נהוג להזמין שולחן מראש, ולעיתים יש מינימום הזמנה</li>
+          </ul>
+        </div>
+        <p class="rule-note">אנחנו יודעים בדיוק באיזה מלון נמצאת המסיבה הכי שווה בכל תאריך, ודואגים להזמנת שולחן במחיר הכי משתלם, בלי לחכות בתור.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="exp-section">
+  <div class="container">
+    <div class="exp-head"><span class="icon">🏖️</span><h2>חופים מנצחים</h2></div>
+    <div class="exp-layout">
+      <div class="exp-photo">
+        <img src="https://images.unsplash.com/photo-1746333578342-3e661512a14d?q=80&w=900&auto=format&fit=crop" alt="חוף יוקרתי בדובאי">
+      </div>
+      <div>
+        <p style="margin-bottom:18px;">בדובאי יש הרבה סוגים של חופים, וכל אחד מתאים לסוג אחר של חופשה. אנחנו מכירים את כולם, ונתאים לכם את החוף הנכון לפי מה שאתם מחפשים.</p>
+        <div class="beach-types">
+          <div class="beach-type">
+            <h4>ביץ' קלאבים עם אנרגיה ומסיבות</h4>
+            <p>מוזיקה חיה, בריכות, ואווירת מסיבה כל היום. כניסה בתשלום, לעיתים עם מינימום הזמנה. מתאים למי שרוצה להרגיש את הדופק של דובאי.</p>
+          </div>
+          <div class="beach-type">
+            <h4>חופים ציבוריים ושקטים</h4>
+            <p>אווירה נינוחה, ללא עלות כניסה, טובים למשפחות ולמי שרק רוצה לנוח מול הים.</p>
+          </div>
+          <div class="beach-type">
+            <h4>חופים פרטיים ואינטימיים</h4>
+            <p>חופי מלונות עם שירות פרטי, שקט, ופרטיות מלאה. בדרך כלל זמינים רק לאורחי המלון.</p>
+          </div>
+        </div>
+        <p class="rule-note">בשאלון הקצר בהמשך נבין איזה סוג חוף הכי מתאים לכם, ונדריך אתכם בדיוק לאן ללכת.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="quiz-cta">
+      <h2>מוכנים לתכנן את הטיול?</h2>
+      <p>שאלון קצר, ואנחנו כבר מתחילים לבנות לכם את החופשה המושלמת.</p>
+      <button class="btn" onclick="openQuizModal()">בואו נתחיל לתכנן</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand">פנינת דובאי</div>
+  <div>ליווי אישי לטיולי יוקרה בדובאי</div>
+  <div style="margin-top:6px;">02-9999119</div>
+  <div class="footer-links">
+    <a href="privacy.html">מדיניות פרטיות</a>
+    <a href="terms.html">תנאי שימוש</a>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="quizModal">
+  <div class="quiz-box">
+    <button class="modal-close" id="quizClose" aria-label="סגירה">×</button>
+    <div class="quiz-progress"><div class="quiz-progress-bar" id="quizProgressBar"></div></div>
+    <div id="quizContent"></div>
+  </div>
+</div>
+
+<script>
+  const quizQuestions = [
+    { id: 'budget', question: 'מה התקציב המשוער לטיול?', type: 'single', options: ['עד 5,000₪', '5,000–15,000₪', '15,000–30,000₪', 'מעל 30,000₪'] },
+    { id: 'firstTime', question: 'זו הפעם הראשונה שלכם בדובאי?', type: 'single', options: ['כן, פעם ראשונה', 'לא, כבר הייתי בעבר'] },
+    { id: 'style', question: 'באיזה סגנון חופשה מדובר?', type: 'single', options: ['לבד', 'זוג', 'משפחה עם ילדים', 'חבורת חברים'] },
+    { id: 'duration', question: 'כמה ימים אתם מתכננים להישאר?', type: 'single', options: ['עד שבוע', 'שבוע עד 10 ימים', 'שבועיים', 'עדיין לא בטוח/ה'] },
+    { id: 'purpose', question: 'מה מטרת הנסיעה?', type: 'single', options: ['נופש', 'עסקים', 'שילוב של נופש ועסקים'] },
+    { id: 'name', question: 'איך קוראים לכם?', type: 'text', placeholder: 'שם מלא' },
+    { id: 'phone', question: 'מה מספר הטלפון שלכם?', type: 'tel', placeholder: '05X-XXXXXXX' },
+  ];
+  let quizStep = 0;
+  let quizAnswers = {};
+  const quizModal = document.getElementById('quizModal');
+  const quizContent = document.getElementById('quizContent');
+  const quizProgressBar = document.getElementById('quizProgressBar');
+  const quizCloseBtn = document.getElementById('quizClose');
+
+  function openQuizModal(){
+    quizStep = 0;
+    quizAnswers = {};
+    quizModal.classList.add('active');
+    renderQuizStep();
+  }
+  function closeQuizModal(){ quizModal.classList.remove('active'); }
+  quizCloseBtn.addEventListener('click', closeQuizModal);
+  quizModal.addEventListener('click', (e) => { if (e.target === quizModal) closeQuizModal(); });
+
+  function renderQuizStep(){
+    const total = quizQuestions.length;
+    quizProgressBar.style.width = `${(quizStep / total) * 100}%`;
+    const q = quizQuestions[quizStep];
+    let html = `<div class="quiz-step-label">שאלה ${quizStep + 1} מתוך ${total}</div>`;
+    html += `<div class="quiz-question">${q.question}</div>`;
+
+    if (q.type === 'single'){
+      html += '<div class="quiz-options">';
+      q.options.forEach(opt => {
+        const selected = quizAnswers[q.id] === opt ? 'selected' : '';
+        html += `<button type="button" class="quiz-option-btn ${selected}" data-value="${opt}">${opt}</button>`;
+      });
+      html += '</div>';
+      html += `<div class="quiz-nav">${quizStep > 0 ? '<button type="button" class="quiz-back" id="quizBack">→ הקודם</button>' : '<span></span>'}<span></span></div>`;
+    } else {
+      const value = quizAnswers[q.id] || '';
+      html += `<input class="quiz-input" id="quizFieldInput" type="${q.type}" placeholder="${q.placeholder}" value="${value}">`;
+      html += `<div class="quiz-error" id="quizFieldError" style="display:none;"></div>`;
+      const isLast = quizStep === total - 1;
+      html += `<div class="quiz-nav">${quizStep > 0 ? '<button type="button" class="quiz-back" id="quizBack">→ הקודם</button>' : '<span></span>'}<button type="button" class="btn" id="quizNext">${isLast ? 'שליחה' : 'הבא'}</button></div>`;
+    }
+
+    quizContent.innerHTML = html;
+
+    if (q.type === 'single'){
+      quizContent.querySelectorAll('.quiz-option-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          quizAnswers[q.id] = btn.dataset.value;
+          quizStep += 1;
+          if (quizStep >= total){ submitQuiz(); } else { renderQuizStep(); }
+        });
+      });
+    } else {
+      const input = document.getElementById('quizFieldInput');
+      input.focus();
+      const goNext = () => {
+        const val = input.value.trim();
+        const errorEl = document.getElementById('quizFieldError');
+        if (!val){ errorEl.textContent = 'שדה חובה'; errorEl.style.display = 'block'; return; }
+        quizAnswers[q.id] = val;
+        quizStep += 1;
+        if (quizStep >= total){ submitQuiz(); } else { renderQuizStep(); }
+      };
+      document.getElementById('quizNext').addEventListener('click', goNext);
+      input.addEventListener('keydown', (e) => { if (e.key === 'Enter') goNext(); });
+    }
+
+    const backBtn = document.getElementById('quizBack');
+    if (backBtn){ backBtn.addEventListener('click', () => { quizStep -= 1; renderQuizStep(); }); }
+  }
+
+  async function submitQuiz(){
+    quizProgressBar.style.width = '100%';
+    quizContent.innerHTML = `<div class="quiz-thanks"><div class="quiz-thanks-icon">✨</div><h3>שולח את הפרטים...</h3></div>`;
+    try{
+      await fetch('https://formsubmit.co/ajax/dubaiisl80@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: 'שאלון תכנון טיול חדש, פנינת דובאי',
+          'תקציב': quizAnswers.budget || '',
+          'פעם ראשונה בדובאי': quizAnswers.firstTime || '',
+          'סגנון חופשה': quizAnswers.style || '',
+          'משך הטיול': quizAnswers.duration || '',
+          'מטרת הנסיעה': quizAnswers.purpose || '',
+          'שם מלא': quizAnswers.name || '',
+          'טלפון': quizAnswers.phone || ''
+        })
+      });
+    } catch(err){ console.error(err); }
+    quizContent.innerHTML = `
+      <div class="quiz-thanks">
+        <div class="quiz-thanks-icon">🙏</div>
+        <h3>תודה רבה!</h3>
+        <p>נבנה לכם את החופשה המושלמת ונחזור אליכם בהקדם.</p>
+      </div>`;
+  }
+</script>
+
+</body>
+</html>
