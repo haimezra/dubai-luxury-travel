@@ -323,37 +323,6 @@
     box-shadow: inset 0 0 0 1px var(--gold-bright), 0 0 26px var(--gold-glow);
   }
 
-  /* ---------- PRICE OFFERS BUTTON (neon light blue) ---------- */
-  .price-offers-btn{
-    display:block;
-    max-width: 820px;
-    margin: 14px auto 0;
-    text-align: center;
-    padding: 16px;
-    border-radius: 999px;
-    background: transparent;
-    border: none;
-    color: #a9d4ff;
-    font-family: inherit;
-    font-weight: 700;
-    font-size: .98rem;
-    cursor: pointer;
-    text-shadow: 0 0 10px rgba(120, 180, 255, 0.85);
-    transition: text-shadow .25s ease, transform .15s ease;
-  }
-  .price-offers-btn:hover{
-    text-shadow: 0 0 16px rgba(140, 195, 255, 0.95), 0 0 32px rgba(120, 180, 255, 0.5);
-  }
-  .price-offers-btn:active,
-  .price-offers-btn.is-pressed{
-    animation: offersPress .35s ease;
-  }
-  @keyframes offersPress{
-    0%{ transform: scale(1); }
-    35%{ transform: scale(0.96); text-shadow: 0 0 22px rgba(140, 195, 255, 1), 0 0 44px rgba(120, 180, 255, 0.7); }
-    100%{ transform: scale(1); }
-  }
-
   /* ---------- JOURNEY ---------- */
   .journey{ background: var(--surface); }
   .journey-grid{
@@ -769,7 +738,7 @@
   <nav class="links">
     <a href="#journey">הליווי שלנו</a>
     <a href="#experiences">חוויות</a>
-    <a href="#hotels">מלונות</a>
+    <a href="#abudhabi">אבו דאבי</a>
     <a href="#gallery">גלריה</a>
   </nav>
   <a class="nav-cta" href="tel:029999119">029999119</a>
@@ -797,7 +766,7 @@
       <div class="vip-links-row">
         <button type="button" class="vip-link-btn" onclick="vipScrollTo(this,'video-slot-3')">מסיבות VIP</button>
         <button type="button" class="vip-link-btn" onclick="vipScrollTo(this,'video-slot-5')">חופים מנצחים</button>
-        <button type="button" class="vip-link-btn" onclick="vipScrollTo(this,'hotels')">מלונות מנצחים</button>
+        <button type="button" class="vip-link-btn" onclick="vipScrollTo(this,'experiences')">מלונות מנצחים</button>
       </div>
     </div>
     <div class="video-grid">
@@ -847,7 +816,7 @@
       </div>
     </div>
     <a class="details-btn" href="experiences.html">לפרטים</a>
-    <a class="price-offers-btn" href="offers.html">הזמנות</a>
+    <a class="details-btn" href="offers.html">הזמנות</a>
   </div>
 </section>
 
@@ -952,45 +921,45 @@
   </div>
 </section>
 
-<section class="hotels" id="hotels">
+<section class="hotels" id="abudhabi">
   <div class="container">
     <div class="hotels-layout">
       <div class="hotels-photo">
-        <img src="https://images.unsplash.com/photo-1634007626524-f47fa37810a7?q=80&w=1200&auto=format&fit=crop" alt="קו הרקיע של דובאי בלילה">
+        <img src="https://images.unsplash.com/photo-1512632578888-169bbbc64f33?q=80&w=1200&auto=format&fit=crop" alt="אבו דאבי">
       </div>
       <div>
-        <div class="eyebrow">איפה תישנו</div>
-        <h2>מבחר מלונות היוקרה של דובאי</h2>
-        <p style="color:var(--muted); margin-top:14px; font-weight:300;">אנחנו מכירים את המלונות עם הנופים והמסיבות הכי טובות בדובאי. נגלה לכם איפה נמצאת כל מסיבה, בהתאמה אישית, לחוויה הכי מטורפת שתקבלו.</p>
+        <div class="eyebrow">מעבר לדובאי</div>
+        <h2>סיורים וטיולים באבו דאבי</h2>
+        <p style="color:var(--muted); margin-top:14px; font-weight:300;">יש לנו סוכנים אישיים שכבר נמצאים בשטח, בדובאי ובאבו דאבי, וזמינים לעזור לכם בכל רגע נתון, בכל שאלה ובכל בקשה. אנחנו בכל מקום שאתם צריכים אותנו, עם רמת האמינות והזמינות הגבוהה ביותר שיש.</p>
       </div>
     </div>
     <div class="hotel-cards">
-      <div class="hotel-card">
-        <img src="https://images.unsplash.com/photo-1546412414-e1885259563a?q=80&w=700&auto=format&fit=crop" alt="בורג' אל ערב">
+      <div class="hotel-card clickable" onclick="openGalleryModal('ferrariworld','פרארי וורלד אבו דאבי','רגעים מפרארי וורלד, אבו דאבי.')">
+        <img src="https://images.unsplash.com/photo-1583356322883-1d29f9c8b53f?q=80&w=700&auto=format&fit=crop" alt="פרארי וורלד אבו דאבי">
         <div class="hotel-card-body">
-          <h3>בורג' אל ערב</h3>
-          <span class="tag">אייקוני, 7 כוכבים</span>
+          <h3>פרארי וורלד</h3>
+          <span class="tag">סגירת מקומות, אדרנלין בשיא ההנאה</span>
         </div>
       </div>
-      <div class="hotel-card clickable" onclick="openGalleryModal('atlantis','אטלנטיס דה רויאל','רגעים מאטלנטיס דה רויאל.')">
-        <img src="https://images.unsplash.com/photo-1764212193268-dba11709dc38?q=80&w=700&auto=format&fit=crop" alt="אטלנטיס דה רויאל">
+      <div class="hotel-card clickable" onclick="openGalleryModal('grandmosque','מסגד שיח\' זאיד הגדול','רגעים ממסגד שיח\' זאיד, אבו דאבי.')">
+        <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=700&auto=format&fit=crop" alt="מסגד שיח' זאיד הגדול">
         <div class="hotel-card-body">
-          <h3>אטלנטיס דה רויאל</h3>
-          <span class="tag">פאלם ג'ומיירה</span>
+          <h3>מסגד שיח' זאיד</h3>
+          <span class="tag">פאר אדריכלי מרהיב</span>
         </div>
       </div>
-      <div class="hotel-card clickable" onclick="openGalleryModal('address','אדרס סקיי ויו','רגעים מאדרס סקיי ויו.')">
-        <img src="https://images.unsplash.com/photo-1765741836851-8071475d4911?q=80&w=700&auto=format&fit=crop" alt="אדרס סקיי ויו">
+      <div class="hotel-card clickable" onclick="openGalleryModal('louvre','לובר אבו דאבי','רגעים מלובר אבו דאבי.')">
+        <img src="https://images.unsplash.com/photo-1580418827493-f2b22c0a76cb?q=80&w=700&auto=format&fit=crop" alt="לובר אבו דאבי">
         <div class="hotel-card-body">
-          <h3>אדרס סקיי ויו</h3>
-          <span class="tag">בריכת אינסוף בגובה</span>
+          <h3>לובר אבו דאבי</h3>
+          <span class="tag">אמנות ותרבות עולמית</span>
         </div>
       </div>
-      <div class="hotel-card">
-        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=700&auto=format&fit=crop" alt="וואן אנד אונלי דה פאלם">
+      <div class="hotel-card clickable" onclick="openGalleryModal('yasisland','יאס איילנד','רגעים מיאס איילנד, אבו דאבי.')">
+        <img src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?q=80&w=700&auto=format&fit=crop" alt="יאס איילנד">
         <div class="hotel-card-body">
-          <h3>וואן אנד אונלי דה פאלם</h3>
-          <span class="tag">חוף פרטי</span>
+          <h3>יאס איילנד</h3>
+          <span class="tag">פארקי שעשועים ומים</span>
         </div>
       </div>
     </div>
