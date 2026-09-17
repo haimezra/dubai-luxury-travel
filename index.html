@@ -4,12 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>פנינת דובאי | ליווי אישי לטיולי יוקרה</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏙️</text></svg>">
-<meta name="description" content="ליווי אישי לטיולי יוקרה בדובאי ואבו דאבי: מלונות פאר, אופנועי ים, מסיבות VIP וחופים מנצחים. זמינים לכם 24/7, מהתכנון ועד החזרה.">
-<meta property="og:title" content="פנינת דובאי | ליווי אישי לטיולי יוקרה">
-<meta property="og:description" content="דובאי בגרסה הכי מפוארת שלה, עם מישהו שדואג לכם לכל דבר, מהרגע הראשון ועד האחרון.">
-<meta property="og:image" content="https://images.unsplash.com/photo-1634007626524-f47fa37810a7?q=80&w=1200&auto=format&fit=crop">
-<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -26,7 +20,7 @@
   }
 
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
+  html { scroll-behavior: smooth; }
 
   body{
     margin:0;
@@ -331,85 +325,6 @@
 
   /* ---------- JOURNEY ---------- */
   .journey{ background: var(--surface); }
-
-  /* ---------- ABOUT ME ---------- */
-  .about-me{ padding: 50px 0; }
-  .about-me-card{
-    display:flex;
-    align-items:center;
-    gap: 22px;
-    max-width: 640px;
-    margin: 0 auto;
-    background: var(--surface-2);
-    border-radius: 20px;
-    padding: 26px 30px;
-    box-shadow: 0 16px 40px rgba(0,0,0,0.3);
-  }
-  .about-me-photo{
-    width: 76px; height:76px;
-    border-radius: 50%;
-    object-fit: cover;
-    flex-shrink: 0;
-    box-shadow: 0 0 0 2px rgba(217,178,92,0.4);
-  }
-  .about-me-name{
-    font-weight:700; font-size:1.02rem; color: var(--ivory);
-    display:flex; align-items:center; gap:6px;
-  }
-  .about-me-role{ color: var(--gold-bright); font-size:.85rem; margin-top:2px; }
-  .about-me-text{ color: var(--muted); font-size:.92rem; margin-top:10px; line-height:1.6; }
-
-  @media (max-width: 560px){
-    .about-me-card{ flex-direction: column; text-align:center; padding: 26px 22px; }
-    .about-me-name{ justify-content:center; }
-  }
-
-  /* ---------- SCROLL REVEAL ---------- */
-  .reveal{
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity .8s ease, transform .8s ease;
-  }
-  .reveal.in-view{
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ---------- AMBIENT GLOW ORBS ---------- */
-  .glow-orb{
-    position: absolute;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(217,178,92,0.16), transparent 70%);
-    pointer-events: none;
-    filter: blur(10px);
-    z-index: 0;
-  }
-  section{ position: relative; overflow: hidden; }
-  section > .container{ position: relative; z-index: 1; }
-
-  /* ---------- TRUST SECTION ---------- */
-  .trust-grid{
-    display:grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 22px;
-  }
-  .trust-item{
-    background: var(--surface-2);
-    border-radius: 16px;
-    padding: 28px 22px;
-    box-shadow: 0 16px 40px rgba(0,0,0,0.3);
-    transition: box-shadow .3s ease, transform .3s ease;
-  }
-  .trust-item:hover{
-    box-shadow: 0 0 0 1px rgba(217,178,92,0.3), 0 0 34px rgba(217,178,92,0.14);
-    transform: translateY(-3px);
-  }
-  .trust-icon{ font-size: 1.7rem; margin-bottom: 14px; }
-  .trust-item h3{ font-size: 1.05rem; margin-bottom: 10px; font-weight: 700; }
-  .trust-item p{ color: var(--muted); font-size: .92rem; font-weight: 300; }
-
-  @media (max-width: 980px){ .trust-grid{ grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 560px){ .trust-grid{ grid-template-columns: 1fr; } }
   .journey-grid{
     display:grid;
     grid-template-columns: repeat(3, 1fr);
@@ -535,53 +450,6 @@
     .modal-box{ padding: 28px 22px; }
   }
 
-  /* ---------- TESTIMONIAL CARDS ---------- */
-  .modal-grid.testimonial-mode{
-    grid-template-columns: 1fr;
-  }
-  .testimonial-card{
-    background: var(--surface);
-    border-radius: 16px;
-    overflow: hidden;
-    display:flex;
-    flex-direction: column;
-  }
-  .testimonial-photo{
-    aspect-ratio: 16/9;
-    background: var(--surface-2);
-    margin: 0;
-  }
-  .testimonial-photo img{ width:100%; height:100%; object-fit:cover; display:block; cursor:pointer; }
-  .testimonial-info{
-    display:flex;
-    align-items:flex-start;
-    gap: 12px;
-    padding: 16px 18px 20px;
-  }
-  .testimonial-avatar{
-    width: 40px; height:40px; border-radius:50%;
-    background: var(--surface-2);
-    display:flex; align-items:center; justify-content:center;
-    font-size: 1.2rem;
-    flex-shrink:0;
-  }
-  .testimonial-name{
-    font-weight:700; font-size:.95rem; color: var(--ivory);
-    display:flex; align-items:center; gap:6px;
-  }
-  .verified-badge{
-    display:inline-flex; align-items:center; justify-content:center;
-    width:16px; height:16px; border-radius:50%;
-    background: #3897f0; color:#fff; font-size:.65rem; font-weight:800;
-  }
-  .testimonial-text{ margin: 6px 0 0; color: var(--muted); font-size:.88rem; line-height:1.5; }
-
-  @media (min-width: 640px){
-    .testimonial-card{ flex-direction: row; }
-    .testimonial-photo{ width: 42%; aspect-ratio: auto; }
-    .testimonial-info{ flex: 1; align-items:center; }
-  }
-
   /* ---------- TRIP QUIZ ---------- */
   .quiz-box{ max-width: 520px; }
   .quiz-progress{
@@ -665,6 +533,17 @@
 
   @media (max-width: 980px){ .exp-grid{ grid-template-columns: 1fr 1fr; } }
   @media (max-width: 560px){ .exp-grid{ grid-template-columns: 1fr; } }
+
+  /* ---------- ROOM SHOWCASE VIDEO ---------- */
+  .room-showcase{ padding-top: 0; }
+  .room-showcase-video{
+    max-width: 640px;
+    margin: 0 auto;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 0 1px rgba(217,178,92,0.2);
+  }
+  .room-showcase-video video{ width:100%; display:block; }
 
   /* ---------- HOTELS ---------- */
   .hotels{ background: var(--surface); }
@@ -775,6 +654,65 @@
   @media (max-width: 900px){ .gallery-grid{ grid-template-columns: repeat(3,1fr); } }
   @media (max-width: 600px){ .gallery-grid{ grid-template-columns: repeat(2,1fr); } }
 
+  /* ---------- PRICING ---------- */
+  .price-list{
+    max-width: 780px;
+    margin: 0 auto;
+    display:flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .price-item{
+    background: var(--surface-2);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 14px 34px rgba(0,0,0,0.3);
+  }
+  .price-item-head{
+    width: 100%;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 20px 24px;
+    background: transparent;
+    border: none;
+    color: var(--ivory);
+    font-family: 'Heebo', sans-serif;
+    cursor: pointer;
+    text-align: right;
+  }
+  .price-item-title{ font-size: 1.02rem; font-weight: 600; flex: 1; }
+  .price-item-price{
+    color: var(--gold-bright);
+    font-weight: 700;
+    font-size: 1rem;
+    white-space: nowrap;
+    text-shadow: 0 0 10px var(--gold-glow);
+    display:flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+  }
+  .price-aed{ color: var(--muted); font-size: .74rem; font-weight: 400; text-shadow:none; }
+  .price-item-arrow{ color: var(--gold-bright); transition: transform .25s ease; font-size: .9rem; }
+  .price-item.open .price-item-arrow{ transform: rotate(180deg); }
+  .price-item-body{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .35s ease, padding .35s ease;
+    padding: 0 24px;
+    color: var(--muted);
+    font-size: .92rem;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+  .price-item.open .price-item-body{
+    max-height: 240px;
+    padding: 0 24px 22px;
+  }
+  .price-note{ text-align:center; color: var(--muted); font-size: .82rem; margin-top: 22px; }
+
   /* ---------- CONTACT ---------- */
   .contact{
     background: radial-gradient(ellipse at 50% 0%, rgba(217,178,92,0.08), transparent 60%), var(--surface-2);
@@ -861,37 +799,6 @@
     50%{ box-shadow: 0 0 36px var(--gold-glow), 0 0 60px rgba(217,178,92,0.3), 0 8px 24px rgba(0,0,0,0.5); }
   }
   .float-cta:hover{ background: var(--gold-bright); }
-
-  /* ---------- MOBILE STICKY CTA BAR ---------- */
-  .mobile-cta-bar{
-    display: none;
-    position: fixed;
-    bottom: 0; right: 0; left: 0;
-    z-index: 59;
-    background: rgba(8,9,11,0.96);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 -8px 24px rgba(0,0,0,0.4);
-  }
-  .mobile-cta-btn{
-    flex: 1;
-    text-align: center;
-    padding: 14px 10px;
-    font-weight: 700;
-    font-size: .92rem;
-  }
-  .mobile-cta-btn.call{
-    background: var(--gold);
-    color: #14110c;
-  }
-  .mobile-cta-btn.wa{
-    background: var(--surface-2);
-    color: var(--gold-bright);
-  }
-  @media (max-width: 760px){
-    .mobile-cta-bar{ display:flex; }
-    body{ padding-bottom: 54px; }
-    .float-cta{ bottom: 80px; }
-  }
 </style>
 </head>
 <body>
@@ -902,6 +809,7 @@
     <a href="#journey">הליווי שלנו</a>
     <a href="#experiences">חוויות</a>
     <a href="#abudhabi">אבו דאבי</a>
+    <a href="#pricing">מחירון</a>
     <a href="#gallery">גלריה</a>
   </nav>
   <a class="nav-cta" href="tel:029999119">029999119</a>
@@ -984,7 +892,6 @@
 </section>
 
 <section class="journey" id="journey">
-  <div class="glow-orb" style="width:420px; height:420px; top:-100px; left:-120px;"></div>
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">איך זה עובד</div>
@@ -1020,7 +927,7 @@
     </div>
     <div class="exp-grid">
       <div class="exp-card clickable" onclick="openGalleryModal('jetski','אופנועי ים','רגעים מהמרינה.')">
-        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1673878391998-50a50a51977b?q=80&w=900&auto=format&fit=crop" alt="אופנועי ים בדובאי מרינה" loading="lazy"></div>
+        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1673878391998-50a50a51977b?q=80&w=900&auto=format&fit=crop" alt="אופנועי ים בדובאי מרינה"></div>
         <div class="exp-body">
           <h3>אופנועי ים במרינה</h3>
           <p>דהירה על המים מול קו הרקיע של דובאי, עם הדרכה מקצועית וציוד בטיחות מלא.</p>
@@ -1028,14 +935,14 @@
         </div>
       </div>
       <div class="exp-card">
-        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1645941458084-4c53163b9276?q=80&w=900&auto=format&fit=crop" alt="ספארי במדבר דובאי" loading="lazy"></div>
+        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1645941458084-4c53163b9276?q=80&w=900&auto=format&fit=crop" alt="ספארי במדבר דובאי"></div>
         <div class="exp-body">
           <h3>ספארי מדברי בשקיעה</h3>
           <p>דיונות אינסופיות, רכיבה על גמלים, וערב ערבי אותנטי תחת כיפת השמיים.</p>
         </div>
       </div>
       <div class="exp-card clickable" onclick="openGalleryModal('palace','ארמונות של מלונות','המלונות עם הנופים הכי יפים בדובאי. נגלה לכם איפה נמצאים המקומות שלא כל תייר מגיע אליהם.')">
-        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1546412414-e1885259563a?q=80&w=900&auto=format&fit=crop" alt="ארמונות המלונות המפוארים בדובאי" loading="lazy"></div>
+        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1546412414-e1885259563a?q=80&w=900&auto=format&fit=crop" alt="ארמונות המלונות המפוארים בדובאי"></div>
         <div class="exp-body">
           <h3>ארמונות של מלונות</h3>
           <p>מלונות פאר שנראים כמו סרט, עם עיצוב מהמם, שירות ברמה עולמית ונוף שלא נגמר.</p>
@@ -1043,7 +950,7 @@
         </div>
       </div>
       <div class="exp-card clickable" onclick="openGalleryModal('rooms','חדרים וסוויטות','סוויטות שיפנקו אתכם עד הרגע האחרון.')">
-        <div class="img-wrap"><img src="images/room-burj-view.jpg" alt="חדר מלון מפואר עם נוף לבורג' ח'ליפה" loading="lazy"></div>
+        <div class="img-wrap"><img src="images/room-burj-view.jpg" alt="חדר מלון מפואר עם נוף לבורג' ח'ליפה"></div>
         <div class="exp-body">
           <h3>חדרים וסוויטות</h3>
           <p>סוויטות מפוארות עם כל הפינוק, מנוף לעיר ועד ג'קוזי פרטי בחדר.</p>
@@ -1051,7 +958,7 @@
         </div>
       </div>
       <div class="exp-card clickable" onclick="openGalleryModal('extreme','אקסטרים: אופנועי ים ומכוניות יוקרה','אדרנלין בקצב של דובאי.')">
-        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1686917438932-b53e0f49f6db?q=80&w=900&auto=format&fit=crop" alt="רכב RZR במדבר דובאי" loading="lazy"></div>
+        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1686917438932-b53e0f49f6db?q=80&w=900&auto=format&fit=crop" alt="רכב RZR במדבר דובאי"></div>
         <div class="exp-body">
           <h3>אקסטרים</h3>
           <p>אופנועי ים, RZR ומכוניות יוקרה. אנחנו דואגים לכם למסלולים עם המחירים הכי משתלמים שיש.</p>
@@ -1074,7 +981,7 @@
         </div>
       </div>
       <div class="exp-card clickable" onclick="openGalleryModal('testimonials','לקוחות ממליצים','רגעים מלקוחות מרוצים שכבר טסו איתנו לדובאי.')">
-        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1758275557275-eeec6a1e654e?q=80&w=900&auto=format&fit=crop" alt="לקוחות ממליצים" loading="lazy"></div>
+        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1758275557275-eeec6a1e654e?q=80&w=900&auto=format&fit=crop" alt="לקוחות ממליצים"></div>
         <div class="exp-body">
           <h3>לקוחות ממליצים</h3>
           <p>לא רק אנחנו אומרים שזה שווה. תראו מה הלקוחות שכבר היו שם אומרים, בתמונות שלהם.</p>
@@ -1085,11 +992,24 @@
   </div>
 </section>
 
+<section class="room-showcase">
+  <div class="container">
+    <div class="section-head" style="text-align:center; margin-left:auto; margin-right:auto;">
+      <div class="eyebrow">קצת מהאווירה</div>
+      <h2>החדרים הכי יפים בדובאי</h2>
+      <p>דואגים לכם לנופים, לחוויה מקסימלית.</p>
+    </div>
+    <div class="room-showcase-video">
+      <video src="videos/rooms-showcase.mp4" controls muted playsinline preload="metadata"></video>
+    </div>
+  </div>
+</section>
+
 <section class="hotels" id="abudhabi">
   <div class="container">
     <div class="hotels-layout">
       <div class="hotels-photo">
-        <img src="https://images.unsplash.com/photo-1512632578888-169bbbc64f33?q=80&w=1200&auto=format&fit=crop" alt="אבו דאבי" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1512632578888-169bbbc64f33?q=80&w=1200&auto=format&fit=crop" alt="אבו דאבי">
       </div>
       <div>
         <div class="eyebrow">מעבר לדובאי</div>
@@ -1099,65 +1019,32 @@
     </div>
     <div class="hotel-cards">
       <div class="hotel-card clickable" onclick="openGalleryModal('ferrariworld','פרארי וורלד אבו דאבי','רגעים מפרארי וורלד, אבו דאבי.')">
-        <img src="https://images.unsplash.com/photo-1589458124741-2143cf2d1a08?q=80&w=700&auto=format&fit=crop" alt="פרארי וורלד אבו דאבי" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1693164350459-ce6ad75e08c3?q=80&w=700&auto=format&fit=crop" alt="פרארי וורלד אבו דאבי">
         <div class="hotel-card-body">
           <h3>פרארי וורלד</h3>
           <span class="tag">סגירת מקומות, אדרנלין בשיא ההנאה</span>
         </div>
       </div>
       <div class="hotel-card clickable" onclick="openGalleryModal('grandmosque','מסגד שיח\' זאיד הגדול','רגעים ממסגד שיח\' זאיד, אבו דאבי.')">
-        <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=700&auto=format&fit=crop" alt="מסגד שיח' זאיד הגדול" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=700&auto=format&fit=crop" alt="מסגד שיח' זאיד הגדול">
         <div class="hotel-card-body">
           <h3>מסגד שיח' זאיד</h3>
           <span class="tag">פאר אדריכלי מרהיב</span>
         </div>
       </div>
       <div class="hotel-card clickable" onclick="openGalleryModal('louvre','לובר אבו דאבי','רגעים מלובר אבו דאבי.')">
-        <img src="https://images.unsplash.com/photo-1580418827493-f2b22c0a76cb?q=80&w=700&auto=format&fit=crop" alt="לובר אבו דאבי" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1580418827493-f2b22c0a76cb?q=80&w=700&auto=format&fit=crop" alt="לובר אבו דאבי">
         <div class="hotel-card-body">
           <h3>לובר אבו דאבי</h3>
           <span class="tag">אמנות ותרבות עולמית</span>
         </div>
       </div>
       <div class="hotel-card clickable" onclick="openGalleryModal('yasisland','יאס איילנד','רגעים מיאס איילנד, אבו דאבי.')">
-        <img src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?q=80&w=700&auto=format&fit=crop" alt="יאס איילנד" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1704668961045-831f565e62bd?q=80&w=700&auto=format&fit=crop" alt="יאס איילנד">
         <div class="hotel-card-body">
           <h3>יאס איילנד</h3>
           <span class="tag">פארקי שעשועים ומים</span>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="trust-section">
-  <div class="glow-orb" style="width:380px; height:380px; bottom:-80px; right:-100px;"></div>
-  <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">בלי דאגות</div>
-      <h2>טסים לבד? יש על מי לסמוך</h2>
-      <p>רוב האנשים שמתכננים טיול ראשון לדובאי קצת חוששים, בעיקר כשטסים לבד. בדיוק בשביל זה אנחנו כאן: לא הזמנה ותפילה שהכל יסתדר, אלא בן אדם אמיתי שזמין לכם מהרגע הראשון ועד הרגע האחרון.</p>
-    </div>
-    <div class="trust-grid">
-      <div class="trust-item">
-        <div class="trust-icon">📞</div>
-        <h3>זמינות אמיתית, 24/7</h3>
-        <p>תמיד יש מי שעונה, גם בשעה 3 בלילה. אתם לא לבד בשום שלב של הטיול.</p>
-      </div>
-      <div class="trust-item">
-        <div class="trust-icon">📍</div>
-        <h3>נמצאים בשטח</h3>
-        <p>יש לנו סוכנים פיזית בדובאי ובאבו דאבי, לא רק מענה טלפוני ממרחק. אם קורה משהו, מישהו קרוב יכול להגיע.</p>
-      </div>
-      <div class="trust-item">
-        <div class="trust-icon">🤝</div>
-        <h3>מתאימים את הטיול אליכם</h3>
-        <p>טסים לבד, בזוג או עם חברים? הליווי מותאם בדיוק לסגנון שלכם, כולל המלצות שמתאימות למי שמטייל לבד.</p>
-      </div>
-      <div class="trust-item">
-        <div class="trust-icon">💬</div>
-        <h3>לקוחות אמיתיים, לא הבטחות</h3>
-        <p>תראו בעצמכם בגלריית "לקוחות ממליצים" למעלה, תמונות אמיתיות מלקוחות שכבר טסו איתנו.</p>
       </div>
     </div>
   </div>
@@ -1171,11 +1058,11 @@
       <p>תמונות מהחוויות שלנו בדובאי, ומקום שמור בשבילכם. לחצו על תמונה כדי להגדיל, או על "+" כדי להעלות תמונות משלכם מהטיול.</p>
     </div>
     <div class="gallery-grid" id="galleryGrid">
-      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1673878391998-50a50a51977b?q=80&w=600&auto=format&fit=crop" alt="אופנוע ים" loading="lazy"></figure>
-      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1546412414-e1885259563a?q=80&w=600&auto=format&fit=crop" alt="בורג' אל ערב" loading="lazy"></figure>
-      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1527530462287-d0438a5819fe?q=80&w=600&auto=format&fit=crop" alt="חדר מלון מפואר" loading="lazy"></figure>
-      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1645941458084-4c53163b9276?q=80&w=600&auto=format&fit=crop" alt="מדבר דובאי" loading="lazy"></figure>
-      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1634007626524-f47fa37810a7?q=80&w=600&auto=format&fit=crop" alt="קו רקיע דובאי" loading="lazy"></figure>
+      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1673878391998-50a50a51977b?q=80&w=600&auto=format&fit=crop" alt="אופנוע ים"></figure>
+      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1546412414-e1885259563a?q=80&w=600&auto=format&fit=crop" alt="בורג' אל ערב"></figure>
+      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1527530462287-d0438a5819fe?q=80&w=600&auto=format&fit=crop" alt="חדר מלון מפואר"></figure>
+      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1645941458084-4c53163b9276?q=80&w=600&auto=format&fit=crop" alt="מדבר דובאי"></figure>
+      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1634007626524-f47fa37810a7?q=80&w=600&auto=format&fit=crop" alt="קו רקיע דובאי"></figure>
       <!-- user uploaded photos are inserted here by JS -->
       <figure class="upload-tile" id="uploadTile">
         <div class="plus">+</div>
@@ -1189,21 +1076,8 @@
 
 <div class="lightbox-overlay" id="lightboxOverlay">
   <button class="lightbox-close" id="lightboxClose" aria-label="סגירה">×</button>
-  <img id="lightboxImg" src="" alt="תמונה מוגדלת" loading="lazy">
+  <img id="lightboxImg" src="" alt="תמונה מוגדלת">
 </div>
-
-<section class="about-me">
-  <div class="container">
-    <div class="about-me-card">
-      <img src="images/founder.png" alt="מייסד פנינת דובאי" class="about-me-photo" loading="lazy">
-      <div>
-        <div class="about-me-name">[השם שלך] <span class="verified-badge" title="מאומת">✓</span></div>
-        <div class="about-me-role">מייסד פנינת דובאי</div>
-        <p class="about-me-text">מכיר את דובאי כמו כף היד, וזמין לכם אישית מהרגע הראשון ועד האחרון. לא סוכנות גדולה עם עשרות נציגים, אלא ליווי אמיתי מבן אדם אחד שאכפת לו.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section class="contact" id="contact">
   <div class="container">
@@ -1257,6 +1131,79 @@
   </div>
 </section>
 
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">שקוף ומדויק</div>
+      <h2>מחירון שירותי הליווי</h2>
+      <p>לחצו על שירות כדי לראות בדיוק מה כלול. כל המחירים בשקלים ובדיראם, לפי שער חליפין עדכני (בקירוב).</p>
+    </div>
+    <div class="price-list" id="priceList">
+      <div class="price-item">
+        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
+          <span class="price-item-title">ליווי צמוד בשדה התעופה</span>
+          <span class="price-item-price">750 ₪<span class="price-aed">≈ 915 AED</span></span>
+          <span class="price-item-arrow">▾</span>
+        </button>
+        <div class="price-item-body">
+          <p>נפגשים איתכם בשדה התעופה, ליווי צמוד לאורך כל התהליך, סיוע בהעברת תיקים (עד 20 ק"ג, בידוק בלבד), ומעבר ללא תור עד עלייה למטוס.</p>
+        </div>
+      </div>
+      <div class="price-item">
+        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
+          <span class="price-item-title">סוכן אישי לאורך כל השהות</span>
+          <span class="price-item-price">500 ₪<span class="price-aed">≈ 610 AED</span></span>
+          <span class="price-item-arrow">▾</span>
+        </button>
+        <div class="price-item-body">
+          <p>סוכן אישי מטעמנו, שנמצא בפועל בדובאי ובאבו דאבי, זמין לאורך כל תקופת השהות שלכם לכל צורך.</p>
+        </div>
+      </div>
+      <div class="price-item">
+        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
+          <span class="price-item-title">סוכן אישי לאורך כל שעות החופשה</span>
+          <span class="price-item-price">800 ₪<span class="price-aed">≈ 975 AED</span></span>
+          <span class="price-item-arrow">▾</span>
+        </button>
+        <div class="price-item-body">
+          <p>סוכן אישי צמוד אליכם בכל שעות היממה לאורך כל החופשה, זמין ללא הגבלה לכל שאלה, בקשה או צורך, בכל רגע נתון.</p>
+        </div>
+      </div>
+      <div class="price-item">
+        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
+          <span class="price-item-title">ייעוץ טלפוני, וואטסאפ והדרכות</span>
+          <span class="price-item-price">250 ₪<span class="price-aed">≈ 305 AED</span></span>
+          <span class="price-item-arrow">▾</span>
+        </button>
+        <div class="price-item-body">
+          <p>שירות טלפוני וזמינות בוואטסאפ, הדרכות והסברים לפני ובמהלך הטיול, ומענה לכל שאלה.</p>
+        </div>
+      </div>
+      <div class="price-item">
+        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
+          <span class="price-item-title">כניסת VIP ללאונג' בשדה התעופה</span>
+          <span class="price-item-price">450 ₪<span class="price-aed">≈ 550 AED</span></span>
+          <span class="price-item-arrow">▾</span>
+        </button>
+        <div class="price-item-body">
+          <p>גישה ללאונג' יוקרתי בשדה התעופה לפני הטיסה, כולל כיבוד ואזור המתנה שקט ונוח הרחק מהמולת הטרמינל.</p>
+        </div>
+      </div>
+      <div class="price-item">
+        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
+          <span class="price-item-title">ליווי חזרה בסיום החופשה</span>
+          <span class="price-item-price">400 ₪<span class="price-aed">≈ 490 AED</span></span>
+          <span class="price-item-arrow">▾</span>
+        </button>
+        <div class="price-item-body">
+          <p>סיוע בצ'ק אאוט מהמלון, ליווי צמוד חזרה לשדה התעופה, ועמידה לצידכם עד רגע הבידוק לפני הטיסה חזרה.</p>
+        </div>
+      </div>
+    </div>
+    <p class="price-note">המחירים בדיראם הם המרה משוערת לפי שער החליפין הנוכחי, ועשויים להשתנות מעט בהתאם לתנודות השוק.</p>
+  </div>
+</section>
+
 <footer>
   <div class="brand">פנינת דובאי</div>
   <div>ליווי אישי לטיולי יוקרה בדובאי</div>
@@ -1268,11 +1215,6 @@
 </footer>
 
 <a class="float-cta" href="https://wa.me/97229999119" target="_blank" rel="noopener" aria-label="וואטסאפ">💬</a>
-
-<div class="mobile-cta-bar">
-  <a class="mobile-cta-btn call" href="tel:029999119">📞 התקשרו</a>
-  <a class="mobile-cta-btn wa" href="https://wa.me/97229999119" target="_blank" rel="noopener">💬 וואטסאפ</a>
-</div>
 
 <div class="modal-overlay" id="galleryModal">
   <div class="modal-box">
@@ -1304,8 +1246,6 @@
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJoeGF0aWdyYXZtb291aWNrYnNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkzNDU5NTgsImV4cCI6MjEwNDkyMTk1OH0.pOP7FAgSdutvCrONGF4tByfofuVEm1EHaqbd6Xq2_Cc';
   const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-  // Uploads a file to shared storage and records it in the shared gallery table.
-  // "category" separates the main gallery ('general') from the palace modal gallery ('palace').
   async function uploadSharedPhoto(file, category){
     const ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
     const path = `${category}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
@@ -1329,20 +1269,9 @@
   }
 </script>
 <script>
-  // Shared gallery photos, stored in Supabase so every visitor sees the same uploads.
   const grid = document.getElementById('galleryGrid');
   const uploadTile = document.getElementById('uploadTile');
   const fileInput = document.getElementById('fileInput');
-
-  function renderSharedPhoto(container, beforeEl, url){
-    const fig = document.createElement('figure');
-    fig.className = 'lightbox-item';
-    const img = document.createElement('img');
-    img.src = url;
-    img.alt = 'תמונה מהגלריה';
-    fig.appendChild(img);
-    container.insertBefore(fig, beforeEl);
-  }
 
   async function refreshGallery(){
     document.querySelectorAll('#galleryGrid figure.lightbox-item.user-added').forEach(f => f.remove());
@@ -1374,7 +1303,6 @@
 
   refreshGallery();
 
-  // ---------- Lightbox (click a photo to enlarge) ----------
   const lightboxOverlay = document.getElementById('lightboxOverlay');
   const lightboxImg = document.getElementById('lightboxImg');
   const lightboxClose = document.getElementById('lightboxClose');
@@ -1387,7 +1315,6 @@
     lightboxOverlay.classList.remove('active');
     lightboxImg.src = '';
   }
-  // Event delegation: works for both preset and dynamically-added user photos
   document.addEventListener('click', (e) => {
     const item = e.target.closest('.lightbox-item img');
     if (item) openLightbox(item.src);
@@ -1400,7 +1327,6 @@
     if (e.key === 'Escape') closeLightbox();
   });
 
-  // ---------- Generic gallery modal (used by jetski, palace, rooms, extreme, atlantis, address) ----------
   const galleryModal = document.getElementById('galleryModal');
   const modalTitle = document.getElementById('modalTitle');
   const modalSub = document.getElementById('modalSub');
@@ -1412,37 +1338,16 @@
 
   async function refreshModalGallery(){
     document.querySelectorAll('#modalGrid figure:not(.upload-tile)').forEach(f => f.remove());
-    document.querySelectorAll('#modalGrid .testimonial-card').forEach(f => f.remove());
     const urls = await loadSharedPhotos(currentModalCategory);
-
-    if (currentModalCategory === 'testimonials'){
-      modalGrid.classList.add('testimonial-mode');
-      urls.forEach(url => {
-        const card = document.createElement('div');
-        card.className = 'testimonial-card';
-        card.innerHTML = `
-          <div class="testimonial-photo lightbox-item"><img src="${url}" alt="תמונה מלקוח" loading="lazy"></div>
-          <div class="testimonial-info">
-            <div class="testimonial-avatar">👤</div>
-            <div class="testimonial-text-wrap">
-              <div class="testimonial-name">[השם שלך כאן] <span class="verified-badge" title="מאומת">✓</span></div>
-              <p class="testimonial-text">[תגובת לקוח לדוגמה, להחליף]</p>
-            </div>
-          </div>`;
-        modalGrid.insertBefore(card, modalUploadTile);
-      });
-    } else {
-      modalGrid.classList.remove('testimonial-mode');
-      urls.forEach(url => {
-        const fig = document.createElement('figure');
-        fig.className = 'lightbox-item';
-        const img = document.createElement('img');
-        img.src = url;
-        img.alt = modalTitle.textContent;
-        fig.appendChild(img);
-        modalGrid.insertBefore(fig, modalUploadTile);
-      });
-    }
+    urls.forEach(url => {
+      const fig = document.createElement('figure');
+      fig.className = 'lightbox-item';
+      const img = document.createElement('img');
+      img.src = url;
+      img.alt = modalTitle.textContent;
+      fig.appendChild(img);
+      modalGrid.insertBefore(fig, modalUploadTile);
+    });
   }
 
   async function openGalleryModal(category, title, sub){
@@ -1479,7 +1384,6 @@
     modalFileInput.value = '';
   });
 
-  // ---------- Video click-to-reveal toast messages ----------
   const videoToastMessages = {
     '1': 'לצפות במזרקה ובבורג\' ח\'ליפה? זה הקל. לארגן לכם מקום VIP מול המופע, בזמן הכי טוב שיש? זה כבר הקטע שלנו.',
     '2': 'דובאי היא בעצם אגם ענק אחד. אבל כדי להרגיש את הים האמיתי, אנחנו יודעים בדיוק איפה לרכוב בשיא הכיף, עם החברה המובילה בדובאי.',
@@ -1506,7 +1410,13 @@
     if (overlay) overlay.classList.remove('active');
   }
 
-  // ---------- VIP quick-link buttons: scroll + neon pulse on target ----------
+  function togglePriceItem(btn){
+    const item = btn.closest('.price-item');
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.price-item.open').forEach(el => el.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+
   function vipScrollTo(btn, targetId){
     if (btn){
       btn.classList.remove('is-pressed');
@@ -1522,7 +1432,6 @@
     setTimeout(() => target.classList.remove('vip-target-highlight'), 1200);
   }
 
-  // ---------- Video cubes (3 fixed slots, shared via Supabase) ----------
   document.querySelectorAll('.video-cube').forEach(cube => {
     const slot = cube.dataset.slot;
     const videoEl = cube.querySelector('video');
@@ -1577,7 +1486,6 @@
     loadSlotVideo();
   });
 
-  // ---------- Trip planning quiz ----------
   const quizQuestions = [
     { id: 'budget', question: 'מה התקציב המשוער לטיול?', type: 'single', options: ['עד 5,000₪', '5,000–15,000₪', '15,000–30,000₪', 'מעל 30,000₪'] },
     { id: 'firstTime', question: 'זו הפעם הראשונה שלכם בדובאי?', type: 'single', options: ['כן, פעם ראשונה', 'לא, כבר הייתי בעבר'] },
@@ -1704,20 +1612,6 @@
       </div>`;
   }
 
-  // ---------- Scroll reveal ----------
-  const revealTargets = document.querySelectorAll('.section-head, .exp-card, .hotel-card, .journey-item, .trust-item, .video-item, .video-cube');
-  revealTargets.forEach(el => el.classList.add('reveal'));
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting){
-        entry.target.classList.add('in-view');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  revealTargets.forEach(el => revealObserver.observe(el));
-
-  // subtle nav background on scroll
   const nav = document.querySelector('.site-nav');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 40){
