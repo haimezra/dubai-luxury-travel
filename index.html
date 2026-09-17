@@ -39,6 +39,7 @@
     color: var(--ivory);
     margin: 0;
   }
+  .brand-logo{ width: 26px; height: 26px; object-fit: contain; }
 
   a { color: inherit; text-decoration: none; }
   img { max-width: 100%; display:block; }
@@ -124,6 +125,12 @@
   @keyframes rise{
     from { opacity:0; transform: translateY(24px); }
     to   { opacity:1; transform: translateY(0); }
+  }
+  .hero-logo{
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+    margin-bottom: 18px;
   }
   .hero-kicker{
     color: var(--gold-bright);
@@ -804,7 +811,7 @@
 <body>
 
 <header class="site-nav">
-  <div class="brand"><span class="mark"></span> פנינת דובאי</div>
+  <div class="brand"><img src="images/logo.png" alt="לוגו פנינת דובאי" class="brand-logo"><span class="mark"></span> פנינת דובאי</div>
   <nav class="links">
     <a href="#journey">הליווי שלנו</a>
     <a href="#experiences">חוויות</a>
@@ -817,6 +824,7 @@
 
 <section class="hero">
   <div class="container hero-inner">
+    <img src="images/logo.png" alt="לוגו פנינת דובאי" class="hero-logo">
     <div class="hero-kicker">מסע פרטי, בהתאמה אישית</div>
     <h1>דובאי בגרסה הכי מפוארת שלה, <span class="glow">מחכה לכם</span></h1>
     <p>מלווה אתכם אישית מהרגע שאתם מחליטים לטוס, במלון המושלם, בחוויות שלא שוכחים, ובזמינות מלאה לאורך כל הדרך.</p>
