@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>הזמנת שולחן במועדון | FIVEdubai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #08090b; --surface: #101215; --surface-2: #15181c;
+    --gold: #d9b25c; --gold-bright: #f3d488; --gold-glow: rgba(217,178,92,0.55);
+    --ivory: #ece7dd; --muted: #94969c;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; overflow-x:hidden; }
+  body{ margin:0; background:var(--bg); color:var(--ivory); font-family:'Heebo',sans-serif; font-weight:300; line-height:1.75; overflow-x:hidden; }
+  h1,h2,h3,.brand{ font-family:'Rubik',sans-serif; font-weight:800; color:var(--ivory); margin:0; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .container{ max-width:1000px; margin:0 auto; padding:0 26px; }
+
+  header.site-nav{
+    position:fixed; top:0; right:0; left:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 26px 12px 16px;
+    background: rgba(8,9,11,0.9);
+  }
+  .brand{ font-size:1.0rem; display:flex; align-items:center; gap:8px; }
+  .brand-logo{ width:42px; height:42px; object-fit:contain; }
+  .nav-cta{ padding:8px 18px; border-radius:999px; color:#10120c; background:var(--gold); font-size:.85rem; font-weight:700; box-shadow:0 0 18px var(--gold-glow); }
+
+  .hero{
+    position:relative; min-height:42vh; display:flex; align-items:flex-end;
+    padding-top:120px; padding-bottom:50px;
+    background-image:linear-gradient(180deg, rgba(6,6,7,0.4) 0%, rgba(6,6,7,0.75) 65%, rgba(6,6,7,0.98) 100%), url('https://images.unsplash.com/photo-1578736641330-3155e606cd40?q=80&w=2000&auto=format&fit=crop');
+    background-size:cover; background-position:center 40%;
+  }
+  .hero h1{ font-size:clamp(2rem, 6vw, 3.4rem); }
+  .hero p{ color:var(--muted); font-size:1.02rem; margin-top:14px; max-width:600px; }
+
+  section{ padding:60px 0; position:relative; }
+  .club-jump{ display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-bottom:10px; }
+  .club-jump a{
+    padding:9px 18px; border-radius:999px; background:var(--surface-2); color:var(--gold-bright);
+    font-size:.88rem; font-weight:600; box-shadow: inset 0 0 0 1px rgba(217,178,92,0.3);
+  }
+  .club-jump a:hover{ box-shadow: inset 0 0 0 1px var(--gold-bright), 0 0 18px var(--gold-glow); }
+
+  .club-block{
+    background:var(--surface-2); border-radius:22px; overflow:hidden;
+    margin-bottom:34px; box-shadow:0 20px 50px rgba(0,0,0,0.35); scroll-margin-top:100px;
+  }
+  .club-photo img{ width:100%; height:260px; object-fit:cover; }
+  .club-content{ padding:30px 32px; }
+  .club-content h2{ font-size:1.6rem; margin-bottom:6px; }
+  .club-meta{ color:var(--muted); font-size:.86rem; margin-bottom:16px; display:flex; flex-wrap:wrap; gap:14px; }
+  .club-meta span{ display:flex; align-items:center; gap:5px; }
+  .club-desc{ color:var(--ivory); font-size:.96rem; margin-bottom:20px; }
+
+  .club-pricing{ display:flex; flex-direction:column; gap:10px; margin-bottom:22px; }
+  .price-row{
+    display:flex; justify-content:space-between; align-items:center;
+    background:var(--surface); border-radius:10px; padding:12px 16px; font-size:.92rem;
+  }
+  .price-row .name{ color:var(--ivory); font-weight:500; }
+  .price-row .amount{ color:var(--gold-bright); font-weight:700; text-shadow:0 0 8px var(--gold-glow); }
+  .price-disclaimer{ color:var(--muted); font-size:.78rem; margin-top:4px; }
+  .contact-for-price{
+    background:var(--surface); border-radius:10px; padding:16px; text-align:center;
+    color:var(--gold-bright); font-size:.9rem; font-weight:600; margin-bottom:22px;
+  }
+
+  .btn{ display:inline-block; padding:14px 28px; border-radius:999px; font-size:.95rem; font-weight:700; border:none; cursor:pointer; font-family:inherit; background:var(--gold); color:#14110c; box-shadow:0 0 22px var(--gold-glow); transition:all .3s ease; }
+  .btn:hover{ background:var(--gold-bright); box-shadow:0 0 30px var(--gold-glow), 0 0 60px rgba(217,178,92,0.4); }
+
+  .booking-form{ background:var(--surface); border-radius:16px; padding:24px; display:flex; flex-direction:column; gap:14px; }
+  .booking-form .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .booking-form label{ display:flex; flex-direction:column; gap:6px; font-size:.82rem; color:var(--muted); font-weight:500; }
+  .booking-form input, .booking-form select{
+    background:var(--surface-2); border:none; border-radius:8px; padding:11px 13px; color:var(--ivory);
+    font-family:'Heebo',sans-serif; font-size:.9rem; outline:none;
+  }
+  .booking-form input:focus, .booking-form select:focus{ box-shadow:0 0 0 1px rgba(217,178,92,0.5), 0 0 14px var(--gold-glow); }
+  @media (max-width:560px){ .booking-form .form-row{ grid-template-columns:1fr; } }
+
+  footer{ padding:46px 0; text-align:center; color:var(--muted); font-size:.86rem; }
+  footer .brand{ justify-content:center; margin-bottom:14px; font-size:1.05rem; }
+  .footer-links{ margin-top:14px; display:flex; justify-content:center; gap:22px; }
+  .footer-links a{ color:var(--muted); font-size:.85rem; }
+  .footer-links a:hover{ color:var(--gold-bright); }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="brand"><img src="images/logo.png" alt="לוגו FIVEdubai" class="brand-logo"> FIVEdubai</div>
+  <a class="nav-cta" href="index.html">← לדף הבית</a>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>הזמנת שולחן במועדון</h1>
+    <p>בחרו את המועדון, ומלאו כמה פרטים. נבדוק זמינות ומחיר עדכני ונחזור אליכם.</p>
+  </div>
+</section>
+
+<section style="padding-bottom:0;">
+  <div class="container">
+    <div class="club-jump">
+      <a href="#blu">BLU</a>
+      <a href="#bebeach">Be Beach</a>
+      <a href="#bagatelle">Bagatelle</a>
+      <a href="#billionaire">Billionaire</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="club-block" id="blu">
+      <div class="club-photo"><img src="https://images.unsplash.com/photo-1578736641330-3155e606cd40?q=80&w=1200&auto=format&fit=crop" alt="BLU Dubai"></div>
+      <div class="club-content">
+        <h2>BLU</h2>
+        <div class="club-meta">
+          <span>📍 W Dubai, Al Habtoor City, קומה 32, שייח' זאיד רואד</span>
+          <span>🕙 כל השבוע, 22:00–04:00</span>
+        </div>
+        <p class="club-desc">אחד המועדונים החדשים בדובאי, בקומה ה-32 עם מרפסת פתוחה ותצפית פנורמית על קו הרקיע ותעלת המים של דובאי. שני מפלסים, עיצוב מודרני ותאורה מרשימה, מוזיקת היפ-הופ ו-R&B.</p>
+        <div class="contact-for-price">לבדיקת מחיר עדכני וזמינות שולחנות, מלאו את הטופס למטה או צרו קשר</div>
+        <form class="booking-form" action="https://formsubmit.co/Infodubaisrael@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="הזמנת שולחן, BLU Dubai, FIVEdubai">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <div class="form-row">
+            <label>שם מלא<input type="text" name="שם מלא" required></label>
+            <label>טלפון<input type="tel" name="טלפון" required></label>
+          </div>
+          <div class="form-row">
+            <label>תאריך<input type="date" name="תאריך"></label>
+            <label>מספר אורחים<input type="number" min="1" name="מספר אורחים" value="4"></label>
+          </div>
+          <div class="form-row">
+            <label>מספר שולחנות<input type="number" min="1" name="מספר שולחנות" value="1"></label>
+            <label>סוג שולחן<select name="סוג שולחן"><option>רגיל</option><option>פרימיום</option><option>VIP</option></select></label>
+          </div>
+          <button type="submit" class="btn">שליחת בקשת הזמנה</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="club-block" id="bebeach">
+      <div class="club-photo"><img src="https://images.unsplash.com/photo-1746333578342-3e661512a14d?q=80&w=1200&auto=format&fit=crop" alt="Be Beach Dubai"></div>
+      <div class="club-content">
+        <h2>Be Beach</h2>
+        <div class="club-meta">
+          <span>📍 Dubai Harbour, סמוך לדובאי מרינה</span>
+          <span>🕙 ב'-ה' 10:00–19:00, ו'-ש' 10:00–03:00</span>
+        </div>
+        <p class="club-desc">מועדון חוף ובריכה בסגנון ים-תיכוני, גוונים אדמתיים וטבעיים, בריכת אינסוף שנראית כממשיכה אל הים, מיטות שיזוף ובקתות פרטיות מול קו הרקיע של המרינה.</p>
+        <div class="club-pricing">
+          <div class="price-row"><span class="name">שולחן רגיל (עד 4 אנשים)</span><span class="amount">3,500 AED</span></div>
+          <div class="price-row"><span class="name">שולחן פרימיום</span><span class="amount">4,000 AED</span></div>
+          <div class="price-row"><span class="name">שולחן VIP</span><span class="amount">8,000 AED</span></div>
+        </div>
+        <p class="price-disclaimer">המחיר הוא מינימום הזמנה מהתפריט, כולל כניסת VIP. המחירים משתנים לפי עונה ואירוע, ומאושרים סופית מולנו לפני ההזמנה.</p>
+        <form class="booking-form" action="https://formsubmit.co/Infodubaisrael@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="הזמנת שולחן, Be Beach Dubai, FIVEdubai">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <div class="form-row">
+            <label>שם מלא<input type="text" name="שם מלא" required></label>
+            <label>טלפון<input type="tel" name="טלפון" required></label>
+          </div>
+          <div class="form-row">
+            <label>תאריך<input type="date" name="תאריך"></label>
+            <label>מספר אורחים<input type="number" min="1" name="מספר אורחים" value="4"></label>
+          </div>
+          <div class="form-row">
+            <label>מספר שולחנות<input type="number" min="1" name="מספר שולחנות" value="1"></label>
+            <label>סוג שולחן<select name="סוג שולחן"><option>רגיל, 3,500 AED</option><option>פרימיום, 4,000 AED</option><option>VIP, 8,000 AED</option></select></label>
+          </div>
+          <button type="submit" class="btn">שליחת בקשת הזמנה</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="club-block" id="bagatelle">
+      <div class="club-photo"><img src="https://images.unsplash.com/photo-1765741836851-8071475d4911?q=80&w=1200&auto=format&fit=crop" alt="Bagatelle Dubai"></div>
+      <div class="club-content">
+        <h2>Bagatelle</h2>
+        <div class="club-meta">
+          <span>📍 קומה 1, מלון Fairmont, שייח' זאיד רואד</span>
+          <span>🕙 כל השבוע, 19:00–03:00</span>
+        </div>
+        <p class="club-desc">האנרגיה של הריביירה הצרפתית בלב דובאי. ארוחת גורמה צרפתית-ים תיכונית עם עיצוב פריזאי שיקי, שהופכת במהלך הערב לחוויית חיי לילה תוססת עם דיג'ייז מובילים.</p>
+        <div class="contact-for-price">לבדיקת מחיר עדכני וזמינות שולחנות, מלאו את הטופס למטה או צרו קשר</div>
+        <form class="booking-form" action="https://formsubmit.co/Infodubaisrael@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="הזמנת שולחן, Bagatelle Dubai, FIVEdubai">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <div class="form-row">
+            <label>שם מלא<input type="text" name="שם מלא" required></label>
+            <label>טלפון<input type="tel" name="טלפון" required></label>
+          </div>
+          <div class="form-row">
+            <label>תאריך<input type="date" name="תאריך"></label>
+            <label>מספר אורחים<input type="number" min="1" name="מספר אורחים" value="2"></label>
+          </div>
+          <div class="form-row">
+            <label>מספר שולחנות<input type="number" min="1" name="מספר שולחנות" value="1"></label>
+            <label>סוג שולחן<select name="סוג שולחן"><option>לזוגות</option><option>רגיל</option><option>VIP</option></select></label>
+          </div>
+          <button type="submit" class="btn">שליחת בקשת הזמנה</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="club-block" id="billionaire">
+      <div class="club-photo"><img src="https://images.unsplash.com/photo-1657208441550-0d2f172ceb3c?q=80&w=1200&auto=format&fit=crop" alt="Billionaire Dubai"></div>
+      <div class="club-content">
+        <h2>Billionaire</h2>
+        <div class="club-meta">
+          <span>📍 מלון Taj Dubai, Business Bay</span>
+        </div>
+        <p class="club-desc">יעד בידור אקסקלוסיבי המשלב ארוחת ערב ראוותנית, מופעים חיים ומסיבת לילה נוצצת, מול קהל סטייליסטי. חוויה שמתחילה בשולחן ונגמרת על רחבת הריקודים.</p>
+        <div class="contact-for-price">לבדיקת מחיר עדכני וזמינות שולחנות, מלאו את הטופס למטה או צרו קשר</div>
+        <form class="booking-form" action="https://formsubmit.co/Infodubaisrael@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="הזמנת שולחן, Billionaire Dubai, FIVEdubai">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <div class="form-row">
+            <label>שם מלא<input type="text" name="שם מלא" required></label>
+            <label>טלפון<input type="tel" name="טלפון" required></label>
+          </div>
+          <div class="form-row">
+            <label>תאריך<input type="date" name="תאריך"></label>
+            <label>מספר אורחים<input type="number" min="1" name="מספר אורחים" value="4"></label>
+          </div>
+          <div class="form-row">
+            <label>מספר שולחנות<input type="number" min="1" name="מספר שולחנות" value="1"></label>
+            <label>סוג שולחן<select name="סוג שולחן"><option>רגיל</option><option>VIP</option><option>VVIP</option></select></label>
+          </div>
+          <button type="submit" class="btn">שליחת בקשת הזמנה</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="brand"><img src="images/logo.png" alt="לוגו FIVEdubai" class="brand-logo"> FIVEdubai</div>
+  <div>ליווי אישי לטיולי יוקרה בדובאי</div>
+  <div style="margin-top:6px;">02-999-9119</div>
+  <div class="footer-links">
+    <a href="index.html">חזרה לעמוד הראשי</a>
+    <a href="privacy.html">מדיניות פרטיות</a>
+    <a href="terms.html">תנאי שימוש</a>
+  </div>
+</footer>
+
+</body>
+</html>
