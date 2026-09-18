@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>הזמנת שולחן, BLU Dubai | FIVEdubai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #08090b; --surface: #101215; --surface-2: #15181c;
+    --gold: #d9b25c; --gold-bright: #f3d488; --gold-glow: rgba(217,178,92,0.55);
+    --ivory: #ece7dd; --muted: #94969c;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; overflow-x:hidden; }
+  body{ margin:0; background:var(--bg); color:var(--ivory); font-family:'Heebo',sans-serif; font-weight:300; line-height:1.75; overflow-x:hidden; }
+  h1,h2,h3,.brand{ font-family:'Rubik',sans-serif; font-weight:800; color:var(--ivory); margin:0; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .container{ max-width:1000px; margin:0 auto; padding:0 26px; }
+
+  header.site-nav{
+    position:fixed; top:0; right:0; left:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 26px 12px 16px; background: rgba(8,9,11,0.9);
+  }
+  .brand{ font-size:1.0rem; display:flex; align-items:center; gap:8px; }
+  .brand-logo{ width:42px; height:42px; object-fit:contain; }
+  .nav-cta{ padding:8px 18px; border-radius:999px; color:#10120c; background:var(--gold); font-size:.85rem; font-weight:700; box-shadow:0 0 18px var(--gold-glow); }
+
+  .hero{
+    position:relative; min-height:52vh; display:flex; align-items:flex-end;
+    padding-top:130px; padding-bottom:44px; background-size:cover; background-position:center 40%;
+  }
+  .hero h1{ font-size:clamp(2.1rem, 6vw, 3.4rem); }
+  .hero-meta{ color:var(--gold-bright); font-size:.95rem; font-weight:600; margin-top:14px; display:flex; flex-wrap:wrap; gap:16px; text-shadow:0 0 10px var(--gold-glow); }
+  .hero-meta span{ display:flex; align-items:center; gap:5px; }
+
+  section{ padding:56px 0; position:relative; }
+  .section-head{ max-width:640px; margin-bottom:32px; }
+  .section-head .eyebrow{ color:var(--gold-bright); font-weight:700; font-size:.95rem; margin-bottom:10px; text-shadow:0 0 12px var(--gold-glow); }
+  .section-head h2{ font-size:clamp(1.5rem, 3vw, 2.1rem); }
+  .section-head p{ color:var(--muted); margin-top:12px; font-size:.98rem; }
+
+  .about-text{ color:var(--ivory); font-size:.98rem; max-width:720px; }
+
+  /* PRICING TIERS - selectable cards */
+  .tier-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
+  .tier-card{
+    background:var(--surface-2); border-radius:16px; padding:26px 22px; text-align:center;
+    box-shadow:0 16px 40px rgba(0,0,0,0.3); box-shadow-color:transparent;
+    box-shadow: 0 0 0 1px transparent, 0 16px 40px rgba(0,0,0,0.3);
+    transition: box-shadow .25s ease, transform .2s ease; cursor:pointer;
+  }
+  .tier-card:hover{ transform: translateY(-3px); }
+  .tier-card.selected{ box-shadow: 0 0 0 2px var(--gold), 0 0 30px var(--gold-glow), 0 16px 40px rgba(0,0,0,0.3); }
+  .tier-name{ font-family:'Rubik',sans-serif; font-weight:700; font-size:1.05rem; margin-bottom:6px; }
+  .tier-sub{ color:var(--muted); font-size:.82rem; margin-bottom:16px; }
+  .tier-price{ font-family:'Rubik',sans-serif; font-weight:800; font-size:1.5rem; color:var(--gold-bright); text-shadow:0 0 12px var(--gold-glow); margin-bottom:18px; }
+  .tier-btn{
+    display:inline-block; width:100%; padding:11px; border-radius:999px; border:none; cursor:pointer;
+    font-family:inherit; font-size:.9rem; font-weight:700; background:var(--gold); color:#14110c; transition: all .25s ease;
+  }
+  .tier-card.selected .tier-btn{ background:var(--gold-bright); box-shadow:0 0 16px var(--gold-glow); }
+  @media (max-width:760px){ .tier-grid{ grid-template-columns:1fr; } }
+  .tier-note{ color:var(--muted); font-size:.8rem; text-align:center; margin-top:18px; max-width:600px; margin-inline:auto; }
+
+  /* BOOKING FORM */
+  .booking-section{ background:var(--surface); }
+  .booking-box{ max-width:640px; margin:0 auto; background:var(--surface-2); border-radius:20px; padding:32px; box-shadow:0 20px 50px rgba(0,0,0,0.35); }
+  .selected-tier-display{
+    background:var(--surface); border-radius:12px; padding:14px 18px; margin-bottom:20px;
+    display:flex; justify-content:space-between; align-items:center; font-size:.92rem;
+  }
+  .selected-tier-display .val{ color:var(--gold-bright); font-weight:700; }
+  .booking-form{ display:flex; flex-direction:column; gap:14px; }
+  .booking-form .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .booking-form label{ display:flex; flex-direction:column; gap:6px; font-size:.85rem; color:var(--muted); font-weight:500; }
+  .booking-form input, .booking-form select{
+    background:var(--surface); border:none; border-radius:8px; padding:12px 14px; color:var(--ivory);
+    font-family:'Heebo',sans-serif; font-size:.92rem; outline:none;
+  }
+  .booking-form input:focus, .booking-form select:focus{ box-shadow:0 0 0 1px rgba(217,178,92,0.5), 0 0 14px var(--gold-glow); }
+  @media (max-width:560px){ .booking-form .form-row{ grid-template-columns:1fr; } }
+  .btn{ display:inline-block; padding:15px 30px; border-radius:999px; font-size:1rem; font-weight:700; border:none; cursor:pointer; font-family:inherit; background:var(--gold); color:#14110c; box-shadow:0 0 22px var(--gold-glow); transition:all .3s ease; width:100%; text-align:center; }
+  .btn:hover{ background:var(--gold-bright); box-shadow:0 0 30px var(--gold-glow), 0 0 60px rgba(217,178,92,0.4); }
+
+  footer{ padding:46px 0; text-align:center; color:var(--muted); font-size:.86rem; }
+  footer .brand{ justify-content:center; margin-bottom:14px; font-size:1.05rem; }
+  .footer-links{ margin-top:14px; display:flex; justify-content:center; gap:22px; }
+  .footer-links a{ color:var(--muted); font-size:.85rem; }
+  .footer-links a:hover{ color:var(--gold-bright); }
+  .hero{ background-image:linear-gradient(180deg, rgba(6,6,7,0.35) 0%, rgba(6,6,7,0.75) 65%, rgba(6,6,7,0.98) 100%), url('https://images.unsplash.com/photo-1584352603599-c60b0f1c90cc?q=80&w=2000&auto=format&fit=crop'); }
+  .tier-price.tbd{ font-size:1rem; color:var(--muted); text-shadow:none; }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="brand"><img src="images/logo.png" alt="לוגו FIVEdubai" class="brand-logo"> FIVEdubai</div>
+  <a class="nav-cta" href="vip-parties.html">← לכל המועדונים</a>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>BLU</h1>
+    <div class="hero-meta">
+      <span>📍 W Dubai, Al Habtoor City, קומה 32, שייח' זאיד רואד</span>
+      <span>🕙 כל השבוע, 22:00–04:00</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">על המקום</div>
+      <h2>תצפית פנורמית וחיי לילה תוססים</h2>
+    </div>
+    <p class="about-text">אחד המועדונים החדשים בדובאי, בקומה ה-32 עם מרפסת פתוחה ותצפית פנורמית על קו הרקיע ותעלת המים של דובאי. שני מפלסים, עיצוב מודרני ותאורה מרשימה, מוזיקת היפ-הופ ו-R&B.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">בחרו שולחן</div>
+      <h2>סוגי שולחנות</h2>
+      <p>המחיר הסופי משתנה לפי ערב ותפוסה. לחצו על הסוג שמתאים לכם ונבדוק עבורכם מחיר וזמינות מדויקים.</p>
+    </div>
+    <div class="tier-grid">
+      <div class="tier-card" id="tier-לאונג" onclick="selectTier('לאונג','')">
+        <div class="tier-name">לאונג' / עמידה</div>
+        <div class="tier-sub">עד 3 אנשים</div>
+        <div class="tier-price tbd">לפי בקשה</div>
+        <button type="button" class="tier-btn">בדיקת מחיר</button>
+      </div>
+      <div class="tier-card" id="tier-רגיל" onclick="selectTier('רגיל','')">
+        <div class="tier-name">שולחן רגיל</div>
+        <div class="tier-sub">עד 4-8 אנשים</div>
+        <div class="tier-price tbd">לפי בקשה</div>
+        <button type="button" class="tier-btn">בדיקת מחיר</button>
+      </div>
+      <div class="tier-card" id="tier-VIP" onclick="selectTier('VIP','')">
+        <div class="tier-name">שולחן VIP מרכזי</div>
+        <div class="tier-sub">המיקום הכי טוב במועדון</div>
+        <div class="tier-price tbd">לפי בקשה</div>
+        <button type="button" class="tier-btn">בדיקת מחיר</button>
+      </div>
+    </div>
+    <p class="tier-note">טווח מחירים אופייני לשולחנות VIP במועדוני דובאי: כ-1,000 עד 10,000+ AED, בהתאם לערב, לאירוע ולעונה. המחיר הסופי לתאריך שביקשתם ייקבע מולנו.</p>
+  </div>
+</section>
+
+<section class="booking-section" id="bookingBox">
+  <div class="container">
+    <div class="booking-box">
+      <div class="selected-tier-display">
+        <span>שולחן נבחר</span>
+        <span class="val" id="selectedTierText">טרם נבחר, בחרו למעלה</span>
+      </div>
+      <form class="booking-form" action="https://formsubmit.co/Infodubaisrael@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="בקשת מחיר והזמנת שולחן, BLU Dubai, FIVEdubai">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="סוג שולחן" id="tierHiddenInput" value="">
+        <div class="form-row">
+          <label>שם מלא<input type="text" name="שם מלא" required></label>
+          <label>טלפון<input type="tel" name="טלפון" required></label>
+        </div>
+        <div class="form-row">
+          <label>תאריך<input type="date" name="תאריך" required></label>
+          <label>מספר אורחים<input type="number" min="1" name="מספר אורחים" value="4"></label>
+        </div>
+        <button type="submit" class="btn">בדיקת מחיר וזמינות</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand"><img src="images/logo.png" alt="לוגו FIVEdubai" class="brand-logo"> FIVEdubai</div>
+  <div>ליווי אישי לטיולי יוקרה בדובאי</div>
+  <div style="margin-top:6px;">02-999-9119</div>
+  <div class="footer-links">
+    <a href="index.html">חזרה לעמוד הראשי</a>
+    <a href="privacy.html">מדיניות פרטיות</a>
+    <a href="terms.html">תנאי שימוש</a>
+  </div>
+</footer>
+
+<script>
+  let selectedTier = null;
+  function selectTier(name, price){
+    selectedTier = name + (price ? ' (' + price + ')' : '');
+    document.querySelectorAll('.tier-card').forEach(c => c.classList.remove('selected'));
+    document.getElementById('tier-' + name.replace(/\s/g,'')).classList.add('selected');
+    document.getElementById('selectedTierText').textContent = selectedTier;
+    document.getElementById('tierHiddenInput').value = selectedTier;
+    document.getElementById('bookingBox').scrollIntoView({ behavior:'smooth', block:'center' });
+  }
+</script>
+
+</body>
+</html>
