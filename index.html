@@ -205,36 +205,56 @@
     font-size: clamp(1.9rem, 3.4vw, 2.7rem);
   }
   .section-head p{ color: var(--muted); margin-top: 18px; font-size: 1.05rem; font-weight:300; }
-  .vip-badge{
-    margin-top: 14px;
-    color: var(--gold-bright);
-    font-size: .95rem;
-    font-weight: 600;
-    text-shadow: 0 0 14px var(--gold-glow);
+
+  /* centered section header (used in the videos section) */
+  .section-head--center{
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
 
-  /* ---------- VIP QUICK LINKS ---------- */
+  /* ---------- VIP QUICK NAV ---------- */
+  .vip-nav{
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+  .vip-badge{
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
   .vip-links-row{
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 12px;
-    margin-top: 14px;
   }
   .vip-link-btn{
     appearance: none;
     border: none;
     background: transparent;
-    color: #f5d94a;
-    font-weight: 700;
-    font-size: .9rem;
-    padding: 6px 10px;
+    color: #ffffff;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.4;
+    padding: 6px 14px;
+    border-radius: 0;
     cursor: pointer;
-    text-shadow: 0 0 8px rgba(245, 217, 74, 0.85);
-    transition: text-shadow .25s ease, transform .15s ease;
+    box-shadow: none;
+    transition: opacity .25s ease, transform .15s ease;
   }
   .vip-link-btn:hover{
-    text-shadow: 0 0 14px rgba(245, 217, 74, 0.95), 0 0 26px rgba(245, 217, 74, 0.6);
+    opacity: .7;
+  }
+  .vip-link-btn:focus-visible{
+    outline: 2px solid var(--gold-bright);
+    outline-offset: 3px;
   }
   .vip-link-btn:active,
   .vip-link-btn.is-pressed{
@@ -242,7 +262,7 @@
   }
   @keyframes vipPress{
     0%{ transform: scale(1); }
-    35%{ transform: scale(0.88); text-shadow: 0 0 20px rgba(245, 217, 74, 1), 0 0 40px rgba(245, 217, 74, 0.7); }
+    35%{ transform: scale(0.94); }
     100%{ transform: scale(1); }
   }
   .vip-target-highlight{
@@ -252,6 +272,10 @@
     0%{ filter: brightness(1); }
     40%{ filter: brightness(1.35); }
     100%{ filter: brightness(1); }
+  }
+  @media (max-width: 480px){
+    .vip-link-btn{ padding: 6px 10px; font-size: .95rem; }
+    .vip-nav{ margin-top: 28px; }
   }
 
   /* ---------- VIDEO CUBES ---------- */
@@ -295,11 +319,57 @@
     gap: 8px;
   }
   .video-caption{
+    display:block;
+    width:100%;
+    appearance:none;
+    border:none;
+    margin:0;
     text-align:center;
-    font-size: .68rem;
+    font-family:'Heebo', sans-serif;
+    font-size: .88rem;
+    font-weight: 600;
+    line-height: 1.3;
     color: var(--gold-bright);
-    line-height: 1.4;
-    text-shadow: 0 0 10px var(--gold-glow);
+    background: rgba(217,178,92,0.07);
+    padding: 11px 12px;
+    border-radius: 999px;
+    cursor:pointer;
+    box-shadow: inset 0 0 0 1px rgba(217,178,92,0.4);
+    transition: background .25s ease, box-shadow .25s ease, transform .15s ease;
+  }
+  .video-caption:hover{
+    background: rgba(217,178,92,0.14);
+    box-shadow: inset 0 0 0 1px var(--gold-bright), 0 0 22px rgba(217,178,92,0.22);
+  }
+  .video-caption:active{ transform: scale(0.97); }
+  .video-caption:focus-visible{ outline: 2px solid var(--gold-bright); outline-offset: 3px; }
+
+  /* ---------- SEA CHOICE MODAL (jet ski / yacht) ---------- */
+  .choice-box{ max-width: 460px; }
+  .choice-options{
+    margin-top: 28px;
+    display:flex;
+    flex-direction:column;
+    gap: 14px;
+  }
+  .choice-btn{
+    appearance:none;
+    border:none;
+    width:100%;
+    padding: 16px 20px;
+    border-radius: 999px;
+    background: rgba(217,178,92,0.07);
+    color: var(--gold-bright);
+    font-family:'Heebo', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor:pointer;
+    box-shadow: inset 0 0 0 1px rgba(217,178,92,0.4);
+    transition: background .25s ease, box-shadow .25s ease;
+  }
+  .choice-btn:hover{
+    background: rgba(217,178,92,0.14);
+    box-shadow: inset 0 0 0 1px var(--gold-bright), 0 0 22px rgba(217,178,92,0.22);
   }
 
   @media (max-width: 640px){
@@ -825,7 +895,7 @@
 <section class="hero">
   <div class="container hero-inner">
     <div class="hero-kicker">מסע פרטי, בהתאמה אישית</div>
-    <img src="images/hay-dubai-logo-v2.png" alt="HAY DUBAI" style="display:block;margin:0 auto 20px;height:56px;width:auto;object-fit:contain;">
+    <img src="images/hay-dubai-logo-v2.png" alt="HAY DUBAI" style="display:block;margin:0 auto 20px;height:32px;width:auto;object-fit:contain;">
     <h1>דובאי בגרסה הכי מפוארת שלה, <span class="glow">מחכה לכם</span></h1>
     <p>מלווה אתכם אישית מהרגע שאתם מחליטים לטוס, במלון המושלם, בחוויות שלא שוכחים, ובזמינות מלאה לאורך כל הדרך.</p>
     <div class="hero-actions">
@@ -837,15 +907,17 @@
 
 <section class="videos" id="videos">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head section-head--center">
       <div class="eyebrow">רגעים חיים מדובאי</div>
       <h2>הסרטונים שמדברים בעד עצמם</h2>
       <p>קצת מהאווירה, ישירות מהשטח.</p>
-      <div class="vip-badge">מקומות VIP לצפייה במזרקה</div>
-      <div class="vip-links-row">
-        <button type="button" class="vip-link-btn" onclick="vipScrollTo(this,'video-slot-3')">מסיבות VIP</button>
-        <button type="button" class="vip-link-btn" onclick="vipScrollTo(this,'video-slot-5')">חופים מנצחים</button>
-        <button type="button" class="vip-link-btn" onclick="vipScrollTo(this,'experiences')">מלונות מנצחים</button>
+      <div class="vip-nav">
+        <div class="vip-badge">מקומות VIP לצפייה במזרקה</div>
+        <div class="vip-links-row">
+          <button type="button" class="vip-link-btn" onclick="vipScrollTo(this,'video-slot-3')">מסיבות VIP</button>
+          <button type="button" class="vip-link-btn" onclick="vipScrollTo(this,'video-slot-5')">חופים מנצחים</button>
+          <button type="button" class="vip-link-btn" onclick="vipScrollTo(this,'experiences')">מלונות מנצחים</button>
+        </div>
       </div>
     </div>
     <div class="video-grid">
@@ -858,7 +930,7 @@
           </div>
           <input type="file" accept="video/*" style="display:none">
         </div>
-        <p class="video-caption">מקומות VIP</p>
+        <button type="button" class="video-caption" data-slot-action="1">מקומות VIP</button>
       </div>
       <div class="video-item">
         <div class="video-cube" data-slot="2">
@@ -869,7 +941,7 @@
           </div>
           <input type="file" accept="video/*" style="display:none">
         </div>
-        <p class="video-caption">אופנועי ים</p>
+        <button type="button" class="video-caption" data-slot-action="2">אופנועי ים</button>
       </div>
       <div class="video-item" id="video-slot-3">
         <div class="video-cube" data-slot="3">
@@ -880,7 +952,7 @@
           </div>
           <input type="file" accept="video/*" style="display:none">
         </div>
-        <p class="video-caption">מסיבות VIP</p>
+        <button type="button" class="video-caption" data-slot-action="3">מסיבות VIP</button>
       </div>
       <div class="video-item" id="video-slot-5">
         <div class="video-cube" data-slot="5">
@@ -891,7 +963,7 @@
           </div>
           <input type="file" accept="video/*" style="display:none">
         </div>
-        <p class="video-caption">חופים מנצחים</p>
+        <button type="button" class="video-caption" data-slot-action="5">חופים מנצחים</button>
       </div>
     </div>
     <a class="details-btn" href="experiences.html">לפרטים</a>
@@ -1248,6 +1320,18 @@
   </div>
 </div>
 
+<div class="modal-overlay" id="seaChoiceModal">
+  <div class="modal-box choice-box">
+    <button class="modal-close" id="seaChoiceClose" aria-label="סגירה">×</button>
+    <h3>אופנועי ים / יאכטות</h3>
+    <p class="modal-sub" id="seaChoiceSub"></p>
+    <div class="choice-options">
+      <button type="button" class="choice-btn" id="choiceJetski">אופנועי ים</button>
+      <button type="button" class="choice-btn" id="choiceYacht">יאכטות</button>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="quizModal">
   <div class="modal-box quiz-box">
     <button class="modal-close" id="quizClose" aria-label="סגירה">×</button>
@@ -1426,6 +1510,39 @@
     if (overlay) overlay.classList.remove('active');
   }
 
+  const seaChoiceModal = document.getElementById('seaChoiceModal');
+  function openSeaChoice(){
+    document.getElementById('seaChoiceSub').textContent = videoToastMessages['2'];
+    seaChoiceModal.classList.add('active');
+  }
+  function closeSeaChoice(){
+    seaChoiceModal.classList.remove('active');
+  }
+  document.getElementById('seaChoiceClose').addEventListener('click', closeSeaChoice);
+  seaChoiceModal.addEventListener('click', (e) => { if (e.target === seaChoiceModal) closeSeaChoice(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSeaChoice(); });
+  document.getElementById('choiceJetski').addEventListener('click', () => {
+    closeSeaChoice();
+    openGalleryModal('jetski', 'אופנועי ים', 'רגעים מהמרינה.');
+  });
+  document.getElementById('choiceYacht').addEventListener('click', () => {
+    window.location.href = 'yacht.html';
+  });
+
+  // one action per video slot, shared by the video itself and its button underneath
+  const slotActions = {
+    '1': () => showVideoToast(videoToastMessages['1']),
+    '2': () => openSeaChoice(),
+    '3': () => { window.location.href = 'vip-parties.html'; },
+    '5': () => showVideoToast(videoToastMessages['5'])
+  };
+  document.querySelectorAll('.video-caption[data-slot-action]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const action = slotActions[btn.dataset.slotAction];
+      if (action) action();
+    });
+  });
+
   function togglePriceItem(btn){
     const item = btn.closest('.price-item');
     const wasOpen = item.classList.contains('open');
@@ -1454,13 +1571,9 @@
     const uploadTileEl = cube.querySelector('.video-upload-tile');
     const inputEl = cube.querySelector('input[type="file"]');
 
-    if (slot === '3'){
+    if (slotActions[slot]){
       videoEl.addEventListener('click', () => {
-        if (cube.classList.contains('has-video')) window.location.href = 'vip-parties.html';
-      });
-    } else if (videoToastMessages[slot]){
-      videoEl.addEventListener('click', () => {
-        if (cube.classList.contains('has-video')) showVideoToast(videoToastMessages[slot]);
+        if (cube.classList.contains('has-video')) slotActions[slot]();
       });
     }
 
