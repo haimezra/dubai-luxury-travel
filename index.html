@@ -280,8 +280,9 @@
 
   /* ---------- VIDEO CUBES ---------- */
   .video-grid{
-    display:grid;
-    grid-template-columns: repeat(4, 1fr);
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
     gap: 20px;
     max-width: 1120px;
     margin: 0 auto;
@@ -317,7 +318,25 @@
     display:flex;
     flex-direction:column;
     gap: 8px;
+    flex: 0 0 calc((100% - 60px) / 4);
+    min-width: 0;
   }
+  .image-cube{
+    position: relative;
+    aspect-ratio: 16/9;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--surface-2);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+    transition: box-shadow .3s ease, transform .3s ease;
+    cursor: pointer;
+  }
+  .image-cube:hover{
+    box-shadow: 0 0 0 1px rgba(217,178,92,0.35), 0 0 34px rgba(217,178,92,0.16), 0 16px 40px rgba(0,0,0,0.35);
+    transform: translateY(-3px);
+  }
+  .image-cube:focus-visible{ outline: 2px solid var(--gold-bright); outline-offset: 3px; }
+  .image-cube img{ width:100%; height:100%; object-fit:cover; display:block; }
   .video-caption{
     display:block;
     width:100%;
@@ -405,7 +424,8 @@
   }
 
   @media (max-width: 640px){
-    .video-grid{ grid-template-columns: 1fr 1fr; max-width: 560px; }
+    .video-grid{ max-width: 560px; }
+    .video-item{ flex-basis: calc((100% - 20px) / 2); }
   }
 
   .details-btn{
@@ -1031,6 +1051,23 @@
         </div>
         <button type="button" class="video-caption" data-slot-action="5">חופים מנצחים</button>
       </div>
+      <div class="video-item" id="video-slot-6">
+        <div class="video-cube has-video" data-slot="6">
+          <video data-lazy-src="videos/extreme-card.mp4" poster="images/rzr-cube-poster.jpg" autoplay muted loop playsinline preload="none"></video>
+          <div class="video-upload-tile">
+            <div class="plus">+</div>
+            <span>העלאת סרטון</span>
+          </div>
+          <input type="file" accept="video/*" style="display:none">
+        </div>
+        <button type="button" class="video-caption" data-slot-action="6">השכרת RZR</button>
+      </div>
+      <div class="video-item" id="video-slot-7">
+        <div class="image-cube" data-slot-action="7" role="button" tabindex="0" aria-label="Ferrari">
+          <img src="https://images.unsplash.com/photo-1693164350459-ce6ad75e08c3?q=80&w=800&auto=format&fit=crop" alt="פרארי וורלד אבו דאבי" loading="lazy">
+        </div>
+        <button type="button" class="video-caption" data-slot-action="7">Ferrari</button>
+      </div>
     </div>
     <a class="details-btn" href="experiences.html">לפרטים</a>
     <a class="details-btn" href="offers.html">הזמנות</a>
@@ -1618,8 +1655,29 @@
     '1': () => showVideoToast(videoToastMessages['1']),
     '2': () => openSeaChoice(),
     '3': () => { window.location.href = 'vip-parties.html'; },
-    '5': () => showVideoToast(videoToastMessages['5'])
+    '5': () => showVideoToast(videoToastMessages['5']),
+    '6': () => { window.location.href = 'rzr.html'; },
+    '7': () => openGalleryModal('ferrariworld','פרארי וורלד אבו דאבי','רגעים מפרארי וורלד, אבו דאבי.')
   };
+  // the image-only cube (Ferrari) behaves like its button
+  document.querySelectorAll('.image-cube[data-slot-action]').forEach(cube => {
+    const run = () => { const a = slotActions[cube.dataset.slotAction]; if (a) a(); };
+    cube.addEventListener('click', run);
+    cube.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); run(); } });
+  });
+  // start the RZR clip only when it is near the screen (the file is large)
+  document.querySelectorAll('video[data-lazy-src]').forEach(v => {
+    const start = () => {
+      if (!v.getAttribute('src')){ v.src = v.dataset.lazySrc; }
+      v.play().catch(() => {});
+    };
+    if ('IntersectionObserver' in window){
+      const io = new IntersectionObserver((entries) => {
+        if (entries.some(e => e.isIntersecting)){ start(); io.disconnect(); }
+      }, { rootMargin: '300px' });
+      io.observe(v);
+    } else { start(); }
+  });
   document.querySelectorAll('.video-caption[data-slot-action]').forEach(btn => {
     btn.addEventListener('click', () => {
       const action = slotActions[btn.dataset.slotAction];
