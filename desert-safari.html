@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ספארי ערב במדבר | HAY DUBAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #08090b;
+    --surface: #101215;
+    --surface-2: #15181c;
+    --gold: #d9b25c;
+    --gold-bright: #f3d488;
+    --gold-glow: rgba(217,178,92,0.55);
+    --ivory: #ece7dd;
+    --muted: #94969c;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--bg); color:var(--ivory);
+    font-family:'Heebo', sans-serif; font-weight:300; line-height:1.75; overflow-x:hidden;
+  }
+  h1,h2,h3,.brand{ font-family:'Rubik', sans-serif; font-weight:800; letter-spacing:-0.01em; color:var(--ivory); margin:0; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .container{ max-width:1180px; margin:0 auto; padding:0 28px; }
+
+  header.site-nav{
+    position:fixed; top:0; right:0; left:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 26px 12px 16px;
+    background: rgba(8,9,11,0.9);
+  }
+  .brand{ font-size:1.0rem; display:flex; align-items:center; gap:8px; }
+  .brand-logo{ width:42px; height:42px; object-fit:contain; }
+  nav.links{ display:flex; gap:34px; font-size:.95rem; color:var(--muted); font-weight:500; }
+  nav.links a{ position:relative; padding-bottom:4px; }
+  nav.links a::after{
+    content:''; position:absolute; right:0; bottom:0; width:0; height:1px;
+    background:var(--gold); box-shadow:0 0 8px var(--gold-glow); transition:width .25s ease;
+  }
+  nav.links a:hover{ color:var(--gold-bright); }
+  nav.links a:hover::after{ width:100%; }
+  .nav-cta{
+    padding:8px 18px; border-radius:999px; color:#10120c; background:var(--gold);
+    font-size:.85rem; font-weight:700; white-space:nowrap;
+    box-shadow:0 0 18px var(--gold-glow); transition:box-shadow .25s ease, transform .25s ease;
+  }
+  .nav-cta:hover{ box-shadow:0 0 28px var(--gold-glow), 0 0 50px var(--gold-glow); transform:translateY(-1px); }
+  @media (max-width:820px){ nav.links{ display:none; } }
+
+  .hero{
+    position:relative; min-height:100svh; display:flex; align-items:flex-end;
+    background-image:linear-gradient(180deg, rgba(6,6,7,0.35) 0%, rgba(6,6,7,0.62) 55%, rgba(6,6,7,0.98) 100%), url('https://images.unsplash.com/photo-1447601932606-2b63e2e64331?q=80&w=2000&auto=format&fit=crop');
+    background-size:cover; background-position:center 55%; padding-top:110px;
+  }
+  .hero-inner{ padding-bottom:100px; animation:rise 1.1s ease both; max-width:900px; }
+  @keyframes rise{ from{opacity:0; transform:translateY(24px);} to{opacity:1; transform:translateY(0);} }
+  .hero-kicker{ color:var(--gold-bright); font-size:1rem; font-weight:600; margin-bottom:20px; text-shadow:0 0 18px var(--gold-glow); }
+  .hero h1{ font-size:clamp(2rem, 6vw, 4.2rem); line-height:1.16; text-shadow:0 0 30px rgba(217,178,92,0.25); }
+  .hero h1 .glow{ color:var(--gold-bright); text-shadow:0 0 12px var(--gold-glow), 0 0 34px var(--gold-glow), 0 0 60px rgba(217,178,92,0.25); }
+  .hero p{ max-width:580px; color:var(--muted); font-size:1.15rem; font-weight:300; margin-top:24px; }
+  .hero-badges{ display:flex; gap:14px; flex-wrap:wrap; margin-top:26px; align-items:center; }
+  .hero-badge{
+    color:#ffffff; font-size:.95rem; font-weight:600;
+  }
+  .hero-badge + .hero-badge{ position:relative; padding-right:20px; }
+  .hero-badge + .hero-badge::before{
+    content:''; position:absolute; right:0; top:50%; transform:translateY(-50%);
+    width:4px; height:4px; border-radius:50%; background:var(--gold-bright);
+  }
+  .hero-actions{ display:flex; gap:18px; margin-top:36px; flex-wrap:wrap; }
+  @media (max-width:480px){
+    .hero{ padding-top:90px; } .hero-inner{ padding-bottom:60px; }
+    .hero h1{ font-size:1.8rem; line-height:1.25; } .hero p{ font-size:1rem; margin-top:18px; }
+    .hero-kicker{ font-size:.9rem; margin-bottom:14px; }
+  }
+  .btn{ display:inline-block; padding:16px 32px; font-size:1rem; font-weight:700; border-radius:999px; transition:all .3s ease; border:none; cursor:pointer; font-family:inherit; }
+  .btn-gold{ background:var(--gold); color:#14110c; box-shadow:0 0 22px var(--gold-glow), 0 8px 30px rgba(0,0,0,0.4); }
+  .btn-gold:hover{ background:var(--gold-bright); box-shadow:0 0 30px var(--gold-glow), 0 0 60px rgba(217,178,92,0.4), 0 8px 30px rgba(0,0,0,0.4); transform:translateY(-2px); }
+  .btn-outline{ color:var(--gold-bright); background:rgba(217,178,92,0.06); box-shadow:inset 0 0 0 1px rgba(217,178,92,0.4); }
+  .btn-outline:hover{ box-shadow:inset 0 0 0 1px var(--gold-bright), 0 0 26px var(--gold-glow); transform:translateY(-2px); }
+
+  section{ padding:120px 0; position:relative; }
+  .section-head{ max-width:660px; margin-bottom:64px; }
+  .section-head .eyebrow{ color:var(--gold-bright); font-weight:700; font-size:1rem; margin-bottom:16px; text-shadow:0 0 14px var(--gold-glow); }
+  .section-head h2{ font-size:clamp(1.9rem, 3.4vw, 2.7rem); }
+  .section-head p{ color:var(--muted); margin-top:18px; font-size:1.05rem; font-weight:300; }
+
+  .section-banner{ border-radius:18px; overflow:hidden; margin-bottom:56px; box-shadow:0 20px 50px rgba(0,0,0,0.35); }
+  .section-banner img{ width:100%; height:340px; object-fit:cover; }
+  @media (max-width:600px){ .section-banner img{ height:220px; } }
+
+  /* SPECS */
+  .specs{ background:var(--surface); }
+  .specs-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  .spec-item{ background:var(--surface-2); border-radius:14px; padding:22px 20px; box-shadow:0 14px 34px rgba(0,0,0,0.3); text-align:center; }
+  .spec-item .num{ color:var(--gold-bright); font-family:'Rubik',sans-serif; font-weight:800; font-size:1.5rem; text-shadow:0 0 10px var(--gold-glow); }
+  .spec-item .label{ color:var(--muted); font-size:.85rem; margin-top:6px; }
+  @media (max-width:820px){ .specs-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:480px){ .specs-grid{ grid-template-columns:1fr; } }
+
+  /* EXPERIENCES */
+  .exp-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:24px; }
+  .exp-card{ background:var(--surface-2); border-radius:16px; overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,0.35); transition:box-shadow .3s ease, transform .3s ease; }
+  .exp-card:hover{ box-shadow:0 0 0 1px rgba(217,178,92,0.35), 0 0 46px rgba(217,178,92,0.18), 0 20px 50px rgba(0,0,0,0.35); transform:translateY(-5px); }
+  .exp-card .img-wrap{ height:200px; overflow:hidden; }
+  .exp-card img{ width:100%; height:100%; object-fit:cover; transition:transform .6s ease; }
+  .exp-card:hover img{ transform:scale(1.08); }
+  .exp-card .exp-body{ padding:22px 22px 26px; }
+  .exp-card h3{ font-size:1.1rem; margin-bottom:8px; font-weight:700; }
+  .exp-card p{ color:var(--muted); font-size:.9rem; font-weight:300; }
+  @media (max-width:980px){ .exp-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:560px){ .exp-grid{ grid-template-columns:1fr; } }
+
+  /* INCLUDED LIST */
+  .included{ background:var(--surface); }
+  .included-layout{ display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+  .included-col h3{ font-size:1.1rem; font-weight:700; margin-bottom:16px; color:var(--gold-bright); text-shadow:0 0 10px var(--gold-glow); }
+  .included-col ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; }
+  .included-col li{ color:var(--muted); font-size:.95rem; font-weight:300; padding-right:22px; position:relative; }
+  .included-col li::before{ content:'✓'; position:absolute; right:0; color:var(--gold-bright); font-weight:700; }
+  .included-col.extras li::before{ content:'+'; }
+  @media (max-width:760px){ .included-layout{ grid-template-columns:1fr; gap:28px; } }
+
+  /* BOOKING CALCULATOR */
+  .calc-card{
+    max-width:920px; margin:0 auto; display:grid; grid-template-columns:0.9fr 1.1fr;
+    background:var(--surface-2); border-radius:20px; overflow:hidden;
+    box-shadow:0 20px 50px rgba(0,0,0,0.35);
+  }
+  .calc-photo img{ width:100%; height:100%; min-height:320px; object-fit:cover; }
+  .calc-body{ padding:34px 36px; }
+  .calc-title{ font-family:'Rubik',sans-serif; font-weight:700; font-size:1.15rem; }
+  .calc-guests-tag{ color:var(--muted); font-size:.88rem; margin-top:6px; }
+  .calc-price{
+    margin-top:16px; font-family:'Rubik',sans-serif; font-weight:800; font-size:1.9rem;
+    color:var(--gold-bright); text-shadow:0 0 14px var(--gold-glow); display:flex; align-items:baseline; gap:8px;
+  }
+  .calc-row{ margin-top:18px; display:flex; flex-direction:column; gap:8px; }
+  .calc-row.two{ flex-direction:row; gap:14px; }
+  .calc-row.two label{ flex:1; }
+  .calc-row label{ font-size:.85rem; color:var(--muted); font-weight:500; display:flex; flex-direction:column; gap:6px; }
+  .calc-row input, .calc-row select{
+    background:var(--surface); border:none; border-radius:10px; padding:12px 14px; color:var(--ivory);
+    font-family:'Heebo',sans-serif; font-size:.95rem; outline:none; transition:box-shadow .2s ease;
+  }
+  .calc-row input:focus, .calc-row select:focus{ box-shadow:0 0 0 1px rgba(217,178,92,0.5), 0 0 18px var(--gold-glow); }
+  .calc-total-row{
+    margin-top:22px; display:flex; align-items:center; justify-content:space-between;
+    background:var(--surface); border-radius:12px; padding:16px 18px;
+  }
+  .calc-total-label{ color:var(--muted); font-size:.92rem; }
+  .calc-total-value{ font-family:'Rubik',sans-serif; font-weight:800; font-size:1.3rem; color:var(--gold-bright); text-shadow:0 0 12px var(--gold-glow); }
+  .calc-note{ color:var(--muted); font-size:.8rem; margin-top:14px; line-height:1.7; }
+  .calc-body .btn{ margin-top:20px; width:100%; text-align:center; }
+  @media (max-width:760px){ .calc-card{ grid-template-columns:1fr; } .calc-photo img{ min-height:220px; } }
+  @media (max-width:480px){ .calc-row.two{ flex-direction:column; } }
+
+  .notice-box{
+    max-width:920px; margin:26px auto 0; background:rgba(217,178,92,0.08); border-radius:14px;
+    padding:18px 22px; box-shadow:inset 0 0 0 1px rgba(217,178,92,0.3);
+    color:var(--gold-bright); font-size:.9rem; line-height:1.8; text-align:center;
+  }
+
+  /* GALLERY */
+  .gallery-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .gallery-grid figure{ margin:0; position:relative; overflow:hidden; aspect-ratio:1/1; background:var(--surface-2); border-radius:14px; box-shadow:0 16px 40px rgba(0,0,0,0.35); transition:box-shadow .3s ease, transform .3s ease; cursor:pointer; }
+  .gallery-grid figure:hover{ box-shadow:0 0 0 1px rgba(217,178,92,0.35), 0 0 34px rgba(217,178,92,0.16); transform:translateY(-3px); }
+  .gallery-grid img{ width:100%; height:100%; object-fit:cover; }
+  @media (max-width:900px){ .gallery-grid{ grid-template-columns:repeat(3,1fr); } }
+  @media (max-width:600px){ .gallery-grid{ grid-template-columns:repeat(2,1fr); } }
+  .lightbox-overlay{ position:fixed; inset:0; z-index:110; background:rgba(4,4,5,0.92); backdrop-filter:blur(6px); display:none; align-items:center; justify-content:center; padding:30px; }
+  .lightbox-overlay.active{ display:flex; }
+  .lightbox-overlay img{ max-width:90vw; max-height:82vh; border-radius:14px; box-shadow:0 0 60px rgba(217,178,92,0.2), 0 30px 80px rgba(0,0,0,0.6); }
+  .lightbox-close{ position:absolute; top:26px; left:26px; width:42px; height:42px; border-radius:50%; background:rgba(217,178,92,0.12); color:var(--gold-bright); border:none; font-size:1.3rem; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+  .lightbox-close:hover{ box-shadow:0 0 18px var(--gold-glow); }
+
+  /* CONTACT + BOOKING FORM */
+  .contact{ background:radial-gradient(ellipse at 50% 0%, rgba(217,178,92,0.08), transparent 60%), var(--surface-2); }
+  .contact-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px; align-items:start; }
+  .contact h2{ font-size:clamp(1.9rem, 4vw, 2.7rem); }
+  .contact p{ color:var(--muted); margin-top:18px; font-size:1.05rem; font-weight:300; }
+  .phone-line{ margin-top:30px; font-family:'Rubik',sans-serif; font-weight:800; font-size:clamp(1.5rem, 3.6vw, 2.2rem); color:var(--gold-bright); text-shadow:0 0 16px var(--gold-glow), 0 0 40px rgba(217,178,92,0.25); direction:ltr; display:inline-block; }
+  .contact-email{ margin-top:14px; color:var(--muted); font-size:.98rem; direction:ltr; display:inline-block; }
+  .contact-actions{ margin-top:26px; display:flex; gap:16px; flex-wrap:wrap; }
+  .contact-form{ background:var(--surface); border-radius:20px; padding:36px; display:flex; flex-direction:column; gap:18px; box-shadow:0 20px 50px rgba(0,0,0,0.35); }
+  .contact-form label{ display:flex; flex-direction:column; gap:8px; font-size:.92rem; color:var(--muted); font-weight:500; }
+  .contact-form input, .contact-form select, .contact-form textarea{
+    background:var(--surface-2); border:none; border-radius:10px; padding:13px 16px; color:var(--ivory);
+    font-family:'Heebo',sans-serif; font-size:.98rem; outline:none; transition:box-shadow .2s ease;
+  }
+  .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus{ box-shadow:0 0 0 1px rgba(217,178,92,0.5), 0 0 18px var(--gold-glow); }
+  .contact-form button{ align-self:flex-start; border:none; cursor:pointer; margin-top:6px; }
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  @media (max-width:860px){ .contact-grid{ grid-template-columns:1fr; } }
+  @media (max-width:480px){ .form-row{ grid-template-columns:1fr; } }
+
+  footer{ padding:50px 0; text-align:center; color:var(--muted); font-size:.88rem; font-weight:300; }
+  footer .brand{ justify-content:center; margin-bottom:16px; font-size:1.1rem; }
+  .footer-links{ margin-top:18px; display:flex; justify-content:center; gap:24px; }
+  .footer-links a{ color:var(--muted); font-size:.85rem; }
+  .footer-links a:hover{ color:var(--gold-bright); }
+
+  .float-cta{
+    position:fixed; bottom:26px; left:26px; z-index:60; background:var(--gold); color:#14110c;
+    width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 0 20px var(--gold-glow), 0 8px 24px rgba(0,0,0,0.5); font-size:1.5rem;
+    animation:floatpulse 3s ease-in-out infinite;
+  }
+  @keyframes floatpulse{ 0%,100%{ box-shadow:0 0 20px var(--gold-glow), 0 8px 24px rgba(0,0,0,0.5); } 50%{ box-shadow:0 0 36px var(--gold-glow), 0 0 60px rgba(217,178,92,0.3), 0 8px 24px rgba(0,0,0,0.5); } }
+  .float-cta:hover{ background:var(--gold-bright); }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="brand"><img src="images/logo.png" alt="לוגו HAY DUBAI" class="brand-logo"></div>
+  <nav class="links">
+    <a href="#specs">על הסיור</a>
+    <a href="#experiences">אטרקציות</a>
+    <a href="#included">מה כלול</a>
+    <a href="#pricing">מחיר והזמנה</a>
+    <a href="#gallery">גלריה</a>
+  </nav>
+  <a class="nav-cta" href="tel:029999119">029999119</a>
+</header>
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-kicker">החוויה המדברית המובילה בדובאי</div>
+    <img src="images/hay-dubai-logo-v2.png" alt="HAY DUBAI" style="display:block;margin:0 0 20px;height:56px;width:auto;object-fit:contain;">
+    <h1>ספארי ערב במדבר, <span class="glow">הרפתקה שלא שוכחים</span></h1>
+    <p>יציאה מרגשת אל הדיונות בשקיעה, ערב שלם של פעילויות, אוכל וריקודים במחנה בדואי אותנטי בלב המדבר הערבי.</p>
+    <div class="hero-badges">
+      <span class="hero-badge">משך: 6 שעות</span>
+      <span class="hero-badge">גודל קבוצה: ללא הגבלה</span>
+      <span class="hero-badge">ביטול: עד יום לפני</span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-gold" href="#pricing">להזמנת הספארי</a>
+      <a class="btn btn-outline" href="#included">מה כלול במחיר</a>
+    </div>
+  </div>
+</section>
+
+<section class="specs" id="specs">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">על הסיור</div>
+      <h2>ערב שלם, מהאיסוף ועד ההחזרה למלון</h2>
+      <p>דהירה על החולות ברכב שטח 4X4, שקיעה מרהיבה מעל הדיונות, וערב מלא בילוי במחנה בדואי מסורתי, עם כל השירותים הדרושים לחוויה נוחה ומהנה.</p>
+    </div>
+    <div class="section-banner">
+      <img src="https://images.unsplash.com/photo-1447601932606-2b63e2e64331?q=80&w=1600&auto=format&fit=crop" alt="נופי מדבר דובאי בשעת שקיעה">
+    </div>
+    <div class="specs-grid">
+      <div class="spec-item"><div class="num">6 שעות</div><div class="label">משך הסיור</div></div>
+      <div class="spec-item"><div class="num">ללא הגבלה</div><div class="label">גודל קבוצה</div></div>
+      <div class="spec-item"><div class="num">כלול</div><div class="label">איסוף והחזרה מהמלון</div></div>
+      <div class="spec-item"><div class="num">עד יום לפני</div><div class="label">ביטול חינם</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="experiences">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">אטרקציות הערב</div>
+      <h2>בין גלי החול לאש המחנה</h2>
+      <p>שילוב של אדרנלין, נופים בלתי נשכחים ותרבות ערבית אותנטית, כל זאת בערב אחד.</p>
+    </div>
+    <div class="section-banner">
+      <img src="https://images.unsplash.com/photo-1565081188891-72179dbf09c7?q=80&w=1600&auto=format&fit=crop" alt="רכב שטח דוהר בין דיונות החול בדובאי">
+    </div>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1565081188891-72179dbf09c7?q=80&w=900&auto=format&fit=crop" alt="דהירה על דיונות החול ברכב 4X4"></div>
+        <div class="exp-body">
+          <h3>דהירה על הדיונות</h3>
+          <p>נהג מקצועי מוביל אתכם בין גלי החול ברכב 4X4, לחוויית אדרנלין מהסוג המרגש ביותר.</p>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1450858930767-64b21437d41f?q=80&w=900&auto=format&fit=crop" alt="רכיבה על גמלים בשקיעה"></div>
+        <div class="exp-body">
+          <h3>רכיבה על גמלים וגלישת חול</h3>
+          <p>רגעים רגועים יותר: רכיבה על גמל מול שקיעת השמש, וגלישה על החולות למי שרוצה עוד קצת ריגוש.</p>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1762255097010-49e99eadd616?q=80&w=900&auto=format&fit=crop" alt="מחנה בדואי במדבר דובאי"></div>
+        <div class="exp-body">
+          <h3>ערב במחנה הבדואי</h3>
+          <p>קבלת פנים עם קפה ותה ערבי, ארוחת ערב עשירה, ובידור מרשים על רחבת הריקודים תחת כיפת השמיים.</p>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1635858145334-f83a789beb9e?q=80&w=900&auto=format&fit=crop" alt="מדורה ובידור ערב במחנה המדברי"></div>
+        <div class="exp-body">
+          <h3>מופעי ריקוד ואש</h3>
+          <p>רקדנית בטן מקצועית, ריקוד טאנורה טורקי מסורתי, ומופע אש מרהיב, לצלילי מוזיקה ערבית, אנגלית והודית.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="included" id="included">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">בלי הפתעות</div>
+      <h2>מה כלול במחיר, ומה אפשר להוסיף</h2>
+      <p>המחיר הבסיסי כולל כמעט את כל מה שצריך לערב מושלם, ואפשר להעשיר עוד יותר בתוספות.</p>
+    </div>
+    <div class="section-banner">
+      <img src="https://images.unsplash.com/photo-1450858930767-64b21437d41f?q=80&w=1600&auto=format&fit=crop" alt="רכיבה על גמלים בשקיעת המדבר">
+    </div>
+    <div class="included-layout">
+      <div class="included-col">
+        <h3>כלול במחיר</h3>
+        <ul>
+          <li>איסוף והחזרה מהמלון</li>
+          <li>נסיעת שטח (דיונות) ברכב 4X4</li>
+          <li>גלישת חול וצפייה בשקיעת המדבר</li>
+          <li>רכיבה על גמלים וציור חינה</li>
+          <li>קפה ותה ערבי בקבלת הפנים</li>
+          <li>ארוחת ערב בופה עשירה ושתייה קלה ללא הגבלה</li>
+          <li>מופעי טאנורה, ריקוד בטן ואש</li>
+          <li>נרגילה, תלבושות ערביות לצילום, ואזור ישיבה VIP</li>
+          <li>מחנה בסגנון בדואי מסורתי, חדר תפילה ושירותים נוחים</li>
+        </ul>
+      </div>
+      <div class="included-col extras">
+        <h3>תוספות בתשלום נוסף</h3>
+        <ul>
+          <li>צילומי בזק מקצועיים</li>
+          <li>רכיבה על אופנוע שטח / ATV</li>
+          <li>משקאות אלכוהוליים</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">שקוף ומדויק</div>
+      <h2>בחרו תאריך ומספר משתתפים</h2>
+      <p>המחיר הוא לאדם, ומתעדכן אוטומטית לפי מספר האורחים שתבחרו.</p>
+    </div>
+    <div class="calc-card">
+      <div class="calc-photo">
+        <img src="https://images.unsplash.com/photo-1565081188891-72179dbf09c7?q=80&w=800&auto=format&fit=crop" alt="ספארי ערב במדבר דובאי">
+      </div>
+      <div class="calc-body">
+        <div class="calc-title">ספארי ערב במדבר, 6 שעות</div>
+        <div class="calc-guests-tag">כולל איסוף, פעילויות, ארוחת ערב ומופעים</div>
+        <div class="calc-price">140 ₪<span style="font-family:'Heebo',sans-serif; font-weight:400; font-size:.9rem; color:var(--muted);">לאדם</span></div>
+        <div class="calc-row">
+          <label>תאריך הסיור
+            <input type="date" id="calcDate">
+          </label>
+        </div>
+        <div class="calc-row">
+          <label>מספר משתתפים
+            <input type="number" id="calcGuests" min="1" value="2">
+          </label>
+        </div>
+        <div class="calc-total-row">
+          <span class="calc-total-label">סה"כ לתשלום</span>
+          <span class="calc-total-value" id="calcTotal">280 ₪</span>
+        </div>
+        <p class="calc-note">המחיר הוא לאדם ומחושב אוטומטית לפי מספר המשתתפים, ללא הגבלה על גודל הקבוצה.</p>
+        <button type="button" class="btn btn-gold" onclick="sendCalcToBooking()">להמשך ההזמנה בטופס</button>
+      </div>
+    </div>
+    <div class="notice-box">בשל עומס הזמנות ותנאי השטח שעשויים להשתנות, ייתכנו עדכונים בפרטי ההזמנה (שעת איסוף, מחנה או מסלול). מומלץ ליצור איתנו קשר לפני ההזמנה הסופית, ואנחנו נדאג לוודא ולעדכן אתכם בזמן.</div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">רגעים מהמדבר</div>
+      <h2>הגלריה שלנו</h2>
+      <p>תמונות מהספארי ומהערבים שלנו במדבר דובאי.</p>
+    </div>
+    <div class="gallery-grid" id="galleryGrid">
+      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1565081188891-72179dbf09c7?q=80&w=600&auto=format&fit=crop" alt="רכב שטח בדיונות החול"></figure>
+      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1450858930767-64b21437d41f?q=80&w=600&auto=format&fit=crop" alt="רכיבה על גמלים בשקיעה"></figure>
+      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1762255097010-49e99eadd616?q=80&w=600&auto=format&fit=crop" alt="מחנה בדואי במדבר"></figure>
+      <figure class="lightbox-item"><img src="https://images.unsplash.com/photo-1635858145334-f83a789beb9e?q=80&w=600&auto=format&fit=crop" alt="מדורה בערב במדבר"></figure>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox-overlay" id="lightboxOverlay">
+  <button class="lightbox-close" id="lightboxClose" aria-label="סגירה">×</button>
+  <img id="lightboxImg" src="" alt="תמונה מוגדלת">
+</div>
+
+<section class="contact" id="booking">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <h2>קביעת תאריך לספארי</h2>
+        <p>מלאו את הפרטים ונחזור אליכם לאישור סופי של התאריך ושעת האיסוף. אפשר גם ליצור קשר ישירות בטלפון או בוואטסאפ.</p>
+        <div class="phone-line">02-999-9119</div>
+        <div class="contact-email">Infodubaisrael@gmail.com</div>
+        <div class="contact-actions">
+          <a class="btn btn-gold" href="tel:029999119">התקשרו עכשיו</a>
+          <a class="btn btn-outline" href="https://wa.me/97229999119" target="_blank" rel="noopener">וואטסאפ</a>
+        </div>
+      </div>
+      <form class="contact-form" action="https://formsubmit.co/Infodubaisrael@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="הזמנת ספארי ערב במדבר, HAY DUBAI">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <div class="form-row">
+          <label>
+            שם מלא
+            <input type="text" name="שם מלא" required>
+          </label>
+          <label>
+            טלפון
+            <input type="tel" name="טלפון" required>
+          </label>
+        </div>
+        <label>
+          אימייל (רשות)
+          <input type="email" name="אימייל">
+        </label>
+        <div class="form-row">
+          <label>
+            תאריך מבוקש
+            <input type="date" name="תאריך מבוקש" required>
+          </label>
+          <label>
+            שעת הגעה מועדפת
+            <input type="time" name="שעת הגעה מועדפת">
+          </label>
+        </div>
+        <div class="form-row">
+          <label>
+            מספר משתתפים
+            <input type="number" name="מספר משתתפים" min="1" value="2">
+          </label>
+          <label>
+            אופן ההגעה
+            <select name="אופן ההגעה" id="arrivalMethod">
+              <option>איסוף מהמלון</option>
+              <option>הגעה עצמאית לנקודת המפגש</option>
+            </select>
+          </label>
+        </div>
+        <label id="pickupAddressLabel">
+          מלון / כתובת לאיסוף
+          <input type="text" name="כתובת לאיסוף" id="pickupAddressInput">
+        </label>
+        <label>
+          הודעה (רשות)
+          <textarea name="הודעה" rows="3" placeholder="למשל: בקשה לתוספת אופנועי שטח, הגבלות תזונתיות"></textarea>
+        </label>
+        <button type="submit" class="btn btn-gold">שליחת בקשת הזמנה</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand" style="justify-content:center;"><img src="images/hay-dubai-logo-v2.png" alt="HAY DUBAI" style="height:26px;width:auto;object-fit:contain;"></div>
+  <div>ספארי ערב במדבר בדובאי</div>
+  <div style="margin-top:6px;">02-999-9119</div>
+  <div class="footer-links">
+    <a href="index.html">חזרה לעמוד הראשי</a>
+    <a href="privacy.html">מדיניות פרטיות</a>
+    <a href="terms.html">תנאי שימוש</a>
+  </div>
+</footer>
+
+<a class="float-cta" href="https://wa.me/97229999119" target="_blank" rel="noopener" aria-label="וואטסאפ">💬</a>
+
+<script>
+  const lightboxOverlay = document.getElementById('lightboxOverlay');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxClose = document.getElementById('lightboxClose');
+  function openLightbox(src){ lightboxImg.src = src; lightboxOverlay.classList.add('active'); }
+  function closeLightbox(){ lightboxOverlay.classList.remove('active'); lightboxImg.src=''; }
+  document.addEventListener('click', (e) => {
+    const item = e.target.closest('.lightbox-item img');
+    if (item) openLightbox(item.src);
+  });
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightboxOverlay.addEventListener('click', (e) => { if (e.target === lightboxOverlay) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+  const nav = document.querySelector('.site-nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40){ nav.style.background = 'rgba(8,9,11,0.94)'; }
+    else{ nav.style.background = 'rgba(8,9,11,0.9)'; }
+  });
+
+  /* ---- BOOKING CALCULATOR ---- */
+  const PRICE_PER_PERSON = 140;
+  const calcGuests = document.getElementById('calcGuests');
+  const calcTotal = document.getElementById('calcTotal');
+
+  function updateCalcTotal(){
+    const guests = Math.max(1, Number(calcGuests.value) || 1);
+    calcGuests.value = guests;
+    calcTotal.textContent = (guests * PRICE_PER_PERSON) + ' ₪';
+  }
+  calcGuests.addEventListener('input', updateCalcTotal);
+  updateCalcTotal();
+
+  function sendCalcToBooking(){
+    const dateVal = document.getElementById('calcDate').value;
+    const guestsVal = calcGuests.value;
+    const dateInput = document.querySelector('#booking input[name="תאריך מבוקש"]');
+    const guestsInput = document.querySelector('#booking input[name="מספר משתתפים"]');
+    if (dateVal && dateInput) dateInput.value = dateVal;
+    if (guestsVal && guestsInput) guestsInput.value = guestsVal;
+    document.getElementById('booking').scrollIntoView({ behavior:'smooth' });
+  }
+
+  /* ---- ARRIVAL METHOD TOGGLE ---- */
+  const arrivalMethod = document.getElementById('arrivalMethod');
+  const pickupAddressLabel = document.getElementById('pickupAddressLabel');
+  const pickupAddressInput = document.getElementById('pickupAddressInput');
+  function updateArrivalField(){
+    if (arrivalMethod.value === 'הגעה עצמאית לנקודת המפגש'){
+      pickupAddressLabel.firstChild.textContent = 'הערה לגבי ההגעה העצמאית (רשות)';
+      pickupAddressInput.placeholder = 'לדוגמה: נגיע ברכב פרטי';
+    } else {
+      pickupAddressLabel.firstChild.textContent = 'מלון / כתובת לאיסוף';
+      pickupAddressInput.placeholder = '';
+    }
+  }
+  arrivalMethod.addEventListener('change', updateArrivalField);
+  updateArrivalField();
+</script>
+
+</body>
+</html>
