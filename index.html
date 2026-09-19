@@ -509,25 +509,6 @@
   }
 
   /* ---------- JOURNEY ---------- */
-  /* ---------- NIGHTLIFE ---------- */
-  .nightlife{ padding: 100px 0; }
-  .nightlife-inner{ display:grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items:center; }
-  .nightlife-video{
-    display:block; position:relative; aspect-ratio:16/9; border-radius:18px; overflow:hidden;
-    background: var(--surface-2);
-    box-shadow: 0 0 0 1px rgba(217,178,92,0.25), 0 0 40px rgba(217,178,92,0.14), 0 24px 60px rgba(0,0,0,0.5);
-  }
-  .nightlife-video video{ width:100%; height:100%; object-fit:cover; display:block; }
-  .nightlife-video::after{
-    content:''; position:absolute; inset:0; pointer-events:none;
-    background: linear-gradient(180deg, rgba(6,6,7,0) 55%, rgba(6,6,7,0.55) 100%);
-  }
-  .nightlife .section-head{ margin-bottom: 28px; }
-  @media (max-width: 860px){
-    .nightlife{ padding: 70px 0; }
-    .nightlife-inner{ grid-template-columns: 1fr; gap: 30px; }
-  }
-
   .journey{ background: var(--surface); }
   .journey-grid{
     display:grid;
@@ -1174,6 +1155,23 @@
         </div>
       </div>
 
+      <div class="video-feature" id="video-slot-4">
+        <div class="video-cube" data-slot="4">
+          <video autoplay muted loop playsinline></video>
+          <div class="video-upload-tile">
+            <div class="plus">+</div>
+            <span>העלאת סרטון</span>
+          </div>
+          <input type="file" accept="video/*" style="display:none">
+        </div>
+        <div class="video-feature-text">
+          <div class="eyebrow">רכבי פאר</div>
+          <h3>מכוניות יוקרה</h3>
+          <p>להשכרת רכב יוקרה בדובאי נדרשים רישיון נהיגה בינלאומי, גיל מינימום (בדרך כלל 25), כרטיס אשראי לפיקדון וביטוח מקיף. המחירים בדובאי גבוהים, אבל אנחנו דואגים לכם למחירים הכי משתלמים שיש.</p>
+          <button type="button" class="btn btn-gold" data-slot-action="4">לגלריית הרכבים</button>
+        </div>
+      </div>
+
       <div class="video-feature" id="video-slot-7">
         <div class="image-cube" data-slot-action="7" role="button" tabindex="0" aria-label="Ferrari">
           <img src="https://images.unsplash.com/photo-1693164350459-ce6ad75e08c3?q=80&w=800&auto=format&fit=crop" alt="פרארי וורלד אבו דאבי" loading="lazy">
@@ -1190,22 +1188,6 @@
 
     <a class="details-btn" href="experiences.html">לפרטים</a>
     <a class="details-btn" href="offers.html">הזמנות</a>
-  </div>
-</section>
-
-<section class="nightlife" id="nightlife">
-  <div class="container nightlife-inner">
-    <a class="nightlife-video" href="vip-parties.html" aria-label="חיי הלילה בדובאי, למסיבות VIP">
-      <video data-lazy-src="videos/nightlife.mp4" poster="images/nightlife-poster.jpg" autoplay muted loop playsinline preload="none"></video>
-    </a>
-    <div class="nightlife-text">
-      <div class="section-head">
-        <div class="eyebrow">אחרי החשכה</div>
-        <h2>חיי הלילה בדובאי</h2>
-        <p>המועדונים, הלאונג'ים והמסיבות שהכי שווה להכיר, ואיך אנחנו דואגים שתקבלו את הכניסה והמחיר הכי טובים שיש.</p>
-      </div>
-      <a class="btn btn-gold" href="vip-parties.html">למסיבות VIP</a>
-    </div>
   </div>
 </section>
 
@@ -1284,21 +1266,6 @@
           <p>אופנועי ים, RZR ומכוניות יוקרה. אנחנו דואגים לכם למסלולים עם המחירים הכי משתלמים שיש.</p>
           <span class="exp-link">לצפייה בגלריה ←</span>
           <a class="exp-link" href="rzr.html" style="margin-right:14px;" onclick="event.stopPropagation()">השכרת RZR ←</a>
-        </div>
-      </div>
-      <div class="exp-card">
-        <div class="img-wrap video-cube" data-slot="4">
-          <video autoplay muted loop playsinline></video>
-          <div class="video-upload-tile">
-            <div class="plus">+</div>
-            <span>העלאת סרטון</span>
-          </div>
-          <input type="file" accept="video/*" style="display:none">
-        </div>
-        <div class="exp-body clickable" onclick="openGalleryModal('luxurycars','מכוניות יוקרה','תמונות רכבי יוקרה מדובאי.')">
-          <h3>מכוניות יוקרה</h3>
-          <p>להשכרת רכב יוקרה בדובאי נדרשים רישיון נהיגה בינלאומי, גיל מינימום (בדרך כלל 25), כרטיס אשראי לפיקדון וביטוח מקיף. המחירים בדובאי גבוהים, אבל אנחנו דואגים לכם למחירים הכי משתלמים שיש.</p>
-          <span class="exp-link">לצפייה בגלריה ←</span>
         </div>
       </div>
       <div class="exp-card clickable" onclick="openGalleryModal('testimonials','לקוחות ממליצים','רגעים מלקוחות מרוצים שכבר טסו איתנו לדובאי.')">
@@ -1816,6 +1783,7 @@
     '2': () => openSeaChoice(),
     '3': () => { window.location.href = 'vip-parties.html'; },
     '5': () => showVideoToast(videoToastMessages['5']),
+    '4': () => openGalleryModal('luxurycars','מכוניות יוקרה','תמונות רכבי יוקרה מדובאי.'),
     '6': () => { window.location.href = 'rzr.html'; },
     '7': () => openGalleryModal('ferrariworld','פרארי וורלד אבו דאבי','רגעים מפרארי וורלד, אבו דאבי.')
   };
