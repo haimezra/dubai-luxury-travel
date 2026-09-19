@@ -113,6 +113,7 @@
     min-height: 100svh;
     display:flex;
     align-items:flex-end;
+    background-color: #1c1712;
     background-image: linear-gradient(180deg, rgba(6,6,7,0.4) 0%, rgba(6,6,7,0.6) 55%, rgba(6,6,7,0.98) 100%), url('https://images.unsplash.com/photo-1634007626524-f47fa37810a7?q=80&w=2000&auto=format&fit=crop');
     background-size: cover;
     background-position: center 65%;
@@ -362,6 +363,66 @@
   }
   .video-caption:active{ transform: scale(0.97); }
   .video-caption:focus-visible{ outline: 2px solid var(--gold-bright); outline-offset: 3px; }
+
+  /* ---------- FEATURED VIDEO SHOWCASE (hero-style video + info + CTA) ---------- */
+  .video-feature-list{
+    display:flex;
+    flex-direction:column;
+    gap: 72px;
+    margin: 8px auto 0;
+    max-width: 720px;
+  }
+  .video-feature .video-cube,
+  .video-feature .image-cube{
+    aspect-ratio: 16/10;
+    border-radius: 22px;
+    box-shadow: 0 0 0 1px rgba(217,178,92,0.25), 0 0 40px rgba(217,178,92,0.14), 0 24px 60px rgba(0,0,0,0.5);
+    cursor: default;
+  }
+  .video-feature .video-cube:hover,
+  .video-feature .image-cube:hover{
+    box-shadow: 0 0 0 1px rgba(217,178,92,0.4), 0 0 50px rgba(217,178,92,0.2), 0 24px 60px rgba(0,0,0,0.5);
+    transform: none;
+  }
+  .video-feature .image-cube{ cursor: pointer; }
+  .video-feature-text{
+    margin-top: 26px;
+    text-align: center;
+  }
+  .video-feature-text .eyebrow{
+    color: var(--gold-bright);
+    font-weight: 700;
+    font-size: .95rem;
+    margin-bottom: 10px;
+    text-shadow: 0 0 14px var(--gold-glow);
+  }
+  .video-feature-text h3{
+    font-size: clamp(1.5rem, 4vw, 1.9rem);
+    font-weight: 800;
+  }
+  .video-feature-text p{
+    color: var(--muted);
+    margin-top: 16px;
+    font-size: 1.02rem;
+    font-weight: 300;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .video-feature-text .btn{
+    margin-top: 24px;
+  }
+
+  .image-cube{
+    position: relative;
+    aspect-ratio: 16/9;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--surface-2);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+    transition: box-shadow .3s ease, transform .3s ease;
+    cursor: pointer;
+  }
 
   /* ---------- SEA CHOICE MODAL (jet ski / yacht) ---------- */
   .choice-box{ max-width: 460px; }
@@ -1025,8 +1086,10 @@
         </div>
       </div>
     </div>
-    <div class="video-grid">
-      <div class="video-item">
+
+    <div class="video-feature-list">
+
+      <div class="video-feature" id="video-slot-1">
         <div class="video-cube" data-slot="1">
           <video autoplay muted loop playsinline></video>
           <div class="video-upload-tile">
@@ -1035,9 +1098,15 @@
           </div>
           <input type="file" accept="video/*" style="display:none">
         </div>
-        <button type="button" class="video-caption" data-slot-action="1">מקומות VIP</button>
+        <div class="video-feature-text">
+          <div class="eyebrow">מול בורג' ח'ליפה</div>
+          <h3>מקומות VIP לצפייה במזרקה</h3>
+          <p>לצפות במזרקה ובבורג' ח'ליפה? זה הקל. לארגן לכם מקום VIP מול המופע, בזמן הכי טוב שיש? זה כבר הקטע שלנו.</p>
+          <button type="button" class="btn btn-gold" data-slot-action="1">לתיאום מקום VIP</button>
+        </div>
       </div>
-      <div class="video-item">
+
+      <div class="video-feature" id="video-slot-2">
         <div class="video-cube" data-slot="2">
           <video autoplay muted loop playsinline></video>
           <div class="video-upload-tile">
@@ -1046,9 +1115,15 @@
           </div>
           <input type="file" accept="video/*" style="display:none">
         </div>
-        <button type="button" class="video-caption" data-slot-action="2">אופנועי ים</button>
+        <div class="video-feature-text">
+          <div class="eyebrow">ים אמיתי, לא אגם</div>
+          <h3>אופנועי ים</h3>
+          <p>דובאי היא בעצם אגם ענק אחד. אבל כדי להרגיש את הים האמיתי, אנחנו יודעים בדיוק איפה לרכוב בשיא הכיף, עם החברה המובילה בדובאי.</p>
+          <button type="button" class="btn btn-gold" data-slot-action="2">לבחירת חוויה</button>
+        </div>
       </div>
-      <div class="video-item" id="video-slot-3">
+
+      <div class="video-feature" id="video-slot-3">
         <div class="video-cube" data-slot="3">
           <video autoplay muted loop playsinline></video>
           <div class="video-upload-tile">
@@ -1057,9 +1132,15 @@
           </div>
           <input type="file" accept="video/*" style="display:none">
         </div>
-        <button type="button" class="video-caption" data-slot-action="3">מסיבות VIP</button>
+        <div class="video-feature-text">
+          <div class="eyebrow">אחרי החשכה</div>
+          <h3>מסיבות VIP</h3>
+          <p>המועדונים, הלאונג'ים והמסיבות שהכי שווה להכיר, ואיך אנחנו דואגים שתקבלו את הכניסה והמחיר הכי טובים שיש.</p>
+          <a class="btn btn-gold" href="vip-parties.html">VIP למסיבות</a>
+        </div>
       </div>
-      <div class="video-item" id="video-slot-5">
+
+      <div class="video-feature" id="video-slot-5">
         <div class="video-cube" data-slot="5">
           <video autoplay muted loop playsinline></video>
           <div class="video-upload-tile">
@@ -1068,9 +1149,15 @@
           </div>
           <input type="file" accept="video/*" style="display:none">
         </div>
-        <button type="button" class="video-caption" data-slot-action="5">חופים מנצחים</button>
+        <div class="video-feature-text">
+          <div class="eyebrow">הים הנכון</div>
+          <h3>חופים מנצחים</h3>
+          <p>בדובאי יש חופים, ויש חופים. דברו איתנו, ותגיעו ישר למקום המושלם.</p>
+          <button type="button" class="btn btn-gold" data-slot-action="5">לבחירת החוף</button>
+        </div>
       </div>
-      <div class="video-item" id="video-slot-6">
+
+      <div class="video-feature" id="video-slot-6">
         <div class="video-cube has-video" data-slot="6">
           <video data-lazy-src="videos/extreme-card.mp4" poster="images/rzr-cube-poster.jpg" autoplay muted loop playsinline preload="none"></video>
           <div class="video-upload-tile">
@@ -1079,15 +1166,28 @@
           </div>
           <input type="file" accept="video/*" style="display:none">
         </div>
-        <button type="button" class="video-caption" data-slot-action="6">השכרת RZR</button>
+        <div class="video-feature-text">
+          <div class="eyebrow">אדרנלין בקצב של דובאי</div>
+          <h3>השכרת RZR</h3>
+          <p>נסיעה פרועה בין הדיונות, עם הרכבים הכי שווים ומדריכים שדואגים לבטיחות ולכיף. אנחנו סוגרים לכם את המסלולים עם המחירים הכי משתלמים שיש.</p>
+          <a class="btn btn-gold" href="rzr.html">השכרת RZR</a>
+        </div>
       </div>
-      <div class="video-item" id="video-slot-7">
+
+      <div class="video-feature" id="video-slot-7">
         <div class="image-cube" data-slot-action="7" role="button" tabindex="0" aria-label="Ferrari">
           <img src="https://images.unsplash.com/photo-1693164350459-ce6ad75e08c3?q=80&w=800&auto=format&fit=crop" alt="פרארי וורלד אבו דאבי" loading="lazy">
         </div>
-        <button type="button" class="video-caption" data-slot-action="7">Ferrari</button>
+        <div class="video-feature-text">
+          <div class="eyebrow">פרארי וורלד</div>
+          <h3>Ferrari World אבו דאבי</h3>
+          <p>אדרנלין בשיא ההנאה, מסלולי המרוצים המהירים בעולם ואטרקציות שלא תשכחו. אנחנו דואגים לכם לסגירת מקומות מראש.</p>
+          <button type="button" class="btn btn-gold" data-slot-action="7">לפרטים ולהזמנה</button>
+        </div>
       </div>
+
     </div>
+
     <a class="details-btn" href="experiences.html">לפרטים</a>
     <a class="details-btn" href="offers.html">הזמנות</a>
   </div>
@@ -1484,28 +1584,53 @@
 <script>
   const SUPABASE_URL = 'https://bhxatigravmoouickbsh.supabase.co';
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJoeGF0aWdyYXZtb291aWNrYnNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkzNDU5NTgsImV4cCI6MjEwNDkyMTk1OH0.pOP7FAgSdutvCrONGF4tByfofuVEm1EHaqbd6Xq2_Cc';
-  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  // If the Supabase library failed to load (blocked network, ad-blocker, offline preview, etc.)
+  // the rest of the page must still render normally — the gallery/video-upload features just
+  // quietly do nothing instead of throwing and breaking the page.
+  let supabaseClient = null;
+  try {
+    if (window.supabase && typeof window.supabase.createClient === 'function') {
+      supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    } else {
+      console.error('Supabase library did not load; shared gallery/video features are disabled.');
+    }
+  } catch (err) {
+    console.error('Supabase init failed:', err);
+  }
 
   async function uploadSharedPhoto(file, category){
-    const ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
-    const path = `${category}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-    const { error: uploadError } = await supabaseClient.storage.from('gallery-photos').upload(path, file);
-    if (uploadError) { console.error(uploadError); return null; }
-    const { data: urlData } = supabaseClient.storage.from('gallery-photos').getPublicUrl(path);
-    const publicUrl = urlData.publicUrl;
-    const { error: insertError } = await supabaseClient.from('gallery_photos').insert({ image_url: publicUrl, category });
-    if (insertError) { console.error(insertError); return null; }
-    return publicUrl;
+    if (!supabaseClient) return null;
+    try {
+      const ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
+      const path = `${category}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+      const { error: uploadError } = await supabaseClient.storage.from('gallery-photos').upload(path, file);
+      if (uploadError) { console.error(uploadError); return null; }
+      const { data: urlData } = supabaseClient.storage.from('gallery-photos').getPublicUrl(path);
+      const publicUrl = urlData.publicUrl;
+      const { error: insertError } = await supabaseClient.from('gallery_photos').insert({ image_url: publicUrl, category });
+      if (insertError) { console.error(insertError); return null; }
+      return publicUrl;
+    } catch (err) {
+      console.error('uploadSharedPhoto failed:', err);
+      return null;
+    }
   }
 
   async function loadSharedPhotos(category){
-    const { data, error } = await supabaseClient
-      .from('gallery_photos')
-      .select('image_url')
-      .eq('category', category)
-      .order('created_at', { ascending: true });
-    if (error) { console.error(error); return []; }
-    return data.map(row => row.image_url);
+    if (!supabaseClient) return [];
+    try {
+      const { data, error } = await supabaseClient
+        .from('gallery_photos')
+        .select('image_url')
+        .eq('category', category)
+        .order('created_at', { ascending: true });
+      if (error) { console.error(error); return []; }
+      return data.map(row => row.image_url);
+    } catch (err) {
+      console.error('loadSharedPhotos failed:', err);
+      return [];
+    }
   }
 </script>
 <script>
@@ -1685,7 +1810,7 @@
     });
   })();
 
-  // one action per video slot, shared by the video itself and its button underneath
+  // one action per video slot, shared by the video itself, its caption button and CTA buttons
   const slotActions = {
     '1': () => showVideoToast(videoToastMessages['1']),
     '2': () => openSeaChoice(),
@@ -1713,7 +1838,8 @@
       io.observe(v);
     } else { start(); }
   });
-  document.querySelectorAll('.video-caption[data-slot-action]').forEach(btn => {
+  // caption buttons under the small video cubes (elsewhere on the page) + the new feature CTA buttons
+  document.querySelectorAll('.video-caption[data-slot-action], .video-feature-text .btn[data-slot-action]').forEach(btn => {
     btn.addEventListener('click', () => {
       const action = slotActions[btn.dataset.slotAction];
       if (action) action();
@@ -1755,15 +1881,20 @@
     }
 
     async function loadSlotVideo(){
-      const { data, error } = await supabaseClient
-        .from('site_videos')
-        .select('video_url')
-        .eq('slot', Number(slot))
-        .maybeSingle();
-      if (!error && data && data.video_url){
-        videoEl.src = data.video_url;
-        cube.classList.add('has-video');
-        videoEl.play().catch(() => {});
+      if (!supabaseClient) return;
+      try {
+        const { data, error } = await supabaseClient
+          .from('site_videos')
+          .select('video_url')
+          .eq('slot', Number(slot))
+          .maybeSingle();
+        if (!error && data && data.video_url){
+          videoEl.src = data.video_url;
+          cube.classList.add('has-video');
+          videoEl.play().catch(() => {});
+        }
+      } catch (err) {
+        console.error('loadSlotVideo failed:', err);
       }
     }
 
@@ -1772,21 +1903,30 @@
     inputEl.addEventListener('change', async (e) => {
       const file = e.target.files && e.target.files[0];
       if (!file) return;
-      uploadTileEl.querySelector('span').textContent = 'מעלה...';
-      const ext = (file.name.split('.').pop() || 'mp4').toLowerCase();
-      const path = `slot-${slot}/${Date.now()}.${ext}`;
-      const { error: uploadError } = await supabaseClient.storage.from('site-videos').upload(path, file);
-      if (uploadError){
-        console.error(uploadError);
-        uploadTileEl.querySelector('span').textContent = 'שגיאה, נסו שוב';
+      if (!supabaseClient){
+        uploadTileEl.querySelector('span').textContent = 'ההעלאה לא זמינה כרגע';
         return;
       }
-      const { data: urlData } = supabaseClient.storage.from('site-videos').getPublicUrl(path);
-      await supabaseClient.from('site_videos').upsert({ slot: Number(slot), video_url: urlData.publicUrl, updated_at: new Date().toISOString() });
-      videoEl.src = urlData.publicUrl;
-      cube.classList.add('has-video');
-      videoEl.play().catch(() => {});
-      inputEl.value = '';
+      uploadTileEl.querySelector('span').textContent = 'מעלה...';
+      try {
+        const ext = (file.name.split('.').pop() || 'mp4').toLowerCase();
+        const path = `slot-${slot}/${Date.now()}.${ext}`;
+        const { error: uploadError } = await supabaseClient.storage.from('site-videos').upload(path, file);
+        if (uploadError){
+          console.error(uploadError);
+          uploadTileEl.querySelector('span').textContent = 'שגיאה, נסו שוב';
+          return;
+        }
+        const { data: urlData } = supabaseClient.storage.from('site-videos').getPublicUrl(path);
+        await supabaseClient.from('site_videos').upsert({ slot: Number(slot), video_url: urlData.publicUrl, updated_at: new Date().toISOString() });
+        videoEl.src = urlData.publicUrl;
+        cube.classList.add('has-video');
+        videoEl.play().catch(() => {});
+        inputEl.value = '';
+      } catch (err) {
+        console.error('video upload failed:', err);
+        uploadTileEl.querySelector('span').textContent = 'שגיאה, נסו שוב';
+      }
     });
 
     loadSlotVideo();
