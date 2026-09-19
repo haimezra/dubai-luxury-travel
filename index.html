@@ -1011,7 +1011,7 @@
           <h3>אופנועי ים במרינה</h3>
           <p>דהירה על המים מול קו הרקיע של דובאי, עם הדרכה מקצועית וציוד בטיחות מלא.</p>
           <span class="exp-link">לצפייה בגלריה ←</span>
-          <a class="exp-link" href="yacht.html" style="margin-right:14px;" onclick="event.stopPropagation()">להזמנות ←</a>
+          <a class="exp-link" href="jetski.html" style="margin-right:14px;" onclick="event.stopPropagation()">להזמנות ←</a>
         </div>
       </div>
       <div class="exp-card">
@@ -1521,8 +1521,7 @@
   seaChoiceModal.addEventListener('click', (e) => { if (e.target === seaChoiceModal) closeSeaChoice(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSeaChoice(); });
   document.getElementById('choiceJetski').addEventListener('click', () => {
-    closeSeaChoice();
-    openGalleryModal('jetski', 'אופנועי ים', 'רגעים מהמרינה.');
+    window.location.href = 'jetski.html';
   });
   document.getElementById('choiceYacht').addEventListener('click', () => {
     window.location.href = 'yacht.html';

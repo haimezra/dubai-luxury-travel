@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>אופנועי ים בדובאי | HAY DUBAI</title>
+<meta name="description" content="סיורי אופנועי ים בדובאי: בורג' אל ערב, פאלם ג'ומיירה ואטלנטיס. הדרכה מלאה, ציוד בטיחות ומתאים לכל המשפחה.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Suez+One&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#141414;
+    --bg:#ffffff;
+    --bg-soft:#eef7fa;
+    --red:#e0201c;
+    --red-deep:#b3120f;
+    --muted:#4f5d63;
+    --sea:#0a6e8c;
+    --sea-deep:#054a5f;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Heebo',sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{font-family:'Suez One',serif;font-weight:400;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+  /* HEADER */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(5,40,52,.94);
+    backdrop-filter:blur(8px);
+  }
+  .nav-inner{
+    max-width:1100px;margin:0 auto;padding:10px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+  }
+  .brand-logo{width:42px;height:42px;object-fit:contain;}
+  nav.links{display:flex;gap:26px;font-size:.95rem;color:#e6f3f7;}
+  nav.links a:hover{color:#ffb3b0;}
+  @media (max-width:820px){nav.links{display:none;}}
+  .nav-cta{
+    background:var(--red);color:#fff;padding:9px 18px;border-radius:6px;
+    font-weight:700;font-size:.92rem;white-space:nowrap;
+  }
+
+  /* HERO */
+  .hero{
+    position:relative;
+    min-height:86vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    overflow:hidden;
+    color:#fff;
+    background-color:#075a72;
+    background-image:
+      linear-gradient(180deg, rgba(4,32,42,.55) 0%, rgba(5,74,95,.25) 42%, rgba(4,32,42,.78) 100%),
+      url('https://images.unsplash.com/photo-1673878391998-50a50a51977b?q=80&w=2000&auto=format&fit=crop'),
+      linear-gradient(180deg,#8fd0e6 0%,#0f8bad 60%,#075a72 100%);
+    background-size:cover;
+    background-position:center;
+  }
+  .hero-content{position:relative;z-index:2;padding:60px 24px;max-width:760px;}
+  .hero-logo{display:block;margin:0 auto 36px;height:26px;width:auto;object-fit:contain;}
+  .kicker{
+    display:inline-block;background:var(--red);color:#fff;
+    padding:6px 16px;border-radius:20px;font-size:.85rem;font-weight:700;
+    margin:0 0 20px;letter-spacing:.02em;
+  }
+  .hero h1{
+    font-size:clamp(2.3rem,6vw,4rem);
+    line-height:1.15;margin:0 0 20px;
+    text-shadow:0 8px 26px rgba(0,0,0,.45);
+  }
+  .hero p.lead{
+    font-size:1.12rem;color:#f2f8fa;max-width:600px;margin:0 auto 34px;
+    text-shadow:0 2px 12px rgba(0,0,0,.4);
+  }
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;padding:15px 32px;border-radius:6px;
+    font-size:1.02rem;font-weight:700;cursor:pointer;border:2px solid transparent;
+    font-family:inherit;
+  }
+  .btn-primary{background:var(--red);color:#fff;}
+  .btn-primary:hover{background:var(--red-deep);}
+  .btn-outline{background:transparent;border-color:#fff;color:#fff;}
+  .btn-outline:hover{background:rgba(255,255,255,.12);}
+
+  /* wave divider under hero */
+  .wave{display:block;width:100%;height:60px;margin-top:-59px;position:relative;z-index:3;}
+
+  section{padding:80px 0;}
+  section.alt{background:var(--bg-soft);}
+  .sec-label{color:var(--red);font-weight:700;font-size:.9rem;text-align:center;margin:0 0 8px;letter-spacing:.02em;}
+  .sec-title{text-align:center;font-size:clamp(1.7rem,3.6vw,2.4rem);margin:0 0 16px;color:var(--sea-deep);}
+  .sec-sub{text-align:center;color:var(--muted);max-width:600px;margin:0 auto 50px;}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;}
+  @media (max-width:820px){.about-grid{grid-template-columns:1fr;}}
+  .about-text h2{font-size:clamp(1.6rem,3.2vw,2.2rem);margin:0 0 18px;text-align:right;color:var(--sea-deep);}
+  .about-text p{color:var(--muted);margin:0 0 16px;}
+  .about-badges{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px;}
+  .badge{
+    background:var(--bg-soft);padding:12px 18px;border-radius:8px;
+    font-size:.92rem;font-weight:600;display:flex;align-items:center;gap:8px;
+  }
+  .about-art{border-radius:16px;overflow:hidden;}
+  .about-art svg{width:100%;height:auto;display:block;}
+
+  /* TOURS */
+  .tour-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;}
+  .tour-card{
+    background:var(--bg);border-radius:16px;overflow:hidden;
+    box-shadow:0 20px 40px -24px rgba(5,74,95,.45);
+  }
+  .tour-card .art{height:170px;}
+  .tour-card .art svg{width:100%;height:100%;display:block;}
+  .tour-body{padding:26px 24px;}
+  .tour-body h3{margin:0 0 10px;font-size:1.35rem;color:var(--sea-deep);}
+  .price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:10px;}
+  .old-price{color:#a0a0a0;text-decoration:line-through;font-size:1rem;}
+  .new-price{color:var(--red-deep);font-size:1.9rem;font-family:'Suez One',serif;}
+  .duration{
+    display:inline-flex;align-items:center;gap:6px;background:var(--bg-soft);
+    padding:6px 14px;border-radius:20px;font-size:.85rem;color:var(--muted);margin-bottom:14px;
+  }
+  .tour-body p.desc{color:var(--muted);font-size:.94rem;margin:0 0 20px;}
+  .tour-body .btn{display:block;text-align:center;width:100%;padding:13px;}
+
+  /* GALLERY */
+  .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+  .gallery-item{border-radius:14px;overflow:hidden;aspect-ratio:4/3;}
+  .gallery-item svg{width:100%;height:100%;display:block;}
+
+  /* LOCATION */
+  .loc-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;}
+  @media (max-width:820px){.loc-grid{grid-template-columns:1fr;}}
+  .loc-info h2{font-size:clamp(1.6rem,3.2vw,2.2rem);margin:0 0 16px;text-align:right;color:var(--sea-deep);}
+  .loc-info p{color:var(--muted);margin:0 0 26px;}
+  .loc-links{display:flex;flex-direction:column;gap:12px;}
+  .loc-links a{
+    display:flex;align-items:center;gap:10px;background:#fff;border-radius:10px;
+    padding:14px 18px;font-size:.98rem;font-weight:600;
+    box-shadow:0 8px 20px -14px rgba(5,74,95,.5);
+  }
+  .loc-links a:hover{background:#e1f1f6;}
+  .loc-art{border-radius:16px;overflow:hidden;}
+  .loc-art svg{width:100%;height:auto;display:block;}
+
+  /* BOOKING */
+  .booking{
+    background:linear-gradient(180deg,var(--sea-deep) 0%,#032e3b 100%);
+    color:#fff;padding:80px 0;
+  }
+  .booking-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:start;}
+  @media (max-width:820px){.booking-grid{grid-template-columns:1fr;}}
+  .booking h2{color:#fff;font-size:clamp(1.7rem,3.6vw,2.3rem);margin:0 0 16px;}
+  .booking .b-text p{color:#cfe6ee;margin:0 0 22px;}
+  .phone-line{font-family:'Suez One',serif;font-size:1.7rem;color:#fff;margin-bottom:4px;}
+  .contact-email{color:#9fd3e2;margin-bottom:24px;direction:ltr;text-align:right;}
+  .contact-actions{display:flex;gap:12px;flex-wrap:wrap;}
+  form.contact-form{
+    background:#fff;color:var(--ink);border-radius:16px;padding:28px 26px;
+    display:flex;flex-direction:column;gap:16px;
+    box-shadow:0 30px 60px -30px rgba(0,0,0,.6);
+  }
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media (max-width:520px){.form-row{grid-template-columns:1fr;}}
+  form.contact-form label{display:flex;flex-direction:column;gap:6px;font-size:.9rem;font-weight:600;color:var(--sea-deep);}
+  form.contact-form input,form.contact-form select,form.contact-form textarea{
+    font-family:inherit;font-size:1rem;padding:11px 12px;border:1.5px solid #cfe0e6;border-radius:8px;
+    background:#f8fcfd;color:var(--ink);width:100%;
+  }
+  form.contact-form input:focus,form.contact-form select:focus,form.contact-form textarea:focus{
+    outline:none;border-color:var(--sea);box-shadow:0 0 0 3px rgba(10,110,140,.18);
+  }
+  form.contact-form .btn{width:100%;}
+
+  footer{padding:34px 0;text-align:center;color:var(--muted);font-size:.86rem;background:var(--bg-soft);}
+  footer .footer-logo{height:26px;width:auto;object-fit:contain;margin:0 auto 10px;}
+  .footer-links{display:flex;gap:18px;justify-content:center;margin-top:10px;flex-wrap:wrap;}
+  .footer-links a:hover{color:var(--sea);}
+
+  .wa-float{
+    position:fixed;bottom:22px;left:22px;z-index:60;
+    width:56px;height:56px;border-radius:50%;
+    background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;
+    font-size:1.6rem;box-shadow:0 10px 24px rgba(0,0,0,.25);
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav-inner">
+    <a href="index.html" aria-label="HAY DUBAI - לעמוד הראשי"><img src="images/logo.png" alt="לוגו HAY DUBAI" class="brand-logo"></a>
+    <nav class="links">
+      <a href="#about">אודות</a>
+      <a href="#tours">סיורים</a>
+      <a href="#gallery">גלריה</a>
+      <a href="#location">מיקום</a>
+      <a href="#booking">הזמנה</a>
+    </nav>
+    <a class="nav-cta" href="tel:029999119">029999119</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <img class="hero-logo" src="images/hay-dubai-logo-v2.png" alt="HAY DUBAI">
+    <span class="kicker">סיורי אופנועי ים · דובאי</span>
+    <h1>אופנועי ים בדובאי<br>אדרנלין מול קו הרקיע</h1>
+    <p class="lead">סיורים מודרכים על גלי מפרץ דובאי, עם נוף לבורג' אל ערב, פאלם ג'ומיירה ומלון אטלנטיס. מתאים לכל המשפחה, כולל ציוד בטיחות והדרכה מלאה.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#tours">לצפייה בסיורים</a>
+      <a class="btn btn-outline" href="#booking">להזמנה</a>
+    </div>
+  </div>
+</section>
+<svg class="wave" viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path d="M0,30 C150,60 300,0 450,25 C600,50 750,5 900,28 C1050,50 1125,20 1200,30 L1200,60 L0,60 Z" fill="#ffffff"/>
+</svg>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-text">
+      <p class="sec-label" style="text-align:right;">מי אנחנו</p>
+      <h2>HAY DUBAI</h2>
+      <p>אנחנו מבטיחים שירות איכותי שהופך את הרפתקת אופנועי הים שלכם לחוויה מהנה לכל המשפחה. הסיורים שלנו לוקחים אתכם דרך האזורים היוקרתיים והמרשימים ביותר על קו המים של דובאי.</p>
+      <p>לא עוד השכרת אופנוע ים רגילה, זה כרטיס למסע דרך הפיתוחים הבלעדיים ביותר על החוף. תיהנו מנוף לבורג' אל ערב, המשיכו לעבר פאלם ג'ומיירה, ותעצרו לצילום בלתי נשכח מול מלון אטלנטיס.</p>
+      <div class="about-badges">
+        <div class="badge">🛟 ציוד בטיחות מלא</div>
+        <div class="badge">👨‍👩‍👧‍👦 מתאים למשפחות</div>
+        <div class="badge">🧭 מדריך מוסמך</div>
+      </div>
+    </div>
+    <div class="about-art">
+      <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="aboutSky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#dff3fa"/>
+            <stop offset="60%" stop-color="#8fd0e6"/>
+            <stop offset="100%" stop-color="#0c7a99"/>
+          </linearGradient>
+        </defs>
+        <rect width="500" height="400" fill="url(#aboutSky)"/>
+        <g fill="#075a72" opacity="0.3">
+          <rect x="30" y="200" width="16" height="90"/>
+          <rect x="55" y="175" width="12" height="115"/>
+          <polygon points="120,140 120,290 108,290 108,190 114,160 120,140"/>
+          <polygon points="120,140 120,290 132,290 132,190 126,160 120,140"/>
+        </g>
+        <rect x="0" y="280" width="500" height="120" fill="#0c7a99"/>
+        <g transform="translate(280,320) rotate(-5) scale(1.5)">
+          <ellipse cx="0" cy="20" rx="46" ry="17" fill="#ffffff" opacity="0.9"/>
+          <path d="M -46 20 Q -74 10 -95 20 Q -70 26 -46 30 Z" fill="#ffffff" opacity="0.5"/>
+          <rect x="-9" y="-10" width="18" height="30" rx="7" fill="#e0201c"/>
+          <circle cx="0" cy="-16" r="8" fill="#141414"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="tours" class="alt">
+  <div class="wrap">
+    <p class="sec-label">חבילות פופולריות</p>
+    <h2 class="sec-title">הסיורים שלנו</h2>
+    <p class="sec-sub">שני מסלולים מובילים לחוויית אופנועי ים בלתי נשכחת בדובאי.</p>
+
+    <div class="tour-grid">
+      <div class="tour-card">
+        <div class="art">
+          <svg viewBox="0 0 400 170" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="t1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#bfe6f2"/>
+                <stop offset="55%" stop-color="#4fb2cf"/>
+                <stop offset="100%" stop-color="#0c7a99"/>
+              </linearGradient>
+            </defs>
+            <rect width="400" height="170" fill="url(#t1)"/>
+            <g fill="#075a72" opacity="0.4">
+              <polygon points="330,60 330,120 318,120 318,80 324,68 330,60"/>
+              <polygon points="330,60 330,120 342,120 342,80 336,68 330,60"/>
+            </g>
+            <rect x="0" y="120" width="400" height="50" fill="#0c7a99"/>
+            <g transform="translate(150,135) rotate(-5) scale(1.2)">
+              <ellipse cx="0" cy="16" rx="40" ry="14" fill="#fff" opacity="0.9"/>
+              <rect x="-8" y="-8" width="16" height="26" rx="6" fill="#e0201c"/>
+            </g>
+          </svg>
+        </div>
+        <div class="tour-body">
+          <h3>סיור בורג' אל ערב וקו הרקיע</h3>
+          <div class="price-row">
+            <span class="old-price">450 ₪</span>
+            <span class="new-price">200 ₪</span>
+          </div>
+          <div class="duration">⏱ 30 דקות</div>
+          <p class="desc">חוצים את המים הכחולים של דובאי עם נוף מרהיב לבורג' אל ערב האייקוני, שילוב של ריגוש ונוף שלא משאיר אדישים. הדרכה צמודה לאורך כל הדרך.</p>
+          <a class="btn btn-primary" href="#booking" data-tour="סיור בורג' אל ערב וקו הרקיע (30 דקות)">להזמנה</a>
+        </div>
+      </div>
+
+      <div class="tour-card">
+        <div class="art">
+          <svg viewBox="0 0 400 170" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="t2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#cdeaf2"/>
+                <stop offset="55%" stop-color="#5db9d6"/>
+                <stop offset="100%" stop-color="#0a6e8c"/>
+              </linearGradient>
+            </defs>
+            <rect width="400" height="170" fill="url(#t2)"/>
+            <g fill="#054a5f" opacity="0.4">
+              <rect x="60" y="70" width="18" height="60"/>
+              <rect x="85" y="55" width="14" height="75"/>
+              <rect x="290" y="65" width="18" height="65"/>
+              <rect x="315" y="45" width="14" height="85"/>
+            </g>
+            <rect x="0" y="120" width="400" height="50" fill="#0a6e8c"/>
+            <g transform="translate(230,138) rotate(-4) scale(1.25)">
+              <ellipse cx="0" cy="16" rx="40" ry="14" fill="#fff" opacity="0.9"/>
+              <rect x="-8" y="-8" width="16" height="26" rx="6" fill="#141414"/>
+            </g>
+          </svg>
+        </div>
+        <div class="tour-body">
+          <h3>סיור אטלנטיס</h3>
+          <div class="price-row">
+            <span class="old-price">850 ₪</span>
+            <span class="new-price">400 ₪</span>
+          </div>
+          <div class="duration">⏱ שעה אחת</div>
+          <p class="desc">מסלול מורחב שלוקח אתכם לאורך פאלם ג'ומיירה עד למלון אטלנטיס האייקוני, הזדמנות מושלמת לתמונות ולחוויה שתישאר איתכם הרבה אחרי הטיסה חזרה.</p>
+          <a class="btn btn-primary" href="#booking" data-tour="סיור אטלנטיס (שעה אחת)">להזמנה</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <p class="sec-label">מהשטח</p>
+    <h2 class="sec-title">רגעים מהמים</h2>
+    <p class="sec-sub">כמה תמונות להמחשה מהחוויה שמחכה לכם.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#bfe6f2"/><stop offset="60%" stop-color="#4fb2cf"/><stop offset="100%" stop-color="#0a6e8c"/></linearGradient></defs>
+          <rect width="400" height="300" fill="url(#g1)"/>
+          <circle cx="320" cy="60" r="34" fill="#fffaf0" opacity="0.9"/>
+          <rect x="0" y="210" width="400" height="90" fill="#0a6e8c"/>
+          <g transform="translate(160,235) rotate(-6) scale(1.4)">
+            <ellipse cx="0" cy="16" rx="40" ry="14" fill="#fff" opacity="0.9"/>
+            <path d="M -40 16 Q -64 8 -82 16 Q -60 22 -40 26 Z" fill="#fff" opacity="0.5"/>
+            <rect x="-8" y="-8" width="16" height="26" rx="6" fill="#e0201c"/>
+            <circle cx="0" cy="-14" r="7" fill="#141414"/>
+          </g>
+        </svg>
+      </div>
+      <div class="gallery-item">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#dff3fa"/><stop offset="60%" stop-color="#5db9d6"/><stop offset="100%" stop-color="#075a72"/></linearGradient></defs>
+          <rect width="400" height="300" fill="url(#g2)"/>
+          <g fill="#054a5f" opacity="0.4">
+            <polygon points="200,110 200,210 186,210 186,150 194,120 200,110"/>
+            <polygon points="200,110 200,210 214,210 214,150 206,120 200,110"/>
+          </g>
+          <rect x="0" y="210" width="400" height="90" fill="#075a72"/>
+          <g transform="translate(280,240) rotate(-5) scale(1.3)">
+            <ellipse cx="0" cy="16" rx="40" ry="14" fill="#fff" opacity="0.9"/>
+            <rect x="-8" y="-8" width="16" height="26" rx="6" fill="#141414"/>
+            <circle cx="0" cy="-14" r="7" fill="#141414"/>
+          </g>
+        </svg>
+      </div>
+      <div class="gallery-item">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="g3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#cdeaf2"/><stop offset="60%" stop-color="#4fb2cf"/><stop offset="100%" stop-color="#0c7a99"/></linearGradient></defs>
+          <rect width="400" height="300" fill="url(#g3)"/>
+          <circle cx="90" cy="70" r="28" fill="#fffaf0" opacity="0.9"/>
+          <rect x="0" y="215" width="400" height="85" fill="#0c7a99"/>
+          <g transform="translate(120,238) rotate(-4) scale(1.2)">
+            <ellipse cx="0" cy="16" rx="40" ry="14" fill="#fff" opacity="0.9"/>
+            <rect x="-8" y="-8" width="16" height="26" rx="6" fill="#e0201c"/>
+          </g>
+          <g transform="translate(260,250) rotate(-6) scale(1.05)">
+            <ellipse cx="0" cy="16" rx="40" ry="14" fill="#fff" opacity="0.85"/>
+            <rect x="-8" y="-8" width="16" height="26" rx="6" fill="#141414"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="location" class="alt">
+  <div class="wrap loc-grid">
+    <div class="loc-info">
+      <p class="sec-label" style="text-align:right;">איפה אנחנו</p>
+      <h2>נמל הדייגים, דובאי</h2>
+      <p>יוצאים להרפתקה ישירות מהמרינה, עם גישה קלה וחניה סמוכה. הצוות שלנו מחכה לכם עם כל הציוד מוכן.</p>
+      <div class="loc-links">
+        <a href="https://www.google.com/maps/search/?api=1&query=Fishing+Harbour+Al+Fintaas+Street+Jumeirah+3+Dubai" target="_blank" rel="noopener">📍 Fishing Harbour, Al Fintaas Street, Jumeirah 3, Dubai</a>
+        <a href="https://wa.me/97229999119" target="_blank" rel="noopener">💬 וואטסאפ: 02-999-9119</a>
+        <a href="tel:029999119">📞 טלפון: 02-999-9119</a>
+      </div>
+    </div>
+    <div class="loc-art">
+      <svg viewBox="0 0 500 380" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="locSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#dff3fa"/><stop offset="55%" stop-color="#7cc8de"/><stop offset="100%" stop-color="#0a6e8c"/></linearGradient></defs>
+        <rect width="500" height="380" fill="url(#locSky)"/>
+        <g fill="#054a5f" opacity="0.35">
+          <rect x="40" y="200" width="90" height="14" rx="4"/>
+          <rect x="40" y="200" width="14" height="70" rx="4"/>
+          <rect x="380" y="190" width="14" height="80" rx="4"/>
+        </g>
+        <rect x="0" y="260" width="500" height="120" fill="#0a6e8c"/>
+        <g transform="translate(250,300) rotate(-5) scale(1.4)">
+          <ellipse cx="0" cy="16" rx="40" ry="14" fill="#fff" opacity="0.9"/>
+          <path d="M -40 16 Q -64 8 -82 16 Q -60 22 -40 26 Z" fill="#fff" opacity="0.5"/>
+          <rect x="-8" y="-8" width="16" height="26" rx="6" fill="#e0201c"/>
+          <circle cx="0" cy="-14" r="7" fill="#141414"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="booking" class="booking">
+  <div class="wrap booking-grid">
+    <div class="b-text">
+      <h2>מוכנים לצאת להרפתקה?</h2>
+      <p>מלאו את הפרטים ונחזור אליכם לאישור סופי של התאריך והשעה. אפשר גם ליצור קשר ישירות בטלפון או בוואטסאפ.</p>
+      <div class="phone-line">02-999-9119</div>
+      <div class="contact-email">Infodubaisrael@gmail.com</div>
+      <div class="contact-actions">
+        <a class="btn btn-primary" href="tel:029999119">📞 חיוג ישיר</a>
+        <a class="btn btn-outline" href="https://wa.me/97229999119" target="_blank" rel="noopener">💬 וואטסאפ</a>
+      </div>
+    </div>
+    <form class="contact-form" action="https://formsubmit.co/Infodubaisrael@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="הזמנת אופנועי ים, HAY DUBAI">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <div class="form-row">
+        <label>
+          שם מלא
+          <input type="text" name="שם מלא" required>
+        </label>
+        <label>
+          טלפון
+          <input type="tel" name="טלפון" required>
+        </label>
+      </div>
+      <label>
+        אימייל (רשות)
+        <input type="email" name="אימייל">
+      </label>
+      <label>
+        הסיור
+        <select name="סיור" id="tourSelect">
+          <option>סיור בורג' אל ערב וקו הרקיע (30 דקות)</option>
+          <option>סיור אטלנטיס (שעה אחת)</option>
+        </select>
+      </label>
+      <div class="form-row">
+        <label>
+          תאריך מבוקש
+          <input type="date" name="תאריך מבוקש" id="dateInput" required>
+        </label>
+        <label>
+          שעה מועדפת
+          <input type="time" name="שעה מועדפת">
+        </label>
+      </div>
+      <label>
+        מספר משתתפים
+        <input type="number" name="מספר משתתפים" min="1" value="2">
+      </label>
+      <label>
+        הודעה (רשות)
+        <textarea name="הודעה" rows="3" placeholder="למשל: ילדים בקבוצה, בקשה מיוחדת"></textarea>
+      </label>
+      <button type="submit" class="btn btn-primary">שליחת בקשת הזמנה</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <img class="footer-logo" src="images/hay-dubai-logo-v2.png" alt="HAY DUBAI">
+  <div>אופנועי ים בדובאי</div>
+  <div style="margin-top:6px;">02-999-9119</div>
+  <div class="footer-links">
+    <a href="index.html">חזרה לעמוד הראשי</a>
+    <a href="privacy.html">מדיניות פרטיות</a>
+    <a href="terms.html">תנאי שימוש</a>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/97229999119" target="_blank" rel="noopener" aria-label="וואטסאפ">💬</a>
+
+<script>
+  // preselect the tour when clicking "להזמנה" on a tour card
+  document.querySelectorAll('[data-tour]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var sel = document.getElementById('tourSelect');
+      if (sel) sel.value = btn.getAttribute('data-tour');
+    });
+  });
+  // no bookings in the past
+  var d = new Date();
+  var today = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  document.getElementById('dateInput').min = today;
+</script>
+
+</body>
+</html>
