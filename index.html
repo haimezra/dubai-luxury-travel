@@ -541,6 +541,41 @@
   .modal-close:hover{ box-shadow: 0 0 18px var(--gold-glow); }
   .modal-box h3{ font-size: 1.6rem; padding-left: 50px; }
   .modal-sub{ color: var(--muted); font-size: .98rem; margin-top: 12px; font-weight: 300; }
+  /* RZR action title (extreme gallery modal) */
+  .modal-box h3.rzr-title{
+    display:inline-block;
+    font-family:'Rubik','Heebo',sans-serif;
+    font-size: 3.4rem; font-weight: 900; line-height: 1.05;
+    letter-spacing: .08em; font-style: italic; direction: ltr;
+    padding-left: 0; margin-top: 6px;
+    background: linear-gradient(180deg, #ff7a52 0%, #ff2a1f 45%, #b3120f 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    animation: rzrShake .32s linear infinite, rzrGlow 1.1s ease-in-out infinite alternate;
+    will-change: transform, filter;
+  }
+  .modal-box h3.rzr-title::after{
+    content:''; display:block; height:5px; width:120px; margin-top:10px;
+    background: linear-gradient(90deg, #ff2a1f, rgba(255,42,31,0));
+    transform: skewX(-24deg);
+  }
+  @keyframes rzrShake{
+    0%,100%{ transform: translate(0,0) skewX(-8deg) rotate(0deg); }
+    12%{ transform: translate(-2px,1px) skewX(-8deg) rotate(-.7deg); }
+    25%{ transform: translate(2px,-1px) skewX(-8deg) rotate(.6deg); }
+    37%{ transform: translate(-1px,-2px) skewX(-8deg) rotate(-.4deg); }
+    50%{ transform: translate(3px,1px) skewX(-8deg) rotate(.8deg); }
+    62%{ transform: translate(-3px,0) skewX(-8deg) rotate(-.8deg); }
+    75%{ transform: translate(1px,2px) skewX(-8deg) rotate(.4deg); }
+    87%{ transform: translate(-2px,-1px) skewX(-8deg) rotate(-.5deg); }
+  }
+  @keyframes rzrGlow{
+    from{ filter: drop-shadow(0 0 6px rgba(255,42,31,.45)); }
+    to{ filter: drop-shadow(0 0 20px rgba(255,42,31,.95)); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .modal-box h3.rzr-title{ animation: none; }
+  }
   .modal-grid{
     margin-top: 30px;
     display:grid;
@@ -1070,7 +1105,7 @@
           <span class="exp-link">לצפייה בגלריה ←</span>
         </div>
       </div>
-      <div class="exp-card clickable" onclick="openGalleryModal('extreme','אקסטרים: אופנועי ים ומכוניות יוקרה','אדרנלין בקצב של דובאי.')">
+      <div class="exp-card clickable" onclick="openGalleryModal('extreme','RZR','אדרנלין בקצב של דובאי.')">
         <div class="img-wrap"><video src="videos/extreme-card.mp4" autoplay muted loop playsinline></video></div>
         <div class="exp-body">
           <h3>אקסטרים</h3>
@@ -1486,6 +1521,7 @@
   async function openGalleryModal(category, title, sub){
     currentModalCategory = category;
     modalTitle.textContent = title;
+    modalTitle.classList.toggle('rzr-title', category === 'extreme');
     modalSub.textContent = sub;
     galleryModal.classList.add('active');
     modalUploadTile.querySelector('.small').textContent = 'נראה לכל המבקרים באתר';
