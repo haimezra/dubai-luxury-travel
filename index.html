@@ -670,6 +670,7 @@
     border-radius: 14px;
   }
   .modal-grid img{ width:100%; height:100%; object-fit:cover; }
+  .modal-grid video{ width:100%; height:100%; object-fit:cover; display:block; }
   @media (max-width: 640px){
     .modal-grid{ grid-template-columns: repeat(2,1fr); }
     .modal-box{ padding: 28px 22px; }
@@ -758,17 +759,6 @@
 
   @media (max-width: 980px){ .exp-grid{ grid-template-columns: 1fr 1fr; } }
   @media (max-width: 560px){ .exp-grid{ grid-template-columns: 1fr; } }
-
-  /* ---------- ROOM SHOWCASE VIDEO ---------- */
-  .room-showcase{ padding-top: 0; }
-  .room-showcase-video{
-    max-width: 640px;
-    margin: 0 auto;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 0 1px rgba(217,178,92,0.2);
-  }
-  .room-showcase-video video{ width:100%; display:block; }
 
   /* ---------- HOTELS ---------- */
   .hotels{ background: var(--surface); }
@@ -1261,25 +1251,6 @@
   </div>
 </section>
 
-<section class="room-showcase">
-  <div class="container">
-    <div class="section-head" style="text-align:center; margin-left:auto; margin-right:auto;">
-      <div class="eyebrow">קצת מהאווירה</div>
-      <h2>החדרים הכי יפים בדובאי</h2>
-      <p>דואגים לכם לנופים, לחוויה מקסימלית.</p>
-    </div>
-    <div class="room-showcase-video">
-      <video src="videos/rooms-showcase.mp4" autoplay muted loop playsinline preload="metadata"></video>
-    </div>
-    <div class="room-showcase-video" style="margin-top:24px;">
-      <video src="videos/rooms-showcase-2.mp4" autoplay muted loop playsinline preload="metadata"></video>
-    </div>
-    <div class="room-showcase-video" style="margin-top:24px; aspect-ratio:16/9;">
-      <video src="videos/rooms-showcase-3.mp4" autoplay muted loop playsinline preload="metadata" style="width:100%; height:100%; object-fit:cover; display:block;"></video>
-    </div>
-  </div>
-</section>
-
 <section class="hotels" id="abudhabi">
   <div class="container">
     <div class="hotels-layout">
@@ -1591,8 +1562,25 @@
   const modalClose = document.getElementById('modalClose');
   let currentModalCategory = null;
 
+  // videos shown at the top of a category's gallery
+  const MODAL_VIDEOS = {
+    testimonials: ['videos/rooms-showcase.mp4', 'videos/rooms-web-2.mp4', 'videos/rooms-web.mp4']
+  };
+  function addModalVideos(){
+    (MODAL_VIDEOS[currentModalCategory] || []).forEach(src => {
+      const fig = document.createElement('figure');
+      const v = document.createElement('video');
+      v.src = src; v.muted = true; v.loop = true; v.autoplay = true; v.playsInline = true;
+      v.setAttribute('playsinline', ''); v.preload = 'metadata';
+      fig.appendChild(v);
+      modalGrid.insertBefore(fig, modalUploadTile);
+      v.play().catch(() => {});
+    });
+  }
+
   async function refreshModalGallery(){
     document.querySelectorAll('#modalGrid figure:not(.upload-tile)').forEach(f => f.remove());
+    addModalVideos();
     const urls = await loadSharedPhotos(currentModalCategory);
     urls.forEach(url => {
       const fig = document.createElement('figure');
