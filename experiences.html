@@ -55,7 +55,26 @@
   .exp-layout{
     display:grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items:start;
   }
-  .exp-photo{ border-radius: 18px; overflow:hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.4); position: sticky; top: 100px; }
+  .exp-media{ position: sticky; top: 100px; display:flex; flex-direction:column; gap: 14px; }
+  .exp-photo{ border-radius: 18px; overflow:hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+  .exp-video{ display:none; border-radius: 18px; overflow:hidden; aspect-ratio: 4/3; background: var(--surface-2);
+    box-shadow: 0 0 0 1px rgba(217,178,92,0.25), 0 16px 40px rgba(0,0,0,0.4); }
+  .exp-video.show{ display:block; }
+  .exp-video video{ width:100%; height:100%; object-fit:cover; display:block; }
+  .exp-thumbs{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .exp-thumbs img{ width:100%; height: 96px; object-fit:cover; border-radius: 12px; }
+  .exp-layout.no-media{ grid-template-columns: 1fr; }
+  .exp-cta{ margin-top: 22px; }
+  .exp-jump{ display:flex; flex-wrap:wrap; gap: 10px; padding: 26px 0 0; }
+  .exp-jump a{ padding: 8px 16px; border-radius: 999px; background: var(--surface-2); color: var(--ivory); font-size:.88rem; font-weight:500;
+    box-shadow: 0 0 0 1px rgba(217,178,92,0.18); transition: box-shadow .2s ease, color .2s ease; }
+  .exp-jump a:hover{ color: var(--gold-bright); box-shadow: 0 0 0 1px rgba(217,178,92,0.5), 0 0 16px rgba(217,178,92,0.18); }
+  .abu-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 8px; }
+  .abu-card{ background: var(--surface-2); border-radius: 18px; overflow:hidden; }
+  .abu-card img{ width:100%; height: 190px; object-fit:cover; }
+  .abu-card .body{ padding: 20px 22px 6px; }
+  .abu-card h3{ font-size: 1.2rem; margin-bottom: 14px; }
+  section[id]{ scroll-margin-top: 70px; }
   .exp-photo img{ width:100%; height: 320px; object-fit:cover; }
 
   .rule-block{ margin-bottom: 22px; }
@@ -71,7 +90,8 @@
 
   @media (max-width: 800px){
     .exp-layout{ grid-template-columns: 1fr; }
-    .exp-photo{ position: static; }
+    .exp-media{ position: static; }
+    .abu-grid{ grid-template-columns: 1fr; }
   }
 
   .quiz-cta{
@@ -152,12 +172,19 @@
   </div>
 </section>
 
-<section class="exp-section">
+<div class="container">
+  <nav class="exp-jump" aria-label="קפיצה לחוויה"><a href="#s-jetski">אופנועי ים</a><a href="#s-vip">מסיבות VIP</a><a href="#s-beaches">חופים</a><a href="#s-safari">ספארי מדברי</a><a href="#s-rzr">RZR</a><a href="#s-yacht">יאכטות</a><a href="#s-cars">מכוניות יוקרה</a><a href="#s-fountain">מזרקת דובאי</a><a href="#s-hotels">מלונות וחדרים</a><a href="#s-abudhabi">אבו דאבי</a></nav>
+</div>
+
+<section class="exp-section" id="s-jetski">
   <div class="container">
     <div class="exp-head"><span class="icon">🚤</span><h2>אופנועי ים</h2></div>
     <div class="exp-layout">
-      <div class="exp-photo">
-        <img src="https://images.unsplash.com/photo-1673878391998-50a50a51977b?q=80&w=900&auto=format&fit=crop" alt="אופנועי ים בדובאי מרינה">
+      <div class="exp-media">
+        <div class="exp-photo">
+          <img src="https://images.unsplash.com/photo-1673878391998-50a50a51977b?q=80&w=900&auto=format&fit=crop" alt="אופנועי ים בדובאי מרינה">
+        </div>
+        <div class="exp-video"><video data-src="videos/jetski-web.mp4" muted loop playsinline preload="none"></video></div>
       </div>
       <div>
         <div class="rule-block">
@@ -182,17 +209,21 @@
           <p>בדרך כלל מגיל 16 לנהיגה בליווי מבוגר, ומגיל 18 לנהיגה עצמאית ללא ליווי. הגיל המדויק תלוי במפעיל הספציפי, ואנחנו נתאם עבורכם מראש את המפעיל שמתאים לגיל ולניסיון שלכם.</p>
         </div>
         <p class="rule-note">אנחנו יודעים בדיוק עם איזו חברה לעבוד בכל אזור במרינה, כדי שתקבלו את החוויה הכי בטוחה והכי כיפית שיש.</p>
+        <a class="btn exp-cta" href="jetski.html">לדף ההזמנה</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="exp-section" style="background: var(--surface);">
+<section class="exp-section" id="s-vip" style="background: var(--surface);">
   <div class="container">
     <div class="exp-head"><span class="icon">🥂</span><h2>מסיבות VIP</h2></div>
     <div class="exp-layout">
-      <div class="exp-photo">
-        <img src="https://images.unsplash.com/photo-1765741836851-8071475d4911?q=80&w=900&auto=format&fit=crop" alt="מסיבות VIP בדובאי">
+      <div class="exp-media">
+        <div class="exp-photo">
+          <img src="https://images.unsplash.com/photo-1765741836851-8071475d4911?q=80&w=900&auto=format&fit=crop" alt="מסיבות VIP בדובאי">
+        </div>
+        <div class="exp-video"><video data-src="videos/nightlife.mp4" poster="images/nightlife-poster.jpg" muted loop playsinline preload="none"></video></div>
       </div>
       <div>
         <div class="rule-block">
@@ -209,17 +240,21 @@
           </ul>
         </div>
         <p class="rule-note">אנחנו יודעים בדיוק באיזה מלון נמצאת המסיבה הכי שווה בכל תאריך, ודואגים להזמנת שולחן במחיר הכי משתלם, בלי לחכות בתור.</p>
+        <a class="btn exp-cta" href="vip-parties.html">למסיבות VIP</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="exp-section">
+<section class="exp-section" id="s-beaches">
   <div class="container">
     <div class="exp-head"><span class="icon">🏖️</span><h2>חופים מנצחים</h2></div>
     <div class="exp-layout">
-      <div class="exp-photo">
-        <img src="https://images.unsplash.com/photo-1746333578342-3e661512a14d?q=80&w=900&auto=format&fit=crop" alt="חוף יוקרתי בדובאי">
+      <div class="exp-media" data-slot="5">
+        <div class="exp-photo">
+          <img src="https://images.unsplash.com/photo-1746333578342-3e661512a14d?q=80&w=900&auto=format&fit=crop" alt="חוף יוקרתי בדובאי">
+        </div>
+        <div class="exp-video"><video muted loop playsinline preload="none"></video></div>
       </div>
       <div>
         <p style="margin-bottom:18px;">בדובאי יש הרבה סוגים של חופים, וכל אחד מתאים לסוג אחר של חופשה. אנחנו מכירים את כולם, ונתאים לכם את החוף הנכון לפי מה שאתם מחפשים.</p>
@@ -240,6 +275,335 @@
         <p class="rule-note">בשאלון הקצר בהמשך נבין איזה סוג חוף הכי מתאים לכם, ונדריך אתכם בדיוק לאן ללכת.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="exp-section" id="s-safari" style="background: var(--surface);">
+  <div class="container">
+    <div class="exp-head"><span class="icon">🏜️</span><h2>ספארי מדברי בשקיעה</h2></div>
+    <div class="exp-layout">
+      <div class="exp-media">
+        <div class="exp-photo">
+          <img src="images/safari-dusk-jeep.jpg" alt="רכב שטח בדיונות בשעת ערב">
+        </div>
+        <div class="exp-thumbs"><img src="images/safari-camel.jpg" alt="" loading="lazy"><img src="images/safari-fire.jpg" alt="" loading="lazy"><img src="images/safari-dervish-night.jpg" alt="" loading="lazy"></div>
+      </div>
+      <div>
+        <div class="rule-block">
+          <h3>מה מותר</h3>
+          <ul>
+            <li>דהירה על הדיונות ברכב 4X4 עם נהג מקצועי, כשכולם חגורים</li>
+            <li>רכיבה על גמל וגלישת חול בליווי צוות המחנה</li>
+            <li>צילום בשקיעה ובמחנה, כולל תלבושות ערביות שמיועדות לצילום</li>
+            <li>ארוחת ערב בופה ושתייה קלה ללא הגבלה, כלולים במחיר</li>
+          </ul>
+        </div>
+        <div class="rule-block">
+          <h3>מה אסור</h3>
+          <ul>
+            <li>לעמוד או לפתוח דלתות בזמן הנסיעה בשטח, וכל הנוסעים נשארים חגורים לאורך הדהירה</li>
+            <li>לנהוג ברכב הסיור: הנהיגה נעשית רק על ידי הנהג המקצועי</li>
+            <li>להתרחק מהמחנה לבד אל הדיונות בחושך, בלי תיאום עם הצוות</li>
+            <li>משקאות אלכוהוליים הם בתוספת תשלום ובכפוף לחוק המקומי</li>
+          </ul>
+        </div>
+        <div class="rule-block">
+          <h3>מי צריך להיזהר</h3>
+          <p>הדהירה על הדיונות אינה מומלצת לנשים בהריון, למי שסובל מבעיות גב, צוואר או לב, או מבחילות בנסיעה. כדאי להתייעץ עם רופא ולעדכן אותנו מראש, ואנחנו נתאים לכם את החוויה.</p>
+        </div>
+        <div class="rule-block">
+          <h3>מה ללבוש</h3>
+          <ul>
+            <li>נעליים סגורות ונוחות, ובגדים קלים</li>
+            <li>שכבה חמה לערב בחודשי החורף</li>
+            <li>משקפי שמש וכיסוי ראש נגד החול</li>
+          </ul>
+        </div>
+        <p class="rule-note">המחיר הוא 140 ₪ לאדם, כולל איסוף והחזרה מהמלון. בשל תנאי השטח ייתכנו עדכונים בשעת האיסוף או במסלול, ואנחנו נעדכן אתכם מראש.</p>
+        <a class="btn exp-cta" href="desert-safari.html">לפרטים ולהזמנת הספארי</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="exp-section" id="s-rzr">
+  <div class="container">
+    <div class="exp-head"><span class="icon">🏎️</span><h2>RZR ורכבי שטח</h2></div>
+    <div class="exp-layout">
+      <div class="exp-media">
+        <div class="exp-photo">
+          <img src="images/rzr-xp.jpg" alt="Polaris RZR נוסע על החול">
+        </div>
+        <div class="exp-video"><video data-src="videos/rzr-web.mp4" poster="images/rzr-cube-poster.jpg" muted loop playsinline preload="none"></video></div>
+        <div class="exp-thumbs"><img src="images/rzr-convoy.jpg" alt="" loading="lazy"><img src="images/rzr-desert-rider.jpg" alt="" loading="lazy"><img src="images/rzr-sand-spray.jpg" alt="" loading="lazy"></div>
+      </div>
+      <div>
+        <div class="rule-block">
+          <h3>מה מותר</h3>
+          <ul>
+            <li>נהיגה ב-RZR, בטרקטורון ובאופנוע שטח מגיל 16 עם רישיון נהיגה בתוקף</li>
+            <li>נוסעים ב-RZR מגיל 4, עד 4 נוסעים לפי הדגם</li>
+            <li>טרקטורון ילדים מגיל 7, בתוך מתחם סגור</li>
+            <li>נסיעה באזור דיונות פתוח בקצב שלכם, אחרי הדרכת בטיחות</li>
+            <li>תוספות: ליווי ספארי מקצועי ומצלמת GoPro</li>
+          </ul>
+        </div>
+        <div class="rule-block">
+          <h3>מה אסור</h3>
+          <ul>
+            <li>לעלות על כלי לפני שצפיתם בהדרכת הבטיחות</li>
+            <li>לנהוג בכלי למבוגרים מתחת לגיל 16</li>
+            <li>שילד יעלה על כלי בלי שאחד ההורים חתם על כתב הסכמה ואחריות</li>
+            <li>לצאת עם טרקטורון ילדים אל המדבר הפתוח, הוא מיועד למתחם סגור בלבד</li>
+            <li>לנהוג לאחר צריכת אלכוהול</li>
+          </ul>
+        </div>
+        <div class="rule-block">
+          <h3>כדאי לדעת</h3>
+          <ul>
+            <li>החוויה אינה מותאמת לאנשים עם מוגבלות בתנועה</li>
+            <li>שעות הפעילות 08:00–21:00, והיציאה האחרונה לשטח ב-20:00</li>
+            <li>בקיץ מומלץ בשעות הבוקר או בין 15:00 ל-20:00, כשהחום נעים יותר</li>
+          </ul>
+        </div>
+        <p class="rule-note">מחיר התחלתי של 165 ₪ ל-30 דקות, ואפשר לבחור דגם, משך ותוספות בטופס ההזמנה.</p>
+        <a class="btn exp-cta" href="rzr.html">להשכרת RZR</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="exp-section" id="s-yacht" style="background: var(--surface);">
+  <div class="container">
+    <div class="exp-head"><span class="icon">🛥️</span><h2>יאכטות</h2></div>
+    <div class="exp-layout">
+      <div class="exp-media">
+        <div class="exp-photo">
+          <img src="images/yacht-private-event.jpg" alt="אירוע פרטי על יאכטה בדובאי">
+        </div>
+      </div>
+      <div>
+        <div class="rule-block">
+          <h3>מה מותר</h3>
+          <ul>
+            <li>שייט פרטי על יאכטת יוקרה 36 רגל, עד 10 אורחים, עם קפטן וצוות</li>
+            <li>מוזיקה מהטלפון (בלוטות' או AUX) ומיזוג אוויר</li>
+            <li>חגיגת יום הולדת, אירוע חברה או אירוע משפחתי, כולל משקה קבלת פנים</li>
+            <li>דיג, ג'קוזי, אופנועי ים וקייטרינג בתוספת תשלום</li>
+            <li>שחייה בעצירות, בהנחיית הקפטן</li>
+          </ul>
+        </div>
+        <div class="rule-block">
+          <h3>מה אסור</h3>
+          <ul>
+            <li>לעלות על היאכטה עם יותר מ-10 אורחים</li>
+            <li>לקפוץ למים או לשחות בלי אישור הקפטן</li>
+            <li>להתקרב לקצה הסיפון או לעמוד על המעקות בזמן השייט</li>
+          </ul>
+        </div>
+        <div class="rule-block">
+          <h3>כדאי לדעת</h3>
+          <ul>
+            <li>להביא תעודה מזהה או דרכון, בהתאם לדרישת משמר החופים בדובאי</li>
+            <li>ביטול חינם עד 24 שעות לפני המועד</li>
+            <li>בביטול בגלל מזג אוויר או נסיבות שאינן בשליטתנו: החזר כספי מלא או דחייה</li>
+            <li>אלכוהול על היאכטה מתואם מראש מול הצוות ובכפוף לחוק המקומי</li>
+          </ul>
+        </div>
+        <p class="rule-note">המחיר הוא 450 ₪ לשעת שייט אחת, עד 10 אורחים, וכולל שתייה קלה, מים, קרח ומגבות נקיות.</p>
+        <a class="btn exp-cta" href="yacht.html">להזמנת שייט</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="exp-section" id="s-cars">
+  <div class="container">
+    <div class="exp-head"><span class="icon">🚘</span><h2>מכוניות יוקרה</h2></div>
+    <div class="exp-layout">
+      <div class="exp-media" data-slot="4" data-cat="luxurycars">
+        <div class="exp-photo" data-fallback></div>
+        <div class="exp-video"><video muted loop playsinline preload="none"></video></div>
+      </div>
+      <div>
+        <div class="rule-block">
+          <h3>איך זה עובד</h3>
+          <p>אנחנו מתאמים עבורכם השכרת רכבי יוקרה וספורט אצל חברות השכרה מובילות בדובאי, ובוחרים את הדגם והמחיר שמתאימים לכם.</p>
+        </div>
+        <div class="rule-block">
+          <h3>מה כדאי לדעת</h3>
+          <ul>
+            <li>בדרך כלל הגיל המינימלי לרכבי יוקרה וספורט הוא 21 עד 25, ולעיתים נדרש ותק נהיגה של שנה או שנתיים</li>
+            <li>נדרש רישיון נהיגה בתוקף, לעיתים גם רישיון בינלאומי, ופיקדון בכרטיס אשראי</li>
+            <li>יש מגבלת קילומטראז' יומית, וחריגה ממנה בתשלום</li>
+            <li>קנסות תנועה ואגרות כביש (סאליק) מחויבים על הנהג</li>
+          </ul>
+        </div>
+        <div class="rule-block">
+          <h3>מה אסור</h3>
+          <ul>
+            <li>לנהוג ברכב שאינו רכב שטח מחוץ לכבישים סלולים</li>
+            <li>להעביר את ההגה לנהג שלא רשום בחוזה ההשכרה</li>
+            <li>לעשן ברכב, ברוב חברות ההשכרה יש על כך קנס</li>
+            <li>לנהוג לאחר צריכת אלכוהול או בחריגה ממהירות, אלה נאכפים בחומרה בדובאי</li>
+          </ul>
+        </div>
+        <p class="rule-note">הפרטים המדויקים משתנים לפי חברת ההשכרה והדגם. אנחנו נבדוק ונאשר לכם הכול לפני ההזמנה.</p>
+        <a class="btn exp-cta" href="https://wa.me/97229999119?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%94%D7%A9%D7%9B%D7%A8%D7%AA%20%D7%A8%D7%9B%D7%91%20%D7%99%D7%95%D7%A7%D7%A8%D7%94%20%D7%91%D7%93%D7%95%D7%91%D7%90%D7%99.%20%D7%90%D7%A4%D7%A9%D7%A8%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%96%D7%9E%D7%99%D7%A0%D7%95%D7%AA%20%D7%95%D7%9E%D7%97%D7%99%D7%A8%3F" target="_blank" rel="noopener">לבירור זמינות ומחיר</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="exp-section" id="s-fountain" style="background: var(--surface);">
+  <div class="container">
+    <div class="exp-head"><span class="icon">⛲</span><h2>מזרקת דובאי ומקומות VIP</h2></div>
+    <div class="exp-layout">
+      <div class="exp-media" data-slot="1">
+        <div class="exp-photo">
+          <img src="https://images.unsplash.com/photo-1634007626524-f47fa37810a7?q=80&w=900&auto=format&fit=crop" alt="בורג' ח'ליפה ומזרקת דובאי">
+        </div>
+        <div class="exp-video"><video muted loop playsinline preload="none"></video></div>
+      </div>
+      <div>
+        <div class="rule-block">
+          <h3>איך זה עובד</h3>
+          <p>מזרקת דובאי נמצאת מול בורג' ח'ליפה, ובדרך כלל מופיעה בשעות אחר הצהריים והערב, אחת לחצי שעה בקירוב. אפשר לצפות מהטיילת הציבורית בחינם, או מהמקומות ה-VIP במסעדות ובמרפסות מול המזרקה, עם שולחן שמור ונוף בלי הפרעה.</p>
+        </div>
+        <div class="rule-block">
+          <h3>מה מותר</h3>
+          <ul>
+            <li>לצלם ולהסריט לשימוש אישי</li>
+            <li>לשבת לארוחה או למשקה במרפסות מול המופע</li>
+            <li>להזמין שולחן מראש, ובעונות העמוסות זה כמעט הכרחי</li>
+          </ul>
+        </div>
+        <div class="rule-block">
+          <h3>מה אסור</h3>
+          <ul>
+            <li>להפעיל רחפן באזור בלי היתר</li>
+            <li>לעבור את הגדרות וסימוני הבטיחות ליד המים</li>
+            <li>לחסום מעברים בחצובות או במקלות סלפי</li>
+          </ul>
+        </div>
+        <p class="rule-note">אנחנו יודעים אילו מקומות נותנים את הנוף הכי טוב בכל שעה, ונסגור לכם מקום VIP מול המופע, בזמן הכי טוב שיש.</p>
+        <a class="btn exp-cta" href="https://wa.me/97229999119?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%9E%D7%A7%D7%95%D7%9D%20VIP%20%D7%9C%D7%A6%D7%A4%D7%99%D7%99%D7%94%20%D7%91%D7%9E%D7%96%D7%A8%D7%A7%D7%AA%20%D7%93%D7%95%D7%91%D7%90%D7%99.%20%D7%90%D7%A4%D7%A9%D7%A8%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%3F" target="_blank" rel="noopener">לסגירת מקום VIP</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="exp-section" id="s-hotels">
+  <div class="container">
+    <div class="exp-head"><span class="icon">🏨</span><h2>ארמונות וחדרים</h2></div>
+    <div class="exp-layout">
+      <div class="exp-media" data-cat="palace,rooms">
+        <div class="exp-photo">
+          <img src="https://images.unsplash.com/photo-1546412414-e1885259563a?q=80&w=900&auto=format&fit=crop" alt="מלון פאר בדובאי">
+        </div>
+        <div class="exp-video"><video data-src="videos/rooms-web.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="exp-thumbs"><img src="images/room-burj-view.jpg" alt="" loading="lazy"></div>
+      </div>
+      <div>
+        <div class="rule-block">
+          <h3>מה מותר</h3>
+          <ul>
+            <li>לבקש נוף מסוים (בורג' ח'ליפה, הים, הנקודה) וקומה גבוהה</li>
+            <li>סוויטות עם ג'קוזי פרטי בחדר ושירות חדרים</li>
+            <li>לבקש צ'ק אין מוקדם או צ'ק אאוט מאוחר, בתיאום מראש</li>
+            <li>ליהנות ממסעדות, ברים ובריכות המלון, לפי כללי כל מקום</li>
+          </ul>
+        </div>
+        <div class="rule-block">
+          <h3>מה אסור</h3>
+          <ul>
+            <li>לעשן בחדרים שאינם מיועדים לעישון, זה כרוך בקנס</li>
+            <li>להכניס אורחים חיצוניים לחדר בלי רישום, לפי מדיניות המלון</li>
+            <li>להביא אלכוהול מבחוץ לאזורי המלון</li>
+            <li>להרעיש בשעות הלילה, במיוחד במעברים ובמרפסות</li>
+          </ul>
+        </div>
+        <div class="rule-block">
+          <h3>כדאי לדעת</h3>
+          <ul>
+            <li>בצ'ק אין נדרש דרכון בתוקף לכל האורחים</li>
+            <li>שעות הצ'ק אין והצ'ק אאוט משתנות בין המלונות</li>
+          </ul>
+        </div>
+        <p class="rule-note">אנחנו בוחרים עבורכם את המלון והחדר עם הנוף הטוב ביותר בתקציב שלכם.</p>
+        <a class="btn exp-cta" href="https://wa.me/97229999119?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%97%D7%A4%D7%A9%20%D7%9E%D7%9C%D7%95%D7%9F%20%D7%95%D7%97%D7%93%D7%A8%20%D7%91%D7%93%D7%95%D7%91%D7%90%D7%99.%20%D7%90%D7%A4%D7%A9%D7%A8%20%D7%A2%D7%96%D7%A8%D7%94%20%D7%91%D7%91%D7%97%D7%99%D7%A8%D7%94%3F" target="_blank" rel="noopener">לבחירת מלון וחדר</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="exp-section" id="s-abudhabi" style="background: var(--surface);">
+  <div class="container">
+    <div class="exp-head"><span class="icon">🕌</span><h2>סיורים וטיולים באבו דאבי</h2></div>
+    <p style="margin-bottom:18px;">יש לנו סוכנים אישיים שכבר נמצאים בשטח, בדובאי ובאבו דאבי, וזמינים לעזור לכם בכל שאלה ובכל בקשה. כל מקום כאן עם הכללים שלו.</p>
+    <div class="abu-grid">
+        <div class="abu-card">
+          <img src="https://images.unsplash.com/photo-1693164350459-ce6ad75e08c3?q=80&w=700&auto=format&fit=crop" alt="פרארי וורלד אבו דאבי" loading="lazy">
+          <div class="body">
+            <h3>פרארי וורלד</h3>
+            <div class="rule-block"><h3 style="font-size:1.02rem;color:var(--gold-bright);">מה מותר</h3><ul>
+            <li>לעלות על מתקנים בהתאם להגבלות הגובה והגיל של כל מתקן</li>
+            <li>לבקש הנחיות מהצוות בכל מתקן</li>
+          </ul></div>
+            <div class="rule-block"><h3 style="font-size:1.02rem;color:var(--gold-bright);">מה אסור</h3><ul>
+            <li>לעלות על מתקן עם חפצים רופפים כמו טלפון, כובע או משקפיים</li>
+            <li>לעקוף את הגבלות הגובה או לעלות על מתקנים מהירים בהריון או עם בעיות גב, צוואר או לב</li>
+          </ul></div>
+          </div>
+        </div>
+        <div class="abu-card">
+          <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=700&auto=format&fit=crop" alt="מסגד שיח' זאיד הגדול" loading="lazy">
+          <div class="body">
+            <h3>מסגד שיח' זאיד</h3>
+            <div class="rule-block"><h3 style="font-size:1.02rem;color:var(--gold-bright);">מה מותר</h3><ul>
+            <li>כניסה חינם וסיורים מודרכים בחינם</li>
+            <li>צילום ברוב האזורים, בכבוד למתפללים</li>
+            <li>להשאיל עבאיה וצעיף בכניסה, בלי עלות</li>
+          </ul></div>
+            <div class="rule-block"><h3 style="font-size:1.02rem;color:var(--gold-bright);">מה אסור</h3><ul>
+            <li>להיכנס בלבוש צמוד, שקוף או קצר, כולל מכנסיים קצרים</li>
+            <li>לעלות בנעליים לאולם התפילה</li>
+            <li>להרעיש או להתנהג שלא בכבוד. שעות הביקור מוגבלות בימי שישי ובחודש הרמדאן</li>
+          </ul></div>
+          </div>
+        </div>
+        <div class="abu-card">
+          <img src="https://images.unsplash.com/photo-1580418827493-f2b22c0a76cb?q=80&w=700&auto=format&fit=crop" alt="לובר אבו דאבי" loading="lazy">
+          <div class="body">
+            <h3>לובר אבו דאבי</h3>
+            <div class="rule-block"><h3 style="font-size:1.02rem;color:var(--gold-bright);">מה מותר</h3><ul>
+            <li>לצלם בלי פלאש ברוב האולמות</li>
+            <li>להסתובב בין האולמות בקצב שלכם או עם מדריך</li>
+          </ul></div>
+            <div class="rule-block"><h3 style="font-size:1.02rem;color:var(--gold-bright);">מה אסור</h3><ul>
+            <li>לגעת ביצירות או לעבור את הסימונים</li>
+            <li>להכניס אוכל ושתייה לאולמות התצוגה. תיקים גדולים עשויים להידרש להפקדה</li>
+          </ul></div>
+          </div>
+        </div>
+        <div class="abu-card">
+          <img src="https://images.unsplash.com/photo-1704668961045-831f565e62bd?q=80&w=700&auto=format&fit=crop" alt="יאס איילנד" loading="lazy">
+          <div class="body">
+            <h3>יאס איילנד</h3>
+            <div class="rule-block"><h3 style="font-size:1.02rem;color:var(--gold-bright);">מה מותר</h3><ul>
+            <li>לבחור פארק לפי הגיל וסוג החוויה: פארקי שעשועים, פארקי מים ועוד</li>
+            <li>להיעזר בצוות לפי כללי הבטיחות של כל פארק</li>
+          </ul></div>
+            <div class="rule-block"><h3 style="font-size:1.02rem;color:var(--gold-bright);">מה אסור</h3><ul>
+            <li>להביא אוכל ושתייה מבחוץ, ברוב הפארקים אסור</li>
+            <li>להיכנס לפארקי המים בלבוש שאינו בגד ים מתאים</li>
+            <li>לעלות על מתקנים בניגוד להגבלות הגובה והגיל</li>
+          </ul></div>
+          </div>
+        </div>
+    </div>
+    <p class="rule-note">הכללים והשעות של כל מקום עשויים להתעדכן. אנחנו נבדוק אותם ונעדכן אתכם לפני המועד.</p>
+    <a class="btn exp-cta" href="https://wa.me/97229999119?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%A1%D7%99%D7%95%D7%A8%20%D7%91%D7%90%D7%91%D7%95%20%D7%93%D7%90%D7%91%D7%99.%20%D7%90%D7%A4%D7%A9%D7%A8%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%3F" target="_blank" rel="noopener">לתכנון סיור באבו דאבי</a>
   </div>
 </section>
 
@@ -378,5 +742,76 @@
   }
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function(){
+  // start each clip only when it is close to the screen
+  const io = ('IntersectionObserver' in window) ? new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const v = e.target;
+      if (v.dataset.src && !v.getAttribute('src')) v.src = v.dataset.src;
+      v.play().catch(() => {});
+      io.unobserve(v);
+    });
+  }, { rootMargin: '300px' }) : null;
+  function arm(video){
+    const box = video.closest('.exp-video');
+    if (box) box.classList.add('show');
+    if (io) io.observe(video); else { if (video.dataset.src) video.src = video.dataset.src; video.play().catch(() => {}); }
+  }
+  document.querySelectorAll('.exp-video video[data-src]').forEach(arm);
+
+  function tidy(media){
+    const hasMedia = media.querySelector('.exp-photo img, .exp-video.show, .exp-thumbs img');
+    if (!hasMedia){
+      media.style.display = 'none';
+      const layout = media.closest('.exp-layout');
+      if (layout) layout.classList.add('no-media');
+    }
+  }
+
+  async function enrich(){
+    if (!window.supabase) { document.querySelectorAll('.exp-media').forEach(tidy); return; }
+    let client;
+    try { client = window.supabase.createClient('https://bhxatigravmoouickbsh.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJoeGF0aWdyYXZtb291aWNrYnNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkzNDU5NTgsImV4cCI6MjEwNDkyMTk1OH0.pOP7FAgSdutvCrONGF4tByfofuVEm1EHaqbd6Xq2_Cc'); }
+    catch (e) { document.querySelectorAll('.exp-media').forEach(tidy); return; }
+    const jobs = [];
+    document.querySelectorAll('.exp-media').forEach(media => {
+      jobs.push((async () => {
+        try {
+          const slot = media.dataset.slot;
+          if (slot){
+            const { data } = await client.from('site_videos').select('video_url').eq('slot', Number(slot)).maybeSingle();
+            const video = media.querySelector('.exp-video video');
+            if (data && data.video_url && video){ video.dataset.src = data.video_url; arm(video); }
+          }
+          const cats = (media.dataset.cat || '').split(',').filter(Boolean);
+          if (cats.length){
+            const { data } = await client.from('gallery_photos').select('image_url').in('category', cats).order('created_at', { ascending: true });
+            const urls = (data || []).map(r => r.image_url);
+            if (urls.length){
+              const photo = media.querySelector('.exp-photo');
+              let rest = urls;
+              if (photo && !photo.querySelector('img')){
+                const img = document.createElement('img'); img.src = urls[0]; img.alt = ''; photo.appendChild(img); rest = urls.slice(1);
+              }
+              rest = rest.slice(0, 3 - media.querySelectorAll('.exp-thumbs img').length);
+              if (rest.length){
+                let th = media.querySelector('.exp-thumbs');
+                if (!th){ th = document.createElement('div'); th.className = 'exp-thumbs'; media.appendChild(th); }
+                rest.forEach(u => { const i = document.createElement('img'); i.src = u; i.alt = ''; i.loading = 'lazy'; th.appendChild(i); });
+              }
+            }
+          }
+        } catch (e) { console.error(e); }
+      })());
+    });
+    await Promise.all(jobs);
+    document.querySelectorAll('.exp-media').forEach(tidy);
+  }
+  enrich();
+})();
+</script>
 </body>
 </html>
