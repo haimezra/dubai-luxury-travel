@@ -313,10 +313,12 @@
     list-style:none; margin:0; padding:0; display:grid; border-radius: 12px;
     background:#0b0c0f; border: 1px solid rgba(217,178,92,0.22); overflow:hidden;
   }
-  .airport-route li{ display:flex; align-items:center; gap: 14px; padding: 12px 16px; border-top: 1px solid rgba(255,255,255,0.08); font-weight:500; }
+  .airport-visual{ display:grid; gap: 14px; }
+  .airport-visual img{ width:100%; aspect-ratio: 16/10; object-fit:cover; border-radius: 12px; display:block; }
+  .airport-route li{ display:flex; align-items:center; gap: 12px; padding: 9px 14px; border-top: 1px solid rgba(255,255,255,0.08); font-weight:500; font-size: .95rem; }
   .airport-route li:first-child{ border-top: 0; }
   .airport-route .n{
-    width: 32px; height: 32px; border-radius: 6px; border: 2px solid var(--gold); color: var(--gold);
+    width: 28px; height: 28px; border-radius: 6px; border: 2px solid var(--gold); color: var(--gold); font-size: .9rem;
     display:grid; place-items:center; font-weight:700; flex:none;
   }
   @media (max-width: 860px){
@@ -1075,13 +1077,14 @@
         <p>ליווי אישי מהכניסה לטרמינל ועד ההמראה: צ'ק-אין, בידוק וביקורת דרכונים במסלול מהיר, בלי תורים ובלי לחפש שלטים. מתאים לילדים, להורים, לאנשי עסקים ולכל מי שמעדיף לא להתמודד לבד.</p>
         <a class="btn btn-gold" href="netiv-vip.html">לפרטים ולהזמנה</a>
       </div>
-      <ol class="airport-route" aria-label="מסלול הליווי בנתב&quot;ג">
-        <li><span class="n">1</span><span>מפגש בכניסה לטרמינל</span></li>
-        <li><span class="n">2</span><span>צ'ק-אין והפקדת מזוודות</span></li>
-        <li><span class="n">3</span><span>בידוק ביטחוני במסלול מהיר</span></li>
-        <li><span class="n">4</span><span>ביקורת דרכונים</span></li>
-        <li><span class="n">5</span><span>ליווי עד השער</span></li>
-      </ol>
+      <div class="airport-visual">
+        <img src="images/airport-seniors.jpg" alt="מלווה של נתיב VIP מלווה זוג מבוגרים בטרמינל בדרך לשער" loading="lazy">
+        <ol class="airport-route" aria-label="מסלול הליווי בנתב&quot;ג">
+          <li><span class="n">1</span><span>מפגש בכניסה לטרמינל</span></li>
+          <li><span class="n">2</span><span>מסלול מהיר בבידוק ובדרכונים</span></li>
+          <li><span class="n">3</span><span>ליווי עד השער</span></li>
+        </ol>
+      </div>
     </div>
   </div>
 </section>
