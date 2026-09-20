@@ -3,250 +3,446 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0B0B0C">
 <title>אופנועי ים בדובאי | HAY DUBAI</title>
 <meta name="description" content="סיורי אופנועי ים בדובאי: בורג' אל ערב, פאלם ג'ומיירה ואטלנטיס. הדרכה מלאה, ציוד בטיחות ומתאים לכל המשפחה.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Suez+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#141414;
-    --bg:#ffffff;
-    --bg-soft:#eef7fa;
-    --red:#e0201c;
-    --red-deep:#b3120f;
-    --muted:#4f5d63;
-    --sea:#0a6e8c;
-    --sea-deep:#054a5f;
+    --bg: #0B0B0C;
+    --surface: #121213;
+    --surface-2: #181819;
+    --line: rgba(255,255,255,.09);
+    --text: #F4F1EA;
+    --muted: #9A9A9A;
+    --gold: #C8A96A;
+    --gold-soft: rgba(200,169,106,.38);
+    --serif: 'Outfit', 'Rubik', sans-serif;
+    --display: 'Outfit', 'Rubik', sans-serif;
+    --sans: 'Outfit', 'Rubik', sans-serif;
+    --ease: cubic-bezier(.2,.6,.2,1);
+    --logo-shift: 7px;
   }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  html,body{margin:0;padding:0;}
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; scroll-padding-top: 80px; overflow-x: hidden; max-width: 100%; -webkit-text-size-adjust: 100%; }
   body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Heebo',sans-serif;
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 1.02rem;
+    line-height: 1.85;
+    overflow-x: hidden;
+    max-width: 100%;
+    -webkit-font-smoothing: antialiased;
   }
-  h1,h2,h3,.display{font-family:'Suez One',serif;font-weight:400;}
-  a{color:inherit;text-decoration:none;}
-  img{max-width:100%;display:block;}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+  h1,h2,h3{
+    font-family: var(--serif);
+    font-weight: 300;
+    letter-spacing: -0.005em;
+    line-height: 1.25;
+    color: var(--text);
+    margin: 0;
+  }
+  a{ color: inherit; text-decoration: none; }
+  img{ max-width: 100%; display:block; }
+  button{ font-family: inherit; }
+  :focus-visible{ outline: 1px solid var(--gold); outline-offset: 4px; }
 
-  /* HEADER */
-  header.site{
-    position:sticky;top:0;z-index:50;
-    background:rgba(5,40,52,.94);
-    backdrop-filter:blur(8px);
-  }
-  .nav-inner{
-    max-width:1100px;margin:0 auto;padding:10px 24px;
-    display:flex;align-items:center;justify-content:space-between;gap:20px;
-  }
-  .brand-logo{width:42px;height:42px;object-fit:contain;}
-  nav.links{display:flex;gap:26px;font-size:.95rem;color:#e6f3f7;}
-  nav.links a:hover{color:#ffb3b0;}
-  @media (max-width:820px){nav.links{display:none;}}
-  .nav-cta{
-    background:var(--red);color:#fff;padding:9px 18px;border-radius:6px;
-    font-weight:700;font-size:.92rem;white-space:nowrap;
-  }
+  .container{ max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+  section{ position: relative; }
+  .section{ padding: 130px 0; }
 
-  /* HERO */
-  .hero{
-    position:relative;
-    min-height:86vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    overflow:hidden;
-    color:#fff;
-    background-color:#075a72;
-    background-image:
-      linear-gradient(180deg, rgba(4,32,42,.62) 0%, rgba(5,50,65,.42) 50%, rgba(4,32,42,.82) 100%),
-      url('images/jetski-skyline.jpg'),
-      linear-gradient(180deg,#8fd0e6 0%,#0f8bad 60%,#075a72 100%);
-    background-size:cover;
-    background-position:35% center;
+  /* ---------- SHARED TYPE ---------- */
+  .eyebrow{
+    color: var(--gold);
+    font-weight: 500;
+    font-size: .82rem;
+    letter-spacing: .1em;
+    margin-bottom: 18px;
   }
-  .hero-content{position:relative;z-index:2;padding:60px 24px;max-width:760px;}
-  .hero-logo{display:block;margin:0 auto 36px;height:26px;width:auto;object-fit:contain;}
-  .kicker{
-    display:inline-block;background:var(--red);color:#fff;
-    padding:6px 16px;border-radius:20px;font-size:.85rem;font-weight:700;
-    margin:0 0 20px;letter-spacing:.02em;
-  }
-  .hero h1{
-    font-size:clamp(2.3rem,6vw,4rem);
-    line-height:1.15;margin:0 0 20px;
-    text-shadow:0 8px 26px rgba(0,0,0,.45);
-  }
-  .hero p.lead{
-    font-size:1.12rem;color:#f2f8fa;max-width:600px;margin:0 auto 34px;
-    text-shadow:0 2px 12px rgba(0,0,0,.4);
-  }
-  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .section-head{ max-width: 620px; margin-bottom: 72px; }
+  .section-head.center{ margin-inline: auto; text-align: center; }
+  .section-head h2{ font-size: clamp(1.9rem, 3.6vw, 2.8rem); }
+  .section-head p{ color: var(--muted); margin: 20px 0 0; font-size: 1.05rem; }
+  .rule{ width: 56px; height: 1px; background: var(--gold); border: 0; margin: 28px 0; }
+  .section-head.center .rule{ margin-inline: auto; }
+
+  /* ---------- BUTTONS ---------- */
   .btn{
-    display:inline-block;padding:15px 32px;border-radius:6px;
-    font-size:1.02rem;font-weight:700;cursor:pointer;border:2px solid transparent;
-    font-family:inherit;
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 14px 36px;
+    font-family: var(--sans);
+    font-size: .95rem; font-weight: 400; letter-spacing: .04em;
+    color: var(--text);
+    background: transparent;
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background .4s var(--ease), color .4s var(--ease);
   }
-  .btn-primary{background:var(--red);color:#fff;}
-  .btn-primary:hover{background:var(--red-deep);}
-  .btn-outline{background:transparent;border-color:#fff;color:#fff;}
-  .btn-outline:hover{background:rgba(255,255,255,.12);}
-
-  /* wave divider under hero */
-  .wave{display:block;width:100%;height:60px;margin-top:-59px;position:relative;z-index:3;}
-
-  section{padding:80px 0;}
-  section.alt{background:var(--bg-soft);}
-  .sec-label{color:var(--red);font-weight:700;font-size:.9rem;text-align:center;margin:0 0 8px;letter-spacing:.02em;}
-  .sec-title{text-align:center;font-size:clamp(1.7rem,3.6vw,2.4rem);margin:0 0 16px;color:var(--sea-deep);}
-  .sec-sub{text-align:center;color:var(--muted);max-width:600px;margin:0 auto 50px;}
-
-  /* ABOUT */
-  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;}
-  @media (max-width:820px){.about-grid{grid-template-columns:1fr;}}
-  .about-text h2{font-size:clamp(1.6rem,3.2vw,2.2rem);margin:0 0 18px;text-align:right;color:var(--sea-deep);}
-  .about-text p{color:var(--muted);margin:0 0 16px;}
-  .about-badges{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px;}
-  .badge{
-    background:var(--bg-soft);padding:12px 18px;border-radius:8px;
-    font-size:.92rem;font-weight:600;display:flex;align-items:center;gap:8px;
+  .btn:hover{ background: var(--gold); color: #0B0B0C; }
+  .btn.solid{ background: var(--gold); color: #0B0B0C; font-weight: 500; }
+  .btn.solid:hover{ background: transparent; color: var(--text); }
+  .link-arrow{
+    display: inline-block;
+    color: var(--text);
+    font-size: .95rem; font-weight: 400;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--gold-soft);
+    transition: color .3s ease, border-color .3s ease;
   }
-  .about-art{border-radius:16px;overflow:hidden;}
-  .about-art img{width:100%;height:auto;display:block;}
+  .link-arrow:hover{ color: var(--gold); border-bottom-color: var(--gold); }
 
-  /* TOURS */
-  .tour-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;}
-  .tour-card{
-    background:var(--bg);border-radius:16px;overflow:hidden;
-    box-shadow:0 20px 40px -24px rgba(5,74,95,.45);
+  /* ---------- HEADER ---------- */
+  .site-nav{
+    position: fixed; top: 0; right: 0; left: 0; z-index: 50;
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+    padding: 20px 36px;
+    border-bottom: 1px solid transparent;
+    background: linear-gradient(180deg, rgba(11,11,12,.7), rgba(11,11,12,0));
+    transition: background .4s ease, padding .4s ease, border-color .4s ease;
   }
-  .tour-card .art{height:200px;}
-  .tour-card .art img{width:100%;height:100%;object-fit:cover;display:block;}
-  .tour-body{padding:26px 24px;}
-  .tour-body h3{margin:0 0 10px;font-size:1.35rem;color:var(--sea-deep);}
-  .price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:10px;}
-  .old-price{color:#a0a0a0;text-decoration:line-through;font-size:1rem;}
-  .new-price{color:var(--red-deep);font-size:1.9rem;font-family:'Suez One',serif;}
-  .duration{
-    display:inline-flex;align-items:center;gap:6px;background:var(--bg-soft);
-    padding:6px 14px;border-radius:20px;font-size:.85rem;color:var(--muted);margin-bottom:14px;
+  .site-nav.scrolled{
+    background: rgba(11,11,12,.94);
+    backdrop-filter: blur(10px);
+    border-bottom-color: var(--line);
+    padding: 12px 36px;
   }
-  .tour-body p.desc{color:var(--muted);font-size:.94rem;margin:0 0 20px;}
-  .tour-body .btn{display:block;text-align:center;width:100%;padding:13px;}
+  .menu-toggle{
+    justify-self: start;
+    display: inline-flex; align-items: center; gap: 14px;
+    background: none; border: 0; color: var(--text); cursor: pointer;
+    font-size: .92rem; font-weight: 400; letter-spacing: .06em; padding: 8px 0;
+  }
+  .menu-toggle .bars{ display:flex; flex-direction:column; gap:6px; width: 26px; }
+  .menu-toggle .bars i{ display:block; height:1px; background: var(--text); transition: background .3s; }
+  .menu-toggle .bars i:last-child{ width: 65%; }
+  .menu-toggle:hover .bars i{ background: var(--gold); }
+  .brand{ display: block; transform: translateX(var(--logo-shift)); }
+  .brand-logo{ width: 44px; height: 44px; object-fit: contain; }
+  .nav-wa{
+    justify-self: end;
+    width: 40px; height: 40px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--text);
+    border: 1px solid var(--line); border-radius: 50%;
+    transition: border-color .3s ease, color .3s ease;
+  }
+  .nav-wa:hover{ border-color: var(--gold); color: var(--gold); }
+  .nav-wa svg{ width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linejoin: round; }
 
-  /* GALLERY */
-  .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
-  .gallery-item{border-radius:14px;overflow:hidden;aspect-ratio:4/3;}
-  .gallery-item img{width:100%;height:100%;object-fit:cover;display:block;}
+  /* ---------- FULL-SCREEN MENU ---------- */
+  .menu-overlay{
+    position: fixed; inset: 0; z-index: 120;
+    background: var(--bg);
+    display: none;
+    overflow-y: auto;
+    padding: 28px 36px 48px;
+  }
+  .menu-overlay.active{ display: block; animation: fadeIn .4s ease; }
+  @keyframes fadeIn{ from{ opacity: 0; } to{ opacity: 1; } }
+  .menu-top{ display:flex; justify-content: space-between; align-items:center; }
+  .menu-close{
+    background: none; border: 0; color: var(--text); cursor: pointer;
+    font-size: .92rem; letter-spacing: .06em; display:inline-flex; align-items:center; gap: 12px; padding: 8px 0;
+  }
+  .menu-close:hover{ color: var(--gold); }
+  .menu-body{
+    max-width: 1080px; margin: 6vh auto 0;
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px;
+  }
+  .menu-main a{
+    display: block;
+    font-family: var(--serif); font-weight: 300;
+    font-size: clamp(1.9rem, 4.2vw, 3rem);
+    line-height: 1.4;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--line);
+    transition: color .3s ease, padding .3s var(--ease);
+  }
+  .menu-main a:hover{ color: var(--gold); padding-inline-start: 14px; }
+  .menu-side h4{ margin: 0 0 18px; font-weight: 500; font-size: .82rem; letter-spacing: .1em; color: var(--gold); }
+  .menu-side a{ display: block; padding: 7px 0; color: var(--muted); font-size: 1rem; transition: color .3s ease; }
+  .menu-side a:hover, .menu-side a.current{ color: var(--text); }
+  .menu-contact{ margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line); }
+  .menu-contact .tel{ font-family: var(--display); font-weight: 300; font-size: 1.9rem; color: var(--text); direction: ltr; display: inline-block; }
+  @media (max-width: 820px){
+    .menu-body{ grid-template-columns: 1fr; gap: 48px; }
+    .menu-overlay{ padding: 22px 24px 48px; }
+  }
 
-  /* LOCATION */
-  .loc-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;}
-  @media (max-width:820px){.loc-grid{grid-template-columns:1fr;}}
-  .loc-info h2{font-size:clamp(1.6rem,3.2vw,2.2rem);margin:0 0 16px;text-align:right;color:var(--sea-deep);}
-  .loc-info p{color:var(--muted);margin:0 0 26px;}
-  .loc-links{display:flex;flex-direction:column;gap:12px;}
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height: 100svh;
+    display: flex; align-items: flex-end;
+    background:
+      linear-gradient(180deg, rgba(11,11,12,.5) 0%, rgba(11,11,12,.32) 38%, rgba(11,11,12,.96) 100%),
+      url('images/jetski-skyline.jpg') 35% 55% / cover no-repeat;
+    background-color: var(--surface);
+  }
+  .hero-inner{
+    width: 100%;
+    padding-top: 160px; padding-bottom: 88px;
+    text-align: center;
+    animation: heroIn 1.4s var(--ease) both;
+  }
+  @keyframes heroIn{ from{ opacity: 0; transform: translateY(16px); } to{ opacity: 1; transform: none; } }
+  .hero-logo{ height: 24px; width: auto; margin: 0 auto 40px; object-fit: contain; }
+  .hero h1{
+    font-size: clamp(2.3rem, 6vw, 4.5rem);
+    line-height: 1.18;
+    max-width: 900px; margin-inline: auto;
+  }
+  .hero .lead{
+    color: #dcd7cc; max-width: 600px; margin: 22px auto 0; font-size: 1.05rem;
+  }
+  .hero .rule{ margin: 34px auto; }
+  .hero-actions{ display: flex; flex-direction: column; align-items: center; gap: 26px; }
+  .hero-buttons{ display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+  .hero-scroll{ color: var(--muted); font-size: .9rem; letter-spacing: .06em; transition: color .3s ease; }
+  .hero-scroll:hover{ color: var(--gold); }
+
+  /* ---------- INTRO / ABOUT ---------- */
+  .about{ padding: 150px 0 130px; }
+  .about-grid{ display: grid; grid-template-columns: 1.1fr .9fr; gap: 72px; align-items: center; }
+  .about-text h2{ font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
+  .about-text p{ color: var(--muted); margin: 0 0 20px; }
+  .about-art{ aspect-ratio: 4 / 5; overflow: hidden; background: var(--surface); border-radius: 2px; }
+  .about-art img{ width: 100%; height: 100%; object-fit: cover; }
+  .badges{ list-style: none; margin: 28px 0 0; padding: 0; }
+  .badges li{ padding: 14px 0; border-top: 1px solid var(--line); color: var(--text); font-size: .98rem; }
+  .badges li:last-child{ border-bottom: 1px solid var(--line); }
+  @media (max-width: 820px){
+    .about-grid{ grid-template-columns: 1fr; gap: 48px; }
+    .about-art{ aspect-ratio: 4 / 3; }
+  }
+
+  /* ---------- TOURS ---------- */
+  .tours{ background: var(--surface); }
+  .tour-grid{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .tour-card{ background: var(--bg); border: 1px solid var(--line); border-radius: 2px; overflow: hidden; display: flex; flex-direction: column; }
+  .tour-card .media{ aspect-ratio: 4 / 3; overflow: hidden; background: var(--surface-2); }
+  .tour-card .media img{ width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+  .tour-card:hover .media img{ transform: scale(1.04); }
+  .tour-body{ padding: 34px 32px 36px; display: flex; flex-direction: column; flex: 1; }
+  .tour-body h3{ font-size: 1.6rem; }
+  .tour-meta{ color: var(--gold); font-size: .88rem; font-weight: 500; margin-top: 10px; }
+  .price-row{ display: flex; align-items: baseline; gap: 14px; margin: 22px 0 6px; }
+  .old-price{ color: var(--muted); text-decoration: line-through; font-size: 1rem; }
+  .new-price{ font-family: var(--display); font-size: 2.4rem; font-weight: 300; color: var(--text); line-height: 1.1; }
+  .tour-body .desc{ color: var(--muted); margin: 16px 0 28px; font-size: .98rem; flex: 1; }
+  .tour-body .btn{ align-self: flex-start; }
+  @media (max-width: 820px){ .tour-grid{ grid-template-columns: 1fr; } }
+
+  /* ---------- BAND ---------- */
+  .band{
+    position: relative; overflow: hidden;
+    display: flex; align-items: center;
+    aspect-ratio: 21 / 9; min-height: 380px;
+    background: var(--surface) url('images/jetski-pov.jpg') center 40% / cover no-repeat;
+  }
+  .band::before{
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(270deg, rgba(11,11,12,.94) 0%, rgba(11,11,12,.72) 42%, rgba(11,11,12,.15) 100%);
+  }
+  .band .container{ position: relative; z-index: 1; }
+  .band-text{ max-width: 500px; }
+  .band-text h2{ font-size: clamp(1.7rem, 3.6vw, 2.6rem); margin-bottom: 16px; }
+  .band-text p{ color: #dcd7cc; margin: 0 0 28px; }
+  @media (max-width: 700px){
+    .band{ aspect-ratio: auto; min-height: 460px; align-items: flex-end; padding-bottom: 48px; }
+    .band::before{ background: linear-gradient(180deg, rgba(11,11,12,.45) 0%, rgba(11,11,12,.92) 100%); }
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .gallery-item{ aspect-ratio: 4 / 5; overflow: hidden; background: var(--surface); border-radius: 2px; cursor: pointer; }
+  .gallery-item img{ width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+  .gallery-item:hover img{ transform: scale(1.04); }
+  @media (max-width: 820px){ .gallery-grid{ grid-template-columns: 1fr; } .gallery-item{ aspect-ratio: 4 / 3; } }
+
+  /* ---------- LOCATION ---------- */
+  .location{ background: var(--surface); }
+  .loc-grid{ display: grid; grid-template-columns: 1.1fr .9fr; gap: 72px; align-items: center; }
+  .loc-info h2{ font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
+  .loc-info p{ color: var(--muted); margin: 0 0 26px; }
   .loc-links a{
-    display:flex;align-items:center;gap:10px;background:#fff;border-radius:10px;
-    padding:14px 18px;font-size:.98rem;font-weight:600;
-    box-shadow:0 8px 20px -14px rgba(5,74,95,.5);
+    display: block; padding: 16px 0; border-top: 1px solid var(--line);
+    color: var(--text); font-size: .98rem; transition: color .3s ease, padding .3s var(--ease);
   }
-  .loc-links a:hover{background:#e1f1f6;}
-  .loc-art{border-radius:16px;overflow:hidden;background:#f7fbfe;}
-  .loc-art img{width:100%;aspect-ratio:500/380;object-fit:contain;display:block;}
+  .loc-links a:last-child{ border-bottom: 1px solid var(--line); }
+  .loc-links a:hover{ color: var(--gold); padding-inline-start: 12px; }
+  .loc-art{ overflow: hidden; background: #f4f1ea; border-radius: 2px; }
+  .loc-art img{ width: 100%; aspect-ratio: 500 / 380; object-fit: contain; }
+  @media (max-width: 820px){ .loc-grid{ grid-template-columns: 1fr; gap: 48px; } }
 
-  /* BOOKING */
-  .booking{
-    background:linear-gradient(180deg,var(--sea-deep) 0%,#032e3b 100%);
-    color:#fff;padding:80px 0;
+  /* ---------- CONTACT ---------- */
+  .contact-grid{ display: grid; grid-template-columns: .9fr 1.1fr; gap: 90px; align-items: start; }
+  .contact h2{ font-size: clamp(1.9rem, 3.8vw, 2.8rem); }
+  .contact-text p{ color: var(--muted); margin: 20px 0 0; }
+  .phone-line{ margin-top: 36px; font-family: var(--display); font-weight: 300; font-size: clamp(1.9rem, 3.6vw, 2.6rem); direction: ltr; display: inline-block; }
+  .contact-email{ direction: ltr; text-align: right; color: var(--muted); margin-top: 4px; }
+  .contact-actions{ margin-top: 28px; display: flex; gap: 28px; flex-wrap: wrap; align-items: center; }
+  .contact-form{ display: flex; flex-direction: column; gap: 26px; }
+  .contact-form .form-row{ display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+  .contact-form label{ display: flex; flex-direction: column; gap: 6px; font-size: .88rem; color: var(--muted); font-weight: 400; min-width: 0; }
+  .contact-form input, .contact-form select, .contact-form textarea{
+    background: transparent;
+    border: 0; border-bottom: 1px solid var(--line);
+    border-radius: 0;
+    padding: 10px 2px;
+    color: var(--text);
+    font-family: var(--sans); font-size: 1.02rem; font-weight: 300;
+    outline: none; width: 100%;
+    transition: border-color .3s ease;
+    color-scheme: dark;
   }
-  .booking-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:start;}
-  @media (max-width:820px){.booking-grid{grid-template-columns:1fr;}}
-  .booking h2{color:#fff;font-size:clamp(1.7rem,3.6vw,2.3rem);margin:0 0 16px;}
-  .booking .b-text p{color:#cfe6ee;margin:0 0 22px;}
-  .phone-line{font-family:'Suez One',serif;font-size:1.7rem;color:#fff;margin-bottom:4px;}
-  .contact-email{color:#9fd3e2;margin-bottom:24px;direction:ltr;text-align:right;}
-  .contact-actions{display:flex;gap:12px;flex-wrap:wrap;}
-  form.contact-form{
-    background:#fff;color:var(--ink);border-radius:16px;padding:28px 26px;
-    display:flex;flex-direction:column;gap:16px;
-    box-shadow:0 30px 60px -30px rgba(0,0,0,.6);
-  }
-  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-  @media (max-width:520px){.form-row{grid-template-columns:1fr;}}
-  form.contact-form label{display:flex;flex-direction:column;gap:6px;font-size:.9rem;font-weight:600;color:var(--sea-deep);}
-  form.contact-form input,form.contact-form select,form.contact-form textarea{
-    font-family:inherit;font-size:1rem;padding:11px 12px;border:1.5px solid #cfe0e6;border-radius:8px;
-    background:#f8fcfd;color:var(--ink);width:100%;
-  }
-  form.contact-form input:focus,form.contact-form select:focus,form.contact-form textarea:focus{
-    outline:none;border-color:var(--sea);box-shadow:0 0 0 3px rgba(10,110,140,.18);
-  }
-  form.contact-form .btn{width:100%;}
+  .contact-form select option{ background: var(--surface); color: var(--text); }
+  .contact-form textarea{ resize: vertical; }
+  .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus{ border-bottom-color: var(--gold); }
+  .contact-form .btn{ align-self: flex-start; margin-top: 8px; }
+  @media (max-width: 860px){ .contact-grid{ grid-template-columns: 1fr; gap: 56px; } }
+  @media (max-width: 520px){ .contact-form .form-row{ grid-template-columns: 1fr; } }
 
-  footer{padding:34px 0;text-align:center;color:var(--muted);font-size:.86rem;background:var(--bg-soft);}
-  footer .footer-logo{height:26px;width:auto;object-fit:contain;margin:0 auto 10px;}
-  .footer-links{display:flex;gap:18px;justify-content:center;margin-top:10px;flex-wrap:wrap;}
-  .footer-links a:hover{color:var(--sea);}
+  /* ---------- FOOTER ---------- */
+  footer{ padding: 70px 0 60px; text-align: center; color: var(--muted); font-size: .92rem; border-top: 1px solid var(--line); }
+  footer .brand-logo{ margin: 0 auto 20px; }
+  footer .footer-email a{ color: var(--text); direction: ltr; unicode-bidi: isolate; font-weight: 400; }
+  .footer-links{ margin-top: 26px; display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+  .footer-links a{ color: var(--muted); font-size: .88rem; transition: color .3s ease; }
+  .footer-links a:hover{ color: var(--gold); }
 
-  .wa-float{
-    position:fixed;bottom:22px;left:22px;z-index:60;
-    width:56px;height:56px;border-radius:50%;
-    background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;
-    font-size:1.6rem;box-shadow:0 10px 24px rgba(0,0,0,.25);
+  /* ---------- FLOATING WHATSAPP ---------- */
+  .float-cta{
+    position: fixed; bottom: 26px; left: 26px; z-index: 60;
+    width: 52px; height: 52px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg); color: var(--gold);
+    border: 1px solid var(--gold);
+    transition: background .4s var(--ease), color .4s var(--ease);
+  }
+  .float-cta:hover{ background: var(--gold); color: #0B0B0C; }
+  .float-cta svg{ width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linejoin: round; }
+
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox-overlay{
+    position: fixed; inset: 0; z-index: 150;
+    background: rgba(4,4,5,.94);
+    display: none; align-items: center; justify-content: center; padding: 30px;
+  }
+  .lightbox-overlay.active{ display: flex; }
+  .lightbox-overlay img{ max-width: 90vw; max-height: 84vh; border-radius: 2px; }
+  .lightbox-close{
+    position: absolute; top: 26px; left: 26px;
+    width: 42px; height: 42px; border-radius: 50%;
+    background: transparent; color: var(--text);
+    border: 1px solid var(--line); font-size: 1.3rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lightbox-close:hover{ border-color: var(--gold); color: var(--gold); }
+
+  .about-text > *, .tour-grid > *, .contact-grid > *, .loc-grid > *, .gallery-grid > *{ min-width: 0; }
+  @media (max-width: 700px){
+    :root{ --logo-shift: 3px; }
+    .container{ padding: 0 22px; }
+    .section{ padding: 90px 0; }
+    .about{ padding: 100px 0 90px; }
+    .section-head{ margin-bottom: 52px; }
+    .site-nav{ padding: 14px 20px; }
+    .site-nav.scrolled{ padding: 10px 20px; }
+    .menu-toggle .lbl{ display: none; }
+    .hero-inner{ padding-top: 130px; padding-bottom: 60px; }
+    .tour-body{ padding: 28px 22px 30px; }
+    .float-cta{ bottom: 18px; left: 18px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition-duration: .01ms !important; }
+    html{ scroll-behavior: auto; }
   }
 </style>
 </head>
 <body>
 
-<header class="site">
-  <div class="nav-inner">
-    <a href="index.html" aria-label="HAY DUBAI - לעמוד הראשי"><img src="images/logo.png" alt="לוגו HAY DUBAI" class="brand-logo"></a>
-    <nav class="links">
+<header class="site-nav" id="siteNav">
+  <button type="button" class="menu-toggle" id="menuToggle" aria-label="פתיחת תפריט" aria-expanded="false">
+    <span class="bars" aria-hidden="true"><i></i><i></i></span>
+    <span class="lbl">תפריט</span>
+  </button>
+  <a class="brand" href="index.html" aria-label="HAY DUBAI - לעמוד הראשי"><img src="images/logo.png" alt="לוגו HAY DUBAI" class="brand-logo"></a>
+  <a class="nav-wa" href="https://wa.me/97229999119" target="_blank" rel="noopener" aria-label="וואטסאפ">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v11H9.5L5 20.5v-4H4z"/></svg>
+  </a>
+</header>
+
+<div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="תפריט ראשי">
+  <div class="menu-top">
+    <button type="button" class="menu-close" id="menuClose"><span aria-hidden="true">×</span> סגירה</button>
+    <img src="images/logo.png" alt="" class="brand-logo">
+  </div>
+  <div class="menu-body">
+    <nav class="menu-main">
       <a href="#about">אודות</a>
       <a href="#tours">סיורים</a>
       <a href="#gallery">גלריה</a>
       <a href="#location">מיקום</a>
       <a href="#booking">הזמנה</a>
     </nav>
-    <a class="nav-cta" href="tel:029999119">029999119</a>
+    <div class="menu-side">
+      <h4>כל העמודים</h4>
+      <a href="index.html">דף הבית</a>
+      <a href="experiences.html">כל החוויות</a>
+      <a href="jetski.html" class="current">אופנועי ים</a>
+      <a href="yacht.html">יאכטות</a>
+      <a href="beaches.html">חופים</a>
+      <a href="desert-safari.html">ספארי מדברי</a>
+      <a href="rzr.html">השכרת RZR</a>
+      <a href="vip-parties.html">מסיבות VIP</a>
+      <a href="netiv-vip.html">נתיב VIP בנתב"ג</a>
+      <a href="offers.html">הזמנות</a>
+      <div class="menu-contact">
+        <a class="tel" href="tel:029999119">02-999-9119</a>
+        <a href="https://wa.me/97229999119" target="_blank" rel="noopener">שיחה בוואטסאפ</a>
+      </div>
+    </div>
   </div>
-</header>
+</div>
 
+<!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="hero-content">
+  <div class="container hero-inner">
     <img class="hero-logo" src="images/hay-dubai-logo-v2.png" alt="HAY DUBAI">
-    <span class="kicker">סיורי אופנועי ים · דובאי</span>
-    <h1>אופנועי ים בדובאי<br>אדרנלין מול קו הרקיע</h1>
+    <h1>אופנועי ים בדובאי, אדרנלין מול קו הרקיע</h1>
     <p class="lead">סיורים מודרכים על גלי מפרץ דובאי, עם נוף לבורג' אל ערב, פאלם ג'ומיירה ומלון אטלנטיס. מתאים לכל המשפחה, כולל ציוד בטיחות והדרכה מלאה.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="#tours">לצפייה בסיורים</a>
-      <a class="btn btn-outline" href="#booking">להזמנה</a>
+    <hr class="rule">
+    <div class="hero-actions">
+      <div class="hero-buttons">
+        <a class="btn solid" href="#booking">להזמנה</a>
+        <a class="btn" href="#tours">לצפייה בסיורים</a>
+      </div>
+      <a class="hero-scroll" href="#about">גלו עוד ↓</a>
     </div>
   </div>
 </section>
-<svg class="wave" viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <path d="M0,30 C150,60 300,0 450,25 C600,50 750,5 900,28 C1050,50 1125,20 1200,30 L1200,60 L0,60 Z" fill="#ffffff"/>
-</svg>
 
-<section id="about">
-  <div class="wrap about-grid">
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="container about-grid">
     <div class="about-text">
-      <p class="sec-label" style="text-align:right;">מי אנחנו</p>
-      <h2>HAY DUBAI</h2>
+      <div class="eyebrow">מי אנחנו</div>
+      <h2>לא עוד השכרת אופנוע ים רגילה</h2>
+      <hr class="rule">
       <p>אנחנו מבטיחים שירות איכותי שהופך את הרפתקת אופנועי הים שלכם לחוויה מהנה לכל המשפחה. הסיורים שלנו לוקחים אתכם דרך האזורים היוקרתיים והמרשימים ביותר על קו המים של דובאי.</p>
-      <p>לא עוד השכרת אופנוע ים רגילה, זה כרטיס למסע דרך הפיתוחים הבלעדיים ביותר על החוף. תיהנו מנוף לבורג' אל ערב, המשיכו לעבר פאלם ג'ומיירה, ותעצרו לצילום בלתי נשכח מול מלון אטלנטיס.</p>
-      <div class="about-badges">
-        <div class="badge">🛟 ציוד בטיחות מלא</div>
-        <div class="badge">👨‍👩‍👧‍👦 מתאים למשפחות</div>
-        <div class="badge">🧭 מדריך מוסמך</div>
-      </div>
+      <p>זה כרטיס למסע דרך הפיתוחים הבלעדיים ביותר על החוף. תיהנו מנוף לבורג' אל ערב, המשיכו לעבר פאלם ג'ומיירה, ותעצרו לצילום בלתי נשכח מול מלון אטלנטיס.</p>
+      <ul class="badges">
+        <li>ציוד בטיחות מלא</li>
+        <li>מתאים למשפחות</li>
+        <li>מדריך מוסמך</li>
+      </ul>
     </div>
     <div class="about-art">
       <img src="images/jetski-rider.jpg" alt="רוכב על אופנוע ים בים הפתוח" loading="lazy">
@@ -254,77 +450,90 @@
   </div>
 </section>
 
-<section id="tours" class="alt">
-  <div class="wrap">
-    <p class="sec-label">חבילות פופולריות</p>
-    <h2 class="sec-title">הסיורים שלנו</h2>
-    <p class="sec-sub">שני מסלולים מובילים לחוויית אופנועי ים בלתי נשכחת בדובאי.</p>
-
+<!-- ============ TOURS ============ -->
+<section class="section tours" id="tours">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">חבילות פופולריות</div>
+      <h2>שני מסלולים, חוויה אחת בלתי נשכחת</h2>
+      <p>בחרו את הסיור שמתאים לכם, ואנחנו נדאג לכל השאר.</p>
+    </div>
     <div class="tour-grid">
-      <div class="tour-card">
-        <div class="art">
+      <article class="tour-card">
+        <div class="media">
           <img src="images/jetski-pov.jpg" alt="אופנוע ים בים, עם בורג' אל ערב באופק" style="object-position:50% 40%;" loading="lazy">
         </div>
         <div class="tour-body">
           <h3>סיור בורג' אל ערב וקו הרקיע</h3>
+          <div class="tour-meta">30 דקות</div>
           <div class="price-row">
-            <span class="old-price">450 ₪</span>
             <span class="new-price">200 ₪</span>
+            <span class="old-price">450 ₪</span>
           </div>
-          <div class="duration">⏱ 30 דקות</div>
           <p class="desc">חוצים את המים הכחולים של דובאי עם נוף מרהיב לבורג' אל ערב האייקוני, שילוב של ריגוש ונוף שלא משאיר אדישים. הדרכה צמודה לאורך כל הדרך.</p>
-          <a class="btn btn-primary" href="#booking" data-tour="סיור בורג' אל ערב וקו הרקיע (30 דקות)">להזמנה</a>
+          <a class="btn" href="#booking" data-tour="סיור בורג' אל ערב וקו הרקיע (30 דקות)">להזמנה</a>
         </div>
-      </div>
+      </article>
 
-      <div class="tour-card">
-        <div class="art">
+      <article class="tour-card">
+        <div class="media">
           <img src="images/jetski-skyline.jpg" alt="אופנועי ים מול אטלנטיס וקו הרקיע של דובאי" style="object-position:30% 40%;" loading="lazy">
         </div>
         <div class="tour-body">
           <h3>סיור אטלנטיס</h3>
+          <div class="tour-meta">שעה אחת</div>
           <div class="price-row">
-            <span class="old-price">850 ₪</span>
             <span class="new-price">400 ₪</span>
+            <span class="old-price">850 ₪</span>
           </div>
-          <div class="duration">⏱ שעה אחת</div>
           <p class="desc">מסלול מורחב שלוקח אתכם לאורך פאלם ג'ומיירה עד למלון אטלנטיס האייקוני, הזדמנות מושלמת לתמונות ולחוויה שתישאר איתכם הרבה אחרי הטיסה חזרה.</p>
-          <a class="btn btn-primary" href="#booking" data-tour="סיור אטלנטיס (שעה אחת)">להזמנה</a>
+          <a class="btn" href="#booking" data-tour="סיור אטלנטיס (שעה אחת)">להזמנה</a>
         </div>
-      </div>
+      </article>
     </div>
   </div>
 </section>
 
-<section id="gallery">
-  <div class="wrap">
-    <p class="sec-label">מהשטח</p>
-    <h2 class="sec-title">רגעים מהמים</h2>
-    <p class="sec-sub">רגעים מהחוויה שמחכה לכם על המים.</p>
+<!-- ============ BAND ============ -->
+<section class="band" id="band">
+  <div class="container">
+    <div class="band-text">
+      <div class="eyebrow">חוויה מלאה</div>
+      <h2>מהמרינה ועד אטלנטיס, בלי לדאוג לכלום</h2>
+      <p>הדרכה מלאה, ציוד בטיחות וצוות שמלווה אתכם לאורך כל הסיור, גם אם זו הפעם הראשונה שלכם על אופנוע ים.</p>
+      <a class="btn" href="#booking">לתיאום סיור</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="section" id="gallery">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow">מהשטח</div>
+      <h2>רגעים מהמים</h2>
+      <p>רגעים מהחוויה שמחכה לכם על המים.</p>
+    </div>
     <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="images/jetski-rider.jpg" alt="רוכב מחייך על אופנוע ים" style="object-position:60% center;" loading="lazy">
-      </div>
-      <div class="gallery-item">
-        <img src="images/jetski-skyline.jpg" alt="אופנועי ים מול קו הרקיע של דובאי" style="object-position:30% center;" loading="lazy">
-      </div>
-      <div class="gallery-item">
-        <img src="images/jetski-pov.jpg" alt="מבט מהאופנוע על הים ועל בורג' אל ערב" style="object-position:50% 40%;" loading="lazy">
-      </div>
+      <div class="gallery-item"><img src="images/jetski-rider.jpg" alt="רוכב מחייך על אופנוע ים" style="object-position:60% center;" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/jetski-skyline.jpg" alt="אופנועי ים מול קו הרקיע של דובאי" style="object-position:30% center;" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/jetski-pov.jpg" alt="מבט מהאופנוע על הים ועל בורג' אל ערב" style="object-position:50% 40%;" loading="lazy"></div>
     </div>
   </div>
 </section>
 
-<section id="location" class="alt">
-  <div class="wrap loc-grid">
+<!-- ============ LOCATION ============ -->
+<section class="section location" id="location">
+  <div class="container loc-grid">
     <div class="loc-info">
-      <p class="sec-label" style="text-align:right;">איפה אנחנו</p>
+      <div class="eyebrow">איפה אנחנו</div>
       <h2>נמל הדייגים, דובאי</h2>
+      <hr class="rule">
       <p>יוצאים להרפתקה ישירות מהמרינה, עם גישה קלה וחניה סמוכה. הצוות שלנו מחכה לכם עם כל הציוד מוכן.</p>
       <div class="loc-links">
-        <a href="https://www.google.com/maps/search/?api=1&query=Fishing+Harbour+Al+Fintaas+Street+Jumeirah+3+Dubai" target="_blank" rel="noopener">📍 Fishing Harbour, Al Fintaas Street, Jumeirah 3, Dubai</a>
-        <a href="https://wa.me/97229999119" target="_blank" rel="noopener">💬 וואטסאפ: 02-999-9119</a>
-        <a href="tel:029999119">📞 טלפון: 02-999-9119</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Fishing+Harbour+Al+Fintaas+Street+Jumeirah+3+Dubai" target="_blank" rel="noopener">Fishing Harbour, Al Fintaas Street, Jumeirah 3, Dubai</a>
+        <a href="https://wa.me/97229999119" target="_blank" rel="noopener">וואטסאפ: 02-999-9119</a>
+        <a href="tel:029999119">טלפון: 02-999-9119</a>
       </div>
     </div>
     <div class="loc-art">
@@ -333,89 +542,119 @@
   </div>
 </section>
 
-<section id="booking" class="booking">
-  <div class="wrap booking-grid">
-    <div class="b-text">
-      <h2>מוכנים לצאת להרפתקה?</h2>
-      <p>מלאו את הפרטים ונחזור אליכם לאישור סופי של התאריך והשעה. אפשר גם ליצור קשר ישירות בטלפון או בוואטסאפ.</p>
-      <div class="phone-line">02-999-9119</div>
-      <div class="contact-email">Infodubaisrael@gmail.com</div>
-      <div class="contact-actions">
-        <a class="btn btn-primary" href="tel:029999119">📞 חיוג ישיר</a>
-        <a class="btn btn-outline" href="https://wa.me/97229999119" target="_blank" rel="noopener">💬 וואטסאפ</a>
+<!-- ============ BOOKING ============ -->
+<section class="section contact" id="booking">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-text">
+        <h2>מוכנים לצאת להרפתקה?</h2>
+        <p>מלאו את הפרטים ונחזור אליכם לאישור סופי של התאריך והשעה. אפשר גם ליצור קשר ישירות בטלפון או בוואטסאפ.</p>
+        <div class="phone-line">02-999-9119</div>
+        <div class="contact-email">Infodubaisrael@gmail.com</div>
+        <div class="contact-actions">
+          <a class="btn" href="tel:029999119">חיוג ישיר</a>
+          <a class="link-arrow" href="https://wa.me/97229999119" target="_blank" rel="noopener">וואטסאפ</a>
+        </div>
       </div>
+      <form class="contact-form" action="https://formsubmit.co/Infodubaisrael@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="הזמנת אופנועי ים, HAY DUBAI">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <div class="form-row">
+          <label>שם מלא<input type="text" name="שם מלא" required></label>
+          <label>טלפון<input type="tel" name="טלפון" required></label>
+        </div>
+        <label>אימייל (רשות)<input type="email" name="אימייל"></label>
+        <label>הסיור
+          <select name="סיור" id="tourSelect">
+            <option>סיור בורג' אל ערב וקו הרקיע (30 דקות)</option>
+            <option>סיור אטלנטיס (שעה אחת)</option>
+          </select>
+        </label>
+        <div class="form-row">
+          <label>תאריך מבוקש<input type="date" name="תאריך מבוקש" id="dateInput" required></label>
+          <label>שעה מועדפת<input type="time" name="שעה מועדפת"></label>
+        </div>
+        <label>מספר משתתפים<input type="number" name="מספר משתתפים" min="1" value="2"></label>
+        <label>הודעה (רשות)<textarea name="הודעה" rows="3" placeholder="למשל: ילדים בקבוצה, בקשה מיוחדת"></textarea></label>
+        <button type="submit" class="btn">שליחת בקשת הזמנה</button>
+      </form>
     </div>
-    <form class="contact-form" action="https://formsubmit.co/Infodubaisrael@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="הזמנת אופנועי ים, HAY DUBAI">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="table">
-      <div class="form-row">
-        <label>
-          שם מלא
-          <input type="text" name="שם מלא" required>
-        </label>
-        <label>
-          טלפון
-          <input type="tel" name="טלפון" required>
-        </label>
-      </div>
-      <label>
-        אימייל (רשות)
-        <input type="email" name="אימייל">
-      </label>
-      <label>
-        הסיור
-        <select name="סיור" id="tourSelect">
-          <option>סיור בורג' אל ערב וקו הרקיע (30 דקות)</option>
-          <option>סיור אטלנטיס (שעה אחת)</option>
-        </select>
-      </label>
-      <div class="form-row">
-        <label>
-          תאריך מבוקש
-          <input type="date" name="תאריך מבוקש" id="dateInput" required>
-        </label>
-        <label>
-          שעה מועדפת
-          <input type="time" name="שעה מועדפת">
-        </label>
-      </div>
-      <label>
-        מספר משתתפים
-        <input type="number" name="מספר משתתפים" min="1" value="2">
-      </label>
-      <label>
-        הודעה (רשות)
-        <textarea name="הודעה" rows="3" placeholder="למשל: ילדים בקבוצה, בקשה מיוחדת"></textarea>
-      </label>
-      <button type="submit" class="btn btn-primary">שליחת בקשת הזמנה</button>
-    </form>
   </div>
 </section>
 
 <footer>
-  <img class="footer-logo" src="images/hay-dubai-logo-v2.png" alt="HAY DUBAI">
-  <div>אופנועי ים בדובאי</div>
-  <div style="margin-top:6px;">02-999-9119</div>
-  <div class="footer-email" style="margin-top:6px;"><a href="mailto:Infodubaisrael@gmail.com" style="color:#ece7dd;font-weight:700;text-decoration:none;direction:ltr;unicode-bidi:isolate;"><b>Infodubaisrael@gmail.com</b></a></div>
-  <div class="footer-links">
-    <a href="index.html">חזרה לעמוד הראשי</a>
-    <a href="privacy.html">מדיניות פרטיות</a>
-    <a href="terms.html">תנאי שימוש</a>
+  <div class="container">
+    <img src="images/logo.png" alt="לוגו HAY DUBAI" class="brand-logo">
+    <div>אופנועי ים בדובאי</div>
+    <div style="margin-top:6px;">02-999-9119</div>
+    <div class="footer-email" style="margin-top:6px;"><a href="mailto:Infodubaisrael@gmail.com">Infodubaisrael@gmail.com</a></div>
+    <div class="footer-links">
+      <a href="index.html">חזרה לעמוד הראשי</a>
+      <a href="privacy.html">מדיניות פרטיות</a>
+      <a href="terms.html">תנאי שימוש</a>
+    </div>
   </div>
 </footer>
 
-<a class="wa-float" href="https://wa.me/97229999119" target="_blank" rel="noopener" aria-label="וואטסאפ">💬</a>
+<a class="float-cta" href="https://wa.me/97229999119" target="_blank" rel="noopener" aria-label="וואטסאפ">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v11H9.5L5 20.5v-4H4z"/></svg>
+</a>
+
+<div class="lightbox-overlay" id="lightboxOverlay">
+  <button class="lightbox-close" id="lightboxClose" aria-label="סגירה">×</button>
+  <img id="lightboxImg" src="" alt="תמונה מוגדלת">
+</div>
 
 <script>
-  // preselect the tour when clicking "להזמנה" on a tour card
+  /* header + full-screen menu */
+  var siteNav = document.getElementById('siteNav');
+  window.addEventListener('scroll', function(){
+    siteNav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+  siteNav.classList.toggle('scrolled', window.scrollY > 40);
+
+  var menuOverlay = document.getElementById('menuOverlay');
+  var menuToggle = document.getElementById('menuToggle');
+  function openMenu(){
+    menuOverlay.classList.add('active');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu(){
+    menuOverlay.classList.remove('active');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  menuToggle.addEventListener('click', openMenu);
+  document.getElementById('menuClose').addEventListener('click', closeMenu);
+  menuOverlay.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+
+  /* lightbox */
+  var lb = document.getElementById('lightboxOverlay');
+  var lbImg = document.getElementById('lightboxImg');
+  function closeLightbox(){ lb.classList.remove('active'); lbImg.src = ''; }
+  document.querySelectorAll('.gallery-item').forEach(function(item){
+    item.addEventListener('click', function(){
+      lbImg.src = item.querySelector('img').src;
+      lb.classList.add('active');
+    });
+  });
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  lb.addEventListener('click', function(e){ if (e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape'){ closeMenu(); closeLightbox(); }
+  });
+
+  /* preselect the tour when clicking "להזמנה" on a tour card */
   document.querySelectorAll('[data-tour]').forEach(function(btn){
     btn.addEventListener('click', function(){
       var sel = document.getElementById('tourSelect');
       if (sel) sel.value = btn.getAttribute('data-tour');
     });
   });
-  // no bookings in the past
+
+  /* no bookings in the past */
   var d = new Date();
   var today = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
   document.getElementById('dateInput').min = today;
