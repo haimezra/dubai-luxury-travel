@@ -299,22 +299,28 @@
     .vip-link-btn{ padding: 8px 14px; font-size: .88rem; }
   }
 
-  /* ---------- AIRPORT PREVIEW ---------- */
-  .airport-preview{ padding: 50px 0 0; }
-  .airport-card{
-    display:grid; grid-template-columns: 1.25fr .75fr; gap: 26px; align-items:center;
-    background: var(--surface-2); border-radius: 18px; padding: clamp(16px, 3vw, 26px);
-    box-shadow: 0 0 0 1px rgba(217,178,92,0.25), 0 0 30px rgba(217,178,92,0.08), 0 16px 40px rgba(0,0,0,0.4);
+  /* ---------- AIRPORT PREVIEW (full-width band) ---------- */
+  .airport-preview{
+    position: relative; overflow: hidden;
+    margin-top: 50px; padding: 0;
+    min-height: 320px; display:flex; align-items:center;
+    background: #0b0c0f url('images/airport-seniors.jpg') center 35% / cover no-repeat;
+    border-block: 1px solid rgba(217,178,92,0.22);
   }
-  .airport-text .eyebrow{ color: var(--gold); font-size: .8rem; font-weight: 600; letter-spacing: .04em; }
-  .airport-text h2{ font-size: clamp(1.35rem, 3.2vw, 1.85rem); margin: 4px 0 8px; }
-  .airport-text p{ color: var(--muted); font-size: .96rem; margin-bottom: 14px; }
-  .airport-text .btn{ margin-top: 0; padding: 10px 22px; }
-  .airport-photo{ width:100%; aspect-ratio: 16/10; object-fit:cover; border-radius: 12px; display:block; }
+  .airport-preview::before{
+    content:''; position:absolute; inset:0;
+    background: linear-gradient(270deg, rgba(8,9,11,0.94) 0%, rgba(8,9,11,0.78) 42%, rgba(8,9,11,0.28) 100%);
+  }
+  .airport-preview .container{ position: relative; z-index: 1; padding-top: 52px; padding-bottom: 52px; }
+  .airport-text{ max-width: 520px; }
+  .airport-text .eyebrow{ color: var(--gold); font-size: .85rem; font-weight: 600; letter-spacing: .04em; }
+  .airport-text h2{ font-size: clamp(1.7rem, 4.2vw, 2.6rem); margin: 6px 0 12px; }
+  .airport-text p{ color: #e6e1d6; font-size: 1.05rem; margin-bottom: 20px; text-shadow: 0 2px 12px rgba(0,0,0,0.5); }
+  .airport-text .btn{ margin-top: 0; }
   @media (max-width: 700px){
-    .airport-preview{ padding-top: 36px; }
-    .airport-card{ grid-template-columns: 1fr; gap: 16px; }
-    .airport-photo{ aspect-ratio: 16/9; }
+    .airport-preview{ margin-top: 36px; min-height: 260px; background-position: 30% center; }
+    .airport-preview::before{ background: linear-gradient(180deg, rgba(8,9,11,0.55) 0%, rgba(8,9,11,0.88) 100%); }
+    .airport-preview .container{ padding-top: 40px; padding-bottom: 40px; }
   }
 
   /* ---------- VIDEO CUBES ---------- */
@@ -1061,14 +1067,11 @@
 
 <section class="airport-preview" id="airport">
   <div class="container">
-    <div class="airport-card">
-      <div class="airport-text">
-        <div class="eyebrow">נתיב VIP</div>
-        <h2>בנתב"ג, מישהו הולך איתכם עד השער</h2>
-        <p>ליווי אישי מהכניסה לטרמינל ועד ההמראה, במסלול מהיר, בלי תורים ובלי לחפש שלטים.</p>
-        <a class="btn btn-gold" href="netiv-vip.html">לפרטים ולהזמנה</a>
-      </div>
-      <img class="airport-photo" src="images/airport-seniors.jpg" alt="מלווה של נתיב VIP מלווה זוג מבוגרים בטרמינל בדרך לשער" loading="lazy">
+    <div class="airport-text">
+      <div class="eyebrow">נתיב VIP</div>
+      <h2>בנתב"ג, מישהו הולך איתכם עד השער</h2>
+      <p>ליווי אישי מהכניסה לטרמינל ועד ההמראה, במסלול מהיר, בלי תורים ובלי לחפש שלטים.</p>
+      <a class="btn btn-gold" href="netiv-vip.html">לפרטים ולהזמנה</a>
     </div>
   </div>
 </section>
