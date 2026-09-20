@@ -326,7 +326,7 @@
   /* ---------- EXPERIENCES BAND (above the airport band) ---------- */
   .exp-band{
     position: relative; overflow: hidden;
-    margin-top: 50px; padding: 0;
+    margin-top: 0; padding: 0;
     min-height: 320px; display:flex; align-items:center;
     background: #0b0c0f url('images/jetski-trio.jpg') center 55% / cover no-repeat;
     border-block: 1px solid rgba(217,178,92,0.22);
@@ -337,8 +337,11 @@
   }
   .exp-band .container{ position: relative; z-index: 1; padding-top: 52px; padding-bottom: 52px; }
   .exp-band + .airport-preview{ margin-top: 0; border-top: 0; }
+  .hero{ padding-bottom: 32px; }
+  .hero-inner{ padding-bottom: 24px; }
+  section.videos{ padding-top: 60px; }
   @media (max-width: 700px){
-    .exp-band{ margin-top: 36px; min-height: 260px; background-position: 35% center; }
+    .exp-band{ margin-top: 0; min-height: 260px; background-position: 35% center; }
     .exp-band::before{ background: linear-gradient(180deg, rgba(8,9,11,0.55) 0%, rgba(8,9,11,0.88) 100%); }
     .exp-band .container{ padding-top: 40px; padding-bottom: 40px; }
   }
