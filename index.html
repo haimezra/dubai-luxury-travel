@@ -1098,6 +1098,23 @@
         </div>
       </div>
 
+      <div class="video-feature" id="video-slot-8">
+        <div class="video-cube has-video" data-slot="8">
+          <video data-lazy-src="videos/safari-camp.mp4" poster="images/safari-cube-poster.jpg" autoplay muted loop playsinline preload="none"></video>
+          <div class="video-upload-tile">
+            <div class="plus">+</div>
+            <span>העלאת סרטון</span>
+          </div>
+          <input type="file" accept="video/*" style="display:none">
+        </div>
+        <div class="video-feature-text">
+          <div class="eyebrow">ערב בלב המדבר</div>
+          <h3>ספארי מדברי בשקיעה</h3>
+          <p>דיונות אינסופיות, רכיבה על גמלים, וערב ערבי אותנטי תחת כיפת השמיים.</p>
+          <a class="btn btn-gold" href="desert-safari.html">להזמנות</a>
+        </div>
+      </div>
+
       <div class="video-feature" id="video-slot-1">
         <div class="video-cube" data-slot="1">
           <video autoplay muted loop playsinline></video>
@@ -1217,14 +1234,6 @@
       <p>מהמרינה אל החולות, ומהחולות אל תוך חדר מלון שנראה כמו ארמון.</p>
     </div>
     <div class="exp-grid">
-      <div class="exp-card">
-        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1645941458084-4c53163b9276?q=80&w=900&auto=format&fit=crop" alt="ספארי במדבר דובאי"></div>
-        <div class="exp-body">
-          <h3>ספארי מדברי בשקיעה</h3>
-          <p>דיונות אינסופיות, רכיבה על גמלים, וערב ערבי אותנטי תחת כיפת השמיים.</p>
-          <a class="exp-link" href="desert-safari.html">להזמנות ←</a>
-        </div>
-      </div>
       <div class="exp-card clickable" onclick="openGalleryModal('palace','ארמונות של מלונות','המלונות עם הנופים הכי יפים בדובאי. נגלה לכם איפה נמצאים המקומות שלא כל תייר מגיע אליהם.')">
         <div class="img-wrap"><img src="https://images.unsplash.com/photo-1546412414-e1885259563a?q=80&w=900&auto=format&fit=crop" alt="ארמונות המלונות המפוארים בדובאי"></div>
         <div class="exp-body">
@@ -1698,6 +1707,7 @@
     '5': () => showVideoToast(videoToastMessages['5']),
     '4': () => openGalleryModal('luxurycars','מכוניות יוקרה','תמונות רכבי יוקרה מדובאי.'),
     '6': () => { window.location.href = 'rzr.html'; },
+    '8': () => { window.location.href = 'desert-safari.html'; },
     '7': () => openGalleryModal('ferrariworld','פרארי וורלד אבו דאבי','רגעים מפרארי וורלד, אבו דאבי.')
   };
   // the image-only cube (Ferrari) behaves like its button
