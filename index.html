@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0B0B0C">
-<title>haydubai | ליווי אישי לטיולי יוקרה</title>
+<title>FIVEdubai | ליווי אישי לטיולי יוקרה</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
@@ -22,7 +22,7 @@
     --display: 'Outfit', 'Rubik', sans-serif;
     --sans: 'Outfit', 'Rubik', sans-serif;
     --ease: cubic-bezier(.2,.6,.2,1);
-    --logo-shift: 10px;
+    --logo-shift: 7px;
   }
 
   *{ box-sizing: border-box; }
@@ -344,7 +344,6 @@
   .band-text h2{ font-size: clamp(1.7rem, 3.6vw, 2.6rem); margin-bottom: 16px; }
   .band-text p{ color: #dcd7cc; margin: 0 0 28px; }
   .band-airport{ background-image: url('images/airport-seniors.jpg'); background-position: center 35%; }
-  .band-abu{ background-image: url('https://images.unsplash.com/photo-1512632578888-169bbbc64f33?q=80&w=1600&auto=format&fit=crop'); }
   @media (max-width: 700px){
     .band{ aspect-ratio: auto; min-height: 460px; }
     .band::before{ background: linear-gradient(180deg, rgba(11,11,12,.45) 0%, rgba(11,11,12,.92) 100%); }
@@ -369,7 +368,21 @@
     .feature-grid.two, .feature-grid.three{ grid-template-columns: 1fr; }
   }
   .hotels{ background: var(--surface); }
-  .abudhabi-cards{ padding: 110px 0 130px; }
+  .abudhabi-cards{ padding: 0 0 130px; }
+  .abu{ padding-bottom: 80px; }
+  .abu-layout{ display: grid; grid-template-columns: 1.1fr .9fr; gap: 72px; align-items: center; }
+  .abu-photo{ aspect-ratio: 4 / 3; overflow: hidden; background: var(--surface); border-radius: 2px; }
+  .abu-photo img{ width: 100%; height: 100%; object-fit: cover; }
+  .abu-text{ min-width: 0; }
+  .abu-text h2{ font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
+  .abu-text p{ color: var(--muted); margin: 0 0 24px; }
+  .abu-points{ list-style: none; margin: 0; padding: 0; }
+  .abu-points li{ padding: 14px 0; border-top: 1px solid var(--line); color: var(--text); font-size: .98rem; }
+  .abu-points li:last-child{ border-bottom: 1px solid var(--line); }
+  @media (max-width: 820px){
+    .abu-layout{ grid-template-columns: 1fr; gap: 40px; }
+    .abu{ padding-bottom: 60px; }
+  }
 
   /* ---------- TESTIMONIALS ---------- */
   .testimonials{ text-align: center; padding: 120px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -565,7 +578,7 @@
   .exp-panel > *, .contact-grid > *, .feature-grid > *, .journey-grid > *, .collections-grid > *{ min-width: 0; }
   .price-item-title{ min-width: 0; }
   @media (max-width: 700px){
-    :root{ --logo-shift: 6px; }
+    :root{ --logo-shift: 3px; }
     .price-item-head{ gap: 12px; }
     .price-item-price{ font-size: 1.25rem; }
     .container{ padding: 0 22px; }
@@ -921,12 +934,23 @@
 </section>
 
 <!-- ============ ABU DHABI ============ -->
-<section class="band band-abu" id="abudhabi">
+<section class="section abu" id="abudhabi">
   <div class="container">
-    <div class="band-text">
-      <div class="eyebrow">מעבר לדובאי</div>
-      <h2>סיורים וטיולים באבו דאבי</h2>
-      <p>יש לנו סוכנים אישיים שכבר נמצאים בשטח, בדובאי ובאבו דאבי, וזמינים לעזור לכם בכל רגע נתון, בכל שאלה ובכל בקשה. אנחנו בכל מקום שאתם צריכים אותנו, עם רמת האמינות והזמינות הגבוהה ביותר שיש.</p>
+    <div class="abu-layout">
+      <div class="abu-photo">
+        <img src="https://images.unsplash.com/photo-1512632578888-169bbbc64f33?q=80&w=1400&auto=format&fit=crop" alt="אבו דאבי" loading="lazy">
+      </div>
+      <div class="abu-text">
+        <div class="eyebrow">מעבר לדובאי</div>
+        <h2>סיורים וטיולים באבו דאבי</h2>
+        <hr class="rule">
+        <p>סוכנים אישיים שלנו כבר נמצאים בשטח, בדובאי ובאבו דאבי, וזמינים לכל שאלה ובקשה, בכל רגע. תגידו לנו מה בא לכם לראות, ואנחנו נדאג לשאר.</p>
+        <ul class="abu-points">
+          <li>זמינות מלאה בוואטסאפ ובטלפון</li>
+          <li>סוכן שמכיר את המקום ומחכה לכם בשטח</li>
+          <li>מסלול שנבנה לפי הקצב והטעם שלכם</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
