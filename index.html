@@ -323,6 +323,26 @@
     .airport-preview .container{ padding-top: 40px; padding-bottom: 40px; }
   }
 
+  /* ---------- EXPERIENCES BAND (above the airport band) ---------- */
+  .exp-band{
+    position: relative; overflow: hidden;
+    margin-top: 50px; padding: 0;
+    min-height: 320px; display:flex; align-items:center;
+    background: #0b0c0f url('images/jetski-trio.jpg') center 55% / cover no-repeat;
+    border-block: 1px solid rgba(217,178,92,0.22);
+  }
+  .exp-band::before{
+    content:''; position:absolute; inset:0;
+    background: linear-gradient(270deg, rgba(8,9,11,0.94) 0%, rgba(8,9,11,0.78) 42%, rgba(8,9,11,0.25) 100%);
+  }
+  .exp-band .container{ position: relative; z-index: 1; padding-top: 52px; padding-bottom: 52px; }
+  .exp-band + .airport-preview{ margin-top: 0; border-top: 0; }
+  @media (max-width: 700px){
+    .exp-band{ margin-top: 36px; min-height: 260px; background-position: 35% center; }
+    .exp-band::before{ background: linear-gradient(180deg, rgba(8,9,11,0.55) 0%, rgba(8,9,11,0.88) 100%); }
+    .exp-band .container{ padding-top: 40px; padding-bottom: 40px; }
+  }
+
   /* ---------- VIDEO CUBES ---------- */
   .video-grid{
     display:flex;
@@ -1061,6 +1081,17 @@
     <div class="hero-actions">
       <button class="btn btn-gold" onclick="openQuizModal()">בואו נתחיל לתכנן</button>
       <a class="btn btn-outline" href="#experiences">לצפייה בחוויות</a>
+    </div>
+  </div>
+</section>
+
+<section class="exp-band" id="exp-band">
+  <div class="container">
+    <div class="airport-text">
+      <div class="eyebrow">חוויות דובאי</div>
+      <h2>כל החוויות של דובאי, במקום אחד</h2>
+      <p>אופנועי ים, ספארי, RZR, יאכטות, מסיבות VIP ועוד: מה מותר, מה אסור, ואיך אנחנו דואגים לכם לחוויה הכי טובה.</p>
+      <a class="btn btn-gold" href="experiences.html">לחוויות דובאי</a>
     </div>
   </div>
 </section>
