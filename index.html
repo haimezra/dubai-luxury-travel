@@ -22,7 +22,7 @@
     --display: 'Outfit', 'Rubik', sans-serif;
     --sans: 'Outfit', 'Rubik', sans-serif;
     --ease: cubic-bezier(.2,.6,.2,1);
-    --logo-shift: 14px;
+    --logo-shift: 10px;
   }
 
   *{ box-sizing: border-box; }
@@ -229,11 +229,11 @@
   }
   .col-card::after{
     content: ''; position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(11,11,12,0) 45%, rgba(11,11,12,.88) 100%);
+    background: linear-gradient(180deg, rgba(11,11,12,0) 25%, rgba(11,11,12,.55) 60%, rgba(11,11,12,.94) 100%);
   }
   .col-info{ position: absolute; right: 24px; left: 24px; bottom: 24px; z-index: 1; }
-  .col-info h3{ font-size: 1.7rem; }
-  .col-sub{ display: block; color: #cfcac0; font-size: .9rem; margin-top: 4px; }
+  .col-info h3{ font-size: 1.7rem; text-shadow: 0 1px 12px rgba(0,0,0,.6); }
+  .col-sub{ display: block; color: #e2ddd2; font-size: .9rem; margin-top: 4px; text-shadow: 0 1px 10px rgba(0,0,0,.7); }
   .col-go{
     display: inline-block; margin-top: 14px;
     color: var(--gold); font-size: .88rem; font-weight: 500;
@@ -244,6 +244,13 @@
   .col-card:hover .col-go, .col-card:focus-visible .col-go{ opacity: 1; transform: none; }
   @media (hover: none){ .col-go{ opacity: 1; transform: none; } }
   @media (max-width: 900px){ .collections-grid{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 700px){
+    .collections-grid{ gap: 12px; }
+    .col-info{ right: 14px; left: 14px; bottom: 16px; }
+    .col-info h3{ font-size: 1.4rem; }
+    .col-sub{ font-size: .8rem; line-height: 1.5; }
+    .col-go{ font-size: .8rem; margin-top: 8px; }
+  }
 
   /* ---------- EXPERIENCES SHOWCASE ---------- */
   .showcase{ background: var(--surface); }
@@ -558,7 +565,7 @@
   .exp-panel > *, .contact-grid > *, .feature-grid > *, .journey-grid > *, .collections-grid > *{ min-width: 0; }
   .price-item-title{ min-width: 0; }
   @media (max-width: 700px){
-    :root{ --logo-shift: 10px; }
+    :root{ --logo-shift: 6px; }
     .price-item-head{ gap: 12px; }
     .price-item-price{ font-size: 1.25rem; }
     .container{ padding: 0 22px; }
@@ -648,7 +655,7 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">הקולקציות שלנו</div>
-      <h2>ארבעה עולמות, יעד אחד</h2>
+      <h2>דובאי מגוונת, בחרו את החוויה שלכם</h2>
     </div>
     <div class="collections-grid">
       <a class="col-card" href="#" onclick="openSeaChoice();return false;">
@@ -660,27 +667,27 @@
         </div>
       </a>
       <a class="col-card" href="desert-safari.html">
-        <img src="images/safari-cube-poster.jpg" alt="ספארי מדברי בשקיעה" loading="lazy">
+        <video muted loop playsinline webkit-playsinline preload="none" poster="images/safari-cube-poster.jpg" data-slot="8" data-fallback="videos/safari-camp.mp4" aria-hidden="true"></video>
         <div class="col-info">
-          <h3>מדבר</h3>
-          <span class="col-sub">ספארי, דיונות ו-RZR</span>
+          <h3>ספארי</h3>
+          <span class="col-sub">דיונות, גמלים וערב ערבי</span>
           <span class="col-go">לעמוד ←</span>
         </div>
       </a>
       <a class="col-card" href="vip-parties.html">
-        <video id="colNightVideo" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <video muted loop playsinline webkit-playsinline preload="none" data-slot="3" aria-hidden="true"></video>
         <div class="col-info">
           <h3>לילה</h3>
-          <span class="col-sub">מועדונים, לאונג'ים ומסיבות VIP</span>
+          <span class="col-sub">מועדונים ומסיבות VIP</span>
           <span class="col-go">לעמוד ←</span>
         </div>
       </a>
-      <a class="col-card" href="#experiences">
-        <img src="https://images.unsplash.com/photo-1546412414-e1885259563a?q=80&w=900&auto=format&fit=crop" alt="מלונות פאר בדובאי" loading="lazy">
+      <a class="col-card" href="rzr.html">
+        <video muted loop playsinline webkit-playsinline preload="none" poster="images/rzr-cube-poster.jpg" data-slot="6" data-fallback="videos/extreme-card.mp4" aria-hidden="true"></video>
         <div class="col-info">
-          <h3>מלונות</h3>
-          <span class="col-sub">ארמונות וסוויטות עם נוף</span>
-          <span class="col-go">לצפייה ←</span>
+          <h3>RZR</h3>
+          <span class="col-sub">רכבי שטח בין הדיונות</span>
+          <span class="col-go">לעמוד ←</span>
         </div>
       </a>
     </div>
@@ -1539,19 +1546,48 @@
     } else { primeVideo(firstCube); }
   })();
 
-  // the "night" collection card reuses the slot-3 video from Supabase
-  (async function(){
-    const nightVideo = document.getElementById('colNightVideo');
-    if (!nightVideo || !supabaseClient) return;
-    try {
-      const { data, error } = await supabaseClient
-        .from('site_videos').select('video_url').eq('slot', 3).maybeSingle();
-      if (!error && data && data.video_url){
-        nightVideo.src = data.video_url;
-        nightVideo.autoplay = true;
-        nightVideo.play().catch(() => {});
+  /* ---------- collection cards: self-playing videos ---------- */
+  (function(){
+    const vids = Array.from(document.querySelectorAll('.col-card video'));
+    vids.forEach(v => { v.muted = true; v.loop = true; v.playsInline = true; });
+
+    async function resolveSrc(v){
+      let url = v.dataset.fallback || '';
+      if (v.dataset.slot && supabaseClient){
+        try {
+          const { data, error } = await supabaseClient
+            .from('site_videos').select('video_url').eq('slot', Number(v.dataset.slot)).maybeSingle();
+          if (!error && data && data.video_url) url = data.video_url;
+        } catch (err) { console.error('card video lookup failed:', err); }
       }
-    } catch (err) { console.error('night card video failed:', err); }
+      return url;
+    }
+    async function startCard(v){
+      if (v.dataset.started){ v.play().catch(() => {}); return; }
+      v.dataset.started = '1';
+      const url = await resolveSrc(v);
+      if (!url){ v.dataset.started = ''; return; }
+      v.src = url;
+      v.load();
+      v.play().catch(() => {});
+    }
+    vids.forEach(v => v.addEventListener('loadeddata', () => v.play().catch(() => {})));
+
+    if ('IntersectionObserver' in window){
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(en => {
+          if (en.isIntersecting) startCard(en.target);
+          else if (en.target.dataset.started) en.target.pause();
+        });
+      }, { rootMargin: '200px', threshold: 0.15 });
+      vids.forEach(v => io.observe(v));
+    } else {
+      vids.forEach(startCard);
+    }
+
+    // some phones hold autoplay until the first touch
+    const kick = () => vids.forEach(v => { if (v.dataset.started && v.paused) v.play().catch(() => {}); });
+    ['touchstart', 'click', 'scroll'].forEach(ev => window.addEventListener(ev, kick, { once: true, passive: true }));
   })();
 
   handleHash();
