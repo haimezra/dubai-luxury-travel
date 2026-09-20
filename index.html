@@ -299,6 +299,31 @@
     .vip-link-btn{ padding: 8px 14px; font-size: .88rem; }
   }
 
+  /* ---------- AIRPORT PREVIEW ---------- */
+  .airport-preview{ padding: 70px 0 10px; }
+  .airport-card{
+    display:grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items:center;
+    background: var(--surface-2); border-radius: 20px; padding: clamp(24px, 4vw, 44px);
+    box-shadow: 0 0 0 1px rgba(217,178,92,0.25), 0 0 40px rgba(217,178,92,0.10), 0 24px 60px rgba(0,0,0,0.45);
+  }
+  .airport-text .eyebrow{ color: var(--gold); font-size: .85rem; font-weight: 600; letter-spacing: .04em; }
+  .airport-text h2{ font-size: clamp(1.7rem, 4vw, 2.4rem); margin: 8px 0 14px; }
+  .airport-text p{ color: var(--muted); margin-bottom: 22px; }
+  .airport-route{
+    list-style:none; margin:0; padding:0; display:grid; border-radius: 12px;
+    background:#0b0c0f; border: 1px solid rgba(217,178,92,0.22); overflow:hidden;
+  }
+  .airport-route li{ display:flex; align-items:center; gap: 14px; padding: 12px 16px; border-top: 1px solid rgba(255,255,255,0.08); font-weight:500; }
+  .airport-route li:first-child{ border-top: 0; }
+  .airport-route .n{
+    width: 32px; height: 32px; border-radius: 6px; border: 2px solid var(--gold); color: var(--gold);
+    display:grid; place-items:center; font-weight:700; flex:none;
+  }
+  @media (max-width: 860px){
+    .airport-preview{ padding-top: 50px; }
+    .airport-card{ grid-template-columns: 1fr; gap: 26px; }
+  }
+
   /* ---------- VIDEO CUBES ---------- */
   .video-grid{
     display:flex;
@@ -1037,6 +1062,26 @@
     <div class="hero-actions">
       <button class="btn btn-gold" onclick="openQuizModal()">בואו נתחיל לתכנן</button>
       <a class="btn btn-outline" href="#experiences">לצפייה בחוויות</a>
+    </div>
+  </div>
+</section>
+
+<section class="airport-preview" id="airport">
+  <div class="container">
+    <div class="airport-card">
+      <div class="airport-text">
+        <div class="eyebrow">נתיב VIP</div>
+        <h2>בנתב"ג, מישהו הולך איתכם עד השער</h2>
+        <p>ליווי אישי מהכניסה לטרמינל ועד ההמראה: צ'ק-אין, בידוק וביקורת דרכונים במסלול מהיר, בלי תורים ובלי לחפש שלטים. מתאים לילדים, להורים, לאנשי עסקים ולכל מי שמעדיף לא להתמודד לבד.</p>
+        <a class="btn btn-gold" href="netiv-vip.html">לפרטים ולהזמנה</a>
+      </div>
+      <ol class="airport-route" aria-label="מסלול הליווי בנתב&quot;ג">
+        <li><span class="n">1</span><span>מפגש בכניסה לטרמינל</span></li>
+        <li><span class="n">2</span><span>צ'ק-אין והפקדת מזוודות</span></li>
+        <li><span class="n">3</span><span>בידוק ביטחוני במסלול מהיר</span></li>
+        <li><span class="n">4</span><span>ביקורת דרכונים</span></li>
+        <li><span class="n">5</span><span>ליווי עד השער</span></li>
+      </ol>
     </div>
   </div>
 </section>
