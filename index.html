@@ -22,10 +22,11 @@
     --display: 'Outfit', 'Rubik', sans-serif;
     --sans: 'Outfit', 'Rubik', sans-serif;
     --ease: cubic-bezier(.2,.6,.2,1);
+    --logo-shift: 14px;
   }
 
   *{ box-sizing: border-box; }
-  html{ scroll-behavior: smooth; scroll-padding-top: 80px; }
+  html{ scroll-behavior: smooth; scroll-padding-top: 80px; overflow-x: hidden; max-width: 100%; -webkit-text-size-adjust: 100%; }
   body{
     margin:0;
     background: var(--bg);
@@ -35,6 +36,7 @@
     font-size: 1.02rem;
     line-height: 1.85;
     overflow-x: hidden;
+    max-width: 100%;
     -webkit-font-smoothing: antialiased;
   }
   h1,h2,h3{
@@ -120,7 +122,7 @@
   .menu-toggle .bars i{ display:block; height:1px; background: var(--text); transition: background .3s; }
   .menu-toggle .bars i:last-child{ width: 65%; }
   .menu-toggle:hover .bars i{ background: var(--gold); }
-  .brand{ display: block; }
+  .brand{ display: block; transform: translateX(var(--logo-shift)); }
   .brand-logo{ width: 44px; height: 44px; object-fit: contain; }
   .nav-wa{
     justify-self: end;
@@ -306,6 +308,9 @@
   @media (max-width: 900px){
     .exp-panel.active{ grid-template-columns: 1fr; gap: 32px; }
     .exp-tabs{ justify-content: flex-start; margin-inline: -32px; padding-inline: 20px; }
+  }
+  @media (max-width: 700px){
+    .exp-tabs{ margin-inline: -22px; padding-inline: 14px; }
   }
 
   /* ---------- JOURNEY ---------- */
@@ -550,7 +555,12 @@
   .quiz-thanks p{ color: var(--muted); margin: 0; }
   .quiz-error{ color: #d98a8a; font-size: .85rem; margin-top: -18px; margin-bottom: 18px; }
 
+  .exp-panel > *, .contact-grid > *, .feature-grid > *, .journey-grid > *, .collections-grid > *{ min-width: 0; }
+  .price-item-title{ min-width: 0; }
   @media (max-width: 700px){
+    :root{ --logo-shift: 10px; }
+    .price-item-head{ gap: 12px; }
+    .price-item-price{ font-size: 1.25rem; }
     .container{ padding: 0 22px; }
     .section{ padding: 90px 0; }
     .intro{ padding: 100px 0 90px; }
@@ -629,7 +639,7 @@
 <!-- ============ INTRO ============ -->
 <section class="intro">
   <div class="container">
-    <p>מלווה אתכם אישית מהרגע שאתם מחליטים לטוס, במלון המושלם, בחוויות שלא שוכחים, ובזמינות מלאה לאורך כל הדרך.</p>
+    <p>מלווים אתכם אישית מהרגע שאתם מחליטים לטוס, במלון המושלם, בחוויות שלא שוכחים, ובזמינות מלאה לאורך כל הדרך.</p>
   </div>
 </section>
 
@@ -860,7 +870,7 @@
       <div class="journey-item">
         <div class="journey-num">03</div>
         <h3>עד הרגע שחוזרים</h3>
-        <p>מלווה גם ברגעים האחרונים, מצ'ק אאוט, הסעה לשדה התעופה, ואפילו טיפ לחוויה הבאה.</p>
+        <p>מלווים גם ברגעים האחרונים, מצ'ק אאוט, הסעה לשדה התעופה, ואפילו טיפ לחוויה הבאה.</p>
       </div>
     </div>
   </div>
