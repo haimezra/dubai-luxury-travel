@@ -214,6 +214,17 @@
   }
   @keyframes floatpulse{ 0%,100%{ box-shadow:0 0 20px var(--gold-glow), 0 8px 24px rgba(0,0,0,0.5); } 50%{ box-shadow:0 0 36px var(--gold-glow), 0 0 60px rgba(217,178,92,0.3), 0 8px 24px rgba(0,0,0,0.5); } }
   .float-cta:hover{ background:var(--gold-bright); }
+
+  /* ---------- CAMP VIDEO ---------- */
+  .camp-video{ margin-top: 48px; display:grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items:center; }
+  .camp-video-frame{
+    position:relative; aspect-ratio: 934/766; border-radius:18px; overflow:hidden; background: var(--surface-2);
+    box-shadow: 0 0 0 1px rgba(217,178,92,0.25), 0 0 40px rgba(217,178,92,0.14), 0 24px 60px rgba(0,0,0,0.5);
+  }
+  .camp-video-frame video{ width:100%; height:100%; object-fit:cover; display:block; }
+  .camp-video-text h3{ font-size: 1.5rem; margin-bottom: 12px; }
+  .camp-video-text p{ color:#94969c; font-size:1.02rem; }
+  @media (max-width: 800px){ .camp-video{ grid-template-columns: 1fr; gap: 24px; } }
 </style>
 </head>
 <body>
@@ -305,6 +316,15 @@
           <h3>מופעי ריקוד ואש</h3>
           <p>רקדנית בטן מקצועית, ריקוד טאנורה טורקי מסורתי, ומופע אש מרהיב, לצלילי מוזיקה ערבית, אנגלית והודית.</p>
         </div>
+      </div>
+    </div>
+    <div class="camp-video">
+      <div class="camp-video-frame">
+        <video data-lazy-src="videos/safari-fire-camp.mp4" poster="images/safari-camp-poster.jpg" autoplay muted loop playsinline preload="none"></video>
+      </div>
+      <div class="camp-video-text">
+        <h3>ככה נראה הערב במחנה</h3>
+        <p>מופע אש מול השולחנות, ארוחת ערב וצלילי מוזיקה תחת הכוכבים. רגעים ששווים להגיע בשבילם.</p>
       </div>
     </div>
   </div>
@@ -550,5 +570,17 @@
   updateArrivalField();
 </script>
 
+<script>
+  // start the camp clip only when it is near the screen
+  (function(){
+    document.querySelectorAll('video[data-lazy-src]').forEach(function(v){
+      function start(){ if(!v.getAttribute('src')) v.src = v.dataset.lazySrc; var p = v.play(); if(p && p.catch) p.catch(function(){}); }
+      if ('IntersectionObserver' in window){
+        var io = new IntersectionObserver(function(es){ if (es.some(function(e){ return e.isIntersecting; })){ start(); io.disconnect(); } }, { rootMargin: '300px' });
+        io.observe(v);
+      } else { start(); }
+    });
+  })();
+</script>
 </body>
 </html>
