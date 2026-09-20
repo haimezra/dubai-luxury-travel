@@ -3,1136 +3,707 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0B0B0C">
 <title>FIVEdubai | ליווי אישי לטיולי יוקרה</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #08090b;
-    --surface: #101215;
-    --surface-2: #15181c;
-    --gold: #d9b25c;
-    --gold-bright: #f3d488;
-    --gold-glow: rgba(217,178,92,0.55);
-    --ivory: #ece7dd;
-    --muted: #94969c;
+    --bg: #0B0B0C;
+    --surface: #121213;
+    --surface-2: #181819;
+    --line: rgba(255,255,255,.09);
+    --text: #F4F1EA;
+    --muted: #9A9A9A;
+    --gold: #C8A96A;
+    --gold-soft: rgba(200,169,106,.38);
+    --serif: 'Outfit', 'Rubik', sans-serif;
+    --display: 'Outfit', 'Rubik', sans-serif;
+    --sans: 'Outfit', 'Rubik', sans-serif;
+    --ease: cubic-bezier(.2,.6,.2,1);
   }
 
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; scroll-padding-top: 80px; }
   body{
     margin:0;
     background: var(--bg);
-    color: var(--ivory);
-    font-family: 'Heebo', sans-serif;
+    color: var(--text);
+    font-family: var(--sans);
     font-weight: 300;
-    line-height: 1.75;
+    font-size: 1.02rem;
+    line-height: 1.85;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
   }
-
-  h1,h2,h3,.brand{
-    font-family: 'Rubik', sans-serif;
-    font-weight: 800;
-    letter-spacing: -0.01em;
-    color: var(--ivory);
+  h1,h2,h3{
+    font-family: var(--serif);
+    font-weight: 300;
+    letter-spacing: -0.005em;
+    line-height: 1.25;
+    color: var(--text);
     margin: 0;
   }
-  .brand-logo{ width: 42px; height: 42px; object-fit: contain; }
+  a{ color: inherit; text-decoration: none; }
+  img{ max-width: 100%; display:block; }
+  button{ font-family: inherit; }
+  :focus-visible{ outline: 1px solid var(--gold); outline-offset: 4px; }
 
-  .brand-logo-text{ height: 13px; width: auto; object-fit: contain; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); }
-  a { color: inherit; text-decoration: none; }
-  img { max-width: 100%; display:block; }
+  .container{ max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+  section{ position: relative; }
+  .section{ padding: 130px 0; }
 
-  .container{
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 0 28px;
+  /* ---------- SHARED TYPE ---------- */
+  .eyebrow{
+    color: var(--gold);
+    font-weight: 500;
+    font-size: .82rem;
+    letter-spacing: .1em;
+    margin-bottom: 18px;
   }
+  .section-head{ max-width: 620px; margin-bottom: 72px; }
+  .section-head.center{ margin-inline: auto; text-align: center; }
+  .section-head h2{ font-size: clamp(1.9rem, 3.6vw, 2.8rem); }
+  .section-head p{ color: var(--muted); margin: 20px 0 0; font-size: 1.05rem; }
+  .rule{ width: 56px; height: 1px; background: var(--gold); border: 0; margin: 28px 0; }
+  .section-head.center .rule{ margin-inline: auto; }
 
-  /* ---------- NAV ---------- */
-  header.site-nav{
-    position: fixed;
-    top:0; right:0; left:0;
-    z-index: 50;
-    display:flex;
-    align-items:center;
-    justify-content: space-between;
-    padding: 12px 26px 12px 16px;
-    background: linear-gradient(180deg, rgba(8,9,11,0.9), rgba(8,9,11,0));
-    transition: background .3s ease;
+  /* ---------- BUTTONS ---------- */
+  .btn{
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 14px 36px;
+    font-family: var(--sans);
+    font-size: .95rem; font-weight: 400; letter-spacing: .04em;
+    color: var(--text);
+    background: transparent;
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background .4s var(--ease), color .4s var(--ease);
   }
-  .brand{
-    font-size: 1.05rem;
-    font-weight: 800;
-    display:flex; align-items:center; gap:8px;
+  .btn:hover{ background: var(--gold); color: #0B0B0C; }
+  .link-arrow{
+    display: inline-block;
+    color: var(--text);
+    font-size: .95rem; font-weight: 400;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--gold-soft);
+    background: none; border-top: 0; border-inline: 0;
+    cursor: pointer;
+    transition: color .3s ease, border-color .3s ease;
   }
-  .brand .mark{
-    width:9px; height:9px; border-radius:50%;
-    background: var(--gold);
-    box-shadow: 0 0 6px var(--gold), 0 0 16px var(--gold-glow), 0 0 30px var(--gold-glow);
-    animation: pulse 2.6s ease-in-out infinite;
-  }
-  @keyframes pulse{
-    0%,100%{ opacity:1; }
-    50%{ opacity:.55; }
-  }
-  nav.links{ display:flex; gap:34px; font-size:0.95rem; color: var(--muted); font-weight:500; }
-  nav.links a{ position:relative; padding-bottom:4px; }
-  nav.links a::after{
-    content:'';
-    position:absolute; right:0; bottom:0; width:0; height:1px;
-    background: var(--gold);
-    box-shadow: 0 0 8px var(--gold-glow);
-    transition: width .25s ease;
-  }
-  nav.links a:hover{ color: var(--gold-bright); }
-  nav.links a:hover::after{ width:100%; }
+  .link-arrow:hover{ color: var(--gold); border-bottom-color: var(--gold); }
 
-  .nav-cta{
-    padding: 8px 18px;
-    border-radius: 999px;
-    color: #10120c;
-    background: var(--gold);
-    font-size: .88rem;
-    font-weight: 700;
-    white-space:nowrap;
-    box-shadow: 0 0 18px var(--gold-glow);
-    transition: box-shadow .25s ease, transform .25s ease;
+  /* ---------- HEADER ---------- */
+  .site-nav{
+    position: fixed; top: 0; right: 0; left: 0; z-index: 50;
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+    padding: 20px 36px;
+    border-bottom: 1px solid transparent;
+    background: linear-gradient(180deg, rgba(11,11,12,.7), rgba(11,11,12,0));
+    transition: background .4s ease, padding .4s ease, border-color .4s ease;
   }
-  .nav-cta:hover{ box-shadow: 0 0 28px var(--gold-glow), 0 0 50px var(--gold-glow); transform: translateY(-1px); }
+  .site-nav.scrolled{
+    background: rgba(11,11,12,.94);
+    backdrop-filter: blur(10px);
+    border-bottom-color: var(--line);
+    padding: 12px 36px;
+  }
+  .menu-toggle{
+    justify-self: start;
+    display: inline-flex; align-items: center; gap: 14px;
+    background: none; border: 0; color: var(--text); cursor: pointer;
+    font-size: .92rem; font-weight: 400; letter-spacing: .06em; padding: 8px 0;
+  }
+  .menu-toggle .bars{ display:flex; flex-direction:column; gap:6px; width: 26px; }
+  .menu-toggle .bars i{ display:block; height:1px; background: var(--text); transition: background .3s; }
+  .menu-toggle .bars i:last-child{ width: 65%; }
+  .menu-toggle:hover .bars i{ background: var(--gold); }
+  .brand{ display: block; }
+  .brand-logo{ width: 44px; height: 44px; object-fit: contain; }
+  .nav-wa{
+    justify-self: end;
+    width: 40px; height: 40px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--text);
+    border: 1px solid var(--line); border-radius: 50%;
+    transition: border-color .3s ease, color .3s ease;
+  }
+  .nav-wa:hover{ border-color: var(--gold); color: var(--gold); }
+  .nav-wa svg{ width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linejoin: round; }
 
+  /* ---------- FULL-SCREEN MENU ---------- */
+  .menu-overlay{
+    position: fixed; inset: 0; z-index: 120;
+    background: var(--bg);
+    display: none;
+    overflow-y: auto;
+    padding: 28px 36px 48px;
+  }
+  .menu-overlay.active{ display: block; animation: fadeIn .4s ease; }
+  @keyframes fadeIn{ from{ opacity: 0; } to{ opacity: 1; } }
+  .menu-top{ display:flex; justify-content: space-between; align-items:center; }
+  .menu-close{
+    background: none; border: 0; color: var(--text); cursor: pointer;
+    font-size: .92rem; letter-spacing: .06em; display:inline-flex; align-items:center; gap: 12px; padding: 8px 0;
+  }
+  .menu-close:hover{ color: var(--gold); }
+  .menu-body{
+    max-width: 1080px; margin: 6vh auto 0;
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px;
+  }
+  .menu-main a{
+    display: block;
+    font-family: var(--serif); font-weight: 300;
+    font-size: clamp(1.9rem, 4.2vw, 3rem);
+    line-height: 1.4;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--line);
+    transition: color .3s ease, padding .3s var(--ease);
+  }
+  .menu-main a:hover{ color: var(--gold); padding-inline-start: 14px; }
+  .menu-side h4{ margin: 0 0 18px; font-weight: 500; font-size: .82rem; letter-spacing: .1em; color: var(--gold); }
+  .menu-side a{ display: block; padding: 7px 0; color: var(--muted); font-size: 1rem; transition: color .3s ease; }
+  .menu-side a:hover{ color: var(--text); }
+  .menu-contact{ margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line); }
+  .menu-contact .tel{ font-family: var(--display); font-weight: 300; font-size: 1.9rem; color: var(--text); direction: ltr; display: inline-block; }
   @media (max-width: 820px){
-    nav.links{ display:none; }
+    .menu-body{ grid-template-columns: 1fr; gap: 48px; }
+    .menu-overlay{ padding: 22px 24px 48px; }
   }
 
   /* ---------- HERO ---------- */
   .hero{
-    position:relative;
     min-height: 100svh;
-    display:flex;
-    align-items:flex-end;
-    background-color: #1c1712;
-    background-image: linear-gradient(180deg, rgba(6,6,7,0.4) 0%, rgba(6,6,7,0.6) 55%, rgba(6,6,7,0.98) 100%), url('https://images.unsplash.com/photo-1634007626524-f47fa37810a7?q=80&w=2000&auto=format&fit=crop');
-    background-size: cover;
-    background-position: center 65%;
-    padding-top: 150px;
+    display: flex; align-items: flex-end;
+    background:
+      linear-gradient(180deg, rgba(11,11,12,.5) 0%, rgba(11,11,12,.32) 38%, rgba(11,11,12,.96) 100%),
+      url('https://images.unsplash.com/photo-1634007626524-f47fa37810a7?q=80&w=2000&auto=format&fit=crop') center 62% / cover no-repeat;
+    background-color: var(--surface);
   }
   .hero-inner{
-    padding-bottom: 100px;
-    animation: rise 1.1s ease both;
-    max-width: 900px;
+    width: 100%;
+    padding-top: 160px; padding-bottom: 88px;
+    text-align: center;
+    animation: heroIn 1.4s var(--ease) both;
   }
-  @keyframes rise{
-    from { opacity:0; transform: translateY(24px); }
-    to   { opacity:1; transform: translateY(0); }
-  }
-  .hero-kicker{
-    color: var(--gold-bright);
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    text-shadow: 0 0 18px var(--gold-glow);
-  }
+  @keyframes heroIn{ from{ opacity: 0; transform: translateY(16px); } to{ opacity: 1; transform: none; } }
+  .hero-logo{ height: 24px; width: auto; margin: 0 auto 40px; object-fit: contain; }
   .hero h1{
-    font-size: clamp(2rem, 6vw, 4.4rem);
-    line-height: 1.16;
-    text-shadow: 0 0 30px rgba(217,178,92,0.25);
+    font-size: clamp(2.3rem, 6vw, 4.5rem);
+    line-height: 1.18;
+    max-width: 900px; margin-inline: auto;
   }
-  .hero h1 .glow{
-    color: var(--gold-bright);
-    text-shadow: 0 0 12px var(--gold-glow), 0 0 34px var(--gold-glow), 0 0 60px rgba(217,178,92,0.25);
+  .hero .rule{ margin: 34px auto; }
+  .hero-actions{ display: flex; flex-direction: column; align-items: center; gap: 26px; }
+  .hero-scroll{ color: var(--muted); font-size: .9rem; letter-spacing: .06em; transition: color .3s ease; }
+  .hero-scroll:hover{ color: var(--gold); }
+
+  /* ---------- INTRO ---------- */
+  .intro{ padding: 150px 0 130px; text-align: center; }
+  .intro p{
+    font-family: var(--serif); font-weight: 300;
+    font-size: clamp(1.4rem, 2.8vw, 2.1rem);
+    line-height: 1.75;
+    max-width: 800px; margin: 0 auto;
+    color: var(--text);
   }
-  .hero p{
-    max-width: 560px;
+
+  /* ---------- COLLECTIONS ---------- */
+  .collections-grid{
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  }
+  .col-card{
+    position: relative; display: block; overflow: hidden;
+    aspect-ratio: 4 / 5;
+    background: linear-gradient(160deg, #1b1a17, #0d0d0e);
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  .col-card img, .col-card video{
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    transition: transform 1.2s var(--ease);
+  }
+  .col-card::after{
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(11,11,12,0) 45%, rgba(11,11,12,.88) 100%);
+  }
+  .col-info{ position: absolute; right: 24px; left: 24px; bottom: 24px; z-index: 1; }
+  .col-info h3{ font-size: 1.7rem; }
+  .col-sub{ display: block; color: #cfcac0; font-size: .9rem; margin-top: 4px; }
+  .col-go{
+    display: inline-block; margin-top: 14px;
+    color: var(--gold); font-size: .88rem; font-weight: 500;
+    opacity: 0; transform: translateY(6px);
+    transition: opacity .4s ease, transform .4s var(--ease);
+  }
+  .col-card:hover img, .col-card:hover video{ transform: scale(1.04); }
+  .col-card:hover .col-go, .col-card:focus-visible .col-go{ opacity: 1; transform: none; }
+  @media (hover: none){ .col-go{ opacity: 1; transform: none; } }
+  @media (max-width: 900px){ .collections-grid{ grid-template-columns: repeat(2, 1fr); } }
+
+  /* ---------- EXPERIENCES SHOWCASE ---------- */
+  .showcase{ background: var(--surface); }
+  .showcase-links{ display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
+  .exp-tabs{
+    display: flex; gap: 6px; justify-content: center;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 64px;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .exp-tabs::-webkit-scrollbar{ display: none; }
+  .exp-tab{
+    flex: 0 0 auto;
+    background: none; border: 0; cursor: pointer;
     color: var(--muted);
-    font-size: 1.15rem;
-    font-weight: 300;
-    margin-top: 24px;
+    font-size: .98rem; font-weight: 400; letter-spacing: .03em;
+    padding: 16px 20px;
+    position: relative; white-space: nowrap;
+    transition: color .3s ease;
   }
-  .hero-actions{
-    display:flex; gap:18px; margin-top: 36px; flex-wrap: wrap;
+  .exp-tab::after{
+    content: ''; position: absolute; right: 20px; left: 20px; bottom: -1px; height: 1px;
+    background: var(--gold); transform: scaleX(0); transition: transform .4s var(--ease);
   }
-  @media (max-width: 480px){
-    .hero{ padding-top: 120px; }
-    .hero-inner{ padding-bottom: 60px; }
-    .hero h1{ font-size: 1.9rem; line-height: 1.25; }
-    .hero p{ font-size: 1rem; margin-top: 18px; }
-    .hero-kicker{ font-size: .9rem; margin-bottom: 14px; }
-  }
-  .btn{
-    display:inline-block;
-    padding: 16px 32px;
-    font-size: 1rem;
-    font-weight: 700;
-    border-radius: 999px;
-    transition: all .3s ease;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-  }
-  .btn-gold{
-    background: var(--gold);
-    color: #14110c;
-    box-shadow: 0 0 22px var(--gold-glow), 0 8px 30px rgba(0,0,0,0.4);
-  }
-  .btn-gold:hover{
-    background: var(--gold-bright);
-    box-shadow: 0 0 30px var(--gold-glow), 0 0 60px rgba(217,178,92,0.4), 0 8px 30px rgba(0,0,0,0.4);
-    transform: translateY(-2px);
-  }
-  .btn-outline{
-    color: var(--gold-bright);
-    background: rgba(217,178,92,0.06);
-    box-shadow: inset 0 0 0 1px rgba(217,178,92,0.4), 0 0 0 rgba(0,0,0,0);
-  }
-  .btn-outline:hover{
-    box-shadow: inset 0 0 0 1px var(--gold-bright), 0 0 26px var(--gold-glow);
-    transform: translateY(-2px);
-  }
+  .exp-tab:hover{ color: var(--text); }
+  .exp-tab.active{ color: var(--text); }
+  .exp-tab.active::after{ transform: scaleX(1); }
 
-  /* ---------- SECTION SHARED ---------- */
-  section{ padding: 120px 0; position: relative; }
-  .section-head{ max-width: 640px; margin-bottom: 64px; }
-  .section-head .eyebrow{
-    color: var(--gold-bright);
-    font-weight: 700;
-    font-size: 1rem;
-    margin-bottom: 16px;
-    text-shadow: 0 0 14px var(--gold-glow);
+  .exp-panel{ display: none; }
+  .exp-panel.active{
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: center;
+    animation: fadeIn .6s ease;
   }
-  .section-head h2{
-    font-size: clamp(1.9rem, 3.4vw, 2.7rem);
-  }
-  .section-head p{ color: var(--muted); margin-top: 18px; font-size: 1.05rem; font-weight:300; }
-
-  /* centered section header (used in the videos section) */
-  .section-head--center{
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-  }
-
-  /* ---------- VIP QUICK NAV ---------- */
-  .vip-nav{
-    margin-top: 34px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 26px;
-  }
-  .vip-actions{
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 14px;
-  }
-  .vip-actions .btn{
-    margin-top: 0;
-    padding: 14px 30px;
-    min-width: 150px;
-    text-align: center;
-  }
-  .btn-ghost{
-    background: rgba(217,178,92,0.08);
-    color: var(--gold-bright);
-    box-shadow: inset 0 0 0 1px rgba(217,178,92,0.45);
-  }
-  .btn-ghost:hover{
-    background: rgba(217,178,92,0.16);
-    box-shadow: inset 0 0 0 1px var(--gold-bright), 0 0 26px var(--gold-glow);
-    transform: translateY(-2px);
-  }
-  .vip-links-row{
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    max-width: 620px;
-  }
-  .vip-link-btn{
-    appearance: none;
-    border: none;
-    cursor: pointer;
-    font-family: 'Heebo', sans-serif;
-    font-weight: 500;
-    font-size: .92rem;
-    line-height: 1.3;
-    padding: 9px 18px;
-    border-radius: 999px;
-    color: #ece7dd;
-    background: rgba(236,231,221,0.06);
-    box-shadow: 0 0 0 1px rgba(217,178,92,0.22);
-    transition: box-shadow .25s ease, color .25s ease, transform .15s ease;
-  }
-  .vip-link-btn:hover{
-    color: var(--gold-bright);
-    box-shadow: 0 0 0 1px rgba(217,178,92,0.55), 0 0 18px rgba(217,178,92,0.18);
-  }
-  .vip-link-btn:focus-visible{
-    outline: 2px solid var(--gold-bright);
-    outline-offset: 3px;
-  }
-  .vip-link-btn:active,
-  .vip-link-btn.is-pressed{
-    animation: vipPress .35s ease;
-  }
-  @keyframes vipPress{
-    0%{ transform: scale(1); }
-    35%{ transform: scale(0.94); }
-    100%{ transform: scale(1); }
-  }
-  .vip-target-highlight{
-    animation: vipTargetPulse 1.1s ease;
-  }
-  @keyframes vipTargetPulse{
-    0%{ filter: brightness(1); }
-    40%{ filter: brightness(1.35); }
-    100%{ filter: brightness(1); }
-  }
-  @media (max-width: 480px){
-    .vip-nav{ margin-top: 28px; gap: 22px; }
-    .vip-actions{ width: 100%; }
-    .vip-actions .btn{ flex: 1 1 0; min-width: 0; padding: 14px 16px; }
-    .vip-link-btn{ padding: 8px 14px; font-size: .88rem; }
-  }
-
-  /* ---------- AIRPORT PREVIEW (full-width band) ---------- */
-  .airport-preview{
+  .video-cube, .image-cube{
     position: relative; overflow: hidden;
-    margin-top: 50px; padding: 0;
-    min-height: 320px; display:flex; align-items:center;
-    background: #0b0c0f url('images/airport-seniors.jpg') center 35% / cover no-repeat;
-    border-top: 1px solid rgba(217,178,92,0.22);
-  }
-  .airport-preview::before{
-    content:''; position:absolute; inset:0;
-    background: linear-gradient(270deg, rgba(8,9,11,0.94) 0%, rgba(8,9,11,0.78) 42%, rgba(8,9,11,0.28) 100%);
-  }
-  .airport-preview .container{ position: relative; z-index: 1; padding-top: 52px; padding-bottom: 52px; }
-  .airport-text{ max-width: 520px; }
-  .airport-text .eyebrow{ color: var(--gold); font-size: .85rem; font-weight: 600; letter-spacing: .04em; }
-  .airport-text h2{ font-size: clamp(1.7rem, 4.2vw, 2.6rem); margin: 6px 0 12px; }
-  .airport-text p{ color: #e6e1d6; font-size: 1.05rem; margin-bottom: 20px; text-shadow: 0 2px 12px rgba(0,0,0,0.5); }
-  .airport-text .btn{ margin-top: 0; }
-  @media (max-width: 700px){
-    .airport-preview{ margin-top: 36px; min-height: 260px; background-position: 30% center; }
-    .airport-preview::before{ background: linear-gradient(180deg, rgba(8,9,11,0.55) 0%, rgba(8,9,11,0.88) 100%); }
-    .airport-preview .container{ padding-top: 40px; padding-bottom: 40px; }
-  }
-
-  /* ---------- EXPERIENCES BAND (above the airport band) ---------- */
-  .exp-band{
-    position: relative; overflow: hidden;
-    margin-top: 0; padding: 0;
-    min-height: 320px; display:flex; align-items:center;
-    background: #0b0c0f url('images/jetski-trio.jpg') center 55% / cover no-repeat;
-    border-block: 1px solid rgba(217,178,92,0.22);
-  }
-  .exp-band::before{
-    content:''; position:absolute; inset:0;
-    background: linear-gradient(270deg, rgba(8,9,11,0.94) 0%, rgba(8,9,11,0.78) 42%, rgba(8,9,11,0.25) 100%);
-  }
-  .exp-band .container{ position: relative; z-index: 1; padding-top: 52px; padding-bottom: 52px; }
-  .exp-band + .airport-preview{ margin-top: 0; border-top: 0; }
-  .hero{ padding-bottom: 32px; }
-  .hero-inner{ padding-bottom: 24px; }
-  section.videos{ padding-top: 60px; }
-  @media (max-width: 700px){
-    .exp-band{ margin-top: 0; min-height: 260px; background-position: 35% center; }
-    .exp-band::before{ background: linear-gradient(180deg, rgba(8,9,11,0.55) 0%, rgba(8,9,11,0.88) 100%); }
-    .exp-band .container{ padding-top: 40px; padding-bottom: 40px; }
-  }
-
-  /* ---------- VIDEO CUBES ---------- */
-  .video-grid{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap: 20px;
-    max-width: 1120px;
-    margin: 0 auto;
-  }
-  .video-cube{
-    position: relative;
-    aspect-ratio: 16/9;
-    border-radius: 14px;
-    overflow: hidden;
-    background: var(--surface-2);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.35);
-    transition: box-shadow .3s ease, transform .3s ease;
-    cursor: pointer;
-  }
-  .video-cube:hover{
-    box-shadow: 0 0 0 1px rgba(217,178,92,0.35), 0 0 34px rgba(217,178,92,0.16), 0 16px 40px rgba(0,0,0,0.35);
-    transform: translateY(-3px);
+    aspect-ratio: 16 / 9;
+    background: var(--bg);
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px var(--line);
   }
   .video-cube video{
-    width:100%; height:100%; object-fit: cover; display:none;
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; display: none; cursor: pointer;
   }
-  .video-cube.has-video video{ display:block; }
-  .video-cube.has-video .video-upload-tile{ display:none; }
+  .video-cube.has-video video{ display: block; }
+  .video-cube.has-video .video-upload-tile{ display: none; }
   .video-upload-tile{
-    position:absolute; inset:0;
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    gap: 4px; color: var(--muted); background: rgba(217,178,92,0.05);
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+    color: var(--muted); cursor: pointer; font-size: .85rem;
+    transition: color .3s ease;
   }
-  .video-upload-tile .plus{ font-size: 1.3rem; color: var(--gold-bright); font-weight:800; text-shadow: 0 0 16px var(--gold-glow); }
-  .video-upload-tile span{ font-size: .62rem; font-weight:500; text-align:center; padding: 0 4px; }
+  .video-upload-tile:hover{ color: var(--gold); }
+  .video-upload-tile .plus{ font-family: var(--display); font-size: 2rem; color: var(--gold); line-height: 1; }
+  .image-cube{ cursor: pointer; }
+  .image-cube img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
-  .video-item{
-    display:flex;
-    flex-direction:column;
-    gap: 8px;
-    flex: 0 0 calc((100% - 60px) / 4);
-    min-width: 0;
-  }
-  .image-cube{
-    position: relative;
-    aspect-ratio: 16/9;
-    border-radius: 14px;
-    overflow: hidden;
-    background: var(--surface-2);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.35);
-    transition: box-shadow .3s ease, transform .3s ease;
-    cursor: pointer;
-  }
-  .image-cube:hover{
-    box-shadow: 0 0 0 1px rgba(217,178,92,0.35), 0 0 34px rgba(217,178,92,0.16), 0 16px 40px rgba(0,0,0,0.35);
-    transform: translateY(-3px);
-  }
-  .image-cube:focus-visible{ outline: 2px solid var(--gold-bright); outline-offset: 3px; }
-  .image-cube img{ width:100%; height:100%; object-fit:cover; display:block; }
-  .video-caption{
-    display:block;
-    width:100%;
-    appearance:none;
-    border:none;
-    margin:0;
-    text-align:center;
-    font-family:'Heebo', sans-serif;
-    font-size: .88rem;
-    font-weight: 600;
-    line-height: 1.3;
-    color: var(--gold-bright);
-    background: rgba(217,178,92,0.07);
-    padding: 11px 12px;
-    border-radius: 999px;
-    cursor:pointer;
-    box-shadow: inset 0 0 0 1px rgba(217,178,92,0.4);
-    transition: background .25s ease, box-shadow .25s ease, transform .15s ease;
-  }
-  .video-caption:hover{
-    background: rgba(217,178,92,0.14);
-    box-shadow: inset 0 0 0 1px var(--gold-bright), 0 0 22px rgba(217,178,92,0.22);
-  }
-  .video-caption:active{ transform: scale(0.97); }
-  .video-caption:focus-visible{ outline: 2px solid var(--gold-bright); outline-offset: 3px; }
+  .exp-copy .eyebrow{ margin-bottom: 14px; }
+  .exp-copy h3{ font-size: clamp(1.7rem, 3vw, 2.4rem); }
+  .exp-copy p{ color: var(--muted); margin: 20px 0 32px; }
 
-  /* ---------- FEATURED VIDEO SHOWCASE (hero-style video + info + CTA) ---------- */
-  .video-feature-list{
-    display:flex;
-    flex-direction:column;
-    gap: 72px;
-    margin: 8px auto 0;
-    max-width: 720px;
-  }
-  .video-feature .video-cube,
-  .video-feature .image-cube{
-    aspect-ratio: 16/10;
-    border-radius: 22px;
-    box-shadow: 0 0 0 1px rgba(217,178,92,0.25), 0 0 40px rgba(217,178,92,0.14), 0 24px 60px rgba(0,0,0,0.5);
-    cursor: default;
-  }
-  .video-feature .video-cube:hover,
-  .video-feature .image-cube:hover{
-    box-shadow: 0 0 0 1px rgba(217,178,92,0.4), 0 0 50px rgba(217,178,92,0.2), 0 24px 60px rgba(0,0,0,0.5);
-    transform: none;
-  }
-  .video-feature .image-cube{ cursor: pointer; }
-  .video-feature-text{
-    margin-top: 26px;
-    text-align: center;
-  }
-  .video-feature-text .eyebrow{
-    color: var(--gold-bright);
-    font-weight: 700;
-    font-size: .95rem;
-    margin-bottom: 10px;
-    text-shadow: 0 0 14px var(--gold-glow);
-  }
-  .video-feature-text h3{
-    font-size: clamp(1.5rem, 4vw, 1.9rem);
-    font-weight: 800;
-  }
-  .video-feature-text p{
-    color: var(--muted);
-    margin-top: 16px;
-    font-size: 1.02rem;
-    font-weight: 300;
-    max-width: 560px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .video-feature-text .btn{
-    margin-top: 24px;
-  }
-
-  .image-cube{
-    position: relative;
-    aspect-ratio: 16/9;
-    border-radius: 14px;
-    overflow: hidden;
-    background: var(--surface-2);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.35);
-    transition: box-shadow .3s ease, transform .3s ease;
-    cursor: pointer;
-  }
-
-  /* ---------- SEA CHOICE MODAL (jet ski / yacht) ---------- */
-  .choice-box{ max-width: 460px; }
-  .choice-options{
-    margin-top: 28px;
-    display:flex;
-    flex-direction:column;
-    gap: 14px;
-  }
-  .choice-btn{
-    appearance:none;
-    border:none;
-    width:100%;
-    padding: 16px 20px;
-    border-radius: 999px;
-    background: rgba(217,178,92,0.07);
-    color: var(--gold-bright);
-    font-family:'Heebo', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-    cursor:pointer;
-    box-shadow: inset 0 0 0 1px rgba(217,178,92,0.4);
-    transition: background .25s ease, box-shadow .25s ease;
-  }
-  .choice-btn:hover{
-    background: rgba(217,178,92,0.14);
-    box-shadow: inset 0 0 0 1px var(--gold-bright), 0 0 22px rgba(217,178,92,0.22);
-  }
-
-  /* animated wave title (sea choice modal) */
-  .modal-box h3.wave-title{ font-size: 2.1rem; line-height: 1.3; letter-spacing: 0; }
-  .wave-title .ch{
-    display:inline-block;
-    background: linear-gradient(180deg, #fff6d8 0%, #f3d488 36%, #d9b25c 62%, #8a6a2a 100%);
-    -webkit-background-clip: text; background-clip: text;
-    -webkit-text-fill-color: transparent; color: transparent;
-    animation: waveBob 2.6s ease-in-out infinite, waveGlint 2.6s ease-in-out infinite;
-    animation-delay: calc(var(--i) * -0.2s);
-    will-change: transform, filter;
-  }
-  @keyframes waveBob{
-    0%, 100%{ transform: translateY(.09em) rotate(2deg); }
-    50%{ transform: translateY(-.11em) rotate(-2deg); }
-  }
-  @keyframes waveGlint{
-    0%, 100%{ filter: brightness(.92) drop-shadow(0 0 0 rgba(243,212,136,0)); }
-    50%{ filter: brightness(1.4) drop-shadow(0 0 9px rgba(243,212,136,.6)); }
-  }
-  .wave-line{
-    height: 14px; margin-top: 4px; opacity: .9;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='14' viewBox='0 0 48 14'><path d='M0 7 Q12 -1 24 7 T48 7' fill='none' stroke='%23d9b25c' stroke-width='2' stroke-linecap='round'/></svg>");
-    background-repeat: repeat-x; background-size: 48px 14px;
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
-    animation: waveSlide 2.4s linear infinite;
-  }
-  @keyframes waveSlide{ to{ background-position-x: -48px; } }
-  @media (prefers-reduced-motion: reduce){
-    .wave-title .ch, .wave-line{ animation: none; }
-  }
-
-  @media (max-width: 640px){
-    .video-grid{ max-width: 560px; }
-    .video-item{ flex-basis: calc((100% - 20px) / 2); }
+  @media (max-width: 900px){
+    .exp-panel.active{ grid-template-columns: 1fr; gap: 32px; }
+    .exp-tabs{ justify-content: flex-start; margin-inline: -32px; padding-inline: 20px; }
   }
 
   /* ---------- JOURNEY ---------- */
-  .journey{ background: var(--surface); }
-  .journey-grid{
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 26px;
-  }
-  .journey-item{
-    padding: 40px 32px;
-    border-radius: 18px;
-    background: var(--surface-2);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-    transition: box-shadow .3s ease, transform .3s ease;
-  }
-  .journey-item:hover{
-    box-shadow: 0 0 0 1px rgba(217,178,92,0.3), 0 0 40px rgba(217,178,92,0.15), 0 20px 50px rgba(0,0,0,0.35);
-    transform: translateY(-4px);
-  }
-  .journey-num{
-    font-family: 'Rubik', sans-serif;
-    font-weight: 900;
-    font-size: 2.6rem;
-    color: transparent;
-    -webkit-text-stroke: 1.5px var(--gold);
-    margin-bottom: 20px;
-    line-height: 1;
-  }
-  .journey-item h3{ font-size: 1.3rem; margin-bottom: 12px; font-weight:700; }
-  .journey-item p{ color: var(--muted); font-size: .98rem; font-weight:300; }
+  .journey-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; }
+  .journey-item{ border-top: 1px solid var(--line); padding-top: 32px; }
+  .journey-num{ font-family: var(--display); font-size: 2.6rem; font-weight: 200; color: var(--gold); line-height: 1; margin-bottom: 22px; }
+  .journey-item h3{ font-size: 1.5rem; margin-bottom: 14px; }
+  .journey-item p{ color: var(--muted); margin: 0; }
+  @media (max-width: 820px){ .journey-grid{ grid-template-columns: 1fr; gap: 44px; } }
 
+  /* ---------- WIDE BANDS ---------- */
+  .band{
+    position: relative; overflow: hidden;
+    display: flex; align-items: center;
+    aspect-ratio: 21 / 9; min-height: 380px;
+    background: var(--surface) center / cover no-repeat;
+  }
+  .band::before{
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(270deg, rgba(11,11,12,.94) 0%, rgba(11,11,12,.72) 42%, rgba(11,11,12,.15) 100%);
+  }
+  .band .container{ position: relative; z-index: 1; }
+  .band-text{ max-width: 500px; }
+  .band-text h2{ font-size: clamp(1.7rem, 3.6vw, 2.6rem); margin-bottom: 16px; }
+  .band-text p{ color: #dcd7cc; margin: 0 0 28px; }
+  .band-airport{ background-image: url('images/airport-seniors.jpg'); background-position: center 35%; }
+  .band-abu{ background-image: url('https://images.unsplash.com/photo-1512632578888-169bbbc64f33?q=80&w=1600&auto=format&fit=crop'); }
+  @media (max-width: 700px){
+    .band{ aspect-ratio: auto; min-height: 460px; }
+    .band::before{ background: linear-gradient(180deg, rgba(11,11,12,.45) 0%, rgba(11,11,12,.92) 100%); }
+    .band{ align-items: flex-end; padding-bottom: 48px; }
+  }
+
+  /* ---------- FEATURE CARDS (hotels, abu dhabi) ---------- */
+  .feature-grid{ display: grid; gap: 32px; }
+  .feature-grid.two{ grid-template-columns: repeat(2, 1fr); }
+  .feature-grid.three{ grid-template-columns: repeat(3, 1fr); }
+  .feature-card{ cursor: pointer; }
+  .feature-card .media{
+    aspect-ratio: 4 / 3; overflow: hidden; background: var(--surface); border-radius: 2px;
+  }
+  .feature-card img{ width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+  .feature-card:hover img{ transform: scale(1.04); }
+  .feature-card h3{ font-size: 1.5rem; margin-top: 22px; }
+  .feature-card p, .feature-card .tag{ color: var(--muted); margin: 8px 0 0; font-size: .98rem; }
+  .feature-card .link-arrow{ margin-top: 16px; }
+  .feature-card:hover .link-arrow{ color: var(--gold); border-bottom-color: var(--gold); }
   @media (max-width: 820px){
-    .journey-grid{ grid-template-columns: 1fr; }
+    .feature-grid.two, .feature-grid.three{ grid-template-columns: 1fr; }
   }
+  .hotels{ background: var(--surface); }
+  .abudhabi-cards{ padding: 110px 0 130px; }
 
-  /* ---------- EXPERIENCES ---------- */
-  .exp-grid{
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 24px;
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials{ text-align: center; padding: 120px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .testimonials h2{ font-size: clamp(1.7rem, 3.2vw, 2.4rem); }
+  .testimonials p{ color: var(--muted); max-width: 520px; margin: 18px auto 32px; }
+
+  /* ---------- PRICING ---------- */
+  .price-list{ max-width: 780px; margin: 0 auto; border-top: 1px solid var(--line); }
+  .price-item{ border-bottom: 1px solid var(--line); }
+  .price-item-head{
+    width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 18px;
+    padding: 26px 4px;
+    background: transparent; border: 0; color: var(--text);
+    cursor: pointer; text-align: right;
   }
-  .exp-card{
-    background: var(--surface-2);
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-    transition: box-shadow .3s ease, transform .3s ease;
+  .price-item-title{ flex: 1; font-family: var(--serif); font-size: 1.15rem; font-weight: 400; }
+  .price-item-price{
+    display: flex; flex-direction: column; align-items: flex-end; gap: 2px;
+    font-family: var(--display); font-size: 1.5rem; font-weight: 300; color: var(--text);
+    white-space: nowrap; line-height: 1.2;
   }
-  .exp-card:hover{
-    box-shadow: 0 0 0 1px rgba(217,178,92,0.35), 0 0 46px rgba(217,178,92,0.18), 0 20px 50px rgba(0,0,0,0.35);
-    transform: translateY(-5px);
+  .price-aed{ font-family: var(--sans); color: var(--muted); font-size: .76rem; font-weight: 300; }
+  .price-item-arrow{
+    color: var(--gold); font-size: 1.4rem; font-weight: 300; line-height: 1; width: 20px; text-align: center;
+    transition: transform .35s var(--ease);
   }
-  .exp-card .img-wrap{
-    height: 220px;
-    overflow:hidden;
+  .price-item.open .price-item-arrow{ transform: rotate(45deg); }
+  .price-item-body{
+    max-height: 0; overflow: hidden; padding: 0 4px;
+    color: var(--muted); font-size: .98rem;
+    transition: max-height .4s var(--ease), padding .4s var(--ease);
   }
-  .exp-card img{
-    width:100%; height:100%; object-fit: cover;
-    transition: transform .6s ease;
-  }
-  .exp-card:hover img{ transform: scale(1.08); }
-  .exp-card .img-wrap video{
-    width:100%; height:100%; object-fit: cover; display:block;
-    transition: transform .6s ease;
-  }
-  .exp-card:hover .img-wrap video{ transform: scale(1.08); }
-  .exp-card .exp-body{ padding: 24px 22px 28px; }
-  .exp-card h3{ font-size: 1.15rem; margin-bottom: 10px; font-weight:700; }
-  .exp-card p{ color: var(--muted); font-size: .92rem; font-weight:300; }
-  .exp-card.clickable{ cursor: pointer; }
-  .exp-body.clickable{ cursor: pointer; }
-  .exp-card .img-wrap.video-cube{
-    aspect-ratio: auto;
-    cursor: default;
+  .price-item.open .price-item-body{ max-height: 240px; padding: 0 4px 28px; }
+  .price-item-body p{ margin: 0; max-width: 620px; }
+  .price-note{ text-align: center; color: var(--muted); font-size: .84rem; margin-top: 28px; }
+
+  /* ---------- CONTACT ---------- */
+  .contact{ background: var(--surface); }
+  .contact-grid{ display: grid; grid-template-columns: .9fr 1.1fr; gap: 90px; align-items: start; }
+  .contact h2{ font-size: clamp(1.9rem, 3.8vw, 2.8rem); }
+  .contact-text p{ color: var(--muted); margin: 20px 0 0; }
+  .phone-line{ margin-top: 36px; font-family: var(--display); font-weight: 300; font-size: clamp(1.9rem, 3.6vw, 2.6rem); direction: ltr; display: inline-block; }
+  .contact-actions{ margin-top: 28px; display: flex; gap: 28px; flex-wrap: wrap; align-items: center; }
+  .contact-form{ display: flex; flex-direction: column; gap: 26px; }
+  .contact-form label{ display: flex; flex-direction: column; gap: 6px; font-size: .88rem; color: var(--muted); font-weight: 400; }
+  .contact-form input, .contact-form select, .contact-form textarea{
+    background: transparent;
+    border: 0; border-bottom: 1px solid var(--line);
     border-radius: 0;
-    box-shadow: none;
+    padding: 10px 2px;
+    color: var(--text);
+    font-family: var(--sans); font-size: 1.02rem; font-weight: 300;
+    outline: none;
+    transition: border-color .3s ease;
   }
-  .exp-card .img-wrap.video-cube:hover{ box-shadow: none; transform: none; }
-  .exp-link{
-    display:inline-block; margin-top:14px; font-size:.85rem; font-weight:700;
-    color: var(--gold-bright); text-shadow: 0 0 12px var(--gold-glow);
-  }
+  .contact-form select option{ background: var(--surface); color: var(--text); }
+  .contact-form textarea{ resize: vertical; }
+  .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus{ border-bottom-color: var(--gold); }
+  .contact-form .btn{ align-self: flex-start; margin-top: 8px; }
+  @media (max-width: 860px){ .contact-grid{ grid-template-columns: 1fr; gap: 56px; } }
 
-  /* ---------- MODAL GALLERY ---------- */
+  /* ---------- FOOTER ---------- */
+  footer{ padding: 70px 0 60px; text-align: center; color: var(--muted); font-size: .92rem; border-top: 1px solid var(--line); }
+  footer .brand-logo{ margin: 0 auto 20px; }
+  footer .footer-email a{ color: var(--text); direction: ltr; unicode-bidi: isolate; font-weight: 400; }
+  .footer-links{ margin-top: 26px; display: flex; justify-content: center; gap: 32px; }
+  .footer-links a{ color: var(--muted); font-size: .88rem; transition: color .3s ease; }
+  .footer-links a:hover{ color: var(--gold); }
+
+  /* ---------- FLOATING WHATSAPP ---------- */
+  .float-cta{
+    position: fixed; bottom: 26px; left: 26px; z-index: 60;
+    width: 52px; height: 52px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg); color: var(--gold);
+    border: 1px solid var(--gold);
+    transition: background .4s var(--ease), color .4s var(--ease);
+  }
+  .float-cta:hover{ background: var(--gold); color: #0B0B0C; }
+  .float-cta svg{ width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linejoin: round; }
+
+  /* ---------- MODALS ---------- */
   .modal-overlay{
-    position: fixed; inset: 0; z-index: 100;
-    background: rgba(6,6,7,0.85);
+    position: fixed; inset: 0; z-index: 130;
+    background: rgba(6,6,7,.88);
     backdrop-filter: blur(6px);
-    display: none;
-    align-items: center; justify-content: center;
+    display: none; align-items: center; justify-content: center;
     padding: 28px;
   }
   .modal-overlay.active{ display: flex; }
   .modal-box{
-    background: var(--surface-2);
-    border-radius: 22px;
-    max-width: 920px; width: 100%;
-    max-height: 86vh;
-    overflow-y: auto;
-    padding: 40px;
     position: relative;
-    box-shadow: 0 0 0 1px rgba(217,178,92,0.25), 0 0 60px rgba(217,178,92,0.15), 0 30px 80px rgba(0,0,0,0.6);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    max-width: 920px; width: 100%; max-height: 86vh; overflow-y: auto;
+    padding: 48px;
   }
   .modal-close{
-    position: absolute; top: 22px; left: 22px;
+    position: absolute; top: 20px; left: 20px;
     width: 38px; height: 38px; border-radius: 50%;
-    background: rgba(217,178,92,0.1);
-    color: var(--gold-bright);
-    border: none; font-size: 1.2rem; cursor: pointer;
-    display:flex; align-items:center; justify-content:center;
-    transition: box-shadow .2s ease;
+    background: transparent; color: var(--text);
+    border: 1px solid var(--line); font-size: 1.2rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color .3s ease, color .3s ease;
   }
-  .modal-close:hover{ box-shadow: 0 0 18px var(--gold-glow); }
-  .modal-box h3{ font-size: 1.6rem; padding-left: 50px; }
-  .modal-sub{ color: var(--muted); font-size: .98rem; margin-top: 12px; font-weight: 300; }
-  /* RZR action title (extreme gallery modal) */
-  .modal-box h3.rzr-title{
-    display:inline-block;
-    font-family:'Rubik','Heebo',sans-serif;
-    font-size: 3.4rem; font-weight: 900; line-height: 1.05;
-    letter-spacing: .08em; font-style: italic; direction: ltr;
-    padding-left: 0; margin-top: 6px;
-    background: linear-gradient(180deg, #ff7a52 0%, #ff2a1f 45%, #b3120f 100%);
-    -webkit-background-clip: text; background-clip: text;
-    -webkit-text-fill-color: transparent; color: transparent;
-    animation: rzrShake .32s linear infinite, rzrGlow 1.1s ease-in-out infinite alternate;
-    will-change: transform, filter;
+  .modal-close:hover{ border-color: var(--gold); color: var(--gold); }
+  .modal-box h3{ font-size: 1.8rem; padding-left: 50px; }
+  .modal-sub{ color: var(--muted); margin: 14px 0 0; }
+  .modal-grid{ margin-top: 34px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .modal-grid figure{ margin: 0; position: relative; overflow: hidden; aspect-ratio: 1 / 1; background: var(--bg); border-radius: 2px; }
+  .modal-grid img, .modal-grid video{ width: 100%; height: 100%; object-fit: cover; display: block; }
+  .modal-grid figure.lightbox-item{ cursor: pointer; }
+  .upload-tile{
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 8px; cursor: pointer; color: var(--muted); text-align: center; padding: 14px;
+    border: 1px dashed var(--gold-soft);
+    background: transparent !important;
+    transition: color .3s ease, border-color .3s ease;
   }
-  .modal-box h3.rzr-title::after{
-    content:''; display:block; height:5px; width:120px; margin-top:10px;
-    background: linear-gradient(90deg, #ff2a1f, rgba(255,42,31,0));
-    transform: skewX(-24deg);
-  }
-  @keyframes rzrShake{
-    0%,100%{ transform: translate(0,0) skewX(-8deg) rotate(0deg); }
-    12%{ transform: translate(-2px,1px) skewX(-8deg) rotate(-.7deg); }
-    25%{ transform: translate(2px,-1px) skewX(-8deg) rotate(.6deg); }
-    37%{ transform: translate(-1px,-2px) skewX(-8deg) rotate(-.4deg); }
-    50%{ transform: translate(3px,1px) skewX(-8deg) rotate(.8deg); }
-    62%{ transform: translate(-3px,0) skewX(-8deg) rotate(-.8deg); }
-    75%{ transform: translate(1px,2px) skewX(-8deg) rotate(.4deg); }
-    87%{ transform: translate(-2px,-1px) skewX(-8deg) rotate(-.5deg); }
-  }
-  @keyframes rzrGlow{
-    from{ filter: drop-shadow(0 0 6px rgba(255,42,31,.45)); }
-    to{ filter: drop-shadow(0 0 20px rgba(255,42,31,.95)); }
-  }
-  @media (prefers-reduced-motion: reduce){
-    .modal-box h3.rzr-title{ animation: none; }
-  }
-  .modal-grid{
-    margin-top: 30px;
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-  .modal-grid figure{
-    margin:0; position:relative; overflow:hidden;
-    aspect-ratio: 1/1;
-    background: var(--surface);
-    border-radius: 14px;
-  }
-  .modal-grid img{ width:100%; height:100%; object-fit:cover; }
-  .modal-grid video{ width:100%; height:100%; object-fit:cover; display:block; }
+  .upload-tile:hover{ color: var(--gold); border-color: var(--gold); }
+  .upload-tile .plus{ font-family: var(--display); font-size: 2rem; color: var(--gold); line-height: 1; }
+  .upload-tile span.small{ font-size: .78rem; }
   @media (max-width: 640px){
-    .modal-grid{ grid-template-columns: repeat(2,1fr); }
-    .modal-box{ padding: 28px 22px; }
+    .modal-grid{ grid-template-columns: repeat(2, 1fr); }
+    .modal-box{ padding: 36px 22px; }
   }
 
-  /* ---------- TRIP QUIZ ---------- */
-  .quiz-box{ max-width: 520px; }
-  .quiz-progress{
-    height: 4px; background: var(--surface); border-radius: 999px; overflow: hidden;
-    margin-bottom: 28px; margin-top: 6px;
-  }
-  .quiz-progress-bar{
-    height:100%; background: var(--gold); box-shadow: 0 0 10px var(--gold-glow);
-    transition: width .3s ease; width: 0%;
-  }
-  .quiz-question{ font-size: 1.3rem; margin-bottom: 22px; }
-  .quiz-options{ display:flex; flex-direction:column; gap: 12px; }
-  .quiz-option-btn{
-    text-align: right;
-    padding: 15px 20px;
-    border-radius: 12px;
-    background: var(--surface);
-    color: var(--ivory);
-    border: none;
-    font-family: 'Heebo', sans-serif;
-    font-size: .98rem;
-    cursor: pointer;
-    transition: box-shadow .2s ease, background .2s ease;
-  }
-  .quiz-option-btn:hover{ box-shadow: 0 0 0 1px rgba(217,178,92,0.35), 0 0 20px rgba(217,178,92,0.14); }
-  .quiz-option-btn.selected{
-    background: var(--gold);
-    color: #14110c;
-    font-weight: 700;
-  }
-  .quiz-input{
-    width: 100%;
-    background: var(--surface);
-    border: none;
-    border-radius: 10px;
-    padding: 14px 16px;
-    color: var(--ivory);
-    font-family: 'Heebo', sans-serif;
-    font-size: .98rem;
-    outline: none;
-    margin-bottom: 22px;
-  }
-  .quiz-input:focus{ box-shadow: 0 0 0 1px rgba(217,178,92,0.5), 0 0 18px var(--gold-glow); }
-  .quiz-nav{ display:flex; justify-content: space-between; align-items:center; margin-top: 24px; }
-  .quiz-back{
-    background: none; border: none; color: var(--muted);
-    font-family: 'Heebo', sans-serif; font-size: .9rem; cursor: pointer;
-  }
-  .quiz-back:hover{ color: var(--gold-bright); }
-  .quiz-step-label{ color: var(--muted); font-size: .82rem; margin-bottom: 8px; }
-  .quiz-thanks{ text-align:center; padding: 20px 0; }
-  .quiz-thanks .quiz-thanks-icon{ font-size: 2.6rem; margin-bottom: 18px; }
-  .quiz-thanks h3{ font-size: 1.4rem; margin-bottom: 12px; }
-  .quiz-thanks p{ color: var(--muted); font-size: .98rem; }
-  .quiz-error{ color: #e08a8a; font-size: .85rem; margin-top: -14px; margin-bottom: 16px; }
-
-  /* ---------- VIDEO TOAST (centered, framed) ---------- */
-  .video-toast-overlay{
-    z-index: 200;
-  }
-  .video-toast-box{
-    max-width: 440px;
-    width: 90%;
-    background: var(--surface-2);
-    color: var(--ivory);
-    font-size: 1.02rem;
-    line-height: 1.75;
-    text-align: center;
-    padding: 40px 34px;
-    border-radius: 20px;
-    border: 1px solid rgba(217,178,92,0.55);
-    box-shadow: 0 0 0 1px rgba(217,178,92,0.15), 0 0 50px rgba(217,178,92,0.22), 0 30px 80px rgba(0,0,0,0.6);
-    transform: scale(.95);
-    opacity: 0;
-    transition: opacity .3s ease, transform .3s ease;
-  }
-  .video-toast-overlay.active .video-toast-box{
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  @media (max-width: 980px){ .exp-grid{ grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 560px){ .exp-grid{ grid-template-columns: 1fr; } }
-
-  /* ---------- HOTELS ---------- */
-  .hotels{ background: var(--surface); }
-  .hotels-layout{
-    display:grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 54px;
-    align-items: center;
-  }
-  .hotels-photo{
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 30px 70px rgba(0,0,0,0.5);
-  }
-  .hotels-photo img{ width:100%; height: 420px; object-fit: cover; }
-  .hotel-cards{
-    margin-top: 50px;
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  .hotel-card{
-    border-radius: 16px;
-    overflow: hidden;
-    background: var(--surface-2);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.35);
-    transition: box-shadow .3s ease, transform .3s ease;
-  }
-  .hotel-card:hover{
-    box-shadow: 0 0 0 1px rgba(217,178,92,0.35), 0 0 34px rgba(217,178,92,0.16);
-    transform: translateY(-4px);
-  }
-  .hotel-card.clickable{ cursor: pointer; }
-  .hotel-card img{ width:100%; height:150px; object-fit:cover; }
-  .hotel-card-body{ padding: 16px 18px 20px; }
-  .hotel-card-body h3{ font-size: 1.02rem; font-weight:700; }
-  .hotel-card-body .tag{ color: var(--muted); font-size: .82rem; font-weight:300; display:block; margin-top:6px; }
-
-  @media (max-width: 640px){ .hotel-cards{ grid-template-columns: 1fr; } }
-
-  @media (max-width: 900px){ .hotels-layout{ grid-template-columns: 1fr; } .hotels-photo img{ height: 280px; } }
-
-  /* ---------- GALLERY ---------- */
-  .gallery-grid{
-    display:grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-  }
-  .gallery-grid figure{
-    margin:0; position:relative; overflow:hidden;
-    aspect-ratio: 1/1;
-    background: var(--surface-2);
-    border-radius: 14px;
-    box-shadow: 0 16px 40px rgba(0,0,0,0.35);
-    transition: box-shadow .3s ease, transform .3s ease;
-  }
-  .gallery-grid figure:hover{
-    box-shadow: 0 0 0 1px rgba(217,178,92,0.35), 0 0 34px rgba(217,178,92,0.16);
-    transform: translateY(-3px);
-  }
-  .gallery-grid figure.lightbox-item{ cursor: pointer; }
-  .gallery-grid img{ width:100%; height:100%; object-fit: cover; }
+  .choice-box{ max-width: 460px; }
+  .choice-options{ margin-top: 30px; display: flex; flex-direction: column; gap: 14px; }
+  .choice-btn{ width: 100%; padding: 16px 20px; font-size: 1.05rem; }
 
   .lightbox-overlay{
-    position: fixed; inset: 0; z-index: 110;
-    background: rgba(4,4,5,0.92);
-    backdrop-filter: blur(6px);
-    display: none;
-    align-items: center; justify-content: center;
-    padding: 30px;
+    position: fixed; inset: 0; z-index: 150;
+    background: rgba(4,4,5,.94);
+    display: none; align-items: center; justify-content: center; padding: 30px;
   }
-  .lightbox-overlay.active{ display:flex; }
-  .lightbox-overlay img{
-    max-width: 90vw; max-height: 82vh;
-    border-radius: 14px;
-    box-shadow: 0 0 60px rgba(217,178,92,0.2), 0 30px 80px rgba(0,0,0,0.6);
-  }
+  .lightbox-overlay.active{ display: flex; }
+  .lightbox-overlay img{ max-width: 90vw; max-height: 84vh; border-radius: 2px; }
   .lightbox-close{
     position: absolute; top: 26px; left: 26px;
     width: 42px; height: 42px; border-radius: 50%;
-    background: rgba(217,178,92,0.12);
-    color: var(--gold-bright);
-    border: none; font-size: 1.3rem; cursor: pointer;
-    display:flex; align-items:center; justify-content:center;
+    background: transparent; color: var(--text);
+    border: 1px solid var(--line); font-size: 1.3rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
   }
-  .lightbox-close:hover{ box-shadow: 0 0 18px var(--gold-glow); }
+  .lightbox-close:hover{ border-color: var(--gold); color: var(--gold); }
 
-  .upload-tile{
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    gap: 10px; cursor:pointer; color: var(--muted); text-align:center; padding: 14px;
-    background: rgba(217,178,92,0.05);
+  .video-toast-overlay{ z-index: 200; }
+  .video-toast-box{
+    max-width: 440px; width: 90%;
+    background: var(--surface); color: var(--text);
+    font-family: var(--serif); font-weight: 300; font-size: 1.15rem; line-height: 1.8; text-align: center;
+    padding: 46px 36px;
+    border: 1px solid var(--gold-soft); border-radius: 4px;
+    transform: scale(.97); opacity: 0;
+    transition: opacity .3s ease, transform .3s ease;
   }
-  .upload-tile:hover{ color: var(--gold-bright); }
-  .upload-tile .plus{ font-size: 2rem; color: var(--gold-bright); font-weight:800; text-shadow: 0 0 16px var(--gold-glow); }
-  .upload-tile span.small{ font-size: .78rem; font-weight:300; }
+  .video-toast-overlay.active .video-toast-box{ opacity: 1; transform: scale(1); }
 
-  .gallery-remove{
-    position:absolute; top:8px; left:8px;
-    background: rgba(8,9,11,0.8);
-    color: var(--ivory);
-    width: 26px; height:26px; border-radius:50%;
-    display:flex; align-items:center; justify-content:center;
-    font-size: .85rem; cursor:pointer; opacity:0; transition: opacity .2s ease;
+  /* ---------- QUIZ ---------- */
+  .quiz-box{ max-width: 520px; }
+  .quiz-progress{ height: 1px; background: var(--line); margin: 6px 0 30px; }
+  .quiz-progress-bar{ height: 1px; background: var(--gold); width: 0%; transition: width .3s ease; }
+  .quiz-step-label{ color: var(--muted); font-size: .84rem; margin-bottom: 10px; }
+  .quiz-question{ font-family: var(--serif); font-size: 1.5rem; margin-bottom: 26px; line-height: 1.4; }
+  .quiz-options{ display: flex; flex-direction: column; gap: 12px; }
+  .quiz-option-btn{
+    text-align: right; padding: 15px 20px;
+    border-radius: 2px; background: transparent; color: var(--text);
+    border: 1px solid var(--line);
+    font-family: var(--sans); font-size: 1rem; font-weight: 300; cursor: pointer;
+    transition: border-color .3s ease, background .3s ease, color .3s ease;
   }
-  .gallery-grid figure:hover .gallery-remove{ opacity:1; }
+  .quiz-option-btn:hover{ border-color: var(--gold); }
+  .quiz-option-btn.selected{ background: var(--gold); border-color: var(--gold); color: #0B0B0C; font-weight: 500; }
+  .quiz-input{
+    width: 100%; background: transparent; border: 0; border-bottom: 1px solid var(--line);
+    padding: 12px 2px; color: var(--text);
+    font-family: var(--sans); font-size: 1.05rem; font-weight: 300; outline: none; margin-bottom: 26px;
+    transition: border-color .3s ease;
+  }
+  .quiz-input:focus{ border-bottom-color: var(--gold); }
+  .quiz-nav{ display: flex; justify-content: space-between; align-items: center; margin-top: 26px; }
+  .quiz-back{ background: none; border: 0; color: var(--muted); font-size: .92rem; cursor: pointer; }
+  .quiz-back:hover{ color: var(--gold); }
+  .quiz-thanks{ text-align: center; padding: 20px 0; }
+  .quiz-thanks .quiz-thanks-icon{ font-size: 2rem; margin-bottom: 18px; color: var(--gold); }
+  .quiz-thanks h3{ font-size: 1.6rem; margin-bottom: 12px; padding: 0; }
+  .quiz-thanks p{ color: var(--muted); margin: 0; }
+  .quiz-error{ color: #d98a8a; font-size: .85rem; margin-top: -18px; margin-bottom: 18px; }
 
-  @media (max-width: 900px){ .gallery-grid{ grid-template-columns: repeat(3,1fr); } }
-  @media (max-width: 600px){ .gallery-grid{ grid-template-columns: repeat(2,1fr); } }
-
-  /* ---------- PRICING ---------- */
-  .price-list{
-    max-width: 780px;
-    margin: 0 auto;
-    display:flex;
-    flex-direction: column;
-    gap: 14px;
+  @media (max-width: 700px){
+    .container{ padding: 0 22px; }
+    .section{ padding: 90px 0; }
+    .intro{ padding: 100px 0 90px; }
+    .section-head{ margin-bottom: 52px; }
+    .site-nav{ padding: 14px 20px; }
+    .site-nav.scrolled{ padding: 10px 20px; }
+    .menu-toggle .lbl{ display: none; }
+    .hero-inner{ padding-top: 130px; padding-bottom: 60px; }
+    .float-cta{ bottom: 18px; left: 18px; }
   }
-  .price-item{
-    background: var(--surface-2);
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 14px 34px rgba(0,0,0,0.3);
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition-duration: .01ms !important; }
+    html{ scroll-behavior: auto; }
   }
-  .price-item-head{
-    width: 100%;
-    display:flex;
-    align-items:center;
-    justify-content: space-between;
-    gap: 14px;
-    padding: 20px 24px;
-    background: transparent;
-    border: none;
-    color: var(--ivory);
-    font-family: 'Heebo', sans-serif;
-    cursor: pointer;
-    text-align: right;
-  }
-  .price-item-title{ font-size: 1.02rem; font-weight: 600; flex: 1; }
-  .price-item-price{
-    color: var(--gold-bright);
-    font-weight: 700;
-    font-size: 1rem;
-    white-space: nowrap;
-    text-shadow: 0 0 10px var(--gold-glow);
-    display:flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 2px;
-  }
-  .price-aed{ color: var(--muted); font-size: .74rem; font-weight: 400; text-shadow:none; }
-  .price-item-arrow{ color: var(--gold-bright); transition: transform .25s ease; font-size: .9rem; }
-  .price-item.open .price-item-arrow{ transform: rotate(180deg); }
-  .price-item-body{
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height .35s ease, padding .35s ease;
-    padding: 0 24px;
-    color: var(--muted);
-    font-size: .92rem;
-    font-weight: 300;
-    line-height: 1.8;
-  }
-  .price-item.open .price-item-body{
-    max-height: 240px;
-    padding: 0 24px 22px;
-  }
-  .price-note{ text-align:center; color: var(--muted); font-size: .82rem; margin-top: 22px; }
-
-  /* ---------- CONTACT ---------- */
-  .contact{
-    background: radial-gradient(ellipse at 50% 0%, rgba(217,178,92,0.08), transparent 60%), var(--surface-2);
-  }
-  .contact-grid{
-    display:grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 60px;
-    align-items: start;
-  }
-  .contact h2{ font-size: clamp(1.9rem, 4vw, 2.7rem); }
-  .contact p{ color: var(--muted); margin-top: 18px; font-size: 1.05rem; font-weight:300; }
-  .phone-line{
-    margin-top: 30px;
-    font-family: 'Rubik', sans-serif;
-    font-weight: 800;
-    font-size: clamp(1.5rem, 3.6vw, 2.2rem);
-    color: var(--gold-bright);
-    text-shadow: 0 0 16px var(--gold-glow), 0 0 40px rgba(217,178,92,0.25);
-    direction: ltr;
-    display:inline-block;
-  }
-  .contact-actions{ margin-top: 26px; display:flex; gap:16px; flex-wrap:wrap; }
-
-  .contact-form{
-    background: var(--surface);
-    border-radius: 20px;
-    padding: 36px;
-    display:flex; flex-direction:column; gap: 18px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-  }
-  .contact-form label{
-    display:flex; flex-direction:column; gap:8px;
-    font-size: .92rem; color: var(--muted); font-weight:500;
-  }
-  .contact-form input,
-  .contact-form select,
-  .contact-form textarea{
-    background: var(--surface-2);
-    border: none;
-    border-radius: 10px;
-    padding: 13px 16px;
-    color: var(--ivory);
-    font-family: 'Heebo', sans-serif;
-    font-size: .98rem;
-    outline: none;
-    transition: box-shadow .2s ease;
-  }
-  .contact-form input:focus,
-  .contact-form select:focus,
-  .contact-form textarea:focus{
-    box-shadow: 0 0 0 1px rgba(217,178,92,0.5), 0 0 18px var(--gold-glow);
-  }
-  .contact-form button{ align-self: flex-start; border:none; cursor:pointer; margin-top:6px; }
-
-  @media (max-width: 860px){
-    .contact-grid{ grid-template-columns: 1fr; }
-  }
-
-  /* ---------- FOOTER ---------- */
-  footer{ padding: 50px 0; text-align:center; color: var(--muted); font-size: .88rem; font-weight:300; }
-  footer .brand{ justify-content:center; margin-bottom: 16px; font-size: 1.1rem; }
-  .footer-links{ margin-top: 18px; display:flex; justify-content:center; gap: 24px; }
-  .footer-links a{ color: var(--muted); font-size: .85rem; }
-  .footer-links a:hover{ color: var(--gold-bright); }
-
-  /* ---------- FLOATING WHATSAPP ---------- */
-  .float-cta{
-    position: fixed;
-    bottom: 26px;
-    left: 26px;
-    z-index: 60;
-    background: var(--gold);
-    color: #14110c;
-    width: 58px; height: 58px;
-    border-radius: 50%;
-    display:flex; align-items:center; justify-content:center;
-    box-shadow: 0 0 20px var(--gold-glow), 0 8px 24px rgba(0,0,0,0.5);
-    font-size: 1.5rem;
-    animation: floatpulse 3s ease-in-out infinite;
-  }
-  @keyframes floatpulse{
-    0%,100%{ box-shadow: 0 0 20px var(--gold-glow), 0 8px 24px rgba(0,0,0,0.5); }
-    50%{ box-shadow: 0 0 36px var(--gold-glow), 0 0 60px rgba(217,178,92,0.3), 0 8px 24px rgba(0,0,0,0.5); }
-  }
-  .float-cta:hover{ background: var(--gold-bright); }
 </style>
 </head>
 <body>
 
-<header class="site-nav">
-  <div class="brand"><img src="images/logo.png" alt="לוגו HAY DUBAI" class="brand-logo"></div>
-  <nav class="links">
-    <a href="#journey">הליווי שלנו</a>
-    <a href="#experiences">חוויות</a>
-    <a href="#abudhabi">אבו דאבי</a>
-    <a href="#pricing">מחירון</a>
-  </nav>
-  <a class="nav-cta" href="tel:029999119">029999119</a>
+<header class="site-nav" id="siteNav">
+  <button type="button" class="menu-toggle" id="menuToggle" aria-label="פתיחת תפריט" aria-expanded="false">
+    <span class="bars" aria-hidden="true"><i></i><i></i></span>
+    <span class="lbl">תפריט</span>
+  </button>
+  <a class="brand" href="index.html"><img src="images/logo.png" alt="לוגו HAY DUBAI" class="brand-logo"></a>
+  <a class="nav-wa" href="https://wa.me/97229999119" target="_blank" rel="noopener" aria-label="וואטסאפ">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v11H9.5L5 20.5v-4H4z"/></svg>
+  </a>
 </header>
 
+<div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="תפריט ראשי">
+  <div class="menu-top">
+    <button type="button" class="menu-close" id="menuClose"><span aria-hidden="true">×</span> סגירה</button>
+    <img src="images/logo.png" alt="" class="brand-logo">
+  </div>
+  <div class="menu-body">
+    <nav class="menu-main">
+      <a href="#journey">הליווי שלנו</a>
+      <a href="#videos">חוויות</a>
+      <a href="#experiences">מלונות וסוויטות</a>
+      <a href="#abudhabi">אבו דאבי</a>
+      <a href="#pricing">מחירון</a>
+      <a href="#contact">צור קשר</a>
+    </nav>
+    <div class="menu-side">
+      <h4>כל העמודים</h4>
+      <a href="experiences.html">כל החוויות</a>
+      <a href="jetski.html">אופנועי ים</a>
+      <a href="yacht.html">יאכטות</a>
+      <a href="beaches.html">חופים</a>
+      <a href="desert-safari.html">ספארי מדברי</a>
+      <a href="rzr.html">השכרת RZR</a>
+      <a href="vip-parties.html">מסיבות VIP</a>
+      <a href="netiv-vip.html">נתיב VIP בנתב"ג</a>
+      <a href="offers.html">הזמנות</a>
+      <div class="menu-contact">
+        <a class="tel" href="tel:029999119">02-999-9119</a>
+        <a href="https://wa.me/97229999119" target="_blank" rel="noopener">שיחה בוואטסאפ</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
 <section class="hero">
   <div class="container hero-inner">
-    <img src="images/hay-dubai-logo-v2.png" alt="HAY DUBAI" style="display:block;margin:0 auto 36px;height:26px;width:auto;object-fit:contain;">
-    <h1>דובאי בגרסה הכי מפוארת שלה, <span class="glow">מחכה לכם</span></h1>
-    <p>מלווה אתכם אישית מהרגע שאתם מחליטים לטוס, במלון המושלם, בחוויות שלא שוכחים, ובזמינות מלאה לאורך כל הדרך.</p>
+    <img class="hero-logo" src="images/hay-dubai-logo-v2.png" alt="HAY DUBAI">
+    <h1>דובאי בגרסה הכי מפוארת שלה, מחכה לכם</h1>
+    <hr class="rule">
     <div class="hero-actions">
-      <button class="btn btn-gold" onclick="openQuizModal()">בואו נתחיל לתכנן</button>
-      <a class="btn btn-outline" href="#experiences">לצפייה בחוויות</a>
+      <button type="button" class="btn" onclick="openQuizModal()">בואו נתחיל לתכנן</button>
+      <a class="hero-scroll" href="#collections">גלו את דובאי ↓</a>
     </div>
   </div>
 </section>
 
-<section class="exp-band" id="exp-band">
+<!-- ============ INTRO ============ -->
+<section class="intro">
   <div class="container">
-    <div class="airport-text">
-      <div class="eyebrow">חוויות דובאי</div>
-      <h2>כל החוויות של דובאי, במקום אחד</h2>
-      <p>אופנועי ים, ספארי, RZR, יאכטות, מסיבות VIP ועוד: מה מותר, מה אסור, ואיך אנחנו דואגים לכם לחוויה הכי טובה.</p>
-      <a class="btn btn-gold" href="experiences.html">לחוויות דובאי</a>
+    <p>מלווה אתכם אישית מהרגע שאתם מחליטים לטוס, במלון המושלם, בחוויות שלא שוכחים, ובזמינות מלאה לאורך כל הדרך.</p>
+  </div>
+</section>
+
+<!-- ============ COLLECTIONS ============ -->
+<section class="section" id="collections" style="padding-top:20px;">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">הקולקציות שלנו</div>
+      <h2>ארבעה עולמות, יעד אחד</h2>
+    </div>
+    <div class="collections-grid">
+      <a class="col-card" href="#" onclick="openSeaChoice();return false;">
+        <img src="images/jetski-trio.jpg" alt="אופנועי ים בדובאי" loading="lazy">
+        <div class="col-info">
+          <h3>ים</h3>
+          <span class="col-sub">אופנועי ים, יאכטות וחופים</span>
+          <span class="col-go">לבחירת חוויה ←</span>
+        </div>
+      </a>
+      <a class="col-card" href="desert-safari.html">
+        <img src="images/safari-cube-poster.jpg" alt="ספארי מדברי בשקיעה" loading="lazy">
+        <div class="col-info">
+          <h3>מדבר</h3>
+          <span class="col-sub">ספארי, דיונות ו-RZR</span>
+          <span class="col-go">לעמוד ←</span>
+        </div>
+      </a>
+      <a class="col-card" href="vip-parties.html">
+        <video id="colNightVideo" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <div class="col-info">
+          <h3>לילה</h3>
+          <span class="col-sub">מועדונים, לאונג'ים ומסיבות VIP</span>
+          <span class="col-go">לעמוד ←</span>
+        </div>
+      </a>
+      <a class="col-card" href="#experiences">
+        <img src="https://images.unsplash.com/photo-1546412414-e1885259563a?q=80&w=900&auto=format&fit=crop" alt="מלונות פאר בדובאי" loading="lazy">
+        <div class="col-info">
+          <h3>מלונות</h3>
+          <span class="col-sub">ארמונות וסוויטות עם נוף</span>
+          <span class="col-go">לצפייה ←</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
 
-<section class="airport-preview" id="airport">
+<!-- ============ EXPERIENCES SHOWCASE (all 8 video slots, one at a time) ============ -->
+<section class="section showcase" id="videos">
   <div class="container">
-    <div class="airport-text">
-      <div class="eyebrow">נתיב VIP</div>
-      <h2>בנתב"ג, מישהו הולך איתכם עד השער</h2>
-      <p>ליווי אישי מהכניסה לטרמינל ועד ההמראה, במסלול מהיר, בלי תורים ובלי לחפש שלטים.</p>
-      <a class="btn btn-gold" href="netiv-vip.html">לפרטים ולהזמנה</a>
-    </div>
-  </div>
-</section>
-
-<section class="videos" id="videos">
-  <div class="container">
-    <div class="section-head section-head--center">
+    <div class="section-head center">
       <div class="eyebrow">רגעים חיים מדובאי</div>
       <h2>הסרטונים שמדברים בעד עצמם</h2>
       <p>קצת מהאווירה, ישירות מהשטח.</p>
-      <div class="vip-nav">
-        <div class="vip-actions">
-          <a class="btn btn-ghost" href="experiences.html">לפרטים</a>
-          <a class="btn btn-gold" href="offers.html">הזמנות</a>
-        </div>
-        <div class="vip-links-row">
-          <button type="button" class="vip-link-btn" onclick="vipScrollTo(this,'video-slot-1')">מקומות VIP לצפייה במזרקה</button>
-          <button type="button" class="vip-link-btn" onclick="vipScrollTo(this,'video-slot-3')">מסיבות VIP</button>
-          <button type="button" class="vip-link-btn" onclick="vipScrollTo(this,'video-slot-5')">חופים מנצחים</button>
-          <button type="button" class="vip-link-btn" onclick="vipScrollTo(this,'experiences')">מלונות מנצחים</button>
-        </div>
+      <div class="showcase-links">
+        <a class="link-arrow" href="experiences.html">לפרטים על כל החוויות</a>
+        <a class="link-arrow" href="offers.html">הזמנות</a>
       </div>
     </div>
 
-    <div class="video-feature-list">
+    <div class="exp-tabs" id="expTabs" role="tablist" aria-label="חוויות">
+      <button type="button" class="exp-tab active" role="tab" data-tab="6" aria-selected="true">השכרת RZR</button>
+      <button type="button" class="exp-tab" role="tab" data-tab="4" aria-selected="false">מכוניות יוקרה</button>
+      <button type="button" class="exp-tab" role="tab" data-tab="8" aria-selected="false">ספארי מדברי</button>
+      <button type="button" class="exp-tab" role="tab" data-tab="1" aria-selected="false">מקומות VIP במזרקה</button>
+      <button type="button" class="exp-tab" role="tab" data-tab="2" aria-selected="false">אופנועי ים</button>
+      <button type="button" class="exp-tab" role="tab" data-tab="3" aria-selected="false">מסיבות VIP</button>
+      <button type="button" class="exp-tab" role="tab" data-tab="5" aria-selected="false">חופים מנצחים</button>
+      <button type="button" class="exp-tab" role="tab" data-tab="7" aria-selected="false">Ferrari World</button>
+    </div>
 
-      <div class="video-feature" id="video-slot-6">
+    <div id="showcaseStage">
+
+      <div class="exp-panel active video-feature" id="video-slot-6" data-panel="6">
         <div class="video-cube has-video" data-slot="6">
           <video data-lazy-src="videos/extreme-card.mp4" poster="images/rzr-cube-poster.jpg" autoplay muted loop playsinline preload="none"></video>
           <div class="video-upload-tile">
@@ -1141,15 +712,15 @@
           </div>
           <input type="file" accept="video/*" style="display:none">
         </div>
-        <div class="video-feature-text">
+        <div class="exp-copy">
           <div class="eyebrow">אדרנלין בקצב של דובאי</div>
           <h3>השכרת RZR</h3>
           <p>נסיעה פרועה בין הדיונות, עם הרכבים הכי שווים ומדריכים שדואגים לבטיחות ולכיף. אנחנו סוגרים לכם את המסלולים עם המחירים הכי משתלמים שיש.</p>
-          <a class="btn btn-gold" href="rzr.html">השכרת RZR</a>
+          <a class="btn" href="rzr.html">השכרת RZR</a>
         </div>
       </div>
 
-      <div class="video-feature" id="video-slot-4">
+      <div class="exp-panel video-feature" id="video-slot-4" data-panel="4">
         <div class="video-cube" data-slot="4">
           <video autoplay muted loop playsinline></video>
           <div class="video-upload-tile">
@@ -1158,15 +729,15 @@
           </div>
           <input type="file" accept="video/*" style="display:none">
         </div>
-        <div class="video-feature-text">
+        <div class="exp-copy">
           <div class="eyebrow">רכבי פאר</div>
           <h3>מכוניות יוקרה</h3>
           <p>להשכרת רכב יוקרה בדובאי נדרשים רישיון נהיגה בינלאומי, גיל מינימום (בדרך כלל 25), כרטיס אשראי לפיקדון וביטוח מקיף. המחירים בדובאי גבוהים, אבל אנחנו דואגים לכם למחירים הכי משתלמים שיש.</p>
-          <button type="button" class="btn btn-gold" data-slot-action="4">לגלריית הרכבים</button>
+          <button type="button" class="btn" data-slot-action="4">לגלריית הרכבים</button>
         </div>
       </div>
 
-      <div class="video-feature" id="video-slot-8">
+      <div class="exp-panel video-feature" id="video-slot-8" data-panel="8">
         <div class="video-cube has-video" data-slot="8">
           <video data-lazy-src="videos/safari-camp.mp4" poster="images/safari-cube-poster.jpg" autoplay muted loop playsinline preload="none"></video>
           <div class="video-upload-tile">
@@ -1175,15 +746,15 @@
           </div>
           <input type="file" accept="video/*" style="display:none">
         </div>
-        <div class="video-feature-text">
+        <div class="exp-copy">
           <div class="eyebrow">ערב בלב המדבר</div>
           <h3>ספארי מדברי בשקיעה</h3>
           <p>דיונות אינסופיות, רכיבה על גמלים, וערב ערבי אותנטי תחת כיפת השמיים.</p>
-          <a class="btn btn-gold" href="desert-safari.html">להזמנות</a>
+          <a class="btn" href="desert-safari.html">להזמנות</a>
         </div>
       </div>
 
-      <div class="video-feature" id="video-slot-1">
+      <div class="exp-panel video-feature" id="video-slot-1" data-panel="1">
         <div class="video-cube" data-slot="1">
           <video autoplay muted loop playsinline></video>
           <div class="video-upload-tile">
@@ -1192,15 +763,15 @@
           </div>
           <input type="file" accept="video/*" style="display:none">
         </div>
-        <div class="video-feature-text">
+        <div class="exp-copy">
           <div class="eyebrow">מול בורג' ח'ליפה</div>
           <h3>מקומות VIP לצפייה במזרקה</h3>
           <p>לצפות במזרקה ובבורג' ח'ליפה? זה הקל. לארגן לכם מקום VIP מול המופע, בזמן הכי טוב שיש? זה כבר הקטע שלנו.</p>
-          <button type="button" class="btn btn-gold" data-slot-action="1">לתיאום מקום VIP</button>
+          <button type="button" class="btn" data-slot-action="1">לתיאום מקום VIP</button>
         </div>
       </div>
 
-      <div class="video-feature" id="video-slot-2">
+      <div class="exp-panel video-feature" id="video-slot-2" data-panel="2">
         <div class="video-cube" data-slot="2">
           <video autoplay muted loop playsinline></video>
           <div class="video-upload-tile">
@@ -1209,15 +780,15 @@
           </div>
           <input type="file" accept="video/*" style="display:none">
         </div>
-        <div class="video-feature-text">
+        <div class="exp-copy">
           <div class="eyebrow">ים אמיתי, לא אגם</div>
           <h3>אופנועי ים</h3>
           <p>דובאי היא בעצם אגם ענק אחד. אבל כדי להרגיש את הים האמיתי, אנחנו יודעים בדיוק איפה לרכוב בשיא הכיף, עם החברה המובילה בדובאי.</p>
-          <button type="button" class="btn btn-gold" data-slot-action="2">לבחירת חוויה</button>
+          <button type="button" class="btn" data-slot-action="2">לבחירת חוויה</button>
         </div>
       </div>
 
-      <div class="video-feature" id="video-slot-3">
+      <div class="exp-panel video-feature" id="video-slot-3" data-panel="3">
         <div class="video-cube" data-slot="3">
           <video autoplay muted loop playsinline></video>
           <div class="video-upload-tile">
@@ -1226,15 +797,15 @@
           </div>
           <input type="file" accept="video/*" style="display:none">
         </div>
-        <div class="video-feature-text">
+        <div class="exp-copy">
           <div class="eyebrow">אחרי החשכה</div>
           <h3>מסיבות VIP</h3>
           <p>המועדונים, הלאונג'ים והמסיבות שהכי שווה להכיר, ואיך אנחנו דואגים שתקבלו את הכניסה והמחיר הכי טובים שיש.</p>
-          <a class="btn btn-gold" href="vip-parties.html">VIP למסיבות</a>
+          <a class="btn" href="vip-parties.html">VIP למסיבות</a>
         </div>
       </div>
 
-      <div class="video-feature" id="video-slot-5">
+      <div class="exp-panel video-feature" id="video-slot-5" data-panel="5">
         <div class="video-cube" data-slot="5">
           <video autoplay muted loop playsinline></video>
           <div class="video-upload-tile">
@@ -1243,31 +814,32 @@
           </div>
           <input type="file" accept="video/*" style="display:none">
         </div>
-        <div class="video-feature-text">
+        <div class="exp-copy">
           <div class="eyebrow">הים הנכון</div>
           <h3>חופים מנצחים</h3>
           <p>בדובאי יש חופים, ויש חופים. דברו איתנו, ותגיעו ישר למקום המושלם.</p>
-          <button type="button" class="btn btn-gold" data-slot-action="5">לבחירת החוף</button>
+          <button type="button" class="btn" data-slot-action="5">לבחירת החוף</button>
         </div>
       </div>
 
-      <div class="video-feature" id="video-slot-7">
+      <div class="exp-panel video-feature" id="video-slot-7" data-panel="7">
         <div class="image-cube" data-slot-action="7" role="button" tabindex="0" aria-label="Ferrari">
           <img src="https://images.unsplash.com/photo-1693164350459-ce6ad75e08c3?q=80&w=800&auto=format&fit=crop" alt="פרארי וורלד אבו דאבי" loading="lazy">
         </div>
-        <div class="video-feature-text">
+        <div class="exp-copy">
           <div class="eyebrow">פרארי וורלד</div>
           <h3>Ferrari World אבו דאבי</h3>
           <p>אדרנלין בשיא ההנאה, מסלולי המרוצים המהירים בעולם ואטרקציות שלא תשכחו. אנחנו דואגים לכם לסגירת מקומות מראש.</p>
-          <button type="button" class="btn btn-gold" data-slot-action="7">לפרטים ולהזמנה</button>
+          <button type="button" class="btn" data-slot-action="7">לפרטים ולהזמנה</button>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
 </section>
 
-<section class="journey" id="journey">
+<!-- ============ JOURNEY ============ -->
+<section class="section" id="journey">
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">איך זה עובד</div>
@@ -1294,95 +866,170 @@
   </div>
 </section>
 
-<section id="experiences">
+<!-- ============ AIRPORT BAND ============ -->
+<section class="band band-airport" id="airport">
+  <div class="container">
+    <div class="band-text">
+      <div class="eyebrow">נתיב VIP</div>
+      <h2>בנתב"ג, מישהו הולך איתכם עד השער</h2>
+      <p>ליווי אישי מהכניסה לטרמינל ועד ההמראה, במסלול מהיר, בלי תורים ובלי לחפש שלטים.</p>
+      <a class="btn" href="netiv-vip.html">לפרטים ולהזמנה</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOTELS ============ -->
+<section class="section hotels" id="experiences">
   <div class="container">
     <div class="section-head">
-      <div class="eyebrow">מה תעשו שם</div>
-      <h2>החוויות שהופכות טיול לזיכרון</h2>
+      <div class="eyebrow">איפה תישנו</div>
+      <h2>מלונות וסוויטות שנראים כמו ארמון</h2>
       <p>מהמרינה אל החולות, ומהחולות אל תוך חדר מלון שנראה כמו ארמון.</p>
     </div>
-    <div class="exp-grid">
-      <div class="exp-card clickable" onclick="openGalleryModal('palace','ארמונות של מלונות','המלונות עם הנופים הכי יפים בדובאי. נגלה לכם איפה נמצאים המקומות שלא כל תייר מגיע אליהם.')">
-        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1546412414-e1885259563a?q=80&w=900&auto=format&fit=crop" alt="ארמונות המלונות המפוארים בדובאי"></div>
-        <div class="exp-body">
-          <h3>ארמונות של מלונות</h3>
-          <p>מלונות פאר שנראים כמו סרט, עם עיצוב מהמם, שירות ברמה עולמית ונוף שלא נגמר.</p>
-          <span class="exp-link">לצפייה בגלריה ←</span>
-        </div>
+    <div class="feature-grid two">
+      <div class="feature-card" role="button" tabindex="0" onclick="openGalleryModal('palace','ארמונות של מלונות','המלונות עם הנופים הכי יפים בדובאי. נגלה לכם איפה נמצאים המקומות שלא כל תייר מגיע אליהם.')">
+        <div class="media"><img src="https://images.unsplash.com/photo-1546412414-e1885259563a?q=80&w=900&auto=format&fit=crop" alt="ארמונות המלונות המפוארים בדובאי" loading="lazy"></div>
+        <h3>ארמונות של מלונות</h3>
+        <p>מלונות פאר שנראים כמו סרט, עם עיצוב מהמם, שירות ברמה עולמית ונוף שלא נגמר.</p>
+        <span class="link-arrow">לצפייה בגלריה ←</span>
       </div>
-      <div class="exp-card clickable" onclick="openGalleryModal('rooms','חדרים וסוויטות','סוויטות שיפנקו אתכם עד הרגע האחרון.')">
-        <div class="img-wrap"><img src="images/room-burj-view.jpg" alt="חדר מלון מפואר עם נוף לבורג' ח'ליפה"></div>
-        <div class="exp-body">
-          <h3>חדרים וסוויטות</h3>
-          <p>סוויטות מפוארות עם כל הפינוק, מנוף לעיר ועד ג'קוזי פרטי בחדר.</p>
-          <span class="exp-link">לצפייה בגלריה ←</span>
-        </div>
-      </div>
-      <div class="exp-card clickable" onclick="openGalleryModal('testimonials','לקוחות ממליצים','רגעים מלקוחות מרוצים שכבר טסו איתנו לדובאי.')">
-        <div class="img-wrap"><img src="https://images.unsplash.com/photo-1758275557275-eeec6a1e654e?q=80&w=900&auto=format&fit=crop" alt="לקוחות ממליצים"></div>
-        <div class="exp-body">
-          <h3>לקוחות ממליצים</h3>
-          <p>לא רק אנחנו אומרים שזה שווה. תראו מה הלקוחות שכבר היו שם אומרים, בתמונות שלהם.</p>
-          <span class="exp-link">לצפייה בגלריה ←</span>
-        </div>
+      <div class="feature-card" role="button" tabindex="0" onclick="openGalleryModal('rooms','חדרים וסוויטות','סוויטות שיפנקו אתכם עד הרגע האחרון.')">
+        <div class="media"><img src="images/room-burj-view.jpg" alt="חדר מלון מפואר עם נוף לבורג' ח'ליפה" loading="lazy"></div>
+        <h3>חדרים וסוויטות</h3>
+        <p>סוויטות מפוארות עם כל הפינוק, מנוף לעיר ועד ג'קוזי פרטי בחדר.</p>
+        <span class="link-arrow">לצפייה בגלריה ←</span>
       </div>
     </div>
   </div>
 </section>
 
-<section class="hotels" id="abudhabi">
+<!-- ============ ABU DHABI ============ -->
+<section class="band band-abu" id="abudhabi">
   <div class="container">
-    <div class="hotels-layout">
-      <div class="hotels-photo">
-        <img src="https://images.unsplash.com/photo-1512632578888-169bbbc64f33?q=80&w=1200&auto=format&fit=crop" alt="אבו דאבי">
-      </div>
-      <div>
-        <div class="eyebrow">מעבר לדובאי</div>
-        <h2>סיורים וטיולים באבו דאבי</h2>
-        <p style="color:var(--muted); margin-top:14px; font-weight:300;">יש לנו סוכנים אישיים שכבר נמצאים בשטח, בדובאי ובאבו דאבי, וזמינים לעזור לכם בכל רגע נתון, בכל שאלה ובכל בקשה. אנחנו בכל מקום שאתם צריכים אותנו, עם רמת האמינות והזמינות הגבוהה ביותר שיש.</p>
-      </div>
+    <div class="band-text">
+      <div class="eyebrow">מעבר לדובאי</div>
+      <h2>סיורים וטיולים באבו דאבי</h2>
+      <p>יש לנו סוכנים אישיים שכבר נמצאים בשטח, בדובאי ובאבו דאבי, וזמינים לעזור לכם בכל רגע נתון, בכל שאלה ובכל בקשה. אנחנו בכל מקום שאתם צריכים אותנו, עם רמת האמינות והזמינות הגבוהה ביותר שיש.</p>
     </div>
-    <div class="hotel-cards">
-      <div class="hotel-card clickable" onclick="openGalleryModal('grandmosque','מסגד שיח\' זאיד הגדול','רגעים ממסגד שיח\' זאיד, אבו דאבי.')">
-        <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=700&auto=format&fit=crop" alt="מסגד שיח' זאיד הגדול">
-        <div class="hotel-card-body">
-          <h3>מסגד שיח' זאיד</h3>
-          <span class="tag">פאר אדריכלי מרהיב</span>
-        </div>
+  </div>
+</section>
+<section class="abudhabi-cards">
+  <div class="container">
+    <div class="feature-grid three">
+      <div class="feature-card" role="button" tabindex="0" onclick="openGalleryModal('grandmosque','מסגד שיח\' זאיד הגדול','רגעים ממסגד שיח\' זאיד, אבו דאבי.')">
+        <div class="media"><img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=700&auto=format&fit=crop" alt="מסגד שיח' זאיד הגדול" loading="lazy"></div>
+        <h3>מסגד שיח' זאיד</h3>
+        <span class="tag">פאר אדריכלי מרהיב</span>
       </div>
-      <div class="hotel-card clickable" onclick="openGalleryModal('louvre','לובר אבו דאבי','רגעים מלובר אבו דאבי.')">
-        <img src="https://images.unsplash.com/photo-1580418827493-f2b22c0a76cb?q=80&w=700&auto=format&fit=crop" alt="לובר אבו דאבי">
-        <div class="hotel-card-body">
-          <h3>לובר אבו דאבי</h3>
-          <span class="tag">אמנות ותרבות עולמית</span>
-        </div>
+      <div class="feature-card" role="button" tabindex="0" onclick="openGalleryModal('louvre','לובר אבו דאבי','רגעים מלובר אבו דאבי.')">
+        <div class="media"><img src="https://images.unsplash.com/photo-1580418827493-f2b22c0a76cb?q=80&w=700&auto=format&fit=crop" alt="לובר אבו דאבי" loading="lazy"></div>
+        <h3>לובר אבו דאבי</h3>
+        <span class="tag">אמנות ותרבות עולמית</span>
       </div>
-      <div class="hotel-card clickable" onclick="openGalleryModal('yasisland','יאס איילנד','רגעים מיאס איילנד, אבו דאבי.')">
-        <img src="https://images.unsplash.com/photo-1704668961045-831f565e62bd?q=80&w=700&auto=format&fit=crop" alt="יאס איילנד">
-        <div class="hotel-card-body">
-          <h3>יאס איילנד</h3>
-          <span class="tag">פארקי שעשועים ומים</span>
-        </div>
+      <div class="feature-card" role="button" tabindex="0" onclick="openGalleryModal('yasisland','יאס איילנד','רגעים מיאס איילנד, אבו דאבי.')">
+        <div class="media"><img src="https://images.unsplash.com/photo-1704668961045-831f565e62bd?q=80&w=700&auto=format&fit=crop" alt="יאס איילנד" loading="lazy"></div>
+        <h3>יאס איילנד</h3>
+        <span class="tag">פארקי שעשועים ומים</span>
       </div>
     </div>
   </div>
 </section>
 
-<div class="lightbox-overlay" id="lightboxOverlay">
-  <button class="lightbox-close" id="lightboxClose" aria-label="סגירה">×</button>
-  <img id="lightboxImg" src="" alt="תמונה מוגדלת">
-</div>
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="eyebrow">לקוחות ממליצים</div>
+    <h2>לא רק אנחנו אומרים שזה שווה</h2>
+    <p>תראו מה הלקוחות שכבר היו שם אומרים, בתמונות ובסרטונים שלהם.</p>
+    <button type="button" class="btn" onclick="openGalleryModal('testimonials','לקוחות ממליצים','רגעים מלקוחות מרוצים שכבר טסו איתנו לדובאי.')">לצפייה בגלריה</button>
+  </div>
+</section>
 
-<section class="contact" id="contact">
+<!-- ============ PRICING ============ -->
+<section class="section pricing" id="pricing">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow">שקוף ומדויק</div>
+      <h2>מחירון שירותי הליווי</h2>
+      <p>לחצו על שירות כדי לראות בדיוק מה כלול. כל המחירים בשקלים ובדיראם, לפי שער חליפין עדכני (בקירוב).</p>
+    </div>
+    <div class="price-list" id="priceList">
+      <div class="price-item">
+        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
+          <span class="price-item-title">ליווי צמוד בשדה התעופה</span>
+          <span class="price-item-price">750 ₪<span class="price-aed">≈ 915 AED</span></span>
+          <span class="price-item-arrow">+</span>
+        </button>
+        <div class="price-item-body">
+          <p>נפגשים איתכם בשדה התעופה, ליווי צמוד לאורך כל התהליך, סיוע בהעברת תיקים (עד 20 ק"ג, בידוק בלבד), ומעבר ללא תור עד עלייה למטוס.</p>
+        </div>
+      </div>
+      <div class="price-item">
+        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
+          <span class="price-item-title">סוכן אישי לאורך כל השהות</span>
+          <span class="price-item-price">500 ₪<span class="price-aed">≈ 610 AED</span></span>
+          <span class="price-item-arrow">+</span>
+        </button>
+        <div class="price-item-body">
+          <p>סוכן אישי מטעמנו, שנמצא בפועל בדובאי ובאבו דאבי, זמין לאורך כל תקופת השהות שלכם לכל צורך.</p>
+        </div>
+      </div>
+      <div class="price-item">
+        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
+          <span class="price-item-title">סוכן אישי לאורך כל שעות החופשה</span>
+          <span class="price-item-price">800 ₪<span class="price-aed">≈ 975 AED</span></span>
+          <span class="price-item-arrow">+</span>
+        </button>
+        <div class="price-item-body">
+          <p>סוכן אישי צמוד אליכם בכל שעות היממה לאורך כל החופשה, זמין ללא הגבלה לכל שאלה, בקשה או צורך, בכל רגע נתון.</p>
+        </div>
+      </div>
+      <div class="price-item">
+        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
+          <span class="price-item-title">ייעוץ טלפוני, וואטסאפ והדרכות</span>
+          <span class="price-item-price">250 ₪<span class="price-aed">≈ 305 AED</span></span>
+          <span class="price-item-arrow">+</span>
+        </button>
+        <div class="price-item-body">
+          <p>שירות טלפוני וזמינות בוואטסאפ, הדרכות והסברים לפני ובמהלך הטיול, ומענה לכל שאלה.</p>
+        </div>
+      </div>
+      <div class="price-item">
+        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
+          <span class="price-item-title">כניסת VIP ללאונג' בשדה התעופה</span>
+          <span class="price-item-price">450 ₪<span class="price-aed">≈ 550 AED</span></span>
+          <span class="price-item-arrow">+</span>
+        </button>
+        <div class="price-item-body">
+          <p>גישה ללאונג' יוקרתי בשדה התעופה לפני הטיסה, כולל כיבוד ואזור המתנה שקט ונוח הרחק מהמולת הטרמינל.</p>
+        </div>
+      </div>
+      <div class="price-item">
+        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
+          <span class="price-item-title">ליווי חזרה בסיום החופשה</span>
+          <span class="price-item-price">400 ₪<span class="price-aed">≈ 490 AED</span></span>
+          <span class="price-item-arrow">+</span>
+        </button>
+        <div class="price-item-body">
+          <p>סיוע בצ'ק אאוט מהמלון, ליווי צמוד חזרה לשדה התעופה, ועמידה לצידכם עד רגע הבידוק לפני הטיסה חזרה.</p>
+        </div>
+      </div>
+    </div>
+    <p class="price-note">המחירים בדיראם הם המרה משוערת לפי שער החליפין הנוכחי, ועשויים להשתנות מעט בהתאם לתנודות השוק.</p>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section contact" id="contact">
   <div class="container">
     <div class="contact-grid">
-      <div>
+      <div class="contact-text">
         <h2>בואו נתכנן את הטיול שלכם</h2>
         <p>שיחה קצרה מספיקה כדי להתחיל. אני זמין לכל שאלה, בכל שעה.</p>
         <div class="phone-line">02-999-9119</div>
         <div class="contact-actions">
-          <a class="btn btn-gold" href="tel:029999119">התקשרו עכשיו</a>
-          <a class="btn btn-outline" href="https://wa.me/97229999119" target="_blank" rel="noopener">וואטסאפ</a>
+          <a class="btn" href="tel:029999119">התקשרו עכשיו</a>
+          <a class="link-arrow" href="https://wa.me/97229999119" target="_blank" rel="noopener">וואטסאפ</a>
         </div>
       </div>
       <form class="contact-form" action="https://formsubmit.co/Infodubaisrael@gmail.com" method="POST">
@@ -1419,97 +1066,34 @@
           הודעה (רשות)
           <textarea name="הודעה" rows="3"></textarea>
         </label>
-        <button type="submit" class="btn btn-gold">שליחת פנייה</button>
+        <button type="submit" class="btn">שליחת פנייה</button>
       </form>
     </div>
   </div>
 </section>
 
-<section class="pricing" id="pricing">
-  <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">שקוף ומדויק</div>
-      <h2>מחירון שירותי הליווי</h2>
-      <p>לחצו על שירות כדי לראות בדיוק מה כלול. כל המחירים בשקלים ובדיראם, לפי שער חליפין עדכני (בקירוב).</p>
-    </div>
-    <div class="price-list" id="priceList">
-      <div class="price-item">
-        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
-          <span class="price-item-title">ליווי צמוד בשדה התעופה</span>
-          <span class="price-item-price">750 ₪<span class="price-aed">≈ 915 AED</span></span>
-          <span class="price-item-arrow">▾</span>
-        </button>
-        <div class="price-item-body">
-          <p>נפגשים איתכם בשדה התעופה, ליווי צמוד לאורך כל התהליך, סיוע בהעברת תיקים (עד 20 ק"ג, בידוק בלבד), ומעבר ללא תור עד עלייה למטוס.</p>
-        </div>
-      </div>
-      <div class="price-item">
-        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
-          <span class="price-item-title">סוכן אישי לאורך כל השהות</span>
-          <span class="price-item-price">500 ₪<span class="price-aed">≈ 610 AED</span></span>
-          <span class="price-item-arrow">▾</span>
-        </button>
-        <div class="price-item-body">
-          <p>סוכן אישי מטעמנו, שנמצא בפועל בדובאי ובאבו דאבי, זמין לאורך כל תקופת השהות שלכם לכל צורך.</p>
-        </div>
-      </div>
-      <div class="price-item">
-        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
-          <span class="price-item-title">סוכן אישי לאורך כל שעות החופשה</span>
-          <span class="price-item-price">800 ₪<span class="price-aed">≈ 975 AED</span></span>
-          <span class="price-item-arrow">▾</span>
-        </button>
-        <div class="price-item-body">
-          <p>סוכן אישי צמוד אליכם בכל שעות היממה לאורך כל החופשה, זמין ללא הגבלה לכל שאלה, בקשה או צורך, בכל רגע נתון.</p>
-        </div>
-      </div>
-      <div class="price-item">
-        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
-          <span class="price-item-title">ייעוץ טלפוני, וואטסאפ והדרכות</span>
-          <span class="price-item-price">250 ₪<span class="price-aed">≈ 305 AED</span></span>
-          <span class="price-item-arrow">▾</span>
-        </button>
-        <div class="price-item-body">
-          <p>שירות טלפוני וזמינות בוואטסאפ, הדרכות והסברים לפני ובמהלך הטיול, ומענה לכל שאלה.</p>
-        </div>
-      </div>
-      <div class="price-item">
-        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
-          <span class="price-item-title">כניסת VIP ללאונג' בשדה התעופה</span>
-          <span class="price-item-price">450 ₪<span class="price-aed">≈ 550 AED</span></span>
-          <span class="price-item-arrow">▾</span>
-        </button>
-        <div class="price-item-body">
-          <p>גישה ללאונג' יוקרתי בשדה התעופה לפני הטיסה, כולל כיבוד ואזור המתנה שקט ונוח הרחק מהמולת הטרמינל.</p>
-        </div>
-      </div>
-      <div class="price-item">
-        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
-          <span class="price-item-title">ליווי חזרה בסיום החופשה</span>
-          <span class="price-item-price">400 ₪<span class="price-aed">≈ 490 AED</span></span>
-          <span class="price-item-arrow">▾</span>
-        </button>
-        <div class="price-item-body">
-          <p>סיוע בצ'ק אאוט מהמלון, ליווי צמוד חזרה לשדה התעופה, ועמידה לצידכם עד רגע הבידוק לפני הטיסה חזרה.</p>
-        </div>
-      </div>
-    </div>
-    <p class="price-note">המחירים בדיראם הם המרה משוערת לפי שער החליפין הנוכחי, ועשויים להשתנות מעט בהתאם לתנודות השוק.</p>
-  </div>
-</section>
-
 <footer>
-  <div class="brand"><img src="images/logo.png" alt="לוגו HAY DUBAI" class="brand-logo"></div>
-  <div>ליווי אישי לטיולי יוקרה בדובאי</div>
-  <div style="margin-top:6px;">02-999-9119</div>
-  <div class="footer-email" style="margin-top:6px;"><a href="mailto:Infodubaisrael@gmail.com" style="color:#ece7dd;font-weight:700;text-decoration:none;direction:ltr;unicode-bidi:isolate;"><b>Infodubaisrael@gmail.com</b></a></div>
-  <div class="footer-links">
-    <a href="privacy.html">מדיניות פרטיות</a>
-    <a href="terms.html">תנאי שימוש</a>
+  <div class="container">
+    <img src="images/logo.png" alt="לוגו HAY DUBAI" class="brand-logo">
+    <div>ליווי אישי לטיולי יוקרה בדובאי</div>
+    <div style="margin-top:6px;">02-999-9119</div>
+    <div class="footer-email" style="margin-top:6px;"><a href="mailto:Infodubaisrael@gmail.com">Infodubaisrael@gmail.com</a></div>
+    <div class="footer-links">
+      <a href="privacy.html">מדיניות פרטיות</a>
+      <a href="terms.html">תנאי שימוש</a>
+    </div>
   </div>
 </footer>
 
-<a class="float-cta" href="https://wa.me/97229999119" target="_blank" rel="noopener" aria-label="וואטסאפ">💬</a>
+<a class="float-cta" href="https://wa.me/97229999119" target="_blank" rel="noopener" aria-label="וואטסאפ">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v11H9.5L5 20.5v-4H4z"/></svg>
+</a>
+
+<!-- ============ MODALS ============ -->
+<div class="lightbox-overlay" id="lightboxOverlay">
+  <button class="lightbox-close" id="lightboxClose" aria-label="סגירה">×</button>
+  <img id="lightboxImg" src="" alt="תמונה מוגדלת">
+</div>
 
 <div class="modal-overlay" id="galleryModal">
   <div class="modal-box">
@@ -1530,12 +1114,11 @@
 <div class="modal-overlay" id="seaChoiceModal">
   <div class="modal-box choice-box">
     <button class="modal-close" id="seaChoiceClose" aria-label="סגירה">×</button>
-    <h3 class="wave-title" id="seaWaveTitle" aria-label="אקסטרים בים">אקסטרים בים</h3>
-    <div class="wave-line" aria-hidden="true"></div>
+    <h3 id="seaWaveTitle">אקסטרים בים</h3>
     <p class="modal-sub" id="seaChoiceSub"></p>
     <div class="choice-options">
-      <button type="button" class="choice-btn" id="choiceJetski">אופנועי ים</button>
-      <button type="button" class="choice-btn" id="choiceYacht">יאכטות</button>
+      <button type="button" class="btn choice-btn" id="choiceJetski">אופנועי ים</button>
+      <button type="button" class="btn choice-btn" id="choiceYacht">יאכטות</button>
     </div>
   </div>
 </div>
@@ -1602,6 +1185,38 @@
   }
 </script>
 <script>
+  /* ---------- header + full-screen menu ---------- */
+  const siteNav = document.getElementById('siteNav');
+  window.addEventListener('scroll', () => {
+    siteNav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+  siteNav.classList.toggle('scrolled', window.scrollY > 40);
+
+  const menuOverlay = document.getElementById('menuOverlay');
+  const menuToggle = document.getElementById('menuToggle');
+  function openMenu(){
+    menuOverlay.classList.add('active');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu(){
+    menuOverlay.classList.remove('active');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  menuToggle.addEventListener('click', openMenu);
+  document.getElementById('menuClose').addEventListener('click', closeMenu);
+  menuOverlay.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+
+  // cards that behave like buttons also work with the keyboard
+  document.querySelectorAll('.feature-card[role="button"]').forEach(card => {
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); card.click(); }
+    });
+  });
+
+  /* ---------- lightbox ---------- */
   const lightboxOverlay = document.getElementById('lightboxOverlay');
   const lightboxImg = document.getElementById('lightboxImg');
   const lightboxClose = document.getElementById('lightboxClose');
@@ -1626,6 +1241,7 @@
     if (e.key === 'Escape') closeLightbox();
   });
 
+  /* ---------- gallery modal ---------- */
   const galleryModal = document.getElementById('galleryModal');
   const modalTitle = document.getElementById('modalTitle');
   const modalSub = document.getElementById('modalSub');
@@ -1669,7 +1285,6 @@
   async function openGalleryModal(category, title, sub){
     currentModalCategory = category;
     modalTitle.textContent = title;
-    modalTitle.classList.toggle('rzr-title', category === 'extreme');
     modalSub.textContent = sub;
     galleryModal.classList.add('active');
     modalUploadTile.querySelector('.small').textContent = 'נראה לכל המבקרים באתר';
@@ -1701,6 +1316,7 @@
     modalFileInput.value = '';
   });
 
+  /* ---------- toast (fountain VIP) ---------- */
   const videoToastMessages = {
     '1': 'לצפות במזרקה ובבורג\' ח\'ליפה? זה הקל. לארגן לכם מקום VIP מול המופע, בזמן הכי טוב שיש? זה כבר הקטע שלנו.',
     '2': 'דובאי היא בעצם אגם ענק אחד. אבל כדי להרגיש את הים האמיתי, אנחנו יודעים בדיוק איפה לרכוב בשיא הכיף, עם החברה המובילה בדובאי.',
@@ -1727,6 +1343,7 @@
     if (overlay) overlay.classList.remove('active');
   }
 
+  /* ---------- sea choice (jet ski / yacht) ---------- */
   const seaChoiceModal = document.getElementById('seaChoiceModal');
   function openSeaChoice(){
     document.getElementById('seaChoiceSub').textContent = videoToastMessages['2'];
@@ -1745,23 +1362,7 @@
     window.location.href = 'yacht.html';
   });
 
-  // split the sea-modal title into letters so each one can ride the wave
-  (function(){
-    const t = document.getElementById('seaWaveTitle');
-    if (!t) return;
-    const txt = t.textContent;
-    t.textContent = '';
-    Array.from(txt).forEach((c, i) => {
-      const sp = document.createElement('span');
-      sp.className = 'ch';
-      sp.setAttribute('aria-hidden', 'true');
-      sp.style.setProperty('--i', i);
-      sp.textContent = (c === ' ') ? '\u00A0' : c;
-      t.appendChild(sp);
-    });
-  })();
-
-  // one action per video slot, shared by the video itself, its caption button and CTA buttons
+  /* ---------- one action per video slot ---------- */
   const slotActions = {
     '1': () => showVideoToast(videoToastMessages['1']),
     '2': () => openSeaChoice(),
@@ -1778,21 +1379,8 @@
     cube.addEventListener('click', run);
     cube.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); run(); } });
   });
-  // start the RZR clip only when it is near the screen (the file is large)
-  document.querySelectorAll('video[data-lazy-src]').forEach(v => {
-    const start = () => {
-      if (!v.getAttribute('src')){ v.src = v.dataset.lazySrc; }
-      v.play().catch(() => {});
-    };
-    if ('IntersectionObserver' in window){
-      const io = new IntersectionObserver((entries) => {
-        if (entries.some(e => e.isIntersecting)){ start(); io.disconnect(); }
-      }, { rootMargin: '300px' });
-      io.observe(v);
-    } else { start(); }
-  });
-  // caption buttons under the small video cubes (elsewhere on the page) + the new feature CTA buttons
-  document.querySelectorAll('.video-caption[data-slot-action], .video-feature-text .btn[data-slot-action]').forEach(btn => {
+  // CTA buttons inside each experience panel
+  document.querySelectorAll('.exp-copy .btn[data-slot-action]').forEach(btn => {
     btn.addEventListener('click', () => {
       const action = slotActions[btn.dataset.slotAction];
       if (action) action();
@@ -1806,31 +1394,79 @@
     if (!wasOpen) item.classList.add('open');
   }
 
-  function vipScrollTo(btn, targetId){
-    if (btn){
-      btn.classList.remove('is-pressed');
-      void btn.offsetWidth;
-      btn.classList.add('is-pressed');
-    }
-    const target = document.getElementById(targetId);
-    if (!target) return;
-    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    target.classList.remove('vip-target-highlight');
-    void target.offsetWidth;
-    target.classList.add('vip-target-highlight');
-    setTimeout(() => target.classList.remove('vip-target-highlight'), 1200);
+  /* ---------- experience showcase: one panel at a time ---------- */
+  function primeVideo(cube){
+    const v = cube.querySelector('video');
+    if (!v) return;
+    const url = cube.dataset.url || v.dataset.lazySrc;
+    if (url && v.getAttribute('src') !== url) v.src = url;
+    v.play().catch(() => {});
   }
 
+  function activateExp(slot){
+    slot = String(slot);
+    document.querySelectorAll('.exp-panel').forEach(p => {
+      const on = p.dataset.panel === slot;
+      p.classList.toggle('active', on);
+      const v = p.querySelector('video');
+      if (!on && v && !v.paused) v.pause();
+    });
+    document.querySelectorAll('.exp-tab').forEach(t => {
+      const on = t.dataset.tab === slot;
+      t.classList.toggle('active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    const panel = document.querySelector('.exp-panel[data-panel="' + slot + '"]');
+    const cube = panel && panel.querySelector('.video-cube.has-video');
+    if (cube) primeVideo(cube);
+  }
+
+  document.querySelectorAll('.exp-tab').forEach(tab => {
+    tab.addEventListener('click', () => activateExp(tab.dataset.tab));
+  });
+
+  // kept for compatibility: jump to a slot (or any section) by id
+  function vipScrollTo(btn, targetId){
+    const m = /^video-slot-(\d+)$/.exec(targetId || '');
+    if (m){
+      activateExp(m[1]);
+      const stage = document.getElementById('showcaseStage');
+      if (stage) stage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    const target = document.getElementById(targetId);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // deep links such as index.html#video-slot-3 open the right experience
+  function handleHash(){
+    const m = /^#video-slot-(\d+)$/.exec(location.hash || '');
+    if (m){
+      activateExp(m[1]);
+      const stage = document.getElementById('showcaseStage');
+      if (stage) setTimeout(() => stage.scrollIntoView({ block: 'center' }), 50);
+    }
+  }
+  window.addEventListener('hashchange', handleHash);
+
+  /* ---------- video slots (load from Supabase, admin upload tile) ---------- */
   document.querySelectorAll('.video-cube').forEach(cube => {
     const slot = cube.dataset.slot;
     const videoEl = cube.querySelector('video');
     const uploadTileEl = cube.querySelector('.video-upload-tile');
     const inputEl = cube.querySelector('input[type="file"]');
+    const panel = cube.closest('.exp-panel');
 
     if (slotActions[slot]){
       videoEl.addEventListener('click', () => {
         if (cube.classList.contains('has-video')) slotActions[slot]();
       });
+    }
+
+    function showVideo(url){
+      cube.dataset.url = url;
+      cube.classList.add('has-video');
+      if (!panel || panel.classList.contains('active')) primeVideo(cube);
     }
 
     async function loadSlotVideo(){
@@ -1842,9 +1478,7 @@
           .eq('slot', Number(slot))
           .maybeSingle();
         if (!error && data && data.video_url){
-          videoEl.src = data.video_url;
-          cube.classList.add('has-video');
-          videoEl.play().catch(() => {});
+          showVideo(data.video_url);
         }
       } catch (err) {
         console.error('loadSlotVideo failed:', err);
@@ -1872,9 +1506,7 @@
         }
         const { data: urlData } = supabaseClient.storage.from('site-videos').getPublicUrl(path);
         await supabaseClient.from('site_videos').upsert({ slot: Number(slot), video_url: urlData.publicUrl, updated_at: new Date().toISOString() });
-        videoEl.src = urlData.publicUrl;
-        cube.classList.add('has-video');
-        videoEl.play().catch(() => {});
+        showVideo(urlData.publicUrl);
         inputEl.value = '';
       } catch (err) {
         console.error('video upload failed:', err);
@@ -1885,6 +1517,36 @@
     loadSlotVideo();
   });
 
+  // the RZR clip (first tab) starts once the section is near the screen (file is large)
+  (function(){
+    const firstCube = document.querySelector('.exp-panel.active .video-cube.has-video');
+    if (!firstCube) return;
+    if ('IntersectionObserver' in window){
+      const io = new IntersectionObserver((entries) => {
+        if (entries.some(e => e.isIntersecting)){ primeVideo(firstCube); io.disconnect(); }
+      }, { rootMargin: '300px' });
+      io.observe(firstCube);
+    } else { primeVideo(firstCube); }
+  })();
+
+  // the "night" collection card reuses the slot-3 video from Supabase
+  (async function(){
+    const nightVideo = document.getElementById('colNightVideo');
+    if (!nightVideo || !supabaseClient) return;
+    try {
+      const { data, error } = await supabaseClient
+        .from('site_videos').select('video_url').eq('slot', 3).maybeSingle();
+      if (!error && data && data.video_url){
+        nightVideo.src = data.video_url;
+        nightVideo.autoplay = true;
+        nightVideo.play().catch(() => {});
+      }
+    } catch (err) { console.error('night card video failed:', err); }
+  })();
+
+  handleHash();
+
+  /* ---------- trip quiz ---------- */
   const quizQuestions = [
     { id: 'budget', question: 'מה התקציב המשוער לטיול?', type: 'single', options: ['עד 5,000₪', '5,000–15,000₪', '15,000–30,000₪', 'מעל 30,000₪'] },
     { id: 'firstTime', question: 'זו הפעם הראשונה שלכם בדובאי?', type: 'single', options: ['כן, פעם ראשונה', 'לא, כבר הייתי בעבר'] },
@@ -1912,6 +1574,7 @@
   }
   quizCloseBtn.addEventListener('click', closeQuizModal);
   quizModal.addEventListener('click', (e) => { if (e.target === quizModal) closeQuizModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeQuizModal(); });
 
   function renderQuizStep(){
     const total = quizQuestions.length;
@@ -1933,7 +1596,7 @@
       html += `<input class="quiz-input" id="quizFieldInput" type="${q.type}" placeholder="${q.placeholder}" value="${value}">`;
       html += `<div class="quiz-error" id="quizFieldError" style="display:none;"></div>`;
       const isLast = quizStep === total - 1;
-      html += `<div class="quiz-nav">${quizStep > 0 ? '<button type="button" class="quiz-back" id="quizBack">→ הקודם</button>' : '<span></span>'}<button type="button" class="btn btn-gold" id="quizNext">${isLast ? 'שליחה' : 'הבא'}</button></div>`;
+      html += `<div class="quiz-nav">${quizStep > 0 ? '<button type="button" class="quiz-back" id="quizBack">→ הקודם</button>' : '<span></span>'}<button type="button" class="btn" id="quizNext">${isLast ? 'שליחה' : 'הבא'}</button></div>`;
     }
 
     quizContent.innerHTML = html;
@@ -1984,7 +1647,7 @@
 
   async function submitQuiz(){
     quizProgressBar.style.width = '100%';
-    quizContent.innerHTML = `<div class="quiz-thanks"><div class="quiz-thanks-icon">✨</div><h3>שולח את הפרטים...</h3></div>`;
+    quizContent.innerHTML = `<div class="quiz-thanks"><div class="quiz-thanks-icon">✦</div><h3>שולח את הפרטים...</h3></div>`;
     try{
       await fetch('https://formsubmit.co/ajax/Infodubaisrael@gmail.com', {
         method: 'POST',
@@ -2005,20 +1668,11 @@
     }
     quizContent.innerHTML = `
       <div class="quiz-thanks">
-        <div class="quiz-thanks-icon">🙏</div>
+        <div class="quiz-thanks-icon">✦</div>
         <h3>תודה רבה!</h3>
         <p>נבנה לכם את החופשה המושלמת ונחזור אליכם בהקדם.</p>
       </div>`;
   }
-
-  const nav = document.querySelector('.site-nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40){
-      nav.style.background = 'rgba(8,9,11,0.94)';
-    } else {
-      nav.style.background = 'linear-gradient(180deg, rgba(8,9,11,0.9), rgba(8,9,11,0))';
-    }
-  });
 </script>
 
 </body>
