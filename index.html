@@ -778,7 +778,7 @@
   .hotel-cards{
     margin-top: 50px;
     display:grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
   .hotel-card{
@@ -798,8 +798,7 @@
   .hotel-card-body h3{ font-size: 1.02rem; font-weight:700; }
   .hotel-card-body .tag{ color: var(--muted); font-size: .82rem; font-weight:300; display:block; margin-top:6px; }
 
-  @media (max-width: 900px){ .hotel-cards{ grid-template-columns: repeat(2,1fr); } }
-  @media (max-width: 480px){ .hotel-cards{ grid-template-columns: 1fr; } }
+  @media (max-width: 640px){ .hotel-cards{ grid-template-columns: 1fr; } }
 
   @media (max-width: 900px){ .hotels-layout{ grid-template-columns: 1fr; } .hotels-photo img{ height: 280px; } }
 
@@ -1275,13 +1274,6 @@
       </div>
     </div>
     <div class="hotel-cards">
-      <div class="hotel-card clickable" onclick="openGalleryModal('ferrariworld','פרארי וורלד אבו דאבי','רגעים מפרארי וורלד, אבו דאבי.')">
-        <img src="https://images.unsplash.com/photo-1693164350459-ce6ad75e08c3?q=80&w=700&auto=format&fit=crop" alt="פרארי וורלד אבו דאבי">
-        <div class="hotel-card-body">
-          <h3>פרארי וורלד</h3>
-          <span class="tag">סגירת מקומות, אדרנלין בשיא ההנאה</span>
-        </div>
-      </div>
       <div class="hotel-card clickable" onclick="openGalleryModal('grandmosque','מסגד שיח\' זאיד הגדול','רגעים ממסגד שיח\' זאיד, אבו דאבי.')">
         <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=700&auto=format&fit=crop" alt="מסגד שיח' זאיד הגדול">
         <div class="hotel-card-body">
