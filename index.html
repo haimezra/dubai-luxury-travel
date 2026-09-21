@@ -252,6 +252,33 @@
     .col-go{ font-size: .8rem; margin-top: 8px; }
   }
 
+  /* ---------- KOSHER PREVIEW ---------- */
+  .kosher-card{
+    display: grid; grid-template-columns: 1.05fr 1fr; align-items: stretch;
+    margin-top: 20px; overflow: hidden; border-radius: 2px;
+    background: linear-gradient(160deg, #1b1a17, #0d0d0e);
+    border: 1px solid var(--gold-soft);
+  }
+  .kosher-media{ position: relative; min-height: 380px; overflow: hidden; }
+  .kosher-media img{
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    transition: transform 1.2s var(--ease);
+  }
+  .kosher-card:hover .kosher-media img{ transform: scale(1.04); }
+  .kosher-body{ padding: clamp(28px, 4vw, 56px); display: flex; flex-direction: column; justify-content: center; }
+  .kosher-body h3{ font-size: clamp(1.6rem, 3vw, 2.3rem); margin: 10px 0 0; }
+  .kosher-loc{
+    display: flex; align-items: center; gap: 10px; margin-top: 16px;
+    color: #e2ddd2; font-size: .98rem;
+  }
+  .kosher-loc svg{ flex: none; width: 18px; height: 18px; fill: none; stroke: var(--gold); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .kosher-body p{ color: var(--muted); margin: 18px 0 0; max-width: 46ch; }
+  .kosher-body .btn{ align-self: flex-start; margin-top: 28px; }
+  @media (max-width: 900px){
+    .kosher-card{ grid-template-columns: 1fr; }
+    .kosher-media{ min-height: 0; aspect-ratio: 4 / 3; }
+  }
+
   /* ---------- EXPERIENCES SHOWCASE ---------- */
   .showcase{ background: var(--surface); }
   .showcase-links{ display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
@@ -622,6 +649,7 @@
       <a href="desert-safari.html">ספארי מדברי</a>
       <a href="rzr.html">השכרת RZR</a>
       <a href="vip-parties.html">מסיבות VIP</a>
+      <a href="kosher-dubai.html">מסעדות כשרות</a>
       <a href="netiv-vip.html">נתיב VIP בנתב"ג</a>
       <a href="offers.html">הזמנות</a>
       <div class="menu-contact">
@@ -693,6 +721,21 @@
         </div>
       </a>
     </div>
+    <a class="kosher-card" href="kosher-dubai.html">
+      <div class="kosher-media">
+        <img src="images/kosher-dubai.jpg" alt="מנות שף במסעדות כשרות בדובאי" loading="lazy">
+      </div>
+      <div class="kosher-body">
+        <div class="eyebrow">אוכל כשר</div>
+        <h3>טעמים כשרים בלב דובאי</h3>
+        <div class="kosher-loc">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+          <span>דאון טאון · מרינה · DIFC</span>
+        </div>
+        <p>חמש מסעדות כשרות מהודרות, מבשרים על הגחלים ועד דגים טריים וקינוחי שף. נבחרו בקפידה ומחכות לכם.</p>
+        <span class="btn">לצפייה במסעדות</span>
+      </div>
+    </a>
   </div>
 </section>
 
