@@ -345,6 +345,7 @@
   .feature-grid{ display: grid; gap: 32px; }
   .feature-grid.two{ grid-template-columns: repeat(2, 1fr); }
   .feature-grid.three{ grid-template-columns: repeat(3, 1fr); }
+  .feature-grid.four{ grid-template-columns: repeat(4, 1fr); gap: 24px; }
   .feature-card{ cursor: pointer; }
   .feature-card .media{
     aspect-ratio: 4 / 3; overflow: hidden; background: var(--surface); border-radius: 2px;
@@ -355,8 +356,14 @@
   .feature-card p, .feature-card .tag{ color: var(--muted); margin: 8px 0 0; font-size: .98rem; }
   .feature-card .link-arrow{ margin-top: 16px; }
   .feature-card:hover .link-arrow{ color: var(--gold); border-bottom-color: var(--gold); }
+  @media (max-width: 1000px){
+    .feature-grid.four{ grid-template-columns: repeat(2, 1fr); }
+  }
   @media (max-width: 820px){
     .feature-grid.two, .feature-grid.three{ grid-template-columns: 1fr; }
+  }
+  @media (max-width: 520px){
+    .feature-grid.four{ grid-template-columns: 1fr; }
   }
   .hotels{ background: var(--surface); }
   .abudhabi-cards{ padding: 0 0 130px; }
@@ -712,8 +719,8 @@
     </div>
 
     <div class="exp-tabs" id="expTabs" role="tablist" aria-label="חוויות">
-      <button type="button" class="exp-tab active" role="tab" data-tab="6" aria-selected="true">השכרת RZR</button>
       <button type="button" class="exp-tab" role="tab" data-tab="4" aria-selected="false">מכוניות יוקרה</button>
+      <button type="button" class="exp-tab active" role="tab" data-tab="6" aria-selected="true">השכרת RZR</button>
       <button type="button" class="exp-tab" role="tab" data-tab="8" aria-selected="false">ספארי מדברי</button>
       <button type="button" class="exp-tab" role="tab" data-tab="1" aria-selected="false">מקומות VIP במזרקה</button>
       <button type="button" class="exp-tab" role="tab" data-tab="2" aria-selected="false">אופנועי ים</button>
@@ -952,7 +959,12 @@
 </section>
 <section class="abudhabi-cards">
   <div class="container">
-    <div class="feature-grid three">
+    <div class="feature-grid four">
+      <div class="feature-card" role="button" tabindex="0" onclick="window.location.href='ferrari-world.html'">
+        <div class="media"><img src="https://images.unsplash.com/photo-1693164350459-ce6ad75e08c3?q=80&w=700&auto=format&fit=crop" alt="Ferrari World אבו דאבי" loading="lazy"></div>
+        <h3>Ferrari World</h3>
+        <span class="tag">אדרנלין ומסלולי מרוצים</span>
+      </div>
       <div class="feature-card" role="button" tabindex="0" onclick="openGalleryModal('grandmosque','מסגד שיח\' זאיד הגדול','רגעים ממסגד שיח\' זאיד, אבו דאבי.')">
         <div class="media"><img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=700&auto=format&fit=crop" alt="מסגד שיח' זאיד הגדול" loading="lazy"></div>
         <h3>מסגד שיח' זאיד</h3>
