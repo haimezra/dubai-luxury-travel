@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0B0B0C">
-<title>haydubai | ליווי אישי לטיולי יוקרה</title>
+<title>haydubai | Dubai Travel Agency</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
@@ -412,36 +412,6 @@
   .testimonials h2{ font-size: clamp(1.7rem, 3.2vw, 2.4rem); }
   .testimonials p{ color: var(--muted); max-width: 520px; margin: 18px auto 32px; }
 
-  /* ---------- PRICING ---------- */
-  .price-list{ max-width: 780px; margin: 0 auto; border-top: 1px solid var(--line); }
-  .price-item{ border-bottom: 1px solid var(--line); }
-  .price-item-head{
-    width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 18px;
-    padding: 26px 4px;
-    background: transparent; border: 0; color: var(--text);
-    cursor: pointer; text-align: right;
-  }
-  .price-item-title{ flex: 1; font-family: var(--serif); font-size: 1.15rem; font-weight: 400; }
-  .price-item-price{
-    display: flex; flex-direction: column; align-items: flex-end; gap: 2px;
-    font-family: var(--display); font-size: 1.5rem; font-weight: 300; color: var(--text);
-    white-space: nowrap; line-height: 1.2;
-  }
-  .price-aed{ font-family: var(--sans); color: var(--muted); font-size: .76rem; font-weight: 300; }
-  .price-item-arrow{
-    color: var(--gold); font-size: 1.4rem; font-weight: 300; line-height: 1; width: 20px; text-align: center;
-    transition: transform .35s var(--ease);
-  }
-  .price-item.open .price-item-arrow{ transform: rotate(45deg); }
-  .price-item-body{
-    max-height: 0; overflow: hidden; padding: 0 4px;
-    color: var(--muted); font-size: .98rem;
-    transition: max-height .4s var(--ease), padding .4s var(--ease);
-  }
-  .price-item.open .price-item-body{ max-height: 240px; padding: 0 4px 28px; }
-  .price-item-body p{ margin: 0; max-width: 620px; }
-  .price-note{ text-align: center; color: var(--muted); font-size: .84rem; margin-top: 28px; }
-
   /* ---------- CONTACT ---------- */
   .contact{ background: var(--surface); }
   .contact-grid{ display: grid; grid-template-columns: .9fr 1.1fr; gap: 90px; align-items: start; }
@@ -599,11 +569,8 @@
   .quiz-error{ color: #d98a8a; font-size: .85rem; margin-top: -18px; margin-bottom: 18px; }
 
   .exp-panel > *, .contact-grid > *, .feature-grid > *, .journey-grid > *, .collections-grid > *{ min-width: 0; }
-  .price-item-title{ min-width: 0; }
   @media (max-width: 700px){
     :root{ --logo-shift: 3px; }
-    .price-item-head{ gap: 12px; }
-    .price-item-price{ font-size: 1.25rem; }
     .container{ padding: 0 22px; }
     .section{ padding: 90px 0; }
     .intro{ padding: 100px 0 90px; }
@@ -644,7 +611,6 @@
       <a href="#videos">חוויות</a>
       <a href="#experiences">מלונות וסוויטות</a>
       <a href="#abudhabi">אבו דאבי</a>
-      <a href="#pricing">מחירון</a>
       <a href="#contact">צור קשר</a>
     </nav>
     <div class="menu-side">
@@ -1014,80 +980,6 @@
   </div>
 </section>
 
-<!-- ============ PRICING ============ -->
-<section class="section pricing" id="pricing">
-  <div class="container">
-    <div class="section-head center">
-      <div class="eyebrow">שקוף ומדויק</div>
-      <h2>מחירון שירותי הליווי</h2>
-      <p>לחצו על שירות כדי לראות בדיוק מה כלול. כל המחירים בשקלים ובדיראם, לפי שער חליפין עדכני (בקירוב).</p>
-    </div>
-    <div class="price-list" id="priceList">
-      <div class="price-item">
-        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
-          <span class="price-item-title">ליווי צמוד בשדה התעופה</span>
-          <span class="price-item-price">750 ₪<span class="price-aed">≈ 915 AED</span></span>
-          <span class="price-item-arrow">+</span>
-        </button>
-        <div class="price-item-body">
-          <p>נפגשים איתכם בשדה התעופה, ליווי צמוד לאורך כל התהליך, סיוע בהעברת תיקים (עד 20 ק"ג, בידוק בלבד), ומעבר ללא תור עד עלייה למטוס.</p>
-        </div>
-      </div>
-      <div class="price-item">
-        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
-          <span class="price-item-title">סוכן אישי לאורך כל השהות</span>
-          <span class="price-item-price">500 ₪<span class="price-aed">≈ 610 AED</span></span>
-          <span class="price-item-arrow">+</span>
-        </button>
-        <div class="price-item-body">
-          <p>סוכן אישי מטעמנו, שנמצא בפועל בדובאי ובאבו דאבי, זמין לאורך כל תקופת השהות שלכם לכל צורך.</p>
-        </div>
-      </div>
-      <div class="price-item">
-        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
-          <span class="price-item-title">סוכן אישי לאורך כל שעות החופשה</span>
-          <span class="price-item-price">800 ₪<span class="price-aed">≈ 975 AED</span></span>
-          <span class="price-item-arrow">+</span>
-        </button>
-        <div class="price-item-body">
-          <p>סוכן אישי צמוד אליכם בכל שעות היממה לאורך כל החופשה, זמין ללא הגבלה לכל שאלה, בקשה או צורך, בכל רגע נתון.</p>
-        </div>
-      </div>
-      <div class="price-item">
-        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
-          <span class="price-item-title">ייעוץ טלפוני, וואטסאפ והדרכות</span>
-          <span class="price-item-price">250 ₪<span class="price-aed">≈ 305 AED</span></span>
-          <span class="price-item-arrow">+</span>
-        </button>
-        <div class="price-item-body">
-          <p>שירות טלפוני וזמינות בוואטסאפ, הדרכות והסברים לפני ובמהלך הטיול, ומענה לכל שאלה.</p>
-        </div>
-      </div>
-      <div class="price-item">
-        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
-          <span class="price-item-title">כניסת VIP ללאונג' בשדה התעופה</span>
-          <span class="price-item-price">450 ₪<span class="price-aed">≈ 550 AED</span></span>
-          <span class="price-item-arrow">+</span>
-        </button>
-        <div class="price-item-body">
-          <p>גישה ללאונג' יוקרתי בשדה התעופה לפני הטיסה, כולל כיבוד ואזור המתנה שקט ונוח הרחק מהמולת הטרמינל.</p>
-        </div>
-      </div>
-      <div class="price-item">
-        <button type="button" class="price-item-head" onclick="togglePriceItem(this)">
-          <span class="price-item-title">ליווי חזרה בסיום החופשה</span>
-          <span class="price-item-price">400 ₪<span class="price-aed">≈ 490 AED</span></span>
-          <span class="price-item-arrow">+</span>
-        </button>
-        <div class="price-item-body">
-          <p>סיוע בצ'ק אאוט מהמלון, ליווי צמוד חזרה לשדה התעופה, ועמידה לצידכם עד רגע הבידוק לפני הטיסה חזרה.</p>
-        </div>
-      </div>
-    </div>
-    <p class="price-note">המחירים בדיראם הם המרה משוערת לפי שער החליפין הנוכחי, ועשויים להשתנות מעט בהתאם לתנודות השוק.</p>
-  </div>
-</section>
-
 <!-- ============ CONTACT ============ -->
 <section class="section contact" id="contact">
   <div class="container">
@@ -1145,7 +1037,7 @@
 <footer>
   <div class="container">
     <img src="images/logo.png" alt="לוגו HAY DUBAI" class="brand-logo">
-    <div>ליווי אישי לטיולי יוקרה בדובאי</div>
+    <div>Dubai Travel Agency</div>
     <div style="margin-top:6px;">טלפון החברה: <a href="tel:+97229999119" style="color:inherit;text-decoration:none;"><bdi>02-999-9119</bdi></a></div>
     <div style="margin-top:4px;">וואטסאפ: <a href="https://wa.me/972543771767" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><bdi>054-377-1767</bdi></a></div>
     <div class="footer-email" style="margin-top:6px;"><a href="mailto:Infodubaisrael@gmail.com" style="color:#ece7dd;font-weight:700;text-decoration:none;direction:ltr;unicode-bidi:isolate;"><b>Infodubaisrael@gmail.com</b></a></div>
@@ -1458,13 +1350,6 @@
       if (action) action();
     });
   });
-
-  function togglePriceItem(btn){
-    const item = btn.closest('.price-item');
-    const wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.price-item.open').forEach(el => el.classList.remove('open'));
-    if (!wasOpen) item.classList.add('open');
-  }
 
   /* ---------- experience showcase: one panel at a time ---------- */
   function primeVideo(cube){
