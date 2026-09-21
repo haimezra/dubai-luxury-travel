@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0B0B0C">
+<title>כרטיסים למסגד שיח' זאיד באבו דאבי | HAY DUBAI</title>
+<meta name="description" content="הזמנת כרטיסים לביקור במסגד שיח' זאיד הגדול באבו דאבי. חינם בהזמנת אחד מהשירותים שלנו, או 50 ₪ לכרטיס. אישור זמינות לפני כל תשלום, וכרטיסים דיגיטליים ישירות אליכם.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0B0B0C;
+    --surface: #121213;
+    --surface-2: #181819;
+    --line: rgba(255,255,255,.09);
+    --text: #F4F1EA;
+    --muted: #9A9A9A;
+    --gold: #C8A96A;
+    --gold-soft: rgba(200,169,106,.38);
+    --danger: #d98a8a;
+    --ok: #8fcfa8;
+    --serif: 'Outfit', 'Rubik', sans-serif;
+    --display: 'Outfit', 'Rubik', sans-serif;
+    --sans: 'Outfit', 'Rubik', sans-serif;
+    --ease: cubic-bezier(.2,.6,.2,1);
+    --logo-shift: 7px;
+    color-scheme: dark;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; scroll-padding-top: 80px; overflow-x: hidden; max-width: 100%; -webkit-text-size-adjust: 100%; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 1.02rem;
+    line-height: 1.85;
+    overflow-x: hidden;
+    max-width: 100%;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3{
+    font-family: var(--serif);
+    font-weight: 300;
+    letter-spacing: -0.005em;
+    line-height: 1.25;
+    color: var(--text);
+    margin: 0;
+  }
+  p{ margin: 0; }
+  a{ color: inherit; text-decoration: none; }
+  img{ max-width: 100%; display:block; }
+  button{ font-family: inherit; }
+  :focus-visible{ outline: 2px solid var(--gold); outline-offset: 4px; }
+
+  .container{ max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+  section{ position: relative; }
+  .section{ padding: 130px 0; }
+  .section.alt{ background: var(--surface); }
+
+  /* ---------- SHARED TYPE ---------- */
+  .eyebrow{
+    color: var(--gold);
+    font-weight: 500;
+    font-size: .82rem;
+    letter-spacing: .1em;
+    margin-bottom: 18px;
+  }
+  .section-head{ max-width: 620px; margin-bottom: 72px; }
+  .section-head.center{ margin-inline: auto; text-align: center; }
+  .section-head h2{ font-size: clamp(1.9rem, 3.6vw, 2.8rem); }
+  .section-head p{ color: var(--muted); margin: 20px 0 0; font-size: 1.05rem; }
+  .rule{ width: 56px; height: 1px; background: var(--gold); border: 0; margin: 28px 0; }
+  .section-head.center .rule{ margin-inline: auto; }
+
+  /* ---------- BUTTONS ---------- */
+  .btn{
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 14px 36px;
+    font-family: var(--sans);
+    font-size: .95rem; font-weight: 400; letter-spacing: .04em;
+    color: var(--text);
+    background: transparent;
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background .4s var(--ease), color .4s var(--ease);
+  }
+  .btn:hover{ background: var(--gold); color: #0B0B0C; }
+  .btn.solid{ background: var(--gold); color: #0B0B0C; font-weight: 500; }
+  .btn.solid:hover{ background: #d8bb80; }
+  .link-arrow{
+    display: inline-block;
+    color: var(--text);
+    font-size: .95rem; font-weight: 400;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--gold-soft);
+    background: none; border-top: 0; border-inline: 0;
+    cursor: pointer;
+    transition: color .3s ease, border-color .3s ease;
+  }
+  .link-arrow:hover{ color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* ---------- HEADER ---------- */
+  .site-nav{
+    position: fixed; top: 0; right: 0; left: 0; z-index: 50;
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+    padding: 20px 36px;
+    border-bottom: 1px solid transparent;
+    background: linear-gradient(180deg, rgba(11,11,12,.7), rgba(11,11,12,0));
+    transition: background .4s ease, padding .4s ease, border-color .4s ease;
+  }
+  .site-nav.scrolled{
+    background: rgba(11,11,12,.94);
+    backdrop-filter: blur(10px);
+    border-bottom-color: var(--line);
+    padding: 12px 36px;
+  }
+  .menu-toggle{
+    justify-self: start;
+    display: inline-flex; align-items: center; gap: 14px;
+    background: none; border: 0; color: var(--text); cursor: pointer;
+    font-size: .92rem; font-weight: 400; letter-spacing: .06em; padding: 8px 0;
+  }
+  .menu-toggle .bars{ display:flex; flex-direction:column; gap:6px; width: 26px; }
+  .menu-toggle .bars i{ display:block; height:1px; background: var(--text); transition: background .3s; }
+  .menu-toggle .bars i:last-child{ width: 65%; }
+  .menu-toggle:hover .bars i{ background: var(--gold); }
+  .brand{ display: block; transform: translateX(var(--logo-shift)); }
+  .brand-logo{ width: 44px; height: 44px; object-fit: contain; }
+  .nav-wa{
+    justify-self: end;
+    width: 40px; height: 40px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--text);
+    border: 1px solid var(--line); border-radius: 50%;
+    transition: border-color .3s ease, color .3s ease;
+  }
+  .nav-wa:hover{ border-color: var(--gold); color: var(--gold); }
+  .nav-wa svg{ width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linejoin: round; }
+
+  /* ---------- FULL-SCREEN MENU ---------- */
+  .menu-overlay{
+    position: fixed; inset: 0; z-index: 120;
+    background: var(--bg);
+    display: none;
+    overflow-y: auto;
+    padding: 28px 36px 48px;
+  }
+  .menu-overlay.active{ display: block; animation: fadeIn .4s ease; }
+  @keyframes fadeIn{ from{ opacity: 0; } to{ opacity: 1; } }
+  .menu-top{ display:flex; justify-content: space-between; align-items:center; }
+  .menu-close{
+    background: none; border: 0; color: var(--text); cursor: pointer;
+    font-size: .92rem; letter-spacing: .06em; display:inline-flex; align-items:center; gap: 12px; padding: 8px 0;
+  }
+  .menu-close:hover{ color: var(--gold); }
+  .menu-body{
+    max-width: 1080px; margin: 6vh auto 0;
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px;
+  }
+  .menu-main a{
+    display: block;
+    font-family: var(--serif); font-weight: 300;
+    font-size: clamp(1.9rem, 4.2vw, 3rem);
+    line-height: 1.4;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--line);
+    transition: color .3s ease, padding .3s var(--ease);
+  }
+  .menu-main a:hover{ color: var(--gold); padding-inline-start: 14px; }
+  .menu-side h4{ margin: 0 0 18px; font-weight: 500; font-size: .82rem; letter-spacing: .1em; color: var(--gold); }
+  .menu-side a{ display: block; padding: 7px 0; color: var(--muted); font-size: 1rem; transition: color .3s ease; }
+  .menu-side a:hover{ color: var(--text); }
+  .menu-contact{ margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line); }
+  .menu-contact .tel{ font-family: var(--display); font-weight: 300; font-size: 1.9rem; color: var(--text); direction: ltr; display: inline-block; }
+  @media (max-width: 820px){
+    .menu-body{ grid-template-columns: 1fr; gap: 48px; }
+    .menu-overlay{ padding: 22px 24px 48px; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height: 100svh;
+    display: flex; align-items: flex-end;
+    background:
+      linear-gradient(180deg, rgba(11,11,12,.5) 0%, rgba(11,11,12,.32) 38%, rgba(11,11,12,.96) 100%),
+      url('images/airport-business.jpg') center 40% / cover no-repeat,
+      url('https://images.unsplash.com/photo-1642035148715-7cc0c7538904?q=80&w=2000&auto=format&fit=crop') center / cover no-repeat;
+    background-color: var(--surface);
+  }
+  .hero-inner{
+    width: 100%;
+    padding-top: 160px; padding-bottom: 88px;
+    text-align: center;
+    animation: heroIn 1.4s var(--ease) both;
+  }
+  @keyframes heroIn{ from{ opacity: 0; transform: translateY(16px); } to{ opacity: 1; transform: none; } }
+  .hero-logo{ height:auto; width:131px; margin: 0 auto 28px; object-fit: contain; }
+  .hero h1{
+    font-size: clamp(2.3rem, 6vw, 4.5rem);
+    line-height: 1.18;
+    max-width: 900px; margin-inline: auto;
+  }
+  .hero .rule{ margin: 34px auto; }
+  .hero-actions{ display: flex; flex-direction: column; align-items: center; gap: 26px; }
+  .hero-scroll{ color: var(--muted); font-size: .9rem; letter-spacing: .06em; transition: color .3s ease; }
+  .hero-scroll:hover{ color: var(--gold); }
+
+  /* ---------- INTRO ---------- */
+  .intro{ padding: 150px 0 120px; text-align: center; }
+  .intro p.statement{
+    font-family: var(--serif); font-weight: 300;
+    font-size: clamp(1.4rem, 2.8vw, 2.1rem);
+    line-height: 1.75;
+    max-width: 800px; margin: 0 auto;
+    color: var(--text);
+  }
+  .facts{ margin-top: 96px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; text-align: right; }
+  .fact{ border-top: 1px solid var(--line); padding-top: 28px; }
+  .fact h3{ font-size: 1.4rem; margin-bottom: 10px; }
+  .fact p{ color: var(--muted); }
+  @media (max-width: 820px){ .facts{ grid-template-columns: 1fr; gap: 36px; margin-top: 64px; } }
+
+  /* ---------- ROUTE ---------- */
+  .route{ display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 40px 36px; }
+  .route-item{ border-top: 1px solid var(--line); padding-top: 28px; }
+  .route-num{ font-family: var(--display); font-size: 2.4rem; font-weight: 200; color: var(--gold); line-height: 1; margin-bottom: 20px; }
+  .route-item h3{ font-size: 1.25rem; margin-bottom: 10px; }
+  .route-item p{ color: var(--muted); font-size: .96rem; line-height: 1.7; }
+
+  /* ---------- AUDIENCE TABS ---------- */
+  .exp-tabs{
+    display: flex; gap: 6px; justify-content: center;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 64px;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .exp-tabs::-webkit-scrollbar{ display: none; }
+  .exp-tab{
+    flex: 0 0 auto;
+    background: none; border: 0; cursor: pointer;
+    color: var(--muted);
+    font-size: .98rem; font-weight: 400; letter-spacing: .03em;
+    padding: 16px 20px;
+    position: relative; white-space: nowrap;
+    transition: color .3s ease;
+  }
+  .exp-tab::after{
+    content: ''; position: absolute; right: 20px; left: 20px; bottom: -1px; height: 1px;
+    background: var(--gold); transform: scaleX(0); transition: transform .4s var(--ease);
+  }
+  .exp-tab:hover{ color: var(--text); }
+  .exp-tab[aria-selected="true"]{ color: var(--text); }
+  .exp-tab[aria-selected="true"]::after{ transform: scaleX(1); }
+
+  .exp-panel{ display: grid; grid-template-columns: 1.15fr 1fr; gap: 64px; align-items: center; animation: fadeIn .6s ease; }
+  .exp-panel[hidden]{ display: none; }
+  .exp-panel > *{ min-width: 0; }
+  .image-cube{
+    position: relative; overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: var(--bg);
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px var(--line);
+  }
+  .image-cube img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .exp-copy h3{ font-size: clamp(1.7rem, 3vw, 2.4rem); }
+  .exp-copy > p{ color: var(--muted); margin: 20px 0 28px; }
+  .exp-copy .btn{ margin-top: 32px; }
+  @media (max-width: 900px){
+    .exp-panel{ grid-template-columns: 1fr; gap: 32px; }
+    .exp-tabs{ justify-content: flex-start; margin-inline: -32px; padding-inline: 20px; }
+  }
+  @media (max-width: 700px){ .exp-tabs{ margin-inline: -22px; padding-inline: 14px; } }
+
+  /* ---------- LINE LISTS ---------- */
+  .pts{ list-style: none; margin: 0; padding: 0; }
+  .pts li{ padding: 14px 0; border-top: 1px solid var(--line); color: var(--text); font-size: .98rem; line-height: 1.7; }
+  .pts li:last-child{ border-bottom: 1px solid var(--line); }
+
+  /* ---------- VIP ---------- */
+  .vip-head{ margin-bottom: 96px; }
+  .vip-head .btn{ margin-top: 32px; }
+  .abu-layout{ display: grid; grid-template-columns: 1.1fr .9fr; gap: 72px; align-items: center; }
+  .abu-layout + .abu-layout{ margin-top: 110px; }
+  .abu-layout > *{ min-width: 0; }
+  .abu-layout.flip .abu-photo{ order: 2; }
+  .abu-photo{ aspect-ratio: 4 / 3; overflow: hidden; background: var(--surface); border-radius: 2px; box-shadow: 0 0 0 1px var(--line); }
+  .abu-photo img{ width: 100%; height: 100%; object-fit: cover; }
+  .abu-text h3{ font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
+  .abu-text p{ color: var(--muted); margin: 0 0 24px; }
+  .abu-text .link-arrow{ margin-top: 26px; }
+  @media (max-width: 820px){
+    .abu-layout{ grid-template-columns: 1fr; gap: 40px; }
+    .abu-layout.flip .abu-photo{ order: 0; }
+    .abu-layout + .abu-layout{ margin-top: 80px; }
+    .vip-head{ margin-bottom: 64px; }
+  }
+
+  /* ---------- INCLUDED ---------- */
+  .two{ display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
+  .two h3{ font-size: 1.6rem; margin-bottom: 22px; }
+  .note{ margin-top: 64px; padding: 20px 24px; border-inline-start: 1px solid var(--gold); background: var(--surface-2); color: var(--muted); max-width: 780px; }
+  .note b{ color: var(--text); font-weight: 500; }
+  @media (max-width: 820px){ .two{ grid-template-columns: 1fr; gap: 48px; } }
+
+  /* ---------- FAQ ---------- */
+  .faq{ max-width: 780px; margin: 0 auto; border-top: 1px solid var(--line); }
+  details{ border-bottom: 1px solid var(--line); }
+  summary{
+    list-style: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 18px;
+    padding: 26px 4px;
+    font-family: var(--serif); font-size: 1.15rem; font-weight: 400;
+  }
+  summary::-webkit-details-marker{ display: none; }
+  summary::after{
+    content: '+'; color: var(--gold); font-size: 1.4rem; font-weight: 300; line-height: 1; width: 20px; text-align: center;
+    transition: transform .35s var(--ease);
+  }
+  details[open] summary::after{ transform: rotate(45deg); }
+  details p{ padding: 0 4px 28px; color: var(--muted); max-width: 640px; }
+
+  /* ---------- ORDER ---------- */
+  .contact-grid{ display: grid; grid-template-columns: .9fr 1.1fr; gap: 90px; align-items: start; }
+  .contact-grid > *{ min-width: 0; }
+  .contact-text h2{ font-size: clamp(1.9rem, 3.8vw, 2.8rem); }
+  .contact-text > p{ color: var(--muted); margin: 20px 0 0; }
+  .c-links{ margin-top: 40px; border-top: 1px solid var(--line); }
+  .c-links a{
+    display: flex; align-items: baseline; justify-content: space-between; gap: 18px; flex-wrap: wrap;
+    padding: 18px 2px; border-bottom: 1px solid var(--line);
+    transition: color .3s ease;
+  }
+  .c-links a:hover{ color: var(--gold); }
+  .c-links .k{ color: var(--muted); font-size: .9rem; }
+  .c-links .v{ font-family: var(--display); font-size: 1.15rem; font-weight: 300; }
+
+  .order-form{ display: flex; flex-direction: column; gap: 30px; }
+  fieldset{ border: 0; margin: 0; padding: 0; min-width: 0; }
+  legend{ padding: 0; margin-bottom: 12px; font-size: .88rem; color: var(--muted); font-weight: 400; }
+  .opts{ display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+  .opts label{ position: relative; display: block; }
+  .opts input{ position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+  .opts span{
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    min-height: 52px; padding: 10px 14px;
+    border: 1px solid var(--line); border-radius: 2px;
+    font-size: .98rem; line-height: 1.4;
+    transition: border-color .3s ease, background .3s ease, color .3s ease;
+  }
+  .opts label:hover span{ border-color: var(--gold-soft); }
+  .opts input:checked + span{ background: var(--gold); border-color: var(--gold); color: #0B0B0C; font-weight: 500; }
+  .opts input:focus-visible + span{ outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  .chk{ display: flex; gap: 14px; align-items: flex-start; padding: 18px; border: 1px solid var(--line); border-radius: 2px; cursor: pointer; line-height: 1.5; }
+  .chk input{ width: 20px; height: 20px; flex: none; margin: 3px 0 0; accent-color: var(--gold); }
+  .chk small{ display: block; color: var(--muted); font-size: .88rem; margin-top: 2px; }
+
+  .row{ display: grid; gap: 30px; }
+  .row.c2{ grid-template-columns: 1fr 1fr; }
+  .row.c3{ grid-template-columns: 1fr 1fr 1fr; }
+  .row > *{ min-width: 0; }
+  .field{ display: flex; flex-direction: column; gap: 6px; align-content: start; }
+  .field > label{ font-size: .88rem; color: var(--muted); font-weight: 400; }
+  .field .opt{ font-size: .82rem; opacity: .8; }
+  .order-form input[type=text], .order-form input[type=tel], .order-form input[type=email],
+  .order-form input[type=date], .order-form input[type=time], .order-form input[type=number],
+  .order-form select, .order-form textarea{
+    width: 100%;
+    background: transparent;
+    border: 0; border-bottom: 1px solid var(--line);
+    border-radius: 0;
+    padding: 10px 2px;
+    color: var(--text);
+    font-family: var(--sans); font-size: 1.02rem; font-weight: 300;
+    outline: none;
+    transition: border-color .3s ease;
+  }
+  .order-form select option{ background: var(--surface); color: var(--text); }
+  .order-form textarea{ resize: vertical; min-height: 96px; }
+  .order-form input:focus, .order-form select:focus, .order-form textarea:focus{ border-bottom-color: var(--gold); }
+  .order-form [aria-invalid="true"]{ border-bottom-color: var(--danger); }
+  .err{ color: var(--danger); font-size: .85rem; }
+  .err[hidden]{ display: none; }
+  .kid{ display: grid; gap: 22px; padding: 22px; border: 1px solid var(--line); border-radius: 2px; }
+  .kid[hidden]{ display: none; }
+  .actions{ display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .fine{ color: var(--muted); font-size: .85rem; line-height: 1.6; }
+  .fine a{ color: inherit; text-decoration: underline; }
+
+  .result{ border: 1px solid var(--gold-soft); border-radius: 2px; padding: 26px; display: grid; gap: 14px; }
+  .result[hidden]{ display: none; }
+  .result h3{ font-size: 1.4rem; color: var(--ok); }
+  .result p{ color: var(--muted); }
+  .result textarea{ min-height: 170px; font-size: .92rem; border: 1px solid var(--line) !important; padding: 12px !important; }
+  .result .btns{ display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  @media (max-width: 860px){
+    .contact-grid{ grid-template-columns: 1fr; gap: 56px; }
+  }
+  @media (max-width: 640px){
+    .row.c2, .row.c3{ grid-template-columns: 1fr; }
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{ padding: 70px 0 60px; text-align: center; color: var(--muted); font-size: .92rem; border-top: 1px solid var(--line); }
+  footer .brand-logo{ margin: 0 auto 20px; }
+  footer .footer-email a{ color: var(--text); direction: ltr; unicode-bidi: isolate; font-weight: 400; }
+  .footer-links{ margin-top: 26px; display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+  .footer-links a{ color: var(--muted); font-size: .88rem; transition: color .3s ease; }
+  .footer-links a:hover{ color: var(--gold); }
+  .footer-disclaimer{ margin-top: 22px; font-size: .82rem; max-width: 620px; margin-inline: auto; }
+
+  /* ---------- FLOATING WHATSAPP ---------- */
+  .float-cta{
+    position: fixed; bottom: 26px; left: 26px; z-index: 60;
+    width: 52px; height: 52px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg); color: var(--gold);
+    border: 1px solid var(--gold);
+    transition: background .4s var(--ease), color .4s var(--ease);
+  }
+  .float-cta:hover{ background: var(--gold); color: #0B0B0C; }
+  .float-cta svg{ width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linejoin: round; }
+
+  @media (max-width: 700px){
+    :root{ --logo-shift: 3px; }
+    .container{ padding: 0 22px; }
+    .section{ padding: 90px 0; }
+    .intro{ padding: 100px 0 80px; }
+    .section-head{ margin-bottom: 52px; }
+    .site-nav{ padding: 14px 20px; }
+    .site-nav.scrolled{ padding: 10px 20px; }
+    .menu-toggle .lbl{ display: none; }
+    .hero-inner{ padding-top: 130px; padding-bottom: 60px; }
+    .float-cta{ bottom: 18px; left: 18px; }
+    .btn{ padding: 14px 28px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition-duration: .01ms !important; }
+    html{ scroll-behavior: auto; }
+  }
+
+  /* ===== mosque page additions ===== */
+  .hero{
+    background:
+      linear-gradient(180deg, rgba(11,11,12,.5) 0%, rgba(11,11,12,.32) 38%, rgba(11,11,12,.96) 100%),
+      url('https://images.unsplash.com/photo-1512632578888-169bbbc64f33?q=80&w=2000&auto=format&fit=crop') center 55% / cover no-repeat;
+    background-color: var(--surface);
+  }
+  .hero .eyebrow{ margin-bottom: 22px; }
+  .hero-price{ margin-top: 22px; color: #dcd7cc; font-size: 1.05rem; }
+  .hero-price b{ color: var(--gold); font-weight: 500; font-family: var(--display); font-size: 1.35rem; }
+
+  .hours{ max-width: 780px; margin: 0 auto; border-top: 1px solid var(--line); }
+  .hours-row{ display: grid; grid-template-columns: 1fr 1.3fr; gap: 24px; align-items: baseline; padding: 26px 4px; border-bottom: 1px solid var(--line); }
+  .hours-day{ font-family: var(--serif); font-size: 1.15rem; font-weight: 400; }
+  .hours-day small{ display: block; color: var(--muted); font-family: var(--sans); font-size: .85rem; font-weight: 300; margin-top: 2px; }
+  .hours-time{ font-family: var(--display); font-size: 1.3rem; font-weight: 300; line-height: 1.6; }
+  .hours + .note{ margin-inline: auto; margin-top: 40px; }
+  @media (max-width: 640px){ .hours-row{ grid-template-columns: 1fr; gap: 6px; } }
+
+  .field[hidden]{ display: none; }
+  .visitors{ display: grid; gap: 14px; }
+  .vrow{ display: grid; gap: 18px; padding: 22px; border: 1px solid var(--line); border-radius: 2px; }
+  .vrow .vtitle{ color: var(--gold); font-size: .88rem; font-weight: 500; letter-spacing: .06em; }
+  .vrow .row{ gap: 22px; }
+  .vrow .row.c3{ grid-template-columns: .8fr .6fr 1.2fr; }
+  @media (max-width: 640px){ .vrow .row.c3{ grid-template-columns: 1fr; } }
+  .total{ display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; padding: 22px 24px; border: 1px solid var(--gold-soft); border-radius: 2px; background: var(--surface-2); }
+  .total .k{ color: var(--muted); font-size: .92rem; line-height: 1.6; }
+  .total .k b{ color: var(--text); font-weight: 400; }
+  .total .sum{ font-family: var(--display); font-size: 2.2rem; font-weight: 300; line-height: 1; white-space: nowrap; }
+  .total .sum span{ color: var(--gold); }
+</style>
+</head>
+<body>
+
+<header class="site-nav" id="siteNav">
+  <button type="button" class="menu-toggle" id="menuToggle" aria-label="פתיחת תפריט" aria-expanded="false">
+    <span class="bars" aria-hidden="true"><i></i><i></i></span>
+    <span class="lbl">תפריט</span>
+  </button>
+  <a class="brand" href="index.html" aria-label="HAY DUBAI, לעמוד הראשי"><img src="images/logo.png" alt="לוגו HAY DUBAI" class="brand-logo"></a>
+  <a class="nav-wa" data-wa href="#order" aria-label="וואטסאפ">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v11H9.5L5 20.5v-4H4z"/></svg>
+  </a>
+</header>
+
+<div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="תפריט ראשי">
+  <div class="menu-top">
+    <button type="button" class="menu-close" id="menuClose"><span aria-hidden="true">×</span> סגירה</button>
+    <img src="images/logo.png" alt="" class="brand-logo">
+  </div>
+  <div class="menu-body">
+    <nav class="menu-main" aria-label="בעמוד זה">
+      <a href="#how">איך מזמינים</a>
+      <a href="#mosque">על המסגד</a>
+      <a href="#times">שעות ביקור</a>
+      <a href="#faq">שאלות נפוצות</a>
+      <a href="#order">הזמנת כרטיסים</a>
+    </nav>
+    <div class="menu-side">
+      <h4>כל העמודים</h4>
+      <a href="index.html">דף הבית</a>
+      <a href="experiences.html">כל החוויות</a>
+      <a href="jetski.html">אופנועי ים</a>
+      <a href="yacht.html">יאכטות</a>
+      <a href="beaches.html">חופים</a>
+      <a href="desert-safari.html">ספארי מדברי</a>
+      <a href="rzr.html">השכרת RZR</a>
+      <a href="vip-parties.html">מסיבות VIP</a>
+      <a href="offers.html">הזמנות</a>
+      <a href="netiv-vip.html">נתיב VIP בנתב"ג</a>
+      <a href="grand-mosque.html">מסגד שיח' זאיד</a>
+      <div class="menu-contact">
+        <a class="tel" href="tel:029999119">02-999-9119</a>
+        <a data-wa href="#order">שיחה בוואטסאפ</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container hero-inner">
+    <img class="hero-logo" src="images/meet-dubai-logo.png" alt="Meet Dubai">
+    <div class="eyebrow">אבו דאבי</div>
+    <h1>מסגד שיח' זאיד הגדול</h1>
+    <hr class="rule">
+    <div class="hero-actions">
+      <a class="btn" href="#order">להזמנת כרטיסים</a>
+      <a class="hero-scroll" href="#how">גלו איך זה עובד ↓</a>
+    </div>
+    <p class="hero-price"><b>חינם</b> בהזמנת אחד מהשירותים שלנו</p>
+  </div>
+</section>
+
+<!-- ============ INTRO ============ -->
+<section class="intro">
+  <div class="container">
+    <p class="statement">אחד המסגדים המרשימים בעולם, ולמבקרים נדרשת הזמנה מראש. אנחנו מטפלים בהזמנה בשבילכם, ואתם רק בוחרים תאריך ושעה.</p>
+    <div class="facts">
+      <div class="fact">
+        <h3>חינם בהזמנת שירות</h3>
+        <p>חינם בהזמנת אחד מהשירותים שלנו. בלי שירות נוסף, 50 ₪ לכרטיס.</p>
+      </div>
+      <div class="fact">
+        <h3>כרטיסים דיגיטליים</h3>
+        <p>אנחנו מטפלים בהזמנה ושולחים לכם את הכרטיסים.</p>
+      </div>
+      <div class="fact">
+        <h3>בשעה שנוחה לכם</h3>
+        <p>לפי שעות הביקור של המסגד, כולל סיורי ערב.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW ============ -->
+<section class="section" id="how" style="padding-top:20px;">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">איך מזמינים</div>
+      <h2>שלושה צעדים לכרטיס</h2>
+      <p>לא צריך למלא טפסים באתר של המסגד. ממלאים אצלנו פעם אחת.</p>
+    </div>
+    <div class="route">
+      <div class="route-item">
+        <div class="route-num">01</div>
+        <h3>ממלאים את הפרטים</h3>
+        <p>תאריך, שעה ומספר מבקרים, ולכל מבקר מין, גיל ואזרחות.</p>
+      </div>
+      <div class="route-item">
+        <div class="route-num">02</div>
+        <h3>אנחנו מאשרים</h3>
+        <p>בודקים זמינות לשעה שבחרתם וחוזרים אליכם עם אישור ומחיר סופי.</p>
+      </div>
+      <div class="route-item">
+        <div class="route-num">03</div>
+        <h3>מקבלים כרטיסים</h3>
+        <p>אחרי האישור והתשלום, הכרטיסים הדיגיטליים נשלחים אליכם.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE MOSQUE ============ -->
+<section class="section alt" id="mosque">
+  <div class="container">
+    <div class="abu-layout">
+      <div class="abu-photo">
+        <img src="https://images.unsplash.com/photo-1741204472540-e213116cb3ef?q=80&w=1400&auto=format&fit=crop" alt="כיפות וקשתות של מסגד שיח' זאיד מתחת לשמיים כחולים" loading="lazy">
+      </div>
+      <div class="abu-text">
+        <div class="eyebrow">המסגד</div>
+        <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem)">שיש לבן, כיפות ואור</h2>
+        <hr class="rule">
+        <p>המסגד נפתח ב-2007 והפך לאחד הסמלים של אבו דאבי. אפשר להיכנס לחצר הענקית, לראות את הכיפות והעמודים המעוטרים, ולהתרשם מאולם התפילה עם הנברשות הגדולות.</p>
+        <ul class="pts">
+          <li>כ-82 כיפות ואלפי פרטי עיצוב בשיש</li>
+          <li>חצר רחבה שמשתקפת בבריכות המים</li>
+          <li>אולם תפילה עם נברשות ענק ושטיח ארוג ביד</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="abu-layout flip">
+      <div class="abu-photo">
+        <img src="https://images.unsplash.com/photo-1769428197774-2dfdffe4a723?q=80&w=1400&auto=format&fit=crop" alt="קשתות ועמודים מעוטרים עם כיפה לבנה ברקע" loading="lazy">
+      </div>
+      <div class="abu-text">
+        <div class="eyebrow">לפני שמגיעים</div>
+        <h3>איך להתכונן לביקור</h3>
+        <hr class="rule">
+        <p>המסגד הוא מקום פעיל של תפילה, ולכן יש כללי התנהגות ולבוש. כדאי להגיע מוכנים כדי שהביקור יעבור בנעימות.</p>
+        <ul class="pts">
+          <li>לבוש צנוע: כתפיים וברכיים מכוסות, ולנשים גם כיסוי ראש</li>
+          <li>הגיעו כשעה לפני השעה שבחרתם, כדי להספיק להיכנס ברוגע</li>
+          <li>אל תשכחו דרכון או תעודה מזהה, ואת הכרטיסים שנשלח אליכם</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMES ============ -->
+<section class="section" id="times">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow">שעות ביקור</div>
+      <h2>מתי אפשר להגיע</h2>
+      <p>המסגד פתוח למבקרים כל השבוע. שעות הביקור עם כרטיס:</p>
+    </div>
+    <div class="hours">
+      <div class="hours-row">
+        <div class="hours-day">שבת עד חמישי</div>
+        <div class="hours-time"><bdi>09:00</bdi> עד <bdi>20:30</bdi></div>
+      </div>
+      <div class="hours-row">
+        <div class="hours-day">יום שישי</div>
+        <div class="hours-time"><bdi>09:00</bdi> עד <bdi>11:30</bdi><br>ומ-<bdi>14:30</bdi> עד <bdi>20:30</bdi></div>
+      </div>
+      <div class="hours-row">
+        <div class="hours-day">סיורי ערב של סורה<small>מדי יום, אחרי סגירת המסגד</small></div>
+        <div class="hours-time"><bdi>21:00</bdi> עד <bdi>09:00</bdi></div>
+      </div>
+    </div>
+    <p class="note"><b>חשוב לדעת:</b> מתפללים יכולים להיכנס ישירות דרך השערים המיועדים להם, בלי כרטיסים ובלי הזמנה מראש. מבקרים (תיירים) צריכים להזמין את הביקור מראש.</p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section alt" id="faq">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow">שאלות נפוצות</div>
+      <h2>שאלות שכולם שואלים</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>כמה עולים הכרטיסים?</summary>
+        <p>בהזמנת אחד מהשירותים שלנו, למשל ליווי אישי, ספארי או חוויה אחרת מהאתר, הטיפול בכרטיסים למסגד הוא חינם. בלי שירות נוסף המחיר הוא 50 ₪ לכל מבקר. המחיר כולל טיפול בהזמנה, תיאום התאריך והשעה ושליחת הכרטיסים הדיגיטליים. ההטבה כפופה לאישור השירות שהוזמן, ונאשר לכם הכול לפני שנסגור.</p>
+      </details>
+      <details>
+        <summary>למה צריך לציין מין, גיל ואזרחות לכל מבקר?</summary>
+        <p>אלה הפרטים שנדרשים בטופס ההזמנה של המסגד לכל מבקר. אזרחות פירושה איזה דרכון אתם מחזיקים, ואם יש כמה, ציינו את זה שאיתו תגיעו.</p>
+      </details>
+      <details>
+        <summary>מה ההבדל בין תייר לבעל תעודת זהות אמירתית?</summary>
+        <p>בטופס בוחרים אם אתם תיירים או מחזיקים בתעודת זהות של האמירויות. רוב המבקרים מישראל הם תיירים, ואז בוחרים "תייר".</p>
+      </details>
+      <details>
+        <summary>אפשר לבחור שעה מדויקת?</summary>
+        <p>כן. בטופס אפשר לבחור שעה מועדפת לפי שעות הפעילות של המסגד. אם השעה תפוסה, נציע שעה קרובה לפני שנסגור.</p>
+      </details>
+      <details>
+        <summary>מה ללבוש בביקור?</summary>
+        <p>לבוש צנוע ומכובד: כתפיים וברכיים מכוסות, בלי בגדים שקופים או צמודים, ולנשים כיסוי ראש. כדאי לבדוק את ההנחיות העדכניות של המסגד לפני הביקור.</p>
+      </details>
+      <details>
+        <summary>אפשר להזמין לקבוצה או למשפחה?</summary>
+        <p>בטופס אפשר להזמין עד 20 מבקרים. לקבוצות גדולות יותר כתבו לנו בוואטסאפ ונתאים את ההזמנה.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ORDER ============ -->
+<section class="section contact" id="order">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-text">
+        <h2>הזמנת כרטיסים</h2>
+        <p>ממלאים את הפרטים ושולחים. אנחנו חוזרים אליכם עם אישור זמינות ומחיר סופי, ואם יש תשלום, הוא נעשה רק אחרי האישור.</p>
+        <div class="c-links">
+          <a data-wa href="#order"><span class="k">וואטסאפ</span><span class="v">מענה מהיר בשעות הפעילות</span></a>
+          <a href="tel:+972543771767"><span class="k">נייד</span><span class="v"><bdi>054-377-1767</bdi></span></a>
+          <a href="tel:+97229999119"><span class="k">משרד</span><span class="v"><bdi>02-999-9119</bdi></span></a>
+          <a href="mailto:Infodubaisrael@gmail.com"><span class="k">אימייל</span><span class="v"><bdi>Infodubaisrael@gmail.com</bdi></span></a>
+        </div>
+      </div>
+
+      <form class="order-form" id="orderForm" novalidate>
+        <div class="field">
+          <label for="pax">מספר מבקרים</label>
+          <select id="pax" name="pax"></select>
+        </div>
+
+        <div class="row c2">
+          <div class="field">
+            <label for="date">תאריך הביקור</label>
+            <input type="date" id="date" name="date" required aria-describedby="err-date">
+            <p class="err" id="err-date" hidden>בחרו תאריך ביקור.</p>
+          </div>
+          <div class="field">
+            <label for="time">שעת הביקור</label>
+            <select id="time" name="time" required disabled aria-describedby="err-time">
+              <option value="">בחרו קודם תאריך</option>
+            </select>
+            <p class="err" id="err-time" hidden>בחרו שעת ביקור.</p>
+          </div>
+        </div>
+
+        <div class="row c2">
+          <div class="field">
+            <label for="residence">מקום מגורים <span class="opt">(מדינה ועיר)</span></label>
+            <input type="text" id="residence" name="residence" autocomplete="off" aria-describedby="err-residence">
+            <p class="err" id="err-residence" hidden>הוסיפו מקום מגורים.</p>
+          </div>
+          <div class="field">
+            <label for="status">תייר או בעל תעודת זהות אמירתית</label>
+            <select id="status" name="status" required aria-describedby="err-status">
+              <option value="">בחרו…</option>
+              <option value="תייר">תייר</option>
+              <option value="בעל תעודת זהות אמירתית">בעל תעודת זהות של האמירויות</option>
+            </select>
+            <p class="err" id="err-status" hidden>בחרו את הסטטוס שלכם.</p>
+          </div>
+        </div>
+
+        <fieldset>
+          <legend>איך תרצו להזמין?</legend>
+          <div class="opts">
+            <label><input type="radio" name="fee" value="free" checked><span>חינם, בהזמנת שירות נוסף מאיתנו</span></label>
+            <label><input type="radio" name="fee" value="paid"><span>בלי שירות נוסף, 50 ₪ לכרטיס</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field" id="serviceBox">
+          <label for="service">איזה שירות הזמנתם או מתכוונים להזמין אצלנו?</label>
+          <input type="text" id="service" name="service" autocomplete="off" aria-describedby="err-service">
+          <p class="err" id="err-service" hidden>כתבו איזה שירות הזמנתם, כדי שנוכל לאשר את ההטבה.</p>
+        </div>
+
+        <fieldset>
+          <legend>פרטי המבקרים</legend>
+          <div class="visitors" id="visitors"></div>
+          <p class="err" id="err-visitors" hidden style="margin-top:12px">השלימו מין, גיל ואזרחות לכל מבקר.</p>
+        </fieldset>
+        <datalist id="natList">
+          <option value="ישראלי"></option>
+          <option value="אמריקאי"></option>
+          <option value="בריטי"></option>
+          <option value="קנדי"></option>
+          <option value="גרמני"></option>
+          <option value="צרפתי"></option>
+          <option value="רוסי"></option>
+          <option value="אוקראיני"></option>
+          <option value="אירופי אחר"></option>
+        </datalist>
+
+        <div class="row c2">
+          <div class="field">
+            <label for="name">שם מלא</label>
+            <input type="text" id="name" name="name" required autocomplete="name" aria-describedby="err-name">
+            <p class="err" id="err-name" hidden>איך לקרוא לכם? הוסיפו שם.</p>
+          </div>
+          <div class="field">
+            <label for="phone">טלפון</label>
+            <input type="tel" id="phone" name="phone" required autocomplete="tel" inputmode="tel" dir="ltr" style="text-align:right" aria-describedby="err-phone">
+            <p class="err" id="err-phone" hidden>הזינו מספר טלפון תקין.</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="email">אימייל <span class="opt">(אליו יישלחו הכרטיסים)</span></label>
+          <input type="email" id="email" name="email" required autocomplete="email" dir="ltr" style="text-align:right" aria-describedby="err-email">
+          <p class="err" id="err-email" hidden>הזינו כתובת אימייל תקינה.</p>
+        </div>
+
+        <div class="field">
+          <label for="notes">הערות ובקשות מיוחדות <span class="opt">(לא חובה)</span></label>
+          <textarea id="notes" name="notes"></textarea>
+        </div>
+
+        <div class="total" aria-live="polite">
+          <div class="k"><b id="totalLabel">מבקר אחד</b><br><span id="totalUnit"></span></div>
+          <div class="sum" id="totalSum"></div>
+        </div>
+
+        <div class="actions">
+          <button class="btn solid" type="submit" id="sendWa">שליחת ההזמנה בוואטסאפ</button>
+          <button class="btn" type="button" id="sendMail">שליחה במייל</button>
+        </div>
+        <p class="fine">בשליחת ההזמנה אני מאשר/ת את <a href="privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a> ואת <a href="terms.html" target="_blank" rel="noopener">תנאי השימוש</a>. מסירת הפרטים אינה חובה על פי דין. הפרטים משמשים לטיפול בהזמנה בלבד. ההזמנה נשלחת אלינו בהודעה שתראו לפני השליחה, והיא מסתיימת רק אחרי שנאשר לכם זמינות ומחיר.</p>
+
+        <div class="result" id="result" hidden aria-live="polite">
+          <h3>ההודעה מוכנה</h3>
+          <p>פתחנו לכם את ההודעה. אם היא לא נפתחה, אפשר להעתיק את הפרטים ולשלוח אותם אלינו ידנית.</p>
+          <textarea id="summary" readonly aria-label="סיכום ההזמנה"></textarea>
+          <div class="btns">
+            <button class="btn solid" type="button" id="copyBtn">העתקת הפרטים</button>
+            <a class="link-arrow" id="waAgain" href="#order" target="_blank" rel="noopener">פתיחה שוב בוואטסאפ</a>
+          </div>
+          <p class="fine" id="copyMsg" role="status"></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <img src="images/logo.png" alt="לוגו HAY DUBAI" class="brand-logo">
+    <div>כרטיסים למסגד שיח' זאיד באבו דאבי</div>
+    <div style="margin-top:6px;">טלפון החברה: <a href="tel:+97229999119"><bdi>02-999-9119</bdi></a></div>
+    <div style="margin-top:4px;">וואטסאפ: <a href="https://wa.me/972543771767" target="_blank" rel="noopener"><bdi>054-377-1767</bdi></a></div>
+    <div class="footer-email" style="margin-top:6px;"><a href="mailto:Infodubaisrael@gmail.com"><b>Infodubaisrael@gmail.com</b></a></div>
+    <div class="footer-links">
+      <a href="index.html">חזרה לעמוד הראשי</a>
+      <a href="privacy.html">מדיניות פרטיות</a>
+      <a href="terms.html">תנאי שימוש</a>
+      <a href="accessibility.html">הצהרת נגישות</a>
+    </div>
+    <div class="footer-disclaimer">ההזמנה כפופה לזמינות ולכללי הביקור של מרכז המסגד.</div>
+  </div>
+</footer>
+
+<a class="float-cta" data-wa href="#order" aria-label="וואטסאפ">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v11H9.5L5 20.5v-4H4z"/></svg>
+</a>
+
+<script>
+/* ===== הגדרות: עדכנו כאן את פרטי העסק ===== */
+const CONFIG = {
+  whatsapp: '972543771767',        // מספר וואטסאפ בפורמט בינלאומי, בלי + ובלי אפס
+  email: 'Infodubaisrael@gmail.com',
+  price: 50                        // מחיר לכרטיס בשקלים, למי שלא מזמין שירות נוסף
+};
+
+const $ = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+
+/* contact links */
+const waBase = 'https://wa.me/' + CONFIG.whatsapp;
+$$('[data-wa]').forEach(a => { a.href = waBase; a.target = '_blank'; a.rel = 'noopener'; });
+
+/* header + full-screen menu */
+const siteNav = $('#siteNav');
+const onScroll = () => siteNav.classList.toggle('scrolled', window.scrollY > 40);
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+const menuOverlay = $('#menuOverlay');
+const menuToggle = $('#menuToggle');
+function openMenu(){
+  menuOverlay.classList.add('active');
+  menuToggle.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+  $('#menuClose').focus();
+}
+function closeMenu(){
+  if (!menuOverlay.classList.contains('active')) return;
+  menuOverlay.classList.remove('active');
+  menuToggle.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+menuToggle.addEventListener('click', openMenu);
+$('#menuClose').addEventListener('click', () => { closeMenu(); menuToggle.focus(); });
+$$('a', menuOverlay).forEach(a => a.addEventListener('click', closeMenu));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+
+/* ===== mosque booking form ===== */
+const form = $('#orderForm');
+const paxSel = $('#pax');
+const visitorsEl = $('#visitors');
+const dateEl = $('#date');
+const timeEl = $('#time');
+const PRICE = CONFIG.price;
+const feeRadios = $$('input[name="fee"]');
+const serviceBox = $('#serviceBox');
+function isFree(){ return $('input[name="fee"]:checked').value === 'free'; }
+function updateTotal(){
+  const n = $$('.vrow', visitorsEl).length || 1;
+  const free = isFree();
+  $('#totalLabel').textContent = n === 1 ? 'מבקר אחד' : n + ' מבקרים';
+  $('#totalUnit').textContent = free ? 'חינם בהזמנת שירות נוסף' : PRICE + ' ₪ לכרטיס';
+  $('#totalSum').textContent = free ? 'חינם' : (n * PRICE).toLocaleString('he-IL') + ' ₪';
+  serviceBox.hidden = !free;
+}
+feeRadios.forEach(r => r.addEventListener('change', updateTotal));
+
+for (let i = 1; i <= 20; i++){
+  const o = document.createElement('option');
+  o.value = i; o.textContent = i;
+  paxSel.appendChild(o);
+}
+
+/* visitor rows */
+function makeRow(i){
+  const row = document.createElement('div');
+  row.className = 'vrow';
+  row.innerHTML =
+    '<div class="vtitle">מבקר ' + (i + 1) + '</div>' +
+    '<div class="row c3">' +
+      '<div class="field"><label for="vg' + i + '">מין</label>' +
+        '<select id="vg' + i + '" class="v-g"><option value="">בחרו…</option><option value="זכר">זכר</option><option value="נקבה">נקבה</option></select></div>' +
+      '<div class="field"><label for="va' + i + '">גיל</label>' +
+        '<input type="number" id="va' + i + '" class="v-a" min="0" max="110" inputmode="numeric"></div>' +
+      '<div class="field"><label for="vn' + i + '">אזרחות <span class="opt">(איזה דרכון)</span></label>' +
+        '<input type="text" id="vn' + i + '" class="v-n" list="natList" autocomplete="off"></div>' +
+    '</div>';
+  row.addEventListener('input', e => {
+    if (e.target.classList.contains('v-n')){
+      if (i === 0){
+        $$('.vrow', visitorsEl).slice(1).forEach(r => {
+          const f = $('.v-n', r);
+          if (!f.dataset.touched) f.value = e.target.value;
+        });
+      } else {
+        e.target.dataset.touched = '1';
+      }
+    }
+    if (e.target.matches('.v-g, .v-a, .v-n')) e.target.setAttribute('aria-invalid', 'false');
+    if (!$('#err-visitors').hidden && !$('.vrow [aria-invalid="true"]', visitorsEl)) $('#err-visitors').hidden = true;
+  });
+  return row;
+}
+function renderVisitors(){
+  const n = Math.min(20, Math.max(1, parseInt(paxSel.value, 10) || 1));
+  let rows = $$('.vrow', visitorsEl);
+  while (rows.length < n){
+    const row = makeRow(rows.length);
+    visitorsEl.appendChild(row);
+    if (rows.length > 0){
+      const first = $('.v-n', rows[0]).value;
+      if (first) $('.v-n', row).value = first;
+    }
+    rows = $$('.vrow', visitorsEl);
+  }
+  while (rows.length > n){ rows.pop().remove(); }
+  updateTotal();
+}
+paxSel.addEventListener('change', renderVisitors);
+renderVisitors();
+
+/* visit times depend on the weekday */
+function pad(n){ return String(n).padStart(2, '0'); }
+function slotsFor(dateStr){
+  const dow = new Date(dateStr + 'T00:00:00').getDay();   /* 5 = יום שישי */
+  const windows = dow === 5 ? [[9*60, 11*60 + 30], [14*60 + 30, 20*60 + 30]] : [[9*60, 20*60 + 30]];
+  const out = [];
+  windows.forEach(([s, e]) => { for (let t = s; t < e; t += 30) out.push(pad(Math.floor(t / 60)) + ':' + pad(t % 60)); });
+  return out;
+}
+const SURA = 'סיור ערב של סורה (21:00 עד 09:00)';
+function syncTimes(){
+  const prev = timeEl.value;
+  timeEl.innerHTML = '';
+  if (!dateEl.value){
+    timeEl.disabled = true;
+    timeEl.innerHTML = '<option value="">בחרו קודם תאריך</option>';
+    return;
+  }
+  timeEl.disabled = false;
+  const first = document.createElement('option');
+  first.value = ''; first.textContent = 'בחרו שעה…';
+  timeEl.appendChild(first);
+  slotsFor(dateEl.value).concat([SURA]).forEach(s => {
+    const o = document.createElement('option');
+    o.value = s; o.textContent = s;
+    timeEl.appendChild(o);
+  });
+  if (prev && [...timeEl.options].some(o => o.value === prev)) timeEl.value = prev;
+}
+dateEl.addEventListener('change', syncTimes);
+
+(function setMinDate(){
+  const d = new Date();
+  dateEl.min = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+})();
+
+/* validation */
+function showErr(id, on){
+  const input = $('#' + id);
+  $('#err-' + id).hidden = !on;
+  input.setAttribute('aria-invalid', on ? 'true' : 'false');
+  return on;
+}
+function validate(){
+  const phoneDigits = $('#phone').value.replace(/\D/g, '');
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($('#email').value.trim());
+  const checks = [
+    ['date', !dateEl.value],
+    ['time', !timeEl.value],
+    ['residence', $('#residence').value.trim().length < 2],
+    ['status', !$('#status').value],
+    ['service', isFree() && $('#service').value.trim().length < 2]
+  ];
+  let first = null;
+  checks.forEach(([id, bad]) => { if (showErr(id, bad) && !first) first = $('#' + id); });
+
+  let badRow = false;
+  $$('.vrow', visitorsEl).forEach(r => {
+    const g = $('.v-g', r), a = $('.v-a', r), n = $('.v-n', r);
+    const age = a.value === '' ? NaN : Number(a.value);
+    [[g, !g.value], [a, !(age >= 0 && age <= 110)], [n, n.value.trim().length < 2]].forEach(([el, bad]) => {
+      el.setAttribute('aria-invalid', bad ? 'true' : 'false');
+      if (bad){ badRow = true; if (!first) first = el; }
+    });
+  });
+  $('#err-visitors').hidden = !badRow;
+
+  [['name', $('#name').value.trim().length < 2], ['phone', phoneDigits.length < 9], ['email', !emailOk]].forEach(([id, bad]) => {
+    if (showErr(id, bad) && !first) first = $('#' + id);
+  });
+  if (first){ first.focus(); return false; }
+  return true;
+}
+['date','time','residence','status','service','name','phone','email'].forEach(id => {
+  $('#' + id).addEventListener('input', () => { if (!$('#err-' + id).hidden) showErr(id, false); });
+  $('#' + id).addEventListener('change', () => { if (!$('#err-' + id).hidden) showErr(id, false); });
+});
+
+/* message */
+function fmtDate(v){ const [y, m, d] = v.split('-'); return d + '/' + m + '/' + y; }
+function buildMessage(){
+  const n = $$('.vrow', visitorsEl).length;
+  const lines = [
+    `שלום, אשמח להזמין כרטיסים לביקור במסגד שיח' זאיד באבו דאבי.`,
+    '',
+    'מספר מבקרים: ' + n,
+    'תאריך הביקור: ' + fmtDate(dateEl.value),
+    'שעת הביקור: ' + timeEl.value,
+    'מקום מגורים: ' + $('#residence').value.trim(),
+    'סטטוס: ' + $('#status').value,
+    '',
+    'פרטי המבקרים:'
+  ];
+  $$('.vrow', visitorsEl).forEach((r, i) => {
+    lines.push('מבקר ' + (i + 1) + ': ' + $('.v-g', r).value + ', גיל ' + $('.v-a', r).value + ', אזרחות: ' + $('.v-n', r).value.trim());
+  });
+  if (isFree()) lines.push('', 'מחיר: חינם בהזמנת שירות נוסף', 'השירות: ' + $('#service').value.trim());
+  else lines.push('', 'מחיר: ' + n + ' × ' + PRICE + ' ₪ = ' + (n * PRICE) + ' ₪');
+  lines.push('', 'שם: ' + $('#name').value.trim(), 'טלפון: ' + $('#phone').value.trim(), 'אימייל: ' + $('#email').value.trim());
+  if ($('#notes').value.trim()) lines.push('', 'הערות: ' + $('#notes').value.trim());
+  return lines.join('\n');
+}
+function openLink(url){
+  const a = document.createElement('a');
+  a.href = url; a.target = '_blank'; a.rel = 'noopener';
+  document.body.appendChild(a); a.click(); a.remove();
+}
+function showResult(msg, waUrl){
+  $('#summary').value = msg;
+  $('#waAgain').href = waUrl;
+  $('#copyMsg').textContent = '';
+  const r = $('#result');
+  r.hidden = false;
+  r.scrollIntoView({behavior: 'smooth', block: 'nearest'});
+}
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  if (!validate()) return;
+  const msg = buildMessage();
+  const url = waBase + '?text=' + encodeURIComponent(msg);
+  showResult(msg, url);
+  openLink(url);
+});
+$('#sendMail').addEventListener('click', () => {
+  if (!validate()) return;
+  const msg = buildMessage();
+  const url = 'mailto:' + CONFIG.email + '?subject=' + encodeURIComponent(`הזמנת כרטיסים למסגד שיח' זאיד`) + '&body=' + encodeURIComponent(msg);
+  showResult(msg, waBase + '?text=' + encodeURIComponent(msg));
+  openLink(url);
+});
+$('#copyBtn').addEventListener('click', async () => {
+  const ta = $('#summary');
+  const msgEl = $('#copyMsg');
+  try {
+    await navigator.clipboard.writeText(ta.value);
+    msgEl.textContent = 'הפרטים הועתקו.';
+  } catch (err) {
+    ta.focus(); ta.select();
+    msgEl.textContent = 'סימנו את הטקסט. אפשר להעתיק אותו ידנית.';
+  }
+});
+</script>
+</body>
+</html>
