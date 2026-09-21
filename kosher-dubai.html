@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>חוויה קולינרית כשרה בלב דובאי | HAY DUBAI</title>
+<meta name="description" content="מסעדות כשרות בדובאי - מטבח ים תיכוני ערבי משובח ואווירה יוקרתית.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Varela+Round&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#000000;
+  --gold:#C5A059;
+  --gold-soft:rgba(197,160,89,.35);
+  --gold-faint:rgba(197,160,89,.14);
+  --olive:#3d4226;
+  --bronze:#8c6a3c;
+  --sand:#e8dcc0;
+  --text:#ddd6c6;
+  --card:#0c0b08;
+  --radius:22px;
+  --font-head:'Varela Round','Assistant','Heebo',Arial,sans-serif;
+  --font-body:'Assistant','Heebo',Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--black);color:var(--text);
+  font-family:var(--font-body);font-size:18px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+
+/* ---------- top bar ---------- */
+.topbar{
+  position:absolute;inset:0 0 auto 0;z-index:5;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px clamp(20px,5vw,64px);
+}
+.brand-logo{width:44px;height:44px;object-fit:contain;display:block}
+.back{
+  font-size:.95rem;color:var(--sand);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:8px 20px;
+  transition:background .25s,color .25s,border-color .25s;
+}
+.back:hover{background:var(--gold);color:#000;border-color:var(--gold)}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;min-height:100svh;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:120px 24px 200px;
+  background:
+    radial-gradient(ellipse 60% 45% at 50% 100%,rgba(197,160,89,.18),transparent 70%),
+    radial-gradient(circle at 78% 22%,rgba(232,220,192,.16) 0,rgba(232,220,192,.05) 9%,transparent 22%),
+    linear-gradient(180deg,#000 0%,#07070a 45%,#100d07 100%);
+}
+.hero::before{ /* mashrabiya lattice */
+  content:"";position:absolute;inset:0;opacity:.11;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23C5A059' stroke-width='1'%3E%3Crect x='20' y='20' width='40' height='40'/%3E%3Crect x='20' y='20' width='40' height='40' transform='rotate(45 40 40)'/%3E%3C/g%3E%3C/svg%3E");
+  -webkit-mask-image:linear-gradient(180deg,#000 30%,transparent 85%);
+          mask-image:linear-gradient(180deg,#000 30%,transparent 85%);
+}
+.stars{position:absolute;inset:0;pointer-events:none}
+.stars i{position:absolute;width:2px;height:2px;border-radius:50%;background:var(--sand);opacity:.6}
+.arch{ /* pointed Arabian arch frame */
+  position:absolute;top:70px;bottom:120px;left:50%;
+  width:min(760px,92vw);transform:translateX(-50%);
+  pointer-events:none;opacity:.5;
+}
+.arch svg{width:100%;height:100%}
+.skyline{position:absolute;inset:auto 0 0 0;width:100%;height:auto;display:block}
+.hero-inner{position:relative;z-index:2;max-width:760px}
+.hero h1{
+  font-family:var(--font-head);font-weight:400;color:var(--gold);
+  font-size:clamp(2.3rem,6.4vw,4.4rem);line-height:1.2;margin-bottom:22px;
+  text-shadow:0 2px 30px rgba(0,0,0,.8);
+}
+.hero h2{
+  font-weight:300;color:#fff;font-size:clamp(1.05rem,2.3vw,1.4rem);
+  line-height:1.75;max-width:620px;margin:0 auto 38px;
+  text-shadow:0 2px 20px rgba(0,0,0,.9);
+}
+.cta{
+  display:inline-block;font-family:var(--font-head);font-size:1.05rem;
+  color:#000;background:var(--gold);border-radius:999px;padding:14px 38px;
+  box-shadow:0 8px 30px rgba(197,160,89,.28);
+  transition:transform .25s,box-shadow .25s,background .25s;
+}
+.cta:hover{transform:translateY(-3px);background:#d6b26b;box-shadow:0 12px 36px rgba(197,160,89,.4)}
+
+/* ---------- restaurants ---------- */
+.restaurants{
+  position:relative;padding:96px clamp(20px,5vw,64px) 110px;
+  background:linear-gradient(180deg,#100d07 0%,#000 14%,#000 100%);
+}
+.section-head{text-align:center;max-width:640px;margin:0 auto 64px}
+.section-head h3{
+  font-family:var(--font-head);font-weight:400;color:#fff;
+  font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.3;margin-bottom:14px;
+}
+.section-head p{color:var(--sand);opacity:.8}
+.divider{
+  display:flex;align-items:center;justify-content:center;gap:14px;margin:0 auto 22px;
+  width:180px;
+}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.divider::after{transform:scaleX(-1)}
+.divider b{width:9px;height:9px;background:var(--gold);transform:rotate(45deg)}
+
+.grid{
+  max-width:1240px;margin:0 auto;
+  display:grid;gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));
+}
+/* 5 cards: on wide screens, 3 + 2 centred */
+@media (min-width:1024px){
+  .grid{grid-template-columns:repeat(6,1fr)}
+  .card{grid-column:span 2}
+  .card:nth-child(4){grid-column:2 / span 2}
+  .card:nth-child(5){grid-column:4 / span 2}
+}
+.card{
+  display:flex;flex-direction:column;overflow:hidden;
+  background:var(--card);border:1px solid var(--gold-soft);border-radius:var(--radius);
+  box-shadow:0 18px 50px rgba(0,0,0,.7);
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+}
+.card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 22px 60px rgba(197,160,89,.14)}
+.card-img{aspect-ratio:400/260;background:#0a0906;border-bottom:1px solid var(--gold-faint);overflow:hidden}
+.card-img svg,.card-img img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .6s}
+.card:hover .card-img svg,.card:hover .card-img img{transform:scale(1.05)}
+.card-body{display:flex;flex-direction:column;flex:1;padding:26px 26px 28px}
+.tag{
+  align-self:flex-start;font-size:.85rem;color:var(--sand);
+  background:var(--olive);border-radius:999px;padding:2px 14px;margin-bottom:14px;
+}
+.card h4{font-family:var(--font-head);font-weight:400;font-size:1.65rem;color:var(--gold);line-height:1.3;margin-bottom:10px}
+.card p{font-size:1rem;color:var(--text);margin-bottom:22px}
+.contact{
+  list-style:none;margin-top:auto;padding-top:18px;
+  border-top:1px solid var(--gold-faint);
+  display:grid;gap:10px;font-size:.98rem;
+}
+.contact li{display:flex;align-items:center;gap:12px}
+.contact svg{flex:none;width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.contact a:hover{color:var(--gold)}
+.ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+
+/* ---------- footer ---------- */
+footer{
+  background:#000;border-top:1px solid var(--gold-soft);
+  padding:42px 24px 48px;text-align:center;
+}
+footer .brand-logo{margin:0 auto 14px}
+footer p,footer div{font-size:.92rem;color:var(--sand);opacity:.85}
+.footer-links{display:flex;justify-content:center;gap:24px;margin-top:14px;flex-wrap:wrap}
+.footer-links a:hover{color:var(--gold)}
+
+/* ---------- the one motion moment: hero entrance ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .hero-inner>*{opacity:0;transform:translateY(18px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+  .hero-inner h2{animation-delay:.18s}
+  .hero-inner .cta{animation-delay:.36s}
+  .arch{animation:fade 1.6s ease both}
+}
+@keyframes rise{to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:.5}}
+
+@media (max-width:640px){
+  body{font-size:17px}
+  .hero{padding-bottom:170px}
+  .arch{top:60px;bottom:100px}
+}
+</style>
+</head>
+<body>
+
+<!-- shared gradients for the dish illustrations -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="75%">
+      <stop offset="0" stop-color="#2a2110"/><stop offset="1" stop-color="#050403"/>
+    </radialGradient>
+    <radialGradient id="plate" cx="40%" cy="35%" r="80%">
+      <stop offset="0" stop-color="#fbf6ea"/><stop offset="1" stop-color="#d9cdb0"/>
+    </radialGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6b4a2a"/><stop offset="1" stop-color="#3f2a16"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <a href="index.html" aria-label="HAY DUBAI - לעמוד הראשי"><img src="images/logo.png" alt="לוגו HAY DUBAI" class="brand-logo"></a>
+  <a class="back" href="index.html">חזרה לאתר</a>
+</header>
+
+<main>
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="top">
+    <div class="stars" aria-hidden="true">
+      <i style="top:9%;right:12%"></i><i style="top:15%;right:34%;opacity:.35"></i>
+      <i style="top:7%;right:52%"></i><i style="top:21%;right:66%;opacity:.4"></i>
+      <i style="top:12%;right:88%"></i><i style="top:30%;right:8%;opacity:.3"></i>
+      <i style="top:26%;right:44%;opacity:.3"></i><i style="top:34%;right:78%"></i>
+      <i style="top:5%;right:72%;opacity:.45"></i><i style="top:38%;right:26%;opacity:.3"></i>
+    </div>
+
+    <div class="arch" aria-hidden="true">
+      <svg viewBox="0 0 400 600" preserveAspectRatio="none" fill="none" stroke="#C5A059" stroke-width="1.2">
+        <path d="M8 600 V250 C8 140 120 90 200 8 C280 90 392 140 392 250 V600"/>
+        <path d="M30 600 V255 C30 158 132 112 200 42 C268 112 370 158 370 255 V600" opacity=".5"/>
+      </svg>
+    </div>
+
+    <div class="hero-inner">
+      <h1>חוויה קולינרית כשרה בלב דובאי</h1>
+      <h2>גלו את המסעדות הכשרות המשלבות מטבח ים תיכוני ערבי משובח ואווירה יוקרתית חסרת פשרות</h2>
+      <a class="cta" href="#restaurants">לצפייה במסעדות</a>
+    </div>
+
+    <!-- Dubai skyline -->
+    <svg class="skyline" viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="sky-glow" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#C5A059" stop-opacity=".35"/><stop offset="1" stop-color="#C5A059" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <g fill="#000" stroke="#C5A059" stroke-opacity=".45" stroke-width="1">
+        <!-- far row -->
+        <path fill="#0a0906" stroke="none" d="M0 260V190h50v-30h40v40h60v-70h34v70h70v-45h46v45h80v-90h30v90h90v-60h44v60h100v-40h50v40h70v-100h30v100h90v-55h44v55h70v-35h50v35h90v-80h34v80h70v-50h40v50h60v-30h40v30h56v60z"/>
+        <!-- Burj Khalifa -->
+        <path d="M712 260V170l6-20 4-30 4-40 5-30 6-40 3-60h2l3 60 6 40 5 30 4 40 4 30 6 20v90z"/>
+        <!-- towers -->
+        <rect x="620" y="150" width="46" height="110"/>
+        <path d="M560 260V130l24-22 24 22v130z"/>
+        <rect x="800" y="140" width="42" height="120"/>
+        <path d="M860 260V115h50v145z"/>
+        <path d="M930 260V160l18-18 18 18v100z"/>
+        <rect x="1010" y="175" width="56" height="85"/>
+        <!-- Burj Al Arab sail -->
+        <path d="M1180 260V190c0-40 14-70 30-90 4 50 22 66 36 90v70z"/>
+        <path d="M480 260V170h46v90zM400 260V190h56v70zM300 260V200h70v60zM1100 260V180h52v80zM1290 260V190h60v70z"/>
+      </g>
+      <rect x="0" y="228" width="1440" height="32" fill="url(#sky-glow)" opacity=".5"/>
+      <rect x="0" y="252" width="1440" height="8" fill="#000"/>
+    </svg>
+  </section>
+
+  <!-- ================= RESTAURANTS ================= -->
+  <section class="restaurants" id="restaurants">
+    <div class="section-head">
+      <div class="divider" aria-hidden="true"><b></b></div>
+      <h3>חוויה אחת בלתי נשכחת.</h3>
+      <p>מסעדות כשרות מהודרות, מהמרינה ועד מרכז העיר.</p>
+    </div>
+
+    <div class="grid">
+
+      <!-- 1 -->
+      <article class="card">
+        <div class="card-img">
+          <svg viewBox="0 0 400 260" role="img" aria-label="שיפודי בשר על הגריל">
+            <rect width="400" height="260" fill="url(#bg)"/>
+            <rect x="40" y="48" width="320" height="170" rx="16" fill="url(#wood)" stroke="#C5A059" stroke-opacity=".5"/>
+            <g stroke="#d9c7a0" stroke-width="3" stroke-linecap="round">
+              <line x1="30" y1="92" x2="370" y2="92"/><line x1="30" y1="133" x2="370" y2="133"/><line x1="30" y1="174" x2="370" y2="174"/>
+            </g>
+            <g>
+              <g fill="#8a4522"><rect x="70" y="78" width="38" height="28" rx="8"/><rect x="128" y="78" width="38" height="28" rx="8"/><rect x="206" y="78" width="38" height="28" rx="8"/><rect x="264" y="78" width="38" height="28" rx="8"/>
+              <rect x="90" y="119" width="38" height="28" rx="8"/><rect x="148" y="119" width="38" height="28" rx="8"/><rect x="226" y="119" width="38" height="28" rx="8"/><rect x="284" y="119" width="38" height="28" rx="8"/>
+              <rect x="70" y="160" width="38" height="28" rx="8"/><rect x="128" y="160" width="38" height="28" rx="8"/><rect x="206" y="160" width="38" height="28" rx="8"/><rect x="264" y="160" width="38" height="28" rx="8"/></g>
+              <g fill="#b0562c" opacity=".7"><rect x="76" y="82" width="18" height="8" rx="4"/><rect x="154" y="123" width="18" height="8" rx="4"/><rect x="212" y="164" width="18" height="8" rx="4"/><rect x="270" y="82" width="18" height="8" rx="4"/></g>
+              <g fill="#b8322a"><rect x="112" y="80" width="14" height="24" rx="5"/><rect x="248" y="80" width="14" height="24" rx="5"/><rect x="132" y="121" width="14" height="24" rx="5"/><rect x="268" y="121" width="14" height="24" rx="5"/><rect x="112" y="162" width="14" height="24" rx="5"/><rect x="248" y="162" width="14" height="24" rx="5"/></g>
+              <g fill="#6d8a2e"><rect x="170" y="80" width="12" height="24" rx="5"/><rect x="190" y="121" width="12" height="24" rx="5"/><rect x="170" y="162" width="12" height="24" rx="5"/><rect x="308" y="80" width="12" height="24" rx="5"/></g>
+            </g>
+            <g fill="#a3202f"><circle cx="330" cy="200" r="4"/><circle cx="342" cy="196" r="4"/><circle cx="336" cy="208" r="4"/><circle cx="322" cy="208" r="4"/><circle cx="348" cy="208" r="4"/></g>
+            <g fill="#5f8a3a"><ellipse cx="60" cy="204" rx="8" ry="4" transform="rotate(-25 60 204)"/><ellipse cx="76" cy="208" rx="8" ry="4" transform="rotate(20 76 208)"/></g>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="tag">גריל ים תיכוני</span>
+          <h4>מסעדת אליסיום</h4>
+          <p>בשרים משובחים על גחלים, בתיבולים ערביים עדינים ובהגשה של שף. אווירה יוקרתית עם נוף אל אורות העיר, תחת השגחה מהודרת.</p>
+          <ul class="contact">
+            <li><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><a href="https://wa.me/972543771767?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%95%D7%9C%D7%94%D7%96%D7%9E%D7%A0%D7%AA%20%D7%9E%D7%A7%D7%95%D7%9D%20%D7%91%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%90%D7%9C%D7%99%D7%A1%D7%99%D7%95%D7%9D" target="_blank" rel="noopener">לתיאום והזמנת מקום בוואטסאפ</a></li>
+            <li><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>מרכז העיר דובאי</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="card">
+        <div class="card-img">
+          <svg viewBox="0 0 400 260" role="img" aria-label="חומוס עם טחינה ושמן זית">
+            <rect width="400" height="260" fill="url(#bg)"/>
+            <circle cx="200" cy="130" r="112" fill="url(#plate)" stroke="#C5A059" stroke-width="3"/>
+            <circle cx="200" cy="130" r="78" fill="#e6c891"/>
+            <circle cx="200" cy="130" r="52" fill="none" stroke="#d2ab68" stroke-width="7"/>
+            <circle cx="200" cy="130" r="26" fill="#b8862d" opacity=".65"/>
+            <g fill="#c89a48"><circle cx="150" cy="120" r="6"/><circle cx="163" cy="152" r="6"/><circle cx="238" cy="108" r="6"/><circle cx="250" cy="146" r="6"/><circle cx="200" cy="184" r="6"/><circle cx="196" cy="76" r="6"/></g>
+            <g fill="#b3341f"><circle cx="180" cy="118" r="2.5"/><circle cx="222" cy="142" r="2.5"/><circle cx="204" cy="104" r="2.5"/><circle cx="188" cy="152" r="2.5"/><circle cx="216" cy="122" r="2.5"/></g>
+            <g fill="#4f7a2a"><ellipse cx="200" cy="130" rx="9" ry="4.5" transform="rotate(30 200 130)"/><ellipse cx="184" cy="136" rx="8" ry="4" transform="rotate(-40 184 136)"/><ellipse cx="216" cy="128" rx="8" ry="4" transform="rotate(70 216 128)"/></g>
+            <path d="M265 190 L330 205 L290 232 Z" fill="#e2b874" stroke="#b98a3e"/>
+            <path d="M120 194 L58 208 L92 236 Z" fill="#e2b874" stroke="#b98a3e"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="tag">מזטים ומטבח לבנטיני</span>
+          <h4>ג'ואהר</h4>
+          <p>שולחן מזטים עשיר עם חומוס משי, סלטים טריים ופיתות חמות מהטאבון. מטבח לבנטיני עכשווי בעיצוב חמים, מושלם לארוחה משותפת.</p>
+          <ul class="contact">
+            <li><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><a href="https://wa.me/972543771767?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%95%D7%9C%D7%94%D7%96%D7%9E%D7%A0%D7%AA%20%D7%9E%D7%A7%D7%95%D7%9D%20%D7%91%D7%92%27%D7%95%D7%90%D7%94%D7%A8" target="_blank" rel="noopener">לתיאום והזמנת מקום בוואטסאפ</a></li>
+            <li><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>ג'ומיירה, דובאי</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="card">
+        <div class="card-img">
+          <svg viewBox="0 0 400 260" role="img" aria-label="דג בקלייה עם לימון">
+            <rect width="400" height="260" fill="url(#bg)"/>
+            <ellipse cx="200" cy="132" rx="170" ry="106" fill="url(#plate)" stroke="#C5A059" stroke-width="3"/>
+            <path d="M92 130 C124 84 232 84 286 130 C232 176 124 176 92 130 Z" fill="#c9cfc8"/>
+            <path d="M286 130 L332 96 L332 164 Z" fill="#b7beb6"/>
+            <path d="M150 90 C170 72 210 74 226 92" fill="#b7beb6"/>
+            <g stroke="#7d5a2e" stroke-width="4" stroke-linecap="round" opacity=".8"><line x1="150" y1="108" x2="168" y2="152"/><line x1="182" y1="104" x2="200" y2="156"/><line x1="214" y1="104" x2="232" y2="152"/></g>
+            <circle cx="122" cy="126" r="6" fill="#1a1a1a"/><circle cx="120" cy="124" r="2" fill="#fff"/>
+            <g><circle cx="120" cy="194" r="24" fill="#f2cf4f"/><circle cx="120" cy="194" r="19" fill="#f8e58c"/>
+              <g stroke="#f2cf4f" stroke-width="2"><line x1="120" y1="176" x2="120" y2="212"/><line x1="102" y1="194" x2="138" y2="194"/><line x1="107" y1="181" x2="133" y2="207"/><line x1="133" y1="181" x2="107" y2="207"/></g></g>
+            <g><circle cx="286" cy="198" r="20" fill="#f2cf4f"/><circle cx="286" cy="198" r="15" fill="#f8e58c"/>
+              <g stroke="#f2cf4f" stroke-width="2"><line x1="286" y1="183" x2="286" y2="213"/><line x1="271" y1="198" x2="301" y2="198"/></g></g>
+            <g fill="#4f7a2a"><ellipse cx="200" cy="200" rx="12" ry="4" transform="rotate(-20 200 200)"/><ellipse cx="226" cy="204" rx="12" ry="4" transform="rotate(25 226 204)"/><ellipse cx="176" cy="206" rx="10" ry="3.5" transform="rotate(10 176 206)"/></g>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="tag">דגים ופירות ים</span>
+          <h4>אל בחר</h4>
+          <p>דג היום בקלייה עם לימון, עשבי תיבול ושמן זית, לצד נוף למרינה. מטבח ים תיכוני קליל ומדויק, ברוח האזור.</p>
+          <ul class="contact">
+            <li><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><a href="https://wa.me/972543771767?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%95%D7%9C%D7%94%D7%96%D7%9E%D7%A0%D7%AA%20%D7%9E%D7%A7%D7%95%D7%9D%20%D7%91%D7%90%D7%9C%20%D7%91%D7%97%D7%A8" target="_blank" rel="noopener">לתיאום והזמנת מקום בוואטסאפ</a></li>
+            <li><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>דובאי מרינה</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="card">
+        <div class="card-img">
+          <svg viewBox="0 0 400 260" role="img" aria-label="שקשוקה במחבת">
+            <rect width="400" height="260" fill="url(#bg)"/>
+            <circle cx="200" cy="130" r="112" fill="#232323" stroke="#C5A059" stroke-width="3"/>
+            <circle cx="200" cy="130" r="94" fill="#b0301b"/>
+            <circle cx="200" cy="130" r="94" fill="none" stroke="#8a2214" stroke-width="6" opacity=".6"/>
+            <g><circle cx="158" cy="112" r="26" fill="#faf7ef"/><circle cx="158" cy="112" r="12" fill="#f2a900"/>
+               <circle cx="236" cy="112" r="26" fill="#faf7ef"/><circle cx="236" cy="112" r="12" fill="#f2a900"/>
+               <circle cx="198" cy="164" r="26" fill="#faf7ef"/><circle cx="198" cy="164" r="12" fill="#f2a900"/></g>
+            <g fill="#f4efe0"><rect x="120" y="150" width="8" height="6" rx="2"/><rect x="262" y="146" width="8" height="6" rx="2"/><rect x="226" y="80" width="8" height="6" rx="2"/><rect x="170" y="82" width="8" height="6" rx="2"/></g>
+            <g fill="#5c8a2c"><circle cx="200" cy="112" r="3"/><circle cx="130" cy="130" r="3"/><circle cx="270" cy="128" r="3"/><circle cx="160" cy="178" r="3"/><circle cx="238" cy="176" r="3"/></g>
+            <rect x="308" y="122" width="76" height="16" rx="8" fill="#232323" stroke="#C5A059" stroke-opacity=".6"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="tag">מטבח ישראלי ולבנטיני</span>
+          <h4>בית הזעפרן</h4>
+          <p>שקשוקה מהתנור, לחם טרי וסלטים עונתיים בגישה גורמה. חלל אלגנטי בלב אזור העסקים, לארוחות בוקר וצהריים ברמה גבוהה.</p>
+          <ul class="contact">
+            <li><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><a href="https://wa.me/972543771767?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%95%D7%9C%D7%94%D7%96%D7%9E%D7%A0%D7%AA%20%D7%9E%D7%A7%D7%95%D7%9D%20%D7%91%D7%91%D7%99%D7%AA%20%D7%94%D7%96%D7%A2%D7%A4%D7%A8%D7%9F" target="_blank" rel="noopener">לתיאום והזמנת מקום בוואטסאפ</a></li>
+            <li><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>DIFC, דובאי</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="card">
+        <div class="card-img">
+          <svg viewBox="0 0 400 260" role="img" aria-label="בקלאווה עם פיסטוק ודבש">
+            <rect width="400" height="260" fill="url(#bg)"/>
+            <circle cx="200" cy="130" r="112" fill="url(#plate)" stroke="#C5A059" stroke-width="3"/>
+            <g stroke="#a8741f" stroke-width="2">
+              <rect x="-30" y="-30" width="60" height="60" rx="6" fill="#dca94f" transform="translate(200 84) rotate(45)"/>
+              <rect x="-30" y="-30" width="60" height="60" rx="6" fill="#d39f45" transform="translate(158 130) rotate(45)"/>
+              <rect x="-30" y="-30" width="60" height="60" rx="6" fill="#d39f45" transform="translate(242 130) rotate(45)"/>
+              <rect x="-30" y="-30" width="60" height="60" rx="6" fill="#dca94f" transform="translate(200 176) rotate(45)"/>
+            </g>
+            <g fill="#7f9c3d"><circle cx="200" cy="84" r="9"/><circle cx="158" cy="130" r="9"/><circle cx="242" cy="130" r="9"/><circle cx="200" cy="176" r="9"/></g>
+            <g fill="#a9c25a"><circle cx="198" cy="82" r="3"/><circle cx="156" cy="128" r="3"/><circle cx="240" cy="128" r="3"/><circle cx="198" cy="174" r="3"/></g>
+            <g fill="none" stroke="#e8b95a" stroke-width="2" opacity=".8"><path d="M170 100c10 8 20 8 30 0s20-8 30 0"/><path d="M128 150c12 8 26 8 38 0"/></g>
+            <g fill="#c5a059"><path d="M292 72l6 -8 6 8-6 8z"/><path d="M108 190l5-7 5 7-5 7z"/></g>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="tag">ארוחות שף וקינוחים</span>
+          <h4>סולטנה</h4>
+          <p>תפריט טעימות של שף וקינוחים מזרחיים בעבודת יד, בקלאווה, פיסטוק ודבש. הגשה חגיגית על הים באווירה של ארמון.</p>
+          <ul class="contact">
+            <li><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><a href="https://wa.me/972543771767?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%95%D7%9C%D7%94%D7%96%D7%9E%D7%A0%D7%AA%20%D7%9E%D7%A7%D7%95%D7%9D%20%D7%91%D7%A1%D7%95%D7%9C%D7%98%D7%A0%D7%94" target="_blank" rel="noopener">לתיאום והזמנת מקום בוואטסאפ</a></li>
+            <li><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>פאלם ג'ומיירה, דובאי</span></li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <a href="index.html" aria-label="HAY DUBAI - לעמוד הראשי"><img src="images/logo.png" alt="לוגו HAY DUBAI" class="brand-logo"></a>
+  <div>ליווי אישי לטיולי יוקרה בדובאי</div>
+  <div style="margin-top:6px;">טלפון החברה: <a href="tel:+97229999119" style="color:inherit;"><bdi>02-999-9119</bdi></a></div>
+  <div style="margin-top:4px;">וואטסאפ: <a href="https://wa.me/972543771767" target="_blank" rel="noopener" style="color:inherit;"><bdi>054-377-1767</bdi></a></div>
+  <div class="footer-email" style="margin-top:6px;"><a href="mailto:Infodubaisrael@gmail.com" style="color:#ece7dd;font-weight:700;direction:ltr;unicode-bidi:isolate;"><b>Infodubaisrael@gmail.com</b></a></div>
+  <div class="footer-links">
+    <a href="index.html">חזרה לדף הבית</a>
+    <a href="privacy.html">מדיניות פרטיות</a>
+    <a href="terms.html">תנאי שימוש</a>
+    <a href="accessibility.html">הצהרת נגישות</a>
+  </div>
+</footer>
+
+</body>
+</html>
