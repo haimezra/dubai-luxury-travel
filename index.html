@@ -363,6 +363,19 @@
     aspect-ratio: 4 / 3; overflow: hidden; background: var(--surface); border-radius: 2px;
   }
   .feature-card img{ width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+  .feature-card .media{ position: relative; }
+  .card-btn{
+    position: absolute; right: 14px; bottom: 14px; z-index: 1;
+    padding: 8px 18px;
+    font-size: .82rem; font-weight: 400; letter-spacing: .04em; line-height: 1.4;
+    color: var(--text);
+    background: rgba(11,11,12,.72);
+    backdrop-filter: blur(6px);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    transition: background .4s var(--ease), color .4s var(--ease);
+  }
+  .card-btn:hover{ background: var(--gold); color: #0B0B0C; }
   .feature-card:hover img{ transform: scale(1.04); }
   .feature-card h3{ font-size: 1.5rem; margin-top: 22px; }
   .feature-card p, .feature-card .tag{ color: var(--muted); margin: 8px 0 0; font-size: .98rem; }
@@ -968,22 +981,22 @@
   <div class="container">
     <div class="feature-grid four">
       <div class="feature-card" role="button" tabindex="0" onclick="window.location.href='ferrari-world.html'">
-        <div class="media"><img src="https://images.unsplash.com/photo-1693164350459-ce6ad75e08c3?q=80&w=700&auto=format&fit=crop" alt="Ferrari World אבו דאבי" loading="lazy"></div>
+        <div class="media"><img src="https://images.unsplash.com/photo-1693164350459-ce6ad75e08c3?q=80&w=700&auto=format&fit=crop" alt="Ferrari World אבו דאבי" loading="lazy"><a class="card-btn" href="ferrari-world.html">Ferrari World</a></div>
         <h3>Ferrari World</h3>
         <span class="tag">אדרנלין ומסלולי מרוצים</span>
       </div>
       <div class="feature-card" role="button" tabindex="0" onclick="openGalleryModal('grandmosque','מסגד שיח\' זאיד הגדול','רגעים ממסגד שיח\' זאיד, אבו דאבי.')">
-        <div class="media"><img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=700&auto=format&fit=crop" alt="מסגד שיח' זאיד הגדול" loading="lazy"></div>
+        <div class="media"><img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=700&auto=format&fit=crop" alt="מסגד שיח' זאיד הגדול" loading="lazy"><a class="card-btn" href="#" onclick="event.preventDefault()">מסגד שיח' זאיד</a></div>
         <h3>מסגד שיח' זאיד</h3>
         <span class="tag">פאר אדריכלי מרהיב</span>
       </div>
       <div class="feature-card" role="button" tabindex="0" onclick="openGalleryModal('louvre','לובר אבו דאבי','רגעים מלובר אבו דאבי.')">
-        <div class="media"><img src="https://images.unsplash.com/photo-1580418827493-f2b22c0a76cb?q=80&w=700&auto=format&fit=crop" alt="לובר אבו דאבי" loading="lazy"></div>
+        <div class="media"><img src="https://images.unsplash.com/photo-1580418827493-f2b22c0a76cb?q=80&w=700&auto=format&fit=crop" alt="לובר אבו דאבי" loading="lazy"><a class="card-btn" href="#" onclick="event.preventDefault()">לובר אבו דאבי</a></div>
         <h3>לובר אבו דאבי</h3>
         <span class="tag">אמנות ותרבות עולמית</span>
       </div>
       <div class="feature-card" role="button" tabindex="0" onclick="openGalleryModal('yasisland','יאס איילנד','רגעים מיאס איילנד, אבו דאבי.')">
-        <div class="media"><img src="https://images.unsplash.com/photo-1704668961045-831f565e62bd?q=80&w=700&auto=format&fit=crop" alt="יאס איילנד" loading="lazy"></div>
+        <div class="media"><img src="https://images.unsplash.com/photo-1704668961045-831f565e62bd?q=80&w=700&auto=format&fit=crop" alt="יאס איילנד" loading="lazy"><a class="card-btn" href="#" onclick="event.preventDefault()">יאס איילנד</a></div>
         <h3>יאס איילנד</h3>
         <span class="tag">פארקי שעשועים ומים</span>
       </div>
