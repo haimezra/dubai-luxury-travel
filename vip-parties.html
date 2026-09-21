@@ -177,25 +177,14 @@
 
   /* ---------- HERO ---------- */
   .hero{
-    position: relative;
     min-height: 88svh;
     display: flex; align-items: flex-end;
-    overflow: hidden;
     background:
+      linear-gradient(180deg, rgba(11,11,12,.5) 0%, rgba(11,11,12,.32) 38%, rgba(11,11,12,.96) 100%),
       url('https://images.unsplash.com/photo-1602025217350-f6c261fade21?q=80&w=2000&auto=format&fit=crop') center 40% / cover no-repeat;
     background-color: var(--surface);
   }
-  .hero-video{
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    object-fit: cover; z-index: 0;
-  }
-  .hero::before{
-    content: ''; position: absolute; inset: 0; z-index: 1;
-    background: linear-gradient(180deg, rgba(11,11,12,.5) 0%, rgba(11,11,12,.32) 38%, rgba(11,11,12,.96) 100%);
-  }
-  @media (prefers-reduced-motion: reduce){ .hero-video{ display: none; } }
   .hero-inner{
-    position: relative; z-index: 2;
     width: 100%;
     padding-top: 160px; padding-bottom: 88px;
     text-align: center;
@@ -222,6 +211,18 @@
     line-height: 1.75;
     max-width: 800px; margin: 0 auto;
     color: var(--text);
+  }
+
+  /* ---------- VIDEO FEATURE ---------- */
+  .video-feature-media{
+    position: relative; overflow: hidden;
+    aspect-ratio: 16 / 9;
+    background: var(--surface);
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px var(--line);
+  }
+  .video-feature-media video{
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
   }
 
   /* ---------- CLUB LIST ---------- */
@@ -402,10 +403,9 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <video class="hero-video" src="videos/nightlife.mp4" poster="images/nightlife-poster.jpg" autoplay muted loop playsinline></video>
   <div class="container hero-inner">
     <img class="hero-logo" src="images/meet-dubai-logo.png" alt="Meet Dubai, Luxury Travel Agency" style="height:auto;width:131px;margin-bottom:28px;position:relative;top:-24px;">
-    <h1>מסיבות שלא תראו בכל העולם</h1>
+    <h1>חיי הלילה של דובאי</h1>
     <p class="sub">המועדונים, הלאונג'ים והבארים שהכי שווה להכיר, ואיך אנחנו דואגים שתקבלו את הכניסה והמחיר הכי טובים שיש.</p>
     <hr class="rule">
     <div class="hero-actions">
@@ -422,8 +422,21 @@
   </div>
 </section>
 
+<!-- ============ VIDEO FEATURE ============ -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow">רגע מהשטח</div>
+      <h2>מסיבות שלא תראו בכל העולם</h2>
+    </div>
+    <div class="video-feature-media">
+      <video src="videos/nightlife.mp4" poster="images/nightlife-poster.jpg" autoplay muted loop playsinline></video>
+    </div>
+  </div>
+</section>
+
 <!-- ============ CLUB LIST ============ -->
-<section class="section" id="clubs" style="padding-top:0;">
+<section class="section" id="clubs">
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">המסיבות שלנו</div>
