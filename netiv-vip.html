@@ -199,7 +199,7 @@
     animation: heroIn 1.4s var(--ease) both;
   }
   @keyframes heroIn{ from{ opacity: 0; transform: translateY(16px); } to{ opacity: 1; transform: none; } }
-  .hero-logo{ height:auto; width:131px; margin: 64px auto 0; object-fit: contain; }
+  .hero-logo{ height:auto; width:131px; margin: 0 auto 28px; position: relative; top: -24px; object-fit: contain; }
   .hero h1{
     font-size: clamp(2.3rem, 6vw, 4.5rem);
     line-height: 1.18;
@@ -497,13 +497,13 @@
 <!-- ============ HERO ============ -->
 <section class="hero">
   <div class="container hero-inner">
+    <img class="hero-logo" src="images/meet-dubai-logo.png" alt="Meet Dubai">
     <h1>בנתב"ג, מישהו הולך איתכם עד השער.</h1>
     <hr class="rule">
     <div class="hero-actions">
       <a class="btn" href="#order">להזמנת מלווה</a>
       <a class="hero-scroll" href="#route">גלו איך זה עובד ↓</a>
     </div>
-    <img class="hero-logo" src="images/meet-dubai-logo.png" alt="Meet Dubai">
   </div>
 </section>
 
