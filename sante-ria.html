@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="הזמנה ל-Billionaire Dubai: ארוחת ערב, מופעים חיים ומסיבת לילה במלון Mandarin Oriental. בדיקת מחיר עדכני מול HAY DUBAI.">
-<title>הזמנה, Billionaire Dubai | HAY DUBAI</title>
+<meta name="description" content="Santè Ria Dubai: מסעדה ובר לטיניים תוססים בקומה ה-29 עם חלונות מהרצפה עד התקרה ותצפית רחבה על העיר. מטבח דרום-אמריקאי, קוקטיילים אקזוטיים ומוזיקה חיה עם. הזמנת שולחן ובדיקת מחיר עדכני מול HAY DUBAI.">
+<title>הזמנת שולחן, Santè Ria Dubai | HAY DUBAI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -93,7 +93,7 @@
   .footer-links{ margin-top:14px; display:flex; justify-content:center; gap:22px; }
   .footer-links a{ color:var(--muted); font-size:.85rem; }
   .footer-links a:hover{ color:var(--gold-bright); }
-  .hero{ background-image:linear-gradient(180deg, rgba(6,6,7,0.35) 0%, rgba(6,6,7,0.75) 65%, rgba(6,6,7,0.98) 100%), url('https://images.unsplash.com/photo-1751922000706-4c19323ea8da?q=80&w=2000&auto=format&fit=crop'); }
+  .hero{ background-image:linear-gradient(180deg, rgba(6,6,7,0.35) 0%, rgba(6,6,7,0.75) 65%, rgba(6,6,7,0.98) 100%), url('https://images.unsplash.com/photo-1584352603599-c60b0f1c90cc?q=80&w=2000&auto=format&fit=crop'); }
   .tier-price.tbd{ font-size:1rem; color:var(--muted); text-shadow:none; }
 </style>
 </head>
@@ -107,11 +107,9 @@
 <section class="hero">
   <div class="container">
     <img src="images/meet-dubai-logo.png" alt="Meet Dubai" style="display:block;margin:0 auto 28px;height:auto;width:142px;object-fit:contain;">
-    <h1>Billionaire</h1>
+    <h1>Santè Ria Dubai</h1>
     <div class="hero-meta">
-      <span>📍 מלון Mandarin Oriental, דאונטאון דובאי</span>
-      <span>🕙 חמישי-שבת, 21:00–03:00</span>
-      <span>👔 קוד לבוש: ג'קט לגברים</span>
+      <span>📍 מלון The First Collection, קומה 29, Jumeirah Village Circle (JVC)</span>
     </div>
   </div>
 </section>
@@ -120,40 +118,40 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">על המקום</div>
-      <h2>ארוחת ערב, מופע וחיי לילה במקום אחד</h2>
+      <h2>מסעדה ובר לטיניים בקומה ה-29</h2>
     </div>
-    <p class="about-text">חוויית ארוחת ערב ומופע ראוותני שמשלבת מטבח איטלקי ויפני עכשווי עם מופעי אקרובטיקה, זמרים ורקדנים לאורך הערב. עובד לפי מודל של מינימום הזמנה לאדם, שכולל בחירה מתפריט המנות והמשקאות. הזמנה מינימלית 4 אורחים, מקסימום 10.</p>
+    <p class="about-text">מסעדה ובר לטיניים תוססים בקומה ה-29 עם חלונות מהרצפה עד התקרה ותצפית רחבה על העיר. מטבח דרום-אמריקאי, קוקטיילים אקזוטיים ומוזיקה חיה עם דיג&#x27;ייז, רקדנים ומתופפים, וערב שמתחיל כארוחה והופך למסיבה.</p>
   </div>
 </section>
 
 <section>
   <div class="container">
     <div class="section-head">
-      <div class="eyebrow">בחרו חבילה</div>
-      <h2>חבילות ערב</h2>
-      <p>המחיר לאדם משתנה לפי ערב ותפוסה. לחצו על החבילה שמעניינת אתכם ונבדוק מחיר וזמינות מדויקים.</p>
+      <div class="eyebrow">בחרו שולחן</div>
+      <h2>סוגי שולחנות</h2>
+      <p>המחיר הסופי משתנה לפי ערב ותפוסה. לחצו על הסוג שמתאים לכם ונבדוק עבורכם מחיר וזמינות מדויקים.</p>
     </div>
     <div class="tier-grid">
+      <div class="tier-card" id="tier-לאונג" onclick="selectTier('לאונג','')">
+        <div class="tier-name">לאונג' / עמידה</div>
+        <div class="tier-sub">עד 3 אנשים</div>
+        <div class="tier-price tbd">לפי בקשה</div>
+        <button type="button" class="tier-btn">בדיקת מחיר</button>
+      </div>
       <div class="tier-card" id="tier-רגיל" onclick="selectTier('רגיל','')">
         <div class="tier-name">שולחן רגיל</div>
-        <div class="tier-sub">ארוחה + מופע</div>
+        <div class="tier-sub">עד 4-8 אנשים</div>
         <div class="tier-price tbd">לפי בקשה</div>
         <button type="button" class="tier-btn">בדיקת מחיר</button>
       </div>
       <div class="tier-card" id="tier-VIP" onclick="selectTier('VIP','')">
-        <div class="tier-name">שולחן VIP</div>
-        <div class="tier-sub">מיקום משודרג קרוב לבמה</div>
-        <div class="tier-price tbd">לפי בקשה</div>
-        <button type="button" class="tier-btn">בדיקת מחיר</button>
-      </div>
-      <div class="tier-card" id="tier-VVIP" onclick="selectTier('VVIP','')">
-        <div class="tier-name">חבילת VVIP</div>
-        <div class="tier-sub">חוויה מלאה, שירות אישי</div>
+        <div class="tier-name">שולחן VIP מרכזי</div>
+        <div class="tier-sub">המיקום הכי טוב במועדון</div>
         <div class="tier-price tbd">לפי בקשה</div>
         <button type="button" class="tier-btn">בדיקת מחיר</button>
       </div>
     </div>
-    <p class="tier-note">המחיר הוא מינימום הזמנה לאדם, ומשתנה לפי ערב ועונה. המחיר הסופי לתאריך שביקשתם ייקבע מולנו.</p>
+    <p class="tier-note">טווח מחירים אופייני לשולחנות VIP במועדוני דובאי: כ-1,000 עד 10,000+ AED, בהתאם לערב, לאירוע ולעונה. המחיר הסופי לתאריך שביקשתם ייקבע מולנו.</p>
   </div>
 </section>
 
@@ -161,22 +159,22 @@
   <div class="container">
     <div class="booking-box">
       <div class="selected-tier-display">
-        <span>חבילה נבחרת</span>
+        <span>שולחן נבחר</span>
         <span class="val" id="selectedTierText">טרם נבחר, בחרו למעלה</span>
       </div>
       <form class="booking-form" action="https://formsubmit.co/Infodubaisrael@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="בקשת מחיר והזמנה, Billionaire Dubai, FIVEdubai">
+        <input type="hidden" name="_subject" value="בקשת מחיר והזמנת שולחן, Santè Ria Dubai, HAY DUBAI">
         <input type="hidden" name="_captcha" value="false">
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
         <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="חבילה" id="tierHiddenInput" value="">
+        <input type="hidden" name="סוג שולחן" id="tierHiddenInput" value="">
         <div class="form-row">
           <label>שם מלא<input type="text" name="שם מלא" required></label>
           <label>טלפון<input type="tel" name="טלפון" required></label>
         </div>
         <div class="form-row">
           <label>תאריך<input type="date" name="תאריך" required></label>
-          <label>מספר אורחים (4-10)<input type="number" min="4" max="10" name="מספר אורחים" value="4"></label>
+          <label>מספר אורחים<input type="number" min="1" name="מספר אורחים" value="4"></label>
         </div>
         <p class="form-consent" style="font-size:.85rem;color:#94969c;line-height:1.5;margin:0;">בשליחת הפרטים אני מאשר/ת את <a href="privacy.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">מדיניות הפרטיות</a> ואת <a href="terms.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">תנאי השימוש</a>. מסירת הפרטים אינה חובה על פי דין, אך ללא מסירתם לא נוכל לחזור אליכם.</p>
         <button type="submit" class="btn">בדיקת מחיר וזמינות</button>

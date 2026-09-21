@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>חוויות דובאי | FIVEdubai</title>
+<meta name="description" content="חוויות דובאי: אופנועי ים, יאכטות, ספארי, RZR, מסיבות VIP ועוד. תכנון והזמנה מול HAY DUBAI.">
+<title>חוויות דובאי | HAY DUBAI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -740,7 +741,6 @@
   }
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 (function(){
   // start each clip only when it is close to the screen
@@ -769,25 +769,31 @@
     }
   }
 
+  const SB_URL = 'https://bhxatigravmoouickbsh.supabase.co';
+  const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJoeGF0aWdyYXZtb291aWNrYnNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkzNDU5NTgsImV4cCI6MjEwNDkyMTk1OH0.pOP7FAgSdutvCrONGF4tByfofuVEm1EHaqbd6Xq2_Cc';
+  async function sbSelect(table, query){
+    const res = await fetch(SB_URL + '/rest/v1/' + table + '?' + query, { headers: { apikey: SB_KEY, Authorization: 'Bearer ' + SB_KEY } });
+    if (!res.ok) throw new Error('Supabase request failed: ' + res.status);
+    return res.json();
+  }
+  const httpsOnly = u => (typeof u === 'string' && /^https:\/\//i.test(u)) ? u : null;
+
   async function enrich(){
-    if (!window.supabase) { document.querySelectorAll('.exp-media').forEach(tidy); return; }
-    let client;
-    try { client = window.supabase.createClient('https://bhxatigravmoouickbsh.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJoeGF0aWdyYXZtb291aWNrYnNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkzNDU5NTgsImV4cCI6MjEwNDkyMTk1OH0.pOP7FAgSdutvCrONGF4tByfofuVEm1EHaqbd6Xq2_Cc'); }
-    catch (e) { document.querySelectorAll('.exp-media').forEach(tidy); return; }
     const jobs = [];
     document.querySelectorAll('.exp-media').forEach(media => {
       jobs.push((async () => {
         try {
           const slot = media.dataset.slot;
           if (slot){
-            const { data } = await client.from('site_videos').select('video_url').eq('slot', Number(slot)).maybeSingle();
+            const rows = await sbSelect('site_videos', 'select=video_url&slot=eq.' + Number(slot) + '&limit=1');
+            const url = rows.length ? httpsOnly(rows[0].video_url) : null;
             const video = media.querySelector('.exp-video video');
-            if (data && data.video_url && video){ video.dataset.src = data.video_url; arm(video); }
+            if (url && video){ video.dataset.src = url; arm(video); }
           }
           const cats = (media.dataset.cat || '').split(',').filter(Boolean);
           if (cats.length){
-            const { data } = await client.from('gallery_photos').select('image_url').in('category', cats).order('created_at', { ascending: true });
-            const urls = (data || []).map(r => r.image_url);
+            const rows = await sbSelect('gallery_photos', 'select=image_url&category=in.(' + cats.map(encodeURIComponent).join(',') + ')&order=created_at.asc');
+            const urls = rows.map(r => httpsOnly(r.image_url)).filter(Boolean);
             if (urls.length){
               const photo = media.querySelector('.exp-photo');
               let rest = urls;

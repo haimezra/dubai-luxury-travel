@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="HAY DUBAI, סוכנות נסיעות לדובאי עם ליווי אישי: אופנועי ים, ספארי, מסיבות VIP, נתיב VIP בנתב&quot;ג ועוד.">
 <meta name="theme-color" content="#0B0B0C">
 <title>haydubai | Dubai Travel Agency</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -323,15 +324,6 @@
     object-fit: cover; display: none; cursor: pointer;
   }
   .video-cube.has-video video{ display: block; }
-  .video-cube.has-video .video-upload-tile{ display: none; }
-  .video-upload-tile{
-    position: absolute; inset: 0;
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
-    color: var(--muted); cursor: pointer; font-size: .85rem;
-    transition: color .3s ease;
-  }
-  .video-upload-tile:hover{ color: var(--gold); }
-  .video-upload-tile .plus{ font-family: var(--display); font-size: 2rem; color: var(--gold); line-height: 1; }
   .image-cube{ cursor: pointer; }
   .image-cube img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
@@ -516,16 +508,6 @@
   .modal-grid figure{ margin: 0; position: relative; overflow: hidden; aspect-ratio: 1 / 1; background: var(--bg); border-radius: 2px; }
   .modal-grid img, .modal-grid video{ width: 100%; height: 100%; object-fit: cover; display: block; }
   .modal-grid figure.lightbox-item{ cursor: pointer; }
-  .upload-tile{
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 8px; cursor: pointer; color: var(--muted); text-align: center; padding: 14px;
-    border: 1px dashed var(--gold-soft);
-    background: transparent !important;
-    transition: color .3s ease, border-color .3s ease;
-  }
-  .upload-tile:hover{ color: var(--gold); border-color: var(--gold); }
-  .upload-tile .plus{ font-family: var(--display); font-size: 2rem; color: var(--gold); line-height: 1; }
-  .upload-tile span.small{ font-size: .78rem; }
   @media (max-width: 640px){
     .modal-grid{ grid-template-columns: repeat(2, 1fr); }
     .modal-box{ padding: 36px 22px; }
@@ -768,11 +750,6 @@
       <div class="exp-panel active video-feature" id="video-slot-6" data-panel="6">
         <div class="video-cube has-video" data-slot="6">
           <video data-lazy-src="videos/extreme-card.mp4" poster="images/rzr-cube-poster.jpg" autoplay muted loop playsinline preload="none"></video>
-          <div class="video-upload-tile">
-            <div class="plus">+</div>
-            <span>העלאת סרטון</span>
-          </div>
-          <input type="file" accept="video/*" style="display:none">
         </div>
         <div class="exp-copy">
           <div class="eyebrow">אדרנלין בקצב של דובאי</div>
@@ -785,11 +762,6 @@
       <div class="exp-panel video-feature" id="video-slot-4" data-panel="4">
         <div class="video-cube" data-slot="4">
           <video autoplay muted loop playsinline></video>
-          <div class="video-upload-tile">
-            <div class="plus">+</div>
-            <span>העלאת סרטון</span>
-          </div>
-          <input type="file" accept="video/*" style="display:none">
         </div>
         <div class="exp-copy">
           <div class="eyebrow">רכבי פאר</div>
@@ -802,11 +774,6 @@
       <div class="exp-panel video-feature" id="video-slot-8" data-panel="8">
         <div class="video-cube has-video" data-slot="8">
           <video data-lazy-src="videos/safari-camp.mp4" poster="images/safari-cube-poster.jpg" autoplay muted loop playsinline preload="none"></video>
-          <div class="video-upload-tile">
-            <div class="plus">+</div>
-            <span>העלאת סרטון</span>
-          </div>
-          <input type="file" accept="video/*" style="display:none">
         </div>
         <div class="exp-copy">
           <div class="eyebrow">ערב בלב המדבר</div>
@@ -819,11 +786,6 @@
       <div class="exp-panel video-feature" id="video-slot-1" data-panel="1">
         <div class="video-cube" data-slot="1">
           <video autoplay muted loop playsinline></video>
-          <div class="video-upload-tile">
-            <div class="plus">+</div>
-            <span>העלאת סרטון</span>
-          </div>
-          <input type="file" accept="video/*" style="display:none">
         </div>
         <div class="exp-copy">
           <div class="eyebrow">מול בורג' ח'ליפה</div>
@@ -836,11 +798,6 @@
       <div class="exp-panel video-feature" id="video-slot-2" data-panel="2">
         <div class="video-cube" data-slot="2">
           <video autoplay muted loop playsinline></video>
-          <div class="video-upload-tile">
-            <div class="plus">+</div>
-            <span>העלאת סרטון</span>
-          </div>
-          <input type="file" accept="video/*" style="display:none">
         </div>
         <div class="exp-copy">
           <div class="eyebrow">ים אמיתי, לא אגם</div>
@@ -853,11 +810,6 @@
       <div class="exp-panel video-feature" id="video-slot-3" data-panel="3">
         <div class="video-cube" data-slot="3">
           <video autoplay muted loop playsinline></video>
-          <div class="video-upload-tile">
-            <div class="plus">+</div>
-            <span>העלאת סרטון</span>
-          </div>
-          <input type="file" accept="video/*" style="display:none">
         </div>
         <div class="exp-copy">
           <div class="eyebrow">אחרי החשכה</div>
@@ -870,11 +822,6 @@
       <div class="exp-panel video-feature" id="video-slot-5" data-panel="5">
         <div class="video-cube" data-slot="5">
           <video autoplay muted loop playsinline></video>
-          <div class="video-upload-tile">
-            <div class="plus">+</div>
-            <span>העלאת סרטון</span>
-          </div>
-          <input type="file" accept="video/*" style="display:none">
         </div>
         <div class="exp-copy">
           <div class="eyebrow">הים הנכון</div>
@@ -1039,6 +986,7 @@
       <form class="contact-form" action="https://formsubmit.co/Infodubaisrael@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="פנייה חדשה מהאתר, FIVEdubai">
         <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
         <input type="hidden" name="_template" value="table">
         <label>
           שם מלא
@@ -1108,13 +1056,7 @@
     <h3 id="modalTitle"></h3>
     <p class="modal-sub" id="modalSub"></p>
     <div class="modal-grid" id="modalGrid">
-      <figure class="upload-tile" id="modalUploadTile">
-        <div class="plus">+</div>
-        <span>הוסיפו תמונה</span>
-        <span class="small">נראה לכל המבקרים באתר</span>
-      </figure>
     </div>
-    <input type="file" id="modalFileInput" accept="image/*" multiple style="display:none">
   </div>
 </div>
 
@@ -1138,56 +1080,34 @@
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+  /* Read-only access to the public gallery / video tables (no third-party library, no write access). */
   const SUPABASE_URL = 'https://bhxatigravmoouickbsh.supabase.co';
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJoeGF0aWdyYXZtb291aWNrYnNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkzNDU5NTgsImV4cCI6MjEwNDkyMTk1OH0.pOP7FAgSdutvCrONGF4tByfofuVEm1EHaqbd6Xq2_Cc';
-
-  // If the Supabase library failed to load (blocked network, ad-blocker, offline preview, etc.)
-  // the rest of the page must still render normally — the gallery/video-upload features just
-  // quietly do nothing instead of throwing and breaking the page.
-  let supabaseClient = null;
-  try {
-    if (window.supabase && typeof window.supabase.createClient === 'function') {
-      supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    } else {
-      console.error('Supabase library did not load; shared gallery/video features are disabled.');
-    }
-  } catch (err) {
-    console.error('Supabase init failed:', err);
+  async function sbSelect(table, query){
+    const res = await fetch(SUPABASE_URL + '/rest/v1/' + table + '?' + query, {
+      headers: { apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + SUPABASE_ANON_KEY }
+    });
+    if (!res.ok) throw new Error('Supabase request failed: ' + res.status);
+    return res.json();
   }
-
-  async function uploadSharedPhoto(file, category){
-    if (!supabaseClient) return null;
-    try {
-      const ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
-      const path = `${category}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-      const { error: uploadError } = await supabaseClient.storage.from('gallery-photos').upload(path, file);
-      if (uploadError) { console.error(uploadError); return null; }
-      const { data: urlData } = supabaseClient.storage.from('gallery-photos').getPublicUrl(path);
-      const publicUrl = urlData.publicUrl;
-      const { error: insertError } = await supabaseClient.from('gallery_photos').insert({ image_url: publicUrl, category });
-      if (insertError) { console.error(insertError); return null; }
-      return publicUrl;
-    } catch (err) {
-      console.error('uploadSharedPhoto failed:', err);
-      return null;
-    }
-  }
-
+  function safeMediaUrl(u){ return (typeof u === 'string' && /^https:\/\//i.test(u)) ? u : null; }
   async function loadSharedPhotos(category){
-    if (!supabaseClient) return [];
     try {
-      const { data, error } = await supabaseClient
-        .from('gallery_photos')
-        .select('image_url')
-        .eq('category', category)
-        .order('created_at', { ascending: true });
-      if (error) { console.error(error); return []; }
-      return data.map(row => row.image_url);
+      const rows = await sbSelect('gallery_photos', 'select=image_url&category=eq.' + encodeURIComponent(category) + '&order=created_at.asc');
+      return rows.map(r => safeMediaUrl(r.image_url)).filter(Boolean);
     } catch (err) {
       console.error('loadSharedPhotos failed:', err);
       return [];
+    }
+  }
+  async function loadSlotVideoUrl(slot){
+    try {
+      const rows = await sbSelect('site_videos', 'select=video_url&slot=eq.' + Number(slot) + '&limit=1');
+      return rows.length ? safeMediaUrl(rows[0].video_url) : null;
+    } catch (err) {
+      console.error('loadSlotVideoUrl failed:', err);
+      return null;
     }
   }
 </script>
@@ -1253,8 +1173,6 @@
   const modalTitle = document.getElementById('modalTitle');
   const modalSub = document.getElementById('modalSub');
   const modalGrid = document.getElementById('modalGrid');
-  const modalUploadTile = document.getElementById('modalUploadTile');
-  const modalFileInput = document.getElementById('modalFileInput');
   const modalClose = document.getElementById('modalClose');
   let currentModalCategory = null;
 
@@ -1269,13 +1187,13 @@
       v.src = src; v.muted = true; v.loop = true; v.autoplay = true; v.playsInline = true;
       v.setAttribute('playsinline', ''); v.preload = 'metadata';
       fig.appendChild(v);
-      modalGrid.insertBefore(fig, modalUploadTile);
+      modalGrid.appendChild(fig);
       v.play().catch(() => {});
     });
   }
 
   async function refreshModalGallery(){
-    document.querySelectorAll('#modalGrid figure:not(.upload-tile)').forEach(f => f.remove());
+    modalGrid.replaceChildren();
     addModalVideos();
     const urls = await loadSharedPhotos(currentModalCategory);
     urls.forEach(url => {
@@ -1285,7 +1203,7 @@
       img.src = url;
       img.alt = modalTitle.textContent;
       fig.appendChild(img);
-      modalGrid.insertBefore(fig, modalUploadTile);
+      modalGrid.appendChild(fig);
     });
   }
 
@@ -1294,7 +1212,6 @@
     modalTitle.textContent = title;
     modalSub.textContent = sub;
     galleryModal.classList.add('active');
-    modalUploadTile.querySelector('.small').textContent = 'נראה לכל המבקרים באתר';
     await refreshModalGallery();
   }
   function closeGalleryModal(){
@@ -1307,20 +1224,6 @@
   });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeGalleryModal();
-  });
-
-  modalUploadTile.addEventListener('click', () => modalFileInput.click());
-
-  modalFileInput.addEventListener('change', async (e) => {
-    const files = Array.from(e.target.files || []);
-    if (!files.length || !currentModalCategory) return;
-    modalUploadTile.querySelector('.small').textContent = 'מעלה...';
-    for (const file of files){
-      await uploadSharedPhoto(file, currentModalCategory);
-    }
-    modalUploadTile.querySelector('.small').textContent = 'נראה לכל המבקרים באתר';
-    await refreshModalGallery();
-    modalFileInput.value = '';
   });
 
   /* ---------- toast (fountain VIP) ---------- */
@@ -1449,12 +1352,10 @@
   }
   window.addEventListener('hashchange', handleHash);
 
-  /* ---------- video slots (load from Supabase, admin upload tile) ---------- */
+  /* ---------- video slots (read from Supabase) ---------- */
   document.querySelectorAll('.video-cube').forEach(cube => {
     const slot = cube.dataset.slot;
     const videoEl = cube.querySelector('video');
-    const uploadTileEl = cube.querySelector('.video-upload-tile');
-    const inputEl = cube.querySelector('input[type="file"]');
     const panel = cube.closest('.exp-panel');
 
     if (slotActions[slot]){
@@ -1470,49 +1371,9 @@
     }
 
     async function loadSlotVideo(){
-      if (!supabaseClient) return;
-      try {
-        const { data, error } = await supabaseClient
-          .from('site_videos')
-          .select('video_url')
-          .eq('slot', Number(slot))
-          .maybeSingle();
-        if (!error && data && data.video_url){
-          showVideo(data.video_url);
-        }
-      } catch (err) {
-        console.error('loadSlotVideo failed:', err);
-      }
+      const url = await loadSlotVideoUrl(slot);
+      if (url) showVideo(url);
     }
-
-    uploadTileEl.addEventListener('click', () => inputEl.click());
-
-    inputEl.addEventListener('change', async (e) => {
-      const file = e.target.files && e.target.files[0];
-      if (!file) return;
-      if (!supabaseClient){
-        uploadTileEl.querySelector('span').textContent = 'ההעלאה לא זמינה כרגע';
-        return;
-      }
-      uploadTileEl.querySelector('span').textContent = 'מעלה...';
-      try {
-        const ext = (file.name.split('.').pop() || 'mp4').toLowerCase();
-        const path = `slot-${slot}/${Date.now()}.${ext}`;
-        const { error: uploadError } = await supabaseClient.storage.from('site-videos').upload(path, file);
-        if (uploadError){
-          console.error(uploadError);
-          uploadTileEl.querySelector('span').textContent = 'שגיאה, נסו שוב';
-          return;
-        }
-        const { data: urlData } = supabaseClient.storage.from('site-videos').getPublicUrl(path);
-        await supabaseClient.from('site_videos').upsert({ slot: Number(slot), video_url: urlData.publicUrl, updated_at: new Date().toISOString() });
-        showVideo(urlData.publicUrl);
-        inputEl.value = '';
-      } catch (err) {
-        console.error('video upload failed:', err);
-        uploadTileEl.querySelector('span').textContent = 'שגיאה, נסו שוב';
-      }
-    });
 
     loadSlotVideo();
   });
@@ -1536,12 +1397,9 @@
 
     async function resolveSrc(v){
       let url = v.dataset.fallback || '';
-      if (v.dataset.slot && supabaseClient){
-        try {
-          const { data, error } = await supabaseClient
-            .from('site_videos').select('video_url').eq('slot', Number(v.dataset.slot)).maybeSingle();
-          if (!error && data && data.video_url) url = data.video_url;
-        } catch (err) { console.error('card video lookup failed:', err); }
+      if (v.dataset.slot){
+        const dbUrl = await loadSlotVideoUrl(v.dataset.slot);
+        if (dbUrl) url = dbUrl;
       }
       return url;
     }
