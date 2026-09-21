@@ -189,8 +189,7 @@
     display: flex; align-items: flex-end;
     background:
       linear-gradient(180deg, rgba(11,11,12,.5) 0%, rgba(11,11,12,.32) 38%, rgba(11,11,12,.96) 100%),
-      url('images/airport-business.jpg') center 40% / cover no-repeat,
-      url('https://images.unsplash.com/photo-1642035148715-7cc0c7538904?q=80&w=2000&auto=format&fit=crop') center / cover no-repeat;
+      url('https://images.unsplash.com/photo-1758531491352-7887c1fe45b3?q=80&w=2000&auto=format&fit=crop') center 45% / cover no-repeat;
     background-color: var(--surface);
   }
   .hero-inner{
@@ -200,7 +199,7 @@
     animation: heroIn 1.4s var(--ease) both;
   }
   @keyframes heroIn{ from{ opacity: 0; transform: translateY(16px); } to{ opacity: 1; transform: none; } }
-  .hero-logo{ height:auto; width:131px; margin: 0 auto 28px; object-fit: contain; }
+  .hero-logo{ height:auto; width:131px; margin: 64px auto 0; object-fit: contain; }
   .hero h1{
     font-size: clamp(2.3rem, 6vw, 4.5rem);
     line-height: 1.18;
@@ -498,13 +497,13 @@
 <!-- ============ HERO ============ -->
 <section class="hero">
   <div class="container hero-inner">
-    <img class="hero-logo" src="images/meet-dubai-logo.png" alt="Meet Dubai">
     <h1>בנתב"ג, מישהו הולך איתכם עד השער.</h1>
     <hr class="rule">
     <div class="hero-actions">
       <a class="btn" href="#order">להזמנת מלווה</a>
       <a class="hero-scroll" href="#route">גלו איך זה עובד ↓</a>
     </div>
+    <img class="hero-logo" src="images/meet-dubai-logo.png" alt="Meet Dubai">
   </div>
 </section>
 
