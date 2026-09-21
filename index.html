@@ -1107,6 +1107,7 @@
           הודעה (רשות)
           <textarea name="הודעה" rows="3"></textarea>
         </label>
+        <p class="form-consent" style="font-size:.85rem;color:#94969c;line-height:1.5;margin:0;">בשליחת הפרטים אני מאשר/ת את <a href="privacy.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">מדיניות הפרטיות</a> ואת <a href="terms.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">תנאי השימוש</a>. מסירת הפרטים אינה חובה על פי דין, אך ללא מסירתם לא נוכל לחזור אליכם.</p>
         <button type="submit" class="btn">שליחת פנייה</button>
       </form>
     </div>
@@ -1117,11 +1118,13 @@
   <div class="container">
     <img src="images/logo.png" alt="לוגו HAY DUBAI" class="brand-logo">
     <div>ליווי אישי לטיולי יוקרה בדובאי</div>
-    <div style="margin-top:6px;">02-999-9119</div>
-    <div class="footer-email" style="margin-top:6px;"><a href="mailto:Infodubaisrael@gmail.com">Infodubaisrael@gmail.com</a></div>
+    <div style="margin-top:6px;">טלפון החברה: <a href="tel:+97229999119" style="color:inherit;text-decoration:none;"><bdi>02-999-9119</bdi></a></div>
+    <div style="margin-top:4px;">וואטסאפ: <a href="https://wa.me/972543771767" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><bdi>054-377-1767</bdi></a></div>
+    <div class="footer-email" style="margin-top:6px;"><a href="mailto:Infodubaisrael@gmail.com" style="color:#ece7dd;font-weight:700;text-decoration:none;direction:ltr;unicode-bidi:isolate;"><b>Infodubaisrael@gmail.com</b></a></div>
     <div class="footer-links">
       <a href="privacy.html">מדיניות פרטיות</a>
       <a href="terms.html">תנאי שימוש</a>
+    <a href="accessibility.html">הצהרת נגישות</a>
     </div>
   </div>
 </footer>
@@ -1666,6 +1669,7 @@
       html += `<input class="quiz-input" id="quizFieldInput" type="${q.type}" placeholder="${q.placeholder}" value="${value}">`;
       html += `<div class="quiz-error" id="quizFieldError" style="display:none;"></div>`;
       const isLast = quizStep === total - 1;
+      if (isLast) html += '<p style="font-size:.8rem;color:#94969c;line-height:1.5;margin:10px 0 0;">בלחיצה על "שליחה" אני מאשר/ת את <a href="privacy.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">מדיניות הפרטיות</a> ואת <a href="terms.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">תנאי השימוש</a>. מסירת הפרטים אינה חובה על פי דין, אך ללא מסירתם לא נוכל לחזור אליכם.</p>';
       html += `<div class="quiz-nav">${quizStep > 0 ? '<button type="button" class="quiz-back" id="quizBack">→ הקודם</button>' : '<span></span>'}<button type="button" class="btn" id="quizNext">${isLast ? 'שליחה' : 'הבא'}</button></div>`;
     }
 
