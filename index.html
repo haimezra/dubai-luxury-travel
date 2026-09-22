@@ -425,10 +425,86 @@
     .abu{ padding-bottom: 60px; }
   }
 
-  /* ---------- TESTIMONIALS ---------- */
+  /* ---------- TESTIMONIALS / REVIEWS ---------- */
   .testimonials{ text-align: center; padding: 120px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .testimonials h2{ font-size: clamp(1.7rem, 3.2vw, 2.4rem); }
-  .testimonials p{ color: var(--muted); max-width: 520px; margin: 18px auto 32px; }
+  .testimonials > .container > p{ color: var(--muted); max-width: 520px; margin: 18px auto 0; }
+
+  .reviews-summary{
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    margin: 44px 0 56px;
+  }
+  .reviews-summary .rating-word{
+    color: var(--gold);
+    font-weight: 500; font-size: .95rem; letter-spacing: .08em;
+  }
+  .reviews-stars{ display: flex; align-items: center; gap: 10px; }
+  .reviews-stars .stars-icons{ display: inline-flex; gap: 3px; }
+  .reviews-stars .stars-icons svg{ width: 20px; height: 20px; fill: var(--gold); }
+  .reviews-stars .score{ font-family: var(--display); font-size: 1.1rem; color: var(--text); }
+  .reviews-based-on{ color: var(--muted); font-size: .92rem; }
+  .reviews-summary .link-arrow{ margin-top: 14px; }
+
+  .reviews-viewport{
+    position: relative;
+    margin-top: 8px;
+  }
+  .reviews-viewport::before, .reviews-viewport::after{
+    content: ''; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2; pointer-events: none;
+  }
+  .reviews-viewport::before{ right: 0; background: linear-gradient(270deg, var(--bg), rgba(11,11,12,0)); }
+  .reviews-viewport::after{ left: 0; background: linear-gradient(90deg, var(--bg), rgba(11,11,12,0)); }
+  .reviews-grid{
+    display: flex; gap: 20px;
+    overflow-x: auto; scroll-snap-type: x proximate;
+    padding: 4px 4px 22px;
+    text-align: right;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold-soft) transparent;
+  }
+  .reviews-grid::-webkit-scrollbar{ height: 5px; }
+  .reviews-grid::-webkit-scrollbar-thumb{ background: var(--gold-soft); border-radius: 4px; }
+  .review-card{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 28px 26px;
+    display: flex; flex-direction: column;
+    position: relative;
+    flex: 0 0 300px; scroll-snap-align: start;
+  }
+  .review-card .stars-icons{ display: inline-flex; gap: 3px; margin-bottom: 18px; }
+  .review-card .stars-icons svg{ width: 15px; height: 15px; fill: var(--gold); }
+  .review-quote{
+    color: var(--text);
+    font-size: .98rem;
+    line-height: 1.8;
+    flex: 1;
+    margin: 0 0 26px;
+  }
+  .review-quote::before{
+    content: '"';
+    color: var(--gold-soft);
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    margin-inline-end: 2px;
+  }
+  .review-footer{ display: flex; align-items: center; gap: 14px; border-top: 1px solid var(--line); padding-top: 18px; }
+  .review-avatar{
+    width: 42px; height: 42px; border-radius: 50%; flex: none;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--display); font-size: 1rem; font-weight: 500;
+    color: #0B0B0C;
+    background: var(--gold);
+  }
+  .review-who{ display: flex; flex-direction: column; gap: 2px; }
+  .review-name{ font-size: .95rem; color: var(--text); }
+  .review-time{ font-size: .82rem; color: var(--muted); }
+
+  @media (max-width: 900px){
+    .review-card{ flex-basis: 78vw; }
+    .reviews-viewport::before, .reviews-viewport::after{ width: 28px; }
+  }
 
   /* ---------- CONTACT ---------- */
   .contact{ background: var(--surface); }
@@ -958,13 +1034,28 @@
   </div>
 </section>
 
-<!-- ============ TESTIMONIALS ============ -->
+<!-- ============ TESTIMONIALS / GOOGLE REVIEWS ============ -->
 <section class="testimonials" id="testimonials">
   <div class="container">
     <div class="eyebrow">לקוחות ממליצים</div>
     <h2>לא רק אנחנו אומרים שזה שווה</h2>
-    <p>תראו מה הלקוחות שכבר היו שם אומרים, בתמונות ובסרטונים שלהם.</p>
-    <button type="button" class="btn" onclick="openGalleryModal('testimonials','לקוחות ממליצים','רגעים מלקוחות מרוצים שכבר טסו איתנו לדובאי.')">לצפייה בגלריה</button>
+    <div class="reviews-summary">
+      <div class="rating-word">מצוין</div>
+      <div class="reviews-stars">
+        <span class="stars-icons" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.27 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.27 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.27 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.27 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.27 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+        </span>
+        <span class="score">5.0</span>
+      </div>
+      <a class="link-arrow" href="https://www.google.com/search?q=hay+dubai+reviews" target="_blank" rel="noopener">לקריאת כל הביקורות בגוגל</a>
+    </div>
+
+
+    <button type="button" class="btn" style="margin-top:56px;" onclick="openGalleryModal('testimonials','לקוחות ממליצים','רגעים מלקוחות מרוצים שכבר טסו איתנו לדובאי.')">לצפייה בגלריה של לקוחות</button>
   </div>
 </section>
 
