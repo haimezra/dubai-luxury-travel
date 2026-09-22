@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="הזמנות: 3 חבילות מלון בדובאי הכוללות כרטיסי טיסה, כבודה, 5 לילות ושירות העברות. HAY DUBAI.">
-<title>הזמנות | HAY DUBAI</title>
+<meta name="description" content="מלונות: 8 מלונות נבחרים בדובאי, הזמנת חדר עם או בלי ארוחת בוקר, מחירים ללילה ותשלום מאובטח. HAY DUBAI.">
+<title>מלונות | HAY DUBAI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -12,13 +12,12 @@
   :root{
     --bg: #08090b; --surface: #101215; --surface-2: #15181c;
     --gold: #d9b25c; --gold-bright: #f3d488; --gold-glow: rgba(217,178,92,0.45);
-    --ivory: #ece7dd; --muted: #98999f;
+    --ivory: #ece7dd; --muted: #98999f; --line: rgba(217,178,92,0.18);
   }
   *{ box-sizing:border-box; }
   body{ margin:0; background:var(--bg); color:var(--ivory); font-family:'Heebo',sans-serif; font-weight:300; line-height:1.85; }
   h1,h2,h3,.brand{ font-family:'Rubik',sans-serif; font-weight:800; color:var(--ivory); }
   .brand-logo{ width: 42px; height: 42px; object-fit: contain; }
-  .brand-logo-text{ height: 13px; width: auto; object-fit: contain; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); }
   a{ color: var(--gold-bright); text-decoration:none; }
   .container{ max-width: 1080px; margin:0 auto; padding: 0 26px; }
   header{ padding: 30px 0 10px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; position:relative; min-height:44px; }
@@ -28,50 +27,108 @@
   .back:hover{ color:var(--gold-bright); }
   main{ padding: 30px 0 90px; }
   h1{ font-size: clamp(1.9rem, 4vw, 2.6rem); margin-bottom: 10px; }
-  .page-sub{ color: var(--muted); font-size: 1.02rem; max-width: 680px; margin-bottom: 46px; }
+  .page-sub{ color: var(--muted); font-size: 1.02rem; max-width: 720px; margin-bottom: 20px; }
+  .price-disclaimer{ color:var(--muted); font-size:.82rem; max-width:720px; margin-bottom:40px; border-right:2px solid var(--gold); padding-right:12px; }
   footer{ text-align:center; padding: 40px 0; color: var(--muted); font-size:.85rem; }
 
   .btn{
     display:inline-block; padding: 13px 26px; border-radius: 999px;
     font-size: .95rem; font-weight: 700; border:none; cursor:pointer; font-family:inherit;
     background: var(--gold); color:#14110c; box-shadow: 0 0 18px var(--gold-glow);
-    transition: all .3s ease;
+    transition: all .3s ease; text-align:center;
   }
   .btn:hover{ background: var(--gold-bright); box-shadow: 0 0 26px var(--gold-glow); }
+  .btn-outline{
+    display:inline-block; padding:12px 24px; border-radius:999px; font-size:.92rem; font-weight:700;
+    color:var(--gold-bright); background:rgba(217,178,92,0.06); box-shadow:inset 0 0 0 1px rgba(217,178,92,0.4);
+    cursor:pointer; font-family:inherit; text-align:center;
+  }
+  .btn-outline:hover{ box-shadow:inset 0 0 0 1px var(--gold-bright), 0 0 20px var(--gold-glow); }
+  .btn-block{ width:100%; }
 
-  /* ---------- OFFER CARDS ---------- */
-  .offers-grid{
+  h2.section-title{ font-size:1.4rem; margin: 50px 0 20px; }
+
+  .hotels-grid{
     display:grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 22px;
   }
-  .offer-card{
+  .hotel-card{
     background: var(--surface-2);
     border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    display:flex; flex-direction:column;
   }
-  .offer-photo{
+  .hotel-photo{
     position: relative;
-    aspect-ratio: 4/3;
-    background: var(--surface);
+    aspect-ratio: 16/10;
+    background: linear-gradient(135deg, var(--surface) 0%, #1b1e24 100%);
     overflow: hidden;
+    display:flex; align-items:center; justify-content:center;
   }
-  .offer-photo img{ width:100%; height:100%; object-fit:cover; display:none; }
-  .offer-photo.has-photo img{ display:block; }
-  .offer-body{ padding: 22px 22px 26px; }
-  .offer-body h3{ font-size: 1.15rem; margin-bottom:10px; }
-  .offer-price{
-    color: #a9d4ff;
-    font-weight: 800;
-    font-size: 1.25rem;
-    text-shadow: 0 0 10px rgba(120,180,255,0.6);
-    margin-bottom: 14px;
+  .hotel-photo img{ width:100%; height:100%; object-fit:cover; display:none; }
+  .hotel-photo.has-photo img{ display:block; }
+  .hotel-photo .placeholder-mark{ color: var(--gold); opacity:.55; font-family:'Rubik',sans-serif; font-weight:800; font-size:1.15rem; letter-spacing:.02em; text-align:center; padding:0 14px; }
+  .hotel-photo.has-photo .placeholder-mark{ display:none; }
+  .hotel-body{ padding: 22px 22px 24px; display:flex; flex-direction:column; flex:1; }
+  .hotel-body h3{ font-size: 1.1rem; margin-bottom:4px; }
+  .hotel-tagline{ color:var(--muted); font-size:.86rem; margin-bottom:12px; }
+  .hotel-price{
+    color: #a9d4ff; font-weight: 800; font-size: 1.1rem;
+    text-shadow: 0 0 10px rgba(120,180,255,0.6); margin-bottom: 14px;
   }
-  .offer-features{ margin:0; padding-right: 20px; color: var(--muted); font-size: .92rem; line-height:1.95; font-weight:300; }
-  @media (max-width: 900px){
-    .offers-grid{ grid-template-columns: 1fr; }
+  .hotel-features{ margin:0 0 18px; padding-right: 20px; color: var(--muted); font-size: .88rem; line-height:1.9; font-weight:300; flex:1; }
+  @media (max-width: 980px){
+    .hotels-grid{ grid-template-columns: repeat(2, 1fr); }
   }
+  @media (max-width: 620px){
+    .hotels-grid{ grid-template-columns: 1fr; }
+  }
+
+  .extra-grid{ display:grid; grid-template-columns: 1fr; gap:24px; }
+  .extra-card{ background: var(--surface-2); border-radius: 18px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.35); display:grid; grid-template-columns: 260px 1fr; }
+  .extra-card .offer-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .extra-card .offer-body{ padding:22px 24px; }
+  @media (max-width:640px){ .extra-card{ grid-template-columns:1fr; } .extra-card .offer-photo{ aspect-ratio:16/9; } }
+
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(4,5,6,0.78); backdrop-filter:blur(3px);
+    display:none; align-items:flex-start; justify-content:center; z-index:200; padding: 40px 16px; overflow-y:auto;
+  }
+  .modal-overlay.active{ display:flex; }
+  .modal-card{
+    background: var(--surface-2); border-radius:20px; max-width:560px; width:100%;
+    padding: 30px 26px 28px; box-shadow: 0 30px 80px rgba(0,0,0,0.6); position:relative;
+  }
+  .modal-close{
+    position:absolute; left:18px; top:18px; background:none; border:none; color:var(--muted);
+    font-size:1.3rem; cursor:pointer; line-height:1;
+  }
+  .modal-close:hover{ color:var(--gold-bright); }
+  .modal-card h3{ font-size:1.25rem; margin-bottom:4px; padding-left:24px; }
+  #bkTagline{ color:var(--muted); font-size:.85rem; margin-bottom:14px; }
+  .modal-amenities{ margin:0 0 18px; padding-right:18px; color:var(--muted); font-size:.85rem; line-height:1.85; }
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  label{ display:block; font-size:.85rem; color:var(--muted); margin-bottom:14px; }
+  input, select, textarea{
+    width:100%; margin-top:6px; padding:11px 13px; border-radius:10px; border:1px solid rgba(217,178,92,0.25);
+    background:var(--surface); color:var(--ivory); font-family:inherit; font-size:.95rem;
+  }
+  input:focus, select:focus, textarea:focus{ outline:none; border-color:var(--gold); }
+  fieldset{ border:1px solid rgba(217,178,92,0.25); border-radius:10px; padding:10px 13px 6px; margin:0 0 16px; }
+  legend{ font-size:.85rem; color:var(--muted); padding:0 6px; }
+  .radio-row{ display:flex; gap:20px; padding:6px 0 8px; }
+  .radio-row label{ display:flex; align-items:center; gap:6px; margin-bottom:0; color:var(--ivory); font-size:.92rem; }
+  .radio-row input{ width:auto; margin:0; }
+  .totals-box{
+    background:var(--surface); border-radius:12px; padding:14px 16px; margin-bottom:18px;
+    font-size:.9rem; color:var(--muted); display:flex; flex-direction:column; gap:4px;
+  }
+  .totals-box .grand{ color:var(--gold-bright); font-weight:700; font-size:1.05rem; margin-top:6px; }
+  .modal-actions{ display:flex; flex-direction:column; gap:10px; margin-top:6px; }
+  .pay-note{ font-size:.76rem; color:var(--muted); text-align:center; margin-top:8px; }
+  @media (max-width:480px){ .form-row{ grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -82,76 +139,234 @@
 
 <main class="container">
   <img src="images/meet-dubai-logo.png" alt="Meet Dubai" style="display:block;margin:0 auto 28px;height:auto;width:142px;object-fit:contain;">
-  <h1>הזמנות</h1>
-  <p class="page-sub">3 מלונות שעברו את הבדיקה שלנו, בחבילה מלאה: כרטיסי טיסה, כבודה, 5 לילות, שירות העברות, וצ'ק אין ללא תור בשירות אחד הסוכנים שלנו בשעות הפעילות.</p>
+  <h1>מלונות</h1>
+  <p class="page-sub">8 מלונות נבחרים בדובאי. לכל מלון ניתן להזמין חדר בלבד, עם או בלי ארוחת בוקר, ולבצע תשלום מאובטח בכרטיס אשראי.</p>
+  <p class="price-disclaimer">המחירים תואמים למחירי Booking.com הנוכחיים לחדר מלון אחד ללילה (כפי שנבדקו לאחרונה), בתוספת דמי טיפול קבועים. המחיר הסופי ייקבע ויאושר מול הסוכן לפני החיוב.</p>
 
-  <div class="offers-grid">
-    <div class="offer-card">
-      <div class="offer-photo" id="offerPhoto1">
-        <img id="offerImg1" alt="הצעה 1">
-      </div>
-      <div class="offer-body">
-        <h3>הצעה 1</h3>
-        <div class="offer-price">5,200 ₪ בלבד</div>
-        <ul class="offer-features">
-          <li>כולל כרטיסי טיסה</li>
-          <li>כולל כבודה</li>
-          <li>5 לילות</li>
-          <li>כולל שירות העברות</li>
-          <li>צ'ק אין ללא תור, בשירות אחד הסוכנים שלנו בשעות הפעילות</li>
+  <div class="hotels-grid">
+
+    <div class="hotel-card">
+      <div class="hotel-photo has-photo" id="hotelPhoto1"><span class="placeholder-mark">The First Collection JVC</span><img id="hotelImg1" alt="The First Collection Dubai Jumeirah Village Circle" src="https://images.unsplash.com/photo-1660155056809-6747def7936a?q=80&w=900&auto=format&fit=crop"></div>
+      <div class="hotel-body">
+        <h3>The First Collection Dubai JVC</h3>
+        <div class="hotel-tagline">מלון 4 כוכבים ב-Jumeirah Village Circle · 17.1 ק"מ ממרכז דובאי · דירוג אורחים 8.6</div>
+        <div class="hotel-price">425 ₪ ללילה</div>
+        <ul class="hotel-features">
+          <li>ביטול בחינם, ללא מקדמה</li>
+          <li>בריכה על הגג עם נוף לעיר</li>
+          <li>חדר עם מיטה אחת</li>
+          <li>מלון מוסמך בתחום הקיימות</li>
         </ul>
+        <button class="btn btn-block" onclick="openBooking('firstjvc')">הזמנת חדר</button>
       </div>
     </div>
-    <div class="offer-card">
-      <div class="offer-photo" id="offerPhoto2">
-        <img id="offerImg2" alt="הצעה 2">
-      </div>
-      <div class="offer-body">
-        <h3>הצעה 2</h3>
-        <div class="offer-price">5,200 ₪ בלבד</div>
-        <ul class="offer-features">
-          <li>כולל כרטיסי טיסה</li>
-          <li>כולל כבודה</li>
-          <li>5 לילות</li>
-          <li>כולל שירות העברות</li>
-          <li>צ'ק אין ללא תור, בשירות אחד הסוכנים שלנו בשעות הפעילות</li>
+
+    <div class="hotel-card">
+      <div class="hotel-photo has-photo" id="hotelPhoto2"><span class="placeholder-mark">Radisson Beach Resort Palm Jumeirah</span><img id="hotelImg2" alt="Radisson Beach Resort Palm Jumeirah" src="https://images.unsplash.com/photo-1764212193268-dba11709dc38?q=80&w=900&auto=format&fit=crop"></div>
+      <div class="hotel-body">
+        <h3>Radisson Beach Resort Palm</h3>
+        <div class="hotel-tagline">ריזורט 4 כוכבים על חוף פאלם ג'ומיירה · 16.3 ק"מ ממרכז דובאי · דירוג אורחים 9.2</div>
+        <div class="hotel-price">553 ₪ ללילה</div>
+        <ul class="hotel-features">
+          <li>מיקום על החוף בפאלם ג'ומיירה</li>
+          <li>בריכה עם נוף לקו הרקיע של דובאי</li>
+          <li>חדר עם 2 מיטות</li>
+          <li>דירוג Genius גבוה במיוחד</li>
         </ul>
+        <button class="btn btn-block" onclick="openBooking('radisson')">הזמנת חדר</button>
       </div>
     </div>
-    <div class="offer-card">
-      <div class="offer-photo" id="offerPhoto3">
-        <img id="offerImg3" alt="הצעה 3">
-      </div>
-      <div class="offer-body">
-        <h3>הצעה 3</h3>
-        <div class="offer-price">5,200 ₪ בלבד</div>
-        <ul class="offer-features">
-          <li>כולל כרטיסי טיסה</li>
-          <li>כולל כבודה</li>
-          <li>5 לילות</li>
-          <li>כולל שירות העברות</li>
-          <li>צ'ק אין ללא תור, בשירות אחד הסוכנים שלנו בשעות הפעילות</li>
+
+    <div class="hotel-card">
+      <div class="hotel-photo has-photo" id="hotelPhoto3"><span class="placeholder-mark">Grand Mercure Business Bay</span><img id="hotelImg3" alt="Grand Mercure Business Bay" src="https://images.unsplash.com/photo-1621073831231-faa453d28112?q=80&w=900&auto=format&fit=crop"></div>
+      <div class="hotel-body">
+        <h3>Grand Mercure Business Bay</h3>
+        <div class="hotel-tagline">מלון 4 כוכבים על תעלת ביזנס ביי · 1.4 ק"מ ממרכז דובאי · דירוג אורחים 8.1</div>
+        <div class="hotel-price">291 ₪ ללילה</div>
+        <ul class="hotel-features">
+          <li>ביטול בחינם, ללא מקדמה</li>
+          <li>מיקום על התעלה בלב ביזנס ביי</li>
+          <li>חדר עם 2 מיטות</li>
+          <li>מבצע סוף שנה</li>
         </ul>
+        <button class="btn btn-block" onclick="openBooking('mercure')">הזמנת חדר</button>
       </div>
     </div>
-    <div class="offer-card">
-      <div class="offer-photo has-photo">
+
+    <div class="hotel-card">
+      <div class="hotel-photo has-photo" id="hotelPhoto4"><span class="placeholder-mark">Paramount Hotel Midtown</span><img id="hotelImg4" alt="Paramount Hotel Midtown" src="https://images.unsplash.com/photo-1767041743706-fa96a08187a3?q=80&w=900&auto=format&fit=crop"></div>
+      <div class="hotel-body">
+        <h3>Paramount Hotel Midtown</h3>
+        <div class="hotel-tagline">מלון 5 כוכבים בביזנס ביי · 0.7 ק"מ ממרכז דובאי · דירוג אורחים 8.8</div>
+        <div class="hotel-price">642 ₪ ללילה</div>
+        <ul class="hotel-features">
+          <li>ביטול בחינם, ללא מקדמה</li>
+          <li>בריכת גג עם נוף לבורג' ח'ליפה</li>
+          <li>חדר עם 2 מיטות</li>
+          <li>קרבה הליכתית למרכז העיר</li>
+        </ul>
+        <button class="btn btn-block" onclick="openBooking('paramount')">הזמנת חדר</button>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <div class="hotel-photo has-photo" id="hotelPhoto5"><span class="placeholder-mark">The First Collection Business Bay</span><img id="hotelImg5" alt="The First Collection Business Bay, Dubai" src="https://images.unsplash.com/photo-1765741836851-8071475d4911?q=80&w=900&auto=format&fit=crop"></div>
+      <div class="hotel-body">
+        <h3>The First Collection Business Bay</h3>
+        <div class="hotel-tagline">מלון 4 כוכבים בביזנס ביי · 2 ק"מ ממרכז דובאי · דירוג אורחים 8.6</div>
+        <div class="hotel-price">370 ₪ ללילה</div>
+        <ul class="hotel-features">
+          <li>ביטול בחינם, ללא מקדמה</li>
+          <li>בריכה גדולה בשטח המלון</li>
+          <li>חדר עם מיטה אחת</li>
+          <li>דירוג Genius</li>
+        </ul>
+        <button class="btn btn-block" onclick="openBooking('firstbb')">הזמנת חדר</button>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <div class="hotel-photo has-photo" id="hotelPhoto6"><span class="placeholder-mark">FIVE Jumeirah Village</span><img id="hotelImg6" alt="FIVE Jumeirah Village" src="https://images.unsplash.com/photo-1712844919937-f4e6aae26abb?q=80&w=900&auto=format&fit=crop"></div>
+      <div class="hotel-body">
+        <h3>FIVE Jumeirah Village</h3>
+        <div class="hotel-tagline">מלון בוטיק 5 כוכבים ב-Jumeirah Village · 17 ק"מ ממרכז דובאי · דירוג אורחים 9.0</div>
+        <div class="hotel-price">561 ₪ ללילה</div>
+        <ul class="hotel-features">
+          <li>בריכת אינפיניטי עם נוף לקו הרקיע</li>
+          <li>מלון מוסמך בתחום הקיימות</li>
+          <li>חדר עם מיטה אחת</li>
+          <li>דירוג Genius גבוה</li>
+        </ul>
+        <button class="btn btn-block" onclick="openBooking('fivejvc')">הזמנת חדר</button>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <div class="hotel-photo has-photo" id="hotelPhoto7"><span class="placeholder-mark">Barcelo Business Bay Dubai</span><img id="hotelImg7" alt="Barcelo Business Bay Dubai" src="https://images.unsplash.com/photo-1661630804516-10393c1bb0a8?q=80&w=900&auto=format&fit=crop"></div>
+      <div class="hotel-body">
+        <h3>Barcelo Business Bay Dubai</h3>
+        <div class="hotel-tagline">מלון 5 כוכבים בביזנס ביי · 1.8 ק"מ ממרכז דובאי · דירוג אורחים 8.8</div>
+        <div class="hotel-price">363 ₪ ללילה</div>
+        <ul class="hotel-features">
+          <li>ביטול בחינם, ללא מקדמה</li>
+          <li>בריכת גג בשקיעה</li>
+          <li>חדר עם מיטה אחת</li>
+          <li>מבצע לזמן מוגבל</li>
+        </ul>
+        <button class="btn btn-block" onclick="openBooking('barcelo')">הזמנת חדר</button>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <div class="hotel-photo has-photo" id="hotelPhoto8"><span class="placeholder-mark">Hilton Garden Inn Business Bay</span><img id="hotelImg8" alt="Hilton Garden Inn Dubai Business Bay" src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=900&auto=format&fit=crop"></div>
+      <div class="hotel-body">
+        <h3>Hilton Garden Inn Business Bay</h3>
+        <div class="hotel-tagline">מלון 4 כוכבים בביזנס ביי · 1.7 ק"מ ממרכז דובאי · דירוג אורחים 8.8</div>
+        <div class="hotel-price">366 ₪ ללילה</div>
+        <ul class="hotel-features">
+          <li>ביטול בחינם, ללא מקדמה</li>
+          <li>בריכת חוץ</li>
+          <li>חדר עם 2 מיטות</li>
+          <li>מותג Hilton בינלאומי</li>
+        </ul>
+        <button class="btn btn-block" onclick="openBooking('hilton')">הזמנת חדר</button>
+      </div>
+    </div>
+
+  </div>
+
+  <h2 class="section-title">עוד חוויה</h2>
+  <div class="extra-grid">
+    <div class="extra-card">
+      <div class="offer-photo">
         <img src="https://images.unsplash.com/photo-1740482881694-d72f4e4cc47e?q=80&w=800&auto=format&fit=crop" alt="שייט יאכטה 36 רגל">
       </div>
       <div class="offer-body">
         <h3>שייט יאכטה 36 רגל</h3>
-        <div class="offer-price">450 ₪ לשעה</div>
-        <ul class="offer-features">
+        <div class="hotel-price">450 ₪ לשעה</div>
+        <ul class="hotel-features" style="margin-bottom:16px;">
           <li>עד 10 אורחים בשייט אחד</li>
           <li>קפטן וצוות מקצועי כלולים</li>
           <li>שתייה קלה, קרח ומיזוג אוויר</li>
           <li>מסלול לאורך קו הרקיע של דובאי</li>
         </ul>
-        <a class="btn" href="yacht.html" style="margin-top:16px; display:inline-block;">למעבר להזמנה</a>
+        <a class="btn" href="yacht.html">למעבר להזמנה</a>
       </div>
     </div>
   </div>
 </main>
+
+<div class="modal-overlay" id="bookingOverlay">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeBooking()" aria-label="סגירה">✕</button>
+    <h3 id="bkHotelName">שם המלון</h3>
+    <div id="bkTagline"></div>
+    <ul class="modal-amenities" id="bkAmenities"></ul>
+
+    <form id="bookingForm" action="https://formsubmit.co/Infodubaisrael@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="הזמנת חדר במלון, HAY DUBAI">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="מלון" id="bkHotelField">
+
+      <div class="form-row">
+        <label>שם מלא
+          <input type="text" name="שם מלא" id="bkName" required>
+        </label>
+        <label>טלפון
+          <input type="tel" name="טלפון" id="bkPhone" required>
+        </label>
+      </div>
+      <label>אימייל (רשות)
+        <input type="email" name="אימייל" id="bkEmail">
+      </label>
+      <div class="form-row">
+        <label>תאריך צ'ק אין
+          <input type="date" name="צ'ק אין" id="bkCheckin" required>
+        </label>
+        <label>תאריך צ'ק אאוט
+          <input type="date" name="צ'ק אאוט" id="bkCheckout" required>
+        </label>
+      </div>
+      <div class="form-row">
+        <label>מספר אורחים
+          <input type="number" name="מספר אורחים" id="bkGuests" min="1" max="8" value="2">
+        </label>
+        <label>מספר חדרים
+          <input type="number" name="מספר חדרים" id="bkRooms" min="1" max="4" value="1">
+        </label>
+      </div>
+
+      <fieldset>
+        <legend>ארוחת בוקר</legend>
+        <div class="radio-row">
+          <label><input type="radio" name="ארוחת בוקר" value="עם ארוחת בוקר" checked onchange="calcTotal()"> עם ארוחת בוקר</label>
+          <label><input type="radio" name="ארוחת בוקר" value="בלי ארוחת בוקר" onchange="calcTotal()"> בלי ארוחת בוקר</label>
+        </div>
+      </fieldset>
+
+      <label>הערות (רשות)
+        <textarea name="הערות" rows="2" placeholder="למשל: נוף מבוקש, יום נישואין, בקשות מיוחדות"></textarea>
+      </label>
+
+      <div class="totals-box" id="bkTotalsBox">
+        <div id="bkNightsLine">0 לילות</div>
+        <div id="bkRoomLine">עלות חדר: 0 ₪</div>
+        <div id="bkBreakfastLine">תוספת ארוחת בוקר: 0 ₪</div>
+        <div class="grand" id="bkGrandTotal">סה"כ: 0 ₪</div>
+      </div>
+
+      <p style="font-size:.8rem;color:#94969c;line-height:1.5;margin:0 0 16px;">בשליחת הפרטים אני מאשר/ת את <a href="privacy.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">מדיניות הפרטיות</a> ואת <a href="terms.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">תנאי השימוש</a>.</p>
+
+      <div class="modal-actions">
+        <button type="submit" class="btn btn-block">שליחת בקשת הזמנה</button>
+        <button type="button" class="btn-outline btn-block" onclick="payWithHyp()">מעבר לתשלום מאובטח בכרטיס אשראי</button>
+      </div>
+      <div class="pay-note">התשלום מבוצע דרך שירות הסליקה HYP. הסכום הסופי ייבדק ויאושר מול הסוכן לפני החיוב בפועל.</div>
+    </form>
+  </div>
+</div>
 
 <footer>
   <div><img src="images/meet-dubai-logo.png" alt="Meet Dubai" style="height:auto;width:120px;object-fit:contain;margin:0 auto;"></div>
@@ -162,7 +377,6 @@
 </footer>
 
 <script>
-  /* Read-only access to the public gallery / video tables (no third-party library, no write access). */
   const SUPABASE_URL = 'https://bhxatigravmoouickbsh.supabase.co';
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJoeGF0aWdyYXZtb291aWNrYnNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkzNDU5NTgsImV4cCI6MjEwNDkyMTk1OH0.pOP7FAgSdutvCrONGF4tByfofuVEm1EHaqbd6Xq2_Cc';
   async function sbSelect(table, query){
@@ -182,25 +396,15 @@
       return [];
     }
   }
-  async function loadSlotVideoUrl(slot){
-    try {
-      const rows = await sbSelect('site_videos', 'select=video_url&slot=eq.' + Number(slot) + '&limit=1');
-      return rows.length ? safeMediaUrl(rows[0].video_url) : null;
-    } catch (err) {
-      console.error('loadSlotVideoUrl failed:', err);
-      return null;
-    }
-  }
 </script>
 <script>
-  // ---------- Offer photos: 3 fixed slots, each shows its most recent photo ----------
-  const OFFER_SLOTS = [1, 2, 3];
+  const HOTEL_SLOTS = [1, 2, 3, 4, 5, 6, 7, 8];
 
-  async function loadOfferPhoto(slot){
-    const category = `offer-${slot}`;
+  async function loadHotelPhoto(slot){
+    const category = `hotel-${slot}`;
     const urls = await loadSharedPhotos(category);
-    const photoEl = document.getElementById(`offerPhoto${slot}`);
-    const imgEl = document.getElementById(`offerImg${slot}`);
+    const photoEl = document.getElementById(`hotelPhoto${slot}`);
+    const imgEl = document.getElementById(`hotelImg${slot}`);
     if (urls.length){
       imgEl.src = urls[urls.length - 1];
       photoEl.classList.add('has-photo');
@@ -209,8 +413,151 @@
       imgEl.removeAttribute('src');
     }
   }
+  HOTEL_SLOTS.forEach(loadHotelPhoto);
+</script>
+<script>
+  const HOTELS = {
+    firstjvc: {
+      name: "The First Collection Dubai Jumeirah Village Circle",
+      tagline: "מלון 4 כוכבים ב-JVC · 17.1 ק\"מ ממרכז דובאי · דירוג 8.6",
+      price: 425,
+      features: ["ביטול בחינם, ללא מקדמה", "בריכה על הגג עם נוף לעיר", "חדר עם מיטה אחת", "מלון מוסמך בתחום הקיימות"]
+    },
+    radisson: {
+      name: "Radisson Beach Resort Palm Jumeirah",
+      tagline: "ריזורט 4 כוכבים על חוף פאלם ג'ומיירה · 16.3 ק\"מ ממרכז דובאי · דירוג 9.2",
+      price: 553,
+      features: ["מיקום על החוף בפאלם ג'ומיירה", "בריכה עם נוף לקו הרקיע של דובאי", "חדר עם 2 מיטות", "דירוג Genius גבוה במיוחד"]
+    },
+    mercure: {
+      name: "Grand Mercure Business Bay",
+      tagline: "מלון 4 כוכבים על תעלת ביזנס ביי · 1.4 ק\"מ ממרכז דובאי · דירוג 8.1",
+      price: 291,
+      features: ["ביטול בחינם, ללא מקדמה", "מיקום על התעלה בלב ביזנס ביי", "חדר עם 2 מיטות", "מבצע סוף שנה"]
+    },
+    paramount: {
+      name: "Paramount Hotel Midtown",
+      tagline: "מלון 5 כוכבים בביזנס ביי · 0.7 ק\"מ ממרכז דובאי · דירוג 8.8",
+      price: 642,
+      features: ["ביטול בחינם, ללא מקדמה", "בריכת גג עם נוף לבורג' ח'ליפה", "חדר עם 2 מיטות", "קרבה הליכתית למרכז העיר"]
+    },
+    firstbb: {
+      name: "The First Collection Business Bay, Dubai",
+      tagline: "מלון 4 כוכבים בביזנס ביי · 2 ק\"מ ממרכז דובאי · דירוג 8.6",
+      price: 370,
+      features: ["ביטול בחינם, ללא מקדמה", "בריכה גדולה בשטח המלון", "חדר עם מיטה אחת", "דירוג Genius"]
+    },
+    fivejvc: {
+      name: "FIVE Jumeirah Village",
+      tagline: "מלון בוטיק 5 כוכבים ב-Jumeirah Village · 17 ק\"מ ממרכז דובאי · דירוג 9.0",
+      price: 561,
+      features: ["בריכת אינפיניטי עם נוף לקו הרקיע", "מלון מוסמך בתחום הקיימות", "חדר עם מיטה אחת", "דירוג Genius גבוה"]
+    },
+    barcelo: {
+      name: "Barcelo Business Bay Dubai",
+      tagline: "מלון 5 כוכבים בביזנס ביי · 1.8 ק\"מ ממרכז דובאי · דירוג 8.8",
+      price: 363,
+      features: ["ביטול בחינם, ללא מקדמה", "בריכת גג בשקיעה", "חדר עם מיטה אחת", "מבצע לזמן מוגבל"]
+    },
+    hilton: {
+      name: "Hilton Garden Inn Dubai Business Bay",
+      tagline: "מלון 4 כוכבים בביזנס ביי · 1.7 ק\"מ ממרכז דובאי · דירוג 8.8",
+      price: 366,
+      features: ["ביטול בחינם, ללא מקדמה", "בריכת חוץ", "חדר עם 2 מיטות", "מותג Hilton בינלאומי"]
+    }
+  };
 
-  OFFER_SLOTS.forEach(loadOfferPhoto);
+  const BREAKFAST_PRICE_PER_GUEST_PER_NIGHT = 120;
+
+  let currentHotelKey = null;
+  const overlay = document.getElementById('bookingOverlay');
+  const checkinEl = document.getElementById('bkCheckin');
+  const checkoutEl = document.getElementById('bkCheckout');
+  const guestsEl = document.getElementById('bkGuests');
+
+  function openBooking(key){
+    const hotel = HOTELS[key];
+    if (!hotel) return;
+    currentHotelKey = key;
+    document.getElementById('bkHotelName').textContent = hotel.name;
+    document.getElementById('bkTagline').textContent = hotel.tagline;
+    document.getElementById('bkHotelField').value = hotel.name;
+    const amenitiesEl = document.getElementById('bkAmenities');
+    amenitiesEl.innerHTML = hotel.features.map(f => `<li>${f}</li>`).join('');
+    document.querySelector('#bookingForm input[name="_subject"]').value = `הזמנת חדר - ${hotel.name}, HAY DUBAI`;
+
+    const today = new Date();
+    const inD = new Date(today); inD.setDate(inD.getDate() + 14);
+    const outD = new Date(inD); outD.setDate(outD.getDate() + 3);
+    checkinEl.value = inD.toISOString().slice(0,10);
+    checkoutEl.value = outD.toISOString().slice(0,10);
+
+    calcTotal();
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeBooking(){
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeBooking(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeBooking(); });
+
+  function nightsBetween(){
+    const inD = new Date(checkinEl.value);
+    const outD = new Date(checkoutEl.value);
+    const diff = Math.round((outD - inD) / (1000*60*60*24));
+    return diff > 0 ? diff : 1;
+  }
+
+  function calcTotal(){
+    if (!currentHotelKey) return;
+    const hotel = HOTELS[currentHotelKey];
+    const nights = nightsBetween();
+    const guests = Math.min(8, Math.max(1, Number(guestsEl.value) || 1));
+    const rooms = Math.min(4, Math.max(1, Number(document.getElementById('bkRooms').value) || 1));
+    const breakfast = document.querySelector('input[name="ארוחת בוקר"]:checked').value === "עם ארוחת בוקר";
+
+    const roomCost = hotel.price * nights * rooms;
+    const breakfastCost = breakfast ? BREAKFAST_PRICE_PER_GUEST_PER_NIGHT * nights * guests : 0;
+    const total = roomCost + breakfastCost;
+
+    document.getElementById('bkNightsLine').textContent = `${nights} לילות, ${rooms} חדר/ים, ${guests} אורחים`;
+    document.getElementById('bkRoomLine').textContent = `עלות חדר: ${roomCost.toLocaleString('he-IL')} ₪`;
+    document.getElementById('bkBreakfastLine').textContent = breakfast
+      ? `תוספת ארוחת בוקר: ${breakfastCost.toLocaleString('he-IL')} ₪`
+      : `תוספת ארוחת בוקר: לא נבחרה`;
+    document.getElementById('bkGrandTotal').textContent = `סה"כ: ${total.toLocaleString('he-IL')} ₪`;
+
+    return total;
+  }
+  checkinEl.addEventListener('change', calcTotal);
+  checkoutEl.addEventListener('change', calcTotal);
+  guestsEl.addEventListener('input', calcTotal);
+  document.getElementById('bkRooms').addEventListener('input', calcTotal);
+
+  const HYP_MASOF = 'XXXXXXXX';
+
+  function payWithHyp(){
+    if (!currentHotelKey) return;
+    const name = document.getElementById('bkName').value.trim();
+    const phone = document.getElementById('bkPhone').value.trim();
+    if (!name || !phone){
+      alert('נא למלא שם מלא וטלפון לפני המעבר לתשלום.');
+      return;
+    }
+    if (HYP_MASOF === 'XXXXXXXX'){
+      alert('סליקת HYP עדיין לא מוגדרת באתר (חסר מספר מסוף). הבקשה תישלח לסוכן שיחזור עם קישור לתשלום.');
+      document.getElementById('bookingForm').requestSubmit ? document.getElementById('bookingForm').requestSubmit() : document.getElementById('bookingForm').submit();
+      return;
+    }
+    const hotel = HOTELS[currentHotelKey];
+    const total = calcTotal();
+    const info = encodeURIComponent(`${hotel.name} - ${document.getElementById('bkNightsLine').textContent}`);
+    const url = `https://pay.hyp.co.il/p/?action=pay&Masof=${HYP_MASOF}&Amount=${total}&Coin=1&UTF8=True&UTF8out=True&ClientName=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}&Info=${info}`;
+    window.open(url, '_blank', 'noopener');
+  }
 </script>
 </body>
 </html>
