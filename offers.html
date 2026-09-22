@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="מלונות: 8 מלונות נבחרים DUBAI.">
-<title>מלונות | meet dubai</title>
+<meta name="description" content="מלונות מומלצים: 8 מלונות נבחרים בדובאי, הזמנת חדר עם או בלי ארוחת בוקר, מחירים ללילה ותשלום מאובטח. HAY DUBAI.">
+<title>מלונות מומלצים | HAY DUBAI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -50,8 +50,8 @@
 
   .hotels-grid{
     display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
   }
   .hotel-card{
     background: var(--surface-2);
@@ -79,11 +79,15 @@
     text-shadow: 0 0 10px rgba(120,180,255,0.6); margin-bottom: 14px;
   }
   .hotel-features{ margin:0 0 18px; padding-right: 20px; color: var(--muted); font-size: .88rem; line-height:1.9; font-weight:300; flex:1; }
-  @media (max-width: 980px){
-    .hotels-grid{ grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 620px){
-    .hotels-grid{ grid-template-columns: 1fr; }
+  @media (max-width: 480px){
+    .hotels-grid{ gap: 10px; }
+    .hotel-body{ padding: 12px 12px 14px; }
+    .hotel-body h3{ font-size: .92rem; }
+    .hotel-tagline{ font-size:.72rem; margin-bottom:8px; }
+    .hotel-price{ font-size:.92rem; margin-bottom:8px; }
+    .hotel-features{ font-size:.74rem; padding-right:14px; margin-bottom:10px; }
+    .hotel-features li{ margin-bottom:2px; }
+    .btn-block{ padding:9px 10px; font-size:.8rem; }
   }
 
   .extra-grid{ display:grid; grid-template-columns: 1fr; gap:24px; }
@@ -139,9 +143,7 @@
 
 <main class="container">
   <img src="images/meet-dubai-logo.png" alt="Meet Dubai" style="display:block;margin:0 auto 28px;height:auto;width:142px;object-fit:contain;">
-  <h1>מלונות</h1>
-  <p class="page-sub">8 מלונות נבחרים בדובאי. לכל מלון ניתן להזמין חדר בלבד, עם או בלי ארוחת בוקר, ולבצע תשלום מאובטח בכרטיס אשראי.</p>
-  <p class="price-disclaimer">המחירים תואמים למחירי Booking.com הנוכחיים לחדר מלון אחד ללילה (כפי שנבדקו לאחרונה), בתוספת דמי טיפול קבועים. המחיר הסופי ייקבע ויאושר מול הסוכן לפני החיוב.</p>
+  <h1 style="margin-bottom:30px;">מלונות מומלצים</h1>
 
   <div class="hotels-grid">
 
@@ -408,10 +410,8 @@
     if (urls.length){
       imgEl.src = urls[urls.length - 1];
       photoEl.classList.add('has-photo');
-    } else {
-      photoEl.classList.remove('has-photo');
-      imgEl.removeAttribute('src');
     }
+    // אם אין תמונה מועלית בגלריה, משאירים את תמונת ברירת המחדל שכבר מוגדרת ב-HTML
   }
   HOTEL_SLOTS.forEach(loadHotelPhoto);
 </script>
