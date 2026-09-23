@@ -363,9 +363,8 @@
 
       <div class="modal-actions">
         <button type="submit" class="btn btn-block">שליחת בקשת הזמנה</button>
-        <button type="button" class="btn-outline btn-block" onclick="payWithHyp()">מעבר לתשלום מאובטח בכרטיס אשראי</button>
+        <a class="btn-outline btn-block" href="https://wa.me/972543771767?text=%D7%A8%D7%95%D7%A6%D7%99%D7%9D%20%D7%9C%D7%93%D7%A2%D7%AA%20%D7%99%D7%95%D7%AA%D7%A8%3F%20%D7%A9%D7%9C%D7%97%D7%95%20%D7%9C%D7%A0%D7%95%20%D7%95%D7%95%D7%98%D7%A1%D7%90%D7%A4" target="_blank" rel="noopener">לפרטים</a>
       </div>
-      <div class="pay-note">התשלום מבוצע דרך שירות הסליקה HYP. הסכום הסופי ייבדק ויאושר מול הסוכן לפני החיוב בפועל.</div>
     </form>
   </div>
 </div>
@@ -536,28 +535,6 @@
   checkoutEl.addEventListener('change', calcTotal);
   guestsEl.addEventListener('input', calcTotal);
   document.getElementById('bkRooms').addEventListener('input', calcTotal);
-
-  const HYP_MASOF = 'XXXXXXXX';
-
-  function payWithHyp(){
-    if (!currentHotelKey) return;
-    const name = document.getElementById('bkName').value.trim();
-    const phone = document.getElementById('bkPhone').value.trim();
-    if (!name || !phone){
-      alert('נא למלא שם מלא וטלפון לפני המעבר לתשלום.');
-      return;
-    }
-    if (HYP_MASOF === 'XXXXXXXX'){
-      alert('סליקת HYP עדיין לא מוגדרת באתר (חסר מספר מסוף). הבקשה תישלח לסוכן שיחזור עם קישור לתשלום.');
-      document.getElementById('bookingForm').requestSubmit ? document.getElementById('bookingForm').requestSubmit() : document.getElementById('bookingForm').submit();
-      return;
-    }
-    const hotel = HOTELS[currentHotelKey];
-    const total = calcTotal();
-    const info = encodeURIComponent(`${hotel.name} - ${document.getElementById('bkNightsLine').textContent}`);
-    const url = `https://pay.hyp.co.il/p/?action=pay&Masof=${HYP_MASOF}&Amount=${total}&Coin=1&UTF8=True&UTF8out=True&ClientName=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}&Info=${info}`;
-    window.open(url, '_blank', 'noopener');
-  }
 </script>
 </body>
 </html>
