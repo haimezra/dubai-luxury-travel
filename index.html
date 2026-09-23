@@ -246,18 +246,14 @@
   @media (hover: none){ .col-go{ opacity: 1; transform: none; } }
   @media (max-width: 900px){ .collections-grid{ grid-template-columns: repeat(2, 1fr); } }
 
-  /* tighten the gap between collections and the video showcase, and blend the seam */
-  #collections{ padding-bottom: 50px; }
-  #videos{ padding-top: 50px; }
-  .section-seam{
-    height: 90px; margin: -1px 0;
-    background: radial-gradient(60% 100% at 50% 50%, rgba(217,178,92,.06), rgba(11,11,12,0) 70%);
-    pointer-events: none;
-  }
+  /* tighten the gap between collections and the video showcase, with a simple on-brand divider */
+  #collections{ padding-bottom: 60px; }
+  #videos{ padding-top: 60px; }
+  .section-divider{ display: flex; align-items: center; justify-content: center; }
+  .section-divider .rule{ opacity: .55; }
   @media (max-width: 700px){
-    #collections{ padding-bottom: 28px; }
-    #videos{ padding-top: 28px; }
-    .section-seam{ height: 56px; }
+    #collections{ padding-bottom: 36px; }
+    #videos{ padding-top: 36px; }
   }
 
   /* ---------- DUBAI UPDATES PREVIEW ---------- */
@@ -948,7 +944,7 @@
   </div>
 </section>
 
-<div class="section-seam" aria-hidden="true"></div>
+<div class="section-divider" aria-hidden="true"><hr class="rule"></div>
 
 <!-- ============ EXPERIENCES SHOWCASE (all 8 video slots, one at a time) ============ -->
 <section class="section showcase" id="videos">
