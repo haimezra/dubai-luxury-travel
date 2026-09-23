@@ -253,25 +253,31 @@
   }
   .updates-preview-frame{
     position: relative; flex: 0 0 auto;
-    width: 96px; aspect-ratio: 9 / 16;
-    border-radius: 10px; overflow: hidden;
+    width: 168px; aspect-ratio: 9 / 16;
+    border-radius: 14px; overflow: hidden;
     background: #0d0d0e;
-    box-shadow: 0 0 0 1px rgba(217,178,92,.25);
+    box-shadow: 0 0 0 1px rgba(217,178,92,.25), 0 10px 30px rgba(0,0,0,.4);
   }
   .updates-preview-img{
     position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
     opacity: 0; transition: opacity 1s ease;
   }
   .updates-preview-img.active{ opacity: 1; }
-  .updates-preview-text{ display: flex; flex-direction: column; gap: 4px; }
-  .updates-preview-title{
-    font-family: var(--display); font-weight: 300; letter-spacing: .12em;
-    font-size: 1.25rem; color: var(--gold); text-transform: uppercase;
+  .updates-preview-text{ display: flex; flex-direction: column; gap: 6px; }
+  .updates-preview-eyebrow{
+    font-family: var(--sans); letter-spacing: .18em; text-transform: uppercase;
+    font-size: .78rem; color: var(--muted);
   }
-  .updates-preview-sub{ color: var(--muted); font-size: .92rem; }
+  .updates-preview-title{
+    font-family: var(--display); font-weight: 300; letter-spacing: .08em;
+    font-size: 1.7rem; color: var(--gold); text-transform: uppercase;
+    line-height: 1.15;
+  }
+  .updates-preview-sub{ color: var(--muted); font-size: .95rem; }
   @media (max-width: 700px){
-    .updates-preview-frame{ width: 76px; }
-    .updates-preview-title{ font-size: 1.05rem; }
+    .updates-preview-frame{ width: 120px; }
+    .updates-preview-eyebrow{ font-size: .7rem; }
+    .updates-preview-title{ font-size: 1.3rem; }
     .updates-preview-sub{ font-size: .84rem; }
   }
 
@@ -804,7 +810,8 @@
         -->
       </div>
       <div class="updates-preview-text">
-        <span class="updates-preview-title">Dubai Updates</span>
+        <span class="updates-preview-eyebrow">Season 26/27</span>
+        <span class="updates-preview-title">Dubai Updates, Live</span>
         <span class="updates-preview-sub">עדכונים חמים מהשטח, ישר מדובאי</span>
       </div>
     </div>
