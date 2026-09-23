@@ -66,6 +66,17 @@
   .exp-thumbs img{ width:100%; height: 96px; object-fit:cover; border-radius: 12px; }
   .exp-layout.no-media{ grid-template-columns: 1fr; }
   .exp-cta{ margin-top: 22px; }
+  .cars-form-wrap{ margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(217,178,92,0.2); }
+  .cars-form-wrap h3{ font-size: 1.05rem; margin-bottom: 18px; color: var(--gold-bright); text-shadow: 0 0 10px var(--gold-glow); }
+  .contact-form{ display: flex; flex-direction: column; gap: 22px; }
+  .contact-form label{ display: flex; flex-direction: column; gap: 6px; font-size: .88rem; color: var(--muted); font-weight: 400; }
+  .contact-form input, .contact-form textarea{
+    background: transparent; border: none; border-bottom: 1px solid rgba(236,231,221,0.25);
+    color: var(--ivory); font-family: 'Heebo', sans-serif; font-size: 1rem; padding: 8px 0; outline: none;
+  }
+  .contact-form textarea{ resize: vertical; }
+  .contact-form input:focus, .contact-form textarea:focus{ border-bottom-color: var(--gold); }
+  .contact-form .btn{ align-self: flex-start; margin-top: 8px; }
   .exp-jump{ display:flex; flex-wrap:wrap; gap: 10px; padding: 26px 0 0; }
   .exp-jump a{ padding: 8px 16px; border-radius: 999px; background: var(--surface-2); color: var(--ivory); font-size:.88rem; font-weight:500;
     box-shadow: 0 0 0 1px rgba(217,178,92,0.18); transition: box-shadow .2s ease, color .2s ease; }
@@ -82,6 +93,7 @@
   .rule-block h3{ font-size: 1.05rem; margin-bottom: 10px; color: var(--gold-bright); text-shadow: 0 0 10px var(--gold-glow); }
   .rule-block ul{ margin:0; padding-inline-start: 20px; display:flex; flex-direction:column; gap: 6px; }
   .rule-block p{ margin:0; color: var(--ivory); font-size: .98rem; }
+  .unavailable-note{ color:#c98a4a; font-size:.7rem; font-weight:400; vertical-align:middle; }
   .rule-note{ color: var(--muted); font-size: .9rem; margin-top: 18px; }
 
   .beach-types{ display:flex; flex-direction:column; gap: 18px; margin-top: 6px; }
@@ -445,6 +457,38 @@
         </div>
         <p class="rule-note">הפרטים המדויקים משתנים לפי חברת ההשכרה והדגם. אנחנו נבדוק ונאשר לכם הכול לפני ההזמנה.</p>
         <a class="btn exp-cta" href="https://wa.me/97229999119?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%94%D7%A9%D7%9B%D7%A8%D7%AA%20%D7%A8%D7%9B%D7%91%20%D7%99%D7%95%D7%A7%D7%A8%D7%94%20%D7%91%D7%93%D7%95%D7%91%D7%90%D7%99.%20%D7%90%D7%A4%D7%A9%D7%A8%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%96%D7%9E%D7%99%D7%A0%D7%95%D7%AA%20%D7%95%D7%9E%D7%97%D7%99%D7%A8%3F" target="_blank" rel="noopener">לבירור זמינות ומחיר</a>
+
+        <div class="cars-form-wrap">
+          <h3>או שנחזור אליכם? השאירו פרטים להשכרת רכב יוקרה</h3>
+          <form class="contact-form" action="https://formsubmit.co/Infodubaisrael@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="פנייה להשכרת רכב יוקרה, HAY DUBAI">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <input type="hidden" name="_template" value="table">
+            <label>
+              שם מלא
+              <input type="text" name="שם מלא" required>
+            </label>
+            <label>
+              טלפון
+              <input type="tel" name="טלפון" required>
+            </label>
+            <label>
+              תאריכי השכרה משוערים
+              <input type="text" name="תאריכי השכרה" placeholder="לדוגמה: 12–16 בדצמבר">
+            </label>
+            <label>
+              דגם רכב מבוקש (רשות)
+              <input type="text" name="דגם מבוקש" placeholder="לדוגמה: לאמבורגיני, פרארי, G-Wagon...">
+            </label>
+            <label>
+              הודעה (רשות)
+              <textarea name="הודעה" rows="3"></textarea>
+            </label>
+            <p class="form-consent" style="font-size:.85rem;color:var(--muted);line-height:1.5;margin:0;">בשליחת הפרטים אני מאשר/ת את <a href="privacy.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">מדיניות הפרטיות</a> ואת <a href="terms.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">תנאי השימוש</a>.</p>
+            <button type="submit" class="btn">שליחת פנייה</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -570,7 +614,7 @@
         <div class="abu-card">
           <img src="https://images.unsplash.com/photo-1580418827493-f2b22c0a76cb?q=80&w=700&auto=format&fit=crop" alt="לובר אבו דאבי" loading="lazy">
           <div class="body">
-            <h3>לובר אבו דאבי</h3>
+            <h3>לובר אבו דאבי <span class="unavailable-note">לא זמין כרגע</span></h3>
             <div class="rule-block"><h3 style="font-size:1.02rem;color:var(--gold-bright);">מה מותר</h3><ul>
             <li>לצלם בלי פלאש ברוב האולמות</li>
             <li>להסתובב בין האולמות בקצב שלכם או עם מדריך</li>
@@ -584,7 +628,7 @@
         <div class="abu-card">
           <img src="https://images.unsplash.com/photo-1704668961045-831f565e62bd?q=80&w=700&auto=format&fit=crop" alt="יאס איילנד" loading="lazy">
           <div class="body">
-            <h3>יאס איילנד</h3>
+            <h3>יאס איילנד <span class="unavailable-note">לא זמין כרגע</span></h3>
             <div class="rule-block"><h3 style="font-size:1.02rem;color:var(--gold-bright);">מה מותר</h3><ul>
             <li>לבחור פארק לפי הגיל וסוג החוויה: פארקי שעשועים, פארקי מים ועוד</li>
             <li>להיעזר בצוות לפי כללי הבטיחות של כל פארק</li>
