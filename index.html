@@ -312,30 +312,34 @@
     .col-go{ font-size: .8rem; margin-top: 8px; }
   }
 
-  /* ---------- KOSHER PREVIEW ---------- */
+  /* ---------- KOSHER PREVIEW (compact) ---------- */
+  .kosher-section{ padding: 0 0 50px; }
   .kosher-card{
     display: grid; grid-template-columns: 1.05fr 1fr; align-items: stretch;
-    margin-top: 20px; overflow: hidden; border-radius: 2px;
+    margin-top: 12px; overflow: hidden; border-radius: 2px;
     background: linear-gradient(160deg, #1b1a17, #0d0d0e);
   }
-  .kosher-media{ position: relative; min-height: 380px; overflow: hidden; }
+  .kosher-media{ position: relative; min-height: 240px; overflow: hidden; }
   .kosher-media img{
     position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
     transition: transform 1.2s var(--ease);
   }
   .kosher-card:hover .kosher-media img{ transform: scale(1.04); }
-  .kosher-body{ padding: clamp(28px, 4vw, 56px); display: flex; flex-direction: column; justify-content: center; }
-  .kosher-body h3{ font-size: clamp(1.6rem, 3vw, 2.3rem); margin: 10px 0 0; }
+  .kosher-body{ padding: 22px 24px; display: flex; flex-direction: column; justify-content: center; }
+  .kosher-body .eyebrow{ font-size: .74rem; margin-bottom: 4px; }
+  .kosher-body h3{ font-size: clamp(1.25rem, 4.5vw, 1.7rem); margin: 2px 0 0; line-height: 1.2; }
   .kosher-loc{
-    display: flex; align-items: center; gap: 10px; margin-top: 16px;
-    color: #e2ddd2; font-size: .98rem;
+    display: flex; align-items: center; gap: 8px; margin-top: 8px;
+    color: #e2ddd2; font-size: .88rem;
   }
-  .kosher-loc svg{ flex: none; width: 18px; height: 18px; fill: none; stroke: var(--gold); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-  .kosher-body p{ color: var(--muted); margin: 18px 0 0; max-width: 46ch; }
-  .kosher-body .btn{ align-self: flex-start; margin-top: 28px; }
+  .kosher-loc svg{ flex: none; width: 15px; height: 15px; fill: none; stroke: var(--gold); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .kosher-body .btn{
+    align-self: flex-start; margin-top: 14px;
+    padding: 8px 20px; font-size: .8rem;
+  }
   @media (max-width: 900px){
     .kosher-card{ grid-template-columns: 1fr; }
-    .kosher-media{ min-height: 0; aspect-ratio: 4 / 3; }
+    .kosher-media{ min-height: 0; aspect-ratio: 16 / 9; }
   }
 
   /* ---------- EXPERIENCES SHOWCASE ---------- */
@@ -752,6 +756,7 @@
     .menu-toggle .lbl{ display: none; }
     .hero-inner{ padding-top: 130px; padding-bottom: 60px; }
     .float-cta{ bottom: 18px; left: 18px; }
+    #journey{ padding-top: 50px; }
   }
   @media (prefers-reduced-motion: reduce){
     *{ animation: none !important; transition-duration: .01ms !important; }
@@ -1074,7 +1079,7 @@
 </a>
 
 <!-- ============ KOSHER RESTAURANTS PREVIEW ============ -->
-<section class="section" style="padding-top:0;">
+<section class="kosher-section">
   <div class="container">
     <a class="kosher-card" href="kosher-dubai.html">
       <div class="kosher-media">
@@ -1090,7 +1095,7 @@
         <span class="btn">לצפייה במסעדות</span>
       </div>
     </a>
-    <a class="kosher-card" href="synagogues.html" style="margin-top:14px;">
+    <a class="kosher-card" href="synagogues.html">
       <div class="kosher-media">
         <img src="https://commons.wikimedia.org/wiki/Special:FilePath/100345%20rishon%20lezion%20-%20the%20great%20synagogue%20PikiWiki%20Israel.jpg" alt="בית כנסת בישראל" loading="lazy">
       </div>
