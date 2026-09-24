@@ -24,7 +24,6 @@
     --sans: 'Outfit', 'Rubik', sans-serif;
     --ease: cubic-bezier(.2,.6,.2,1);
     --logo-shift: 7px;
-    --radius: 6px;
   }
 
   *{ box-sizing: border-box; }
@@ -82,7 +81,7 @@
     color: var(--text);
     background: transparent;
     border: 1px solid var(--gold);
-    border-radius: var(--radius);
+    border-radius: 2px;
     cursor: pointer;
     transition: background .4s var(--ease), color .4s var(--ease);
   }
@@ -222,7 +221,7 @@
     position: relative; display: block; overflow: hidden;
     aspect-ratio: 4 / 5;
     background: linear-gradient(160deg, #1b1a17, #0d0d0e);
-    border-radius: var(--radius);
+    border-radius: 2px;
     cursor: pointer;
   }
   .col-card img, .col-card video{
@@ -231,7 +230,7 @@
   }
   .col-card::after{
     content: ''; position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(11,11,12,0) 18%, rgba(11,11,12,.34) 45%, rgba(11,11,12,.78) 75%, rgba(11,11,12,1) 100%);
+    background: linear-gradient(180deg, rgba(11,11,12,0) 25%, rgba(11,11,12,.55) 60%, rgba(11,11,12,.94) 100%);
   }
   .col-info{ position: absolute; right: 24px; left: 24px; bottom: 24px; z-index: 1; }
   .col-info h3{ font-size: 1.7rem; text-shadow: 0 1px 12px rgba(0,0,0,.6); }
@@ -246,88 +245,18 @@
   .col-card:hover .col-go, .col-card:focus-visible .col-go{ opacity: 1; transform: none; }
   @media (hover: none){ .col-go{ opacity: 1; transform: none; } }
   @media (max-width: 900px){ .collections-grid{ grid-template-columns: repeat(2, 1fr); } }
-
-  /* tighten the gap between collections and the video showcase, with a simple on-brand divider */
-  #collections{ padding-bottom: 60px; }
-  #videos{ padding-top: 60px; }
-  .section-divider{ display: flex; align-items: center; justify-content: center; }
-  .section-divider .rule{ opacity: .55; }
   @media (max-width: 700px){
-    #collections{ padding-bottom: 36px; }
-    #videos{ padding-top: 36px; }
-  }
-
-  /* ---------- DUBAI UPDATES PREVIEW ---------- */
-  .updates-preview{
-    display: flex; align-items: center; gap: 22px;
-    padding: 18px 0 8px;
-  }
-  .updates-preview-frame{
-    position: relative; flex: 0 0 auto;
-    width: 168px; aspect-ratio: 9 / 16;
-    border-radius: 14px; overflow: hidden;
-    background: #0d0d0e;
-    box-shadow: 0 0 0 1px rgba(217,178,92,.25), 0 10px 30px rgba(0,0,0,.4);
-    cursor: pointer;
-  }
-  .updates-preview-img{
-    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-    opacity: 0; transition: opacity 1s ease;
-  }
-  .updates-preview-img.active{ opacity: 1; }
-  .updates-preview-zoom{
-    position: absolute; left: 8px; bottom: 8px; z-index: 2;
-    width: 26px; height: 26px; border-radius: 50%;
-    background: rgba(11,11,12,.55); color: var(--gold);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1rem; line-height: 1; pointer-events: none;
-  }
-  .updates-lightbox{
-    display: none; position: fixed; inset: 0; z-index: 200;
-    background: rgba(6,6,7,.94);
-    align-items: center; justify-content: center; padding: 24px;
-  }
-  .updates-lightbox.active{ display: flex; }
-  .updates-lightbox img{
-    max-width: min(92vw, 480px); max-height: 88vh; width: auto; height: auto;
-    border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,.6);
-  }
-  .updates-lightbox-close{
-    position: absolute; top: 20px; left: 20px; z-index: 1;
-    width: 40px; height: 40px; border-radius: 50%; border: none;
-    background: rgba(255,255,255,.08); color: var(--text);
-    font-size: 1.1rem; cursor: pointer;
-  }
-  .updates-preview-text{ display: flex; flex-direction: column; gap: 6px; }
-  .updates-preview-eyebrow{
-    font-family: var(--sans); letter-spacing: .18em; text-transform: uppercase;
-    font-size: .78rem; color: var(--muted);
-  }
-  .updates-preview-title{
-    font-family: var(--display); font-weight: 300; letter-spacing: .08em;
-    font-size: 1.7rem; color: var(--gold); text-transform: uppercase;
-    line-height: 1.15;
-  }
-  .updates-preview-sub{ color: var(--muted); font-size: .95rem; }
-  @media (max-width: 700px){
-    .updates-preview-frame{ width: 120px; }
-    .updates-preview-eyebrow{ font-size: .7rem; }
-    .updates-preview-title{ font-size: 1.3rem; }
-    .updates-preview-sub{ font-size: .84rem; }
-  }
-
-  @media (max-width: 700px){
-    .collections-grid{ gap: 18px; }
-    .col-info{ right: 16px; left: 16px; bottom: 18px; }
+    .collections-grid{ gap: 12px; }
+    .col-info{ right: 14px; left: 14px; bottom: 16px; }
     .col-info h3{ font-size: 1.4rem; }
     .col-sub{ font-size: .8rem; line-height: 1.5; }
-    .col-go{ font-size: .8rem; margin-top: 10px; }
+    .col-go{ font-size: .8rem; margin-top: 8px; }
   }
 
   /* ---------- KOSHER PREVIEW ---------- */
   .kosher-card{
     display: grid; grid-template-columns: 1.05fr 1fr; align-items: stretch;
-    margin-top: 20px; overflow: hidden; border-radius: var(--radius);
+    margin-top: 20px; overflow: hidden; border-radius: 2px;
     background: linear-gradient(160deg, #1b1a17, #0d0d0e);
   }
   .kosher-media{ position: relative; min-height: 380px; overflow: hidden; }
@@ -351,14 +280,7 @@
   }
 
   /* ---------- EXPERIENCES SHOWCASE ---------- */
-  .showcase{
-    background:
-      linear-gradient(180deg, var(--bg) 0%, rgba(18,18,19,0) 100%) top / 100% 160px no-repeat,
-      var(--surface);
-  }
-  @media (max-width: 700px){
-    .showcase{ background: linear-gradient(180deg, var(--bg) 0%, rgba(18,18,19,0) 100%) top / 100% 100px no-repeat, var(--surface); }
-  }
+  .showcase{ background: var(--surface); }
   .showcase-links{ display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
   .exp-tabs{
     display: flex; gap: 6px; justify-content: center;
@@ -393,7 +315,7 @@
     position: relative; overflow: hidden;
     aspect-ratio: 16 / 9;
     background: var(--bg);
-    border-radius: var(--radius);
+    border-radius: 2px;
     box-shadow: 0 0 0 1px var(--line);
   }
   .video-cube video{
@@ -456,7 +378,7 @@
   .feature-grid.four{ grid-template-columns: repeat(4, 1fr); gap: 24px; }
   .feature-card{ cursor: pointer; }
   .feature-card .media{
-    aspect-ratio: 4 / 3; overflow: hidden; background: var(--surface); border-radius: var(--radius);
+    aspect-ratio: 4 / 3; overflow: hidden; background: var(--surface); border-radius: 2px;
   }
   .feature-card img{ width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
   .feature-card .media{ position: relative; }
@@ -468,7 +390,7 @@
     background: rgba(11,11,12,.72);
     backdrop-filter: blur(6px);
     border: 1px solid var(--gold);
-    border-radius: var(--radius);
+    border-radius: 2px;
     transition: background .4s var(--ease), color .4s var(--ease);
   }
   .card-btn:hover{ background: var(--gold); color: #0B0B0C; }
@@ -491,7 +413,7 @@
   .abudhabi-cards{ padding: 0 0 130px; }
   .abu{ padding-bottom: 80px; }
   .abu-layout{ display: grid; grid-template-columns: 1.1fr .9fr; gap: 72px; align-items: center; }
-  .abu-photo{ aspect-ratio: 4 / 3; overflow: hidden; background: var(--surface); border-radius: var(--radius); }
+  .abu-photo{ aspect-ratio: 4 / 3; overflow: hidden; background: var(--surface); border-radius: 2px; }
   .abu-photo img{ width: 100%; height: 100%; object-fit: cover; }
   .abu-text{ min-width: 0; }
   .abu-text h2{ font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
@@ -546,8 +468,8 @@
   .review-card{
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 30px 28px;
+    border-radius: 3px;
+    padding: 28px 26px;
     display: flex; flex-direction: column;
     position: relative;
     flex: 0 0 300px; scroll-snap-align: start;
@@ -680,7 +602,7 @@
   .modal-box h3{ font-size: 1.8rem; padding-left: 50px; }
   .modal-sub{ color: var(--muted); margin: 14px 0 0; }
   .modal-grid{ margin-top: 34px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .modal-grid figure{ margin: 0; position: relative; overflow: hidden; aspect-ratio: 1 / 1; background: var(--bg); border-radius: var(--radius); }
+  .modal-grid figure{ margin: 0; position: relative; overflow: hidden; aspect-ratio: 1 / 1; background: var(--bg); border-radius: 2px; }
   .modal-grid img, .modal-grid video{ width: 100%; height: 100%; object-fit: cover; display: block; }
   .modal-grid figure.lightbox-item{ cursor: pointer; }
   @media (max-width: 640px){
@@ -698,7 +620,7 @@
     display: none; align-items: center; justify-content: center; padding: 30px;
   }
   .lightbox-overlay.active{ display: flex; }
-  .lightbox-overlay img{ max-width: 90vw; max-height: 84vh; border-radius: var(--radius); }
+  .lightbox-overlay img{ max-width: 90vw; max-height: 84vh; border-radius: 2px; }
   .lightbox-close{
     position: absolute; top: 26px; left: 26px;
     width: 42px; height: 42px; border-radius: 50%;
@@ -729,7 +651,7 @@
   .quiz-options{ display: flex; flex-direction: column; gap: 12px; }
   .quiz-option-btn{
     text-align: right; padding: 15px 20px;
-    border-radius: var(--radius); background: transparent; color: var(--text);
+    border-radius: 2px; background: transparent; color: var(--text);
     border: 1px solid var(--line);
     font-family: var(--sans); font-size: 1rem; font-weight: 300; cursor: pointer;
     transition: border-color .3s ease, background .3s ease, color .3s ease;
@@ -755,19 +677,15 @@
   .exp-panel > *, .contact-grid > *, .feature-grid > *, .journey-grid > *, .collections-grid > *{ min-width: 0; }
   @media (max-width: 700px){
     :root{ --logo-shift: 3px; }
-    .container{ padding: 0 24px; }
-    .section{ padding: 108px 0; }
-    .intro{ padding: 112px 0 100px; }
-    .section-head{ margin-bottom: 60px; }
+    .container{ padding: 0 22px; }
+    .section{ padding: 90px 0; }
+    .intro{ padding: 100px 0 90px; }
+    .section-head{ margin-bottom: 52px; }
     .site-nav{ padding: 14px 20px; }
     .site-nav.scrolled{ padding: 10px 20px; }
     .menu-toggle .lbl{ display: none; }
     .hero-inner{ padding-top: 130px; padding-bottom: 60px; }
     .float-cta{ bottom: 18px; left: 18px; }
-    .feature-grid{ gap: 40px; }
-    .feature-card h3{ margin-top: 26px; }
-    .feature-card p, .feature-card .tag{ margin-top: 10px; }
-    .journey-grid{ gap: 52px; }
   }
   @media (prefers-reduced-motion: reduce){
     *{ animation: none !important; transition-duration: .01ms !important; }
@@ -811,8 +729,9 @@
       <a href="rzr.html">השכרת RZR</a>
       <a href="vip-parties.html">מסיבות VIP</a>
       <a href="kosher-dubai.html">מסעדות כשרות</a>
+      <a href="synagogues.html">בתי כנסת ומניינים</a>
       <a href="netiv-vip.html">נתיב VIP בנתב"ג</a>
-      <a href="offers.html">המלצות</a>
+      <a href="offers.html">הזמנות</a>
       <div class="menu-contact">
         <a class="tel" href="tel:029999119">02-999-9119</a>
         <a href="https://wa.me/97229999119" target="_blank" rel="noopener">שיחה בוואטסאפ</a>
@@ -840,77 +759,6 @@
     <p>מלווים אתכם אישית מהרגע שאתם מחליטים לטוס, במלון המושלם, בחוויות שלא שוכחים, ובזמינות מלאה לאורך כל הדרך.</p>
   </div>
 </section>
-
-<!-- ============ DUBAI UPDATES PREVIEW ============ -->
-<section class="section dubai-updates" style="padding-top:6px;padding-bottom:0;">
-  <div class="container">
-    <div class="updates-preview">
-      <div class="updates-preview-frame" id="updatesPreviewFrame" role="button" tabindex="0" aria-label="הגדלת התמונה">
-        <img src="images/dubai-update-1.jpg" alt="עדכון מדובאי" class="updates-preview-img active" loading="lazy">
-        <img src="images/dubai-update-2.jpg" alt="עדכון מדובאי" class="updates-preview-img" loading="lazy">
-        <!--
-          להוספת עוד תמונות (עד 4 בסה"כ):
-          1) העלו את קובץ התמונה לתיקיית images/, למשל images/dubai-update-3.jpg
-          2) הוסיפו כאן שורת <img> נוספת באותו פורמט, למשל:
-          <img src="images/dubai-update-3.jpg" alt="עדכון מדובאי" class="updates-preview-img" loading="lazy">
-        -->
-        <span class="updates-preview-zoom">⤢</span>
-      </div>
-      <div class="updates-preview-text">
-        <span class="updates-preview-eyebrow">Season 26/27</span>
-        <span class="updates-preview-title">Dubai Updates, Live</span>
-        <span class="updates-preview-sub">עדכונים חמים מהשטח, ישר מדובאי</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="updates-lightbox" id="updatesLightbox">
-  <button type="button" class="updates-lightbox-close" id="updatesLightboxClose" aria-label="סגירה">✕</button>
-  <img src="" alt="עדכון מדובאי" id="updatesLightboxImg">
-</div>
-
-<script>
-(function(){
-  var frame = document.getElementById('updatesPreviewFrame');
-  if(!frame) return;
-  var imgs = frame.querySelectorAll('.updates-preview-img');
-  var lightbox = document.getElementById('updatesLightbox');
-  var lightboxImg = document.getElementById('updatesLightboxImg');
-  var lightboxClose = document.getElementById('updatesLightboxClose');
-
-  if(imgs.length >= 2){
-    var i = 0;
-    setInterval(function(){
-      imgs[i].classList.remove('active');
-      i = (i + 1) % imgs.length;
-      imgs[i].classList.add('active');
-    }, 3200);
-  }
-
-  function openLightbox(){
-    var current = frame.querySelector('.updates-preview-img.active') || imgs[0];
-    if(!current) return;
-    lightboxImg.src = current.src;
-    lightbox.classList.add('active');
-  }
-  function closeLightbox(){
-    lightbox.classList.remove('active');
-  }
-
-  frame.addEventListener('click', openLightbox);
-  frame.addEventListener('keydown', function(e){
-    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openLightbox(); }
-  });
-  lightboxClose.addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', function(e){
-    if(e.target === lightbox) closeLightbox();
-  });
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') closeLightbox();
-  });
-})();
-</script>
 
 <!-- ============ COLLECTIONS ============ -->
 <section class="section" id="collections" style="padding-top:20px;">
@@ -956,8 +804,6 @@
   </div>
 </section>
 
-<div class="section-divider" aria-hidden="true"><hr class="rule"></div>
-
 <!-- ============ EXPERIENCES SHOWCASE (all 8 video slots, one at a time) ============ -->
 <section class="section showcase" id="videos">
   <div class="container">
@@ -967,7 +813,7 @@
       <p>קצת מהאווירה, ישירות מהשטח.</p>
       <div class="showcase-links">
         <a class="link-arrow" href="experiences.html">לפרטים על כל החוויות</a>
-        <a class="link-arrow" href="offers.html">המלצות</a>
+        <a class="link-arrow" href="offers.html">הזמנות</a>
       </div>
     </div>
 
@@ -1101,6 +947,20 @@
         <span class="btn">לצפייה במסעדות</span>
       </div>
     </a>
+    <a class="kosher-card" href="synagogues.html" style="margin-top:14px;">
+      <div class="kosher-media">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/100345%20rishon%20lezion%20-%20the%20great%20synagogue%20PikiWiki%20Israel.jpg" alt="בית כנסת בישראל" loading="lazy">
+      </div>
+      <div class="kosher-body">
+        <div class="eyebrow">קהילה יהודית</div>
+        <h3>בתי כנסת ומניינים בדובאי</h3>
+        <div class="kosher-loc">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+          <span>דובאי · אבו דאבי</span>
+        </div>
+        <span class="btn">מדריך תפילה מלא</span>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -1164,7 +1024,6 @@
         <h3>ארמונות של מלונות</h3>
         <p>מלונות פאר שנראים כמו סרט, עם עיצוב מהמם, שירות ברמה עולמית ונוף שלא נגמר.</p>
         <span class="link-arrow">לצפייה בגלריה ←</span>
-        <a class="link-arrow" href="offers.html" onclick="event.stopPropagation()" style="display:block;margin-top:8px;">למלונות מומלצים ←</a>
       </div>
       <div class="feature-card" role="button" tabindex="0" onclick="openGalleryModal('rooms','חדרים וסוויטות','סוויטות שיפנקו אתכם עד הרגע האחרון.')">
         <div class="media"><img src="images/room-burj-view.jpg" alt="חדר מלון מפואר עם נוף לבורג' ח'ליפה" loading="lazy"></div>
