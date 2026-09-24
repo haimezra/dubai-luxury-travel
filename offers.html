@@ -112,6 +112,8 @@
   .modal-close:hover{ color:var(--gold-bright); }
   .modal-card h3{ font-size:1.25rem; margin-bottom:4px; padding-left:24px; }
   #bkTagline{ color:var(--muted); font-size:.85rem; margin-bottom:14px; }
+  .vibe-badge{ display:inline-block; margin:6px 0 14px; padding:6px 14px; border-radius:999px; background:rgba(217,178,92,0.12); color:var(--gold-bright); font-size:.82rem; font-weight:600; }
+  .info-desc{ color:var(--ivory); font-size:.95rem; line-height:1.8; margin:0 0 22px; }
   .modal-amenities{ margin:0 0 18px; padding-right:18px; color:var(--muted); font-size:.85rem; line-height:1.85; }
   .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
   label{ display:block; font-size:.85rem; color:var(--muted); margin-bottom:14px; }
@@ -152,13 +154,7 @@
       <div class="hotel-body">
         <h3>The First Collection Dubai JVC</h3>
         <div class="hotel-tagline">מלון 4 כוכבים ב-Jumeirah Village Circle · 17.1 ק"מ ממרכז דובאי · דירוג אורחים 8.6</div>
-        <ul class="hotel-features">
-          <li>ביטול בחינם, ללא מקדמה</li>
-          <li>בריכה על הגג עם נוף לעיר</li>
-          <li>חדר עם מיטה אחת</li>
-          <li>מלון מוסמך בתחום הקיימות</li>
-        </ul>
-        <a class="btn btn-block" href="https://wa.me/972543771767?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%9E%D7%9C%D7%95%D7%9F%20The%20First%20Collection%20Dubai%20JVC" target="_blank" rel="noopener">לפרטים</a>
+        <button class="btn btn-block" onclick="openInfo('The First Collection Dubai JVC')">לפרטים</button>
       </div>
     </div>
 
@@ -167,13 +163,7 @@
       <div class="hotel-body">
         <h3>Radisson Beach Resort Palm</h3>
         <div class="hotel-tagline">ריזורט 4 כוכבים על חוף פאלם ג'ומיירה · 16.3 ק"מ ממרכז דובאי · דירוג אורחים 9.2</div>
-        <ul class="hotel-features">
-          <li>מיקום על החוף בפאלם ג'ומיירה</li>
-          <li>בריכה עם נוף לקו הרקיע של דובאי</li>
-          <li>חדר עם 2 מיטות</li>
-          <li>דירוג Genius גבוה במיוחד</li>
-        </ul>
-        <a class="btn btn-block" href="https://wa.me/972543771767?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%9E%D7%9C%D7%95%D7%9F%20Radisson%20Beach%20Resort%20Palm%20Jumeirah" target="_blank" rel="noopener">לפרטים</a>
+        <button class="btn btn-block" onclick="openInfo('Radisson Beach Resort Palm')">לפרטים</button>
       </div>
     </div>
 
@@ -182,13 +172,7 @@
       <div class="hotel-body">
         <h3>Grand Mercure Business Bay</h3>
         <div class="hotel-tagline">מלון 4 כוכבים על תעלת ביזנס ביי · 1.4 ק"מ ממרכז דובאי · דירוג אורחים 8.1</div>
-        <ul class="hotel-features">
-          <li>ביטול בחינם, ללא מקדמה</li>
-          <li>מיקום על התעלה בלב ביזנס ביי</li>
-          <li>חדר עם 2 מיטות</li>
-          <li>מבצע סוף שנה</li>
-        </ul>
-        <a class="btn btn-block" href="https://wa.me/972543771767?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%9E%D7%9C%D7%95%D7%9F%20Grand%20Mercure%20Business%20Bay" target="_blank" rel="noopener">לפרטים</a>
+        <button class="btn btn-block" onclick="openInfo('Grand Mercure Business Bay')">לפרטים</button>
       </div>
     </div>
 
@@ -197,13 +181,7 @@
       <div class="hotel-body">
         <h3>Paramount Hotel Midtown</h3>
         <div class="hotel-tagline">מלון 5 כוכבים בביזנס ביי · 0.7 ק"מ ממרכז דובאי · דירוג אורחים 8.8</div>
-        <ul class="hotel-features">
-          <li>ביטול בחינם, ללא מקדמה</li>
-          <li>בריכת גג עם נוף לבורג' ח'ליפה</li>
-          <li>חדר עם 2 מיטות</li>
-          <li>קרבה הליכתית למרכז העיר</li>
-        </ul>
-        <a class="btn btn-block" href="https://wa.me/972543771767?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%9E%D7%9C%D7%95%D7%9F%20Paramount%20Hotel%20Midtown" target="_blank" rel="noopener">לפרטים</a>
+        <button class="btn btn-block" onclick="openInfo('Paramount Hotel Midtown')">לפרטים</button>
       </div>
     </div>
 
@@ -212,13 +190,7 @@
       <div class="hotel-body">
         <h3>The First Collection Business Bay</h3>
         <div class="hotel-tagline">מלון 4 כוכבים בביזנס ביי · 2 ק"מ ממרכז דובאי · דירוג אורחים 8.6</div>
-        <ul class="hotel-features">
-          <li>ביטול בחינם, ללא מקדמה</li>
-          <li>בריכה גדולה בשטח המלון</li>
-          <li>חדר עם מיטה אחת</li>
-          <li>דירוג Genius</li>
-        </ul>
-        <a class="btn btn-block" href="https://wa.me/972543771767?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%9E%D7%9C%D7%95%D7%9F%20The%20First%20Collection%20Business%20Bay" target="_blank" rel="noopener">לפרטים</a>
+        <button class="btn btn-block" onclick="openInfo('The First Collection Business Bay')">לפרטים</button>
       </div>
     </div>
 
@@ -227,13 +199,7 @@
       <div class="hotel-body">
         <h3>FIVE Jumeirah Village</h3>
         <div class="hotel-tagline">מלון בוטיק 5 כוכבים ב-Jumeirah Village · 17 ק"מ ממרכז דובאי · דירוג אורחים 9.0</div>
-        <ul class="hotel-features">
-          <li>בריכת אינפיניטי עם נוף לקו הרקיע</li>
-          <li>מלון מוסמך בתחום הקיימות</li>
-          <li>חדר עם מיטה אחת</li>
-          <li>דירוג Genius גבוה</li>
-        </ul>
-        <a class="btn btn-block" href="https://wa.me/972543771767?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%9E%D7%9C%D7%95%D7%9F%20FIVE%20Jumeirah%20Village" target="_blank" rel="noopener">לפרטים</a>
+        <button class="btn btn-block" onclick="openInfo('FIVE Jumeirah Village')">לפרטים</button>
       </div>
     </div>
 
@@ -242,13 +208,7 @@
       <div class="hotel-body">
         <h3>Barcelo Business Bay Dubai</h3>
         <div class="hotel-tagline">מלון 5 כוכבים בביזנס ביי · 1.8 ק"מ ממרכז דובאי · דירוג אורחים 8.8</div>
-        <ul class="hotel-features">
-          <li>ביטול בחינם, ללא מקדמה</li>
-          <li>בריכת גג בשקיעה</li>
-          <li>חדר עם מיטה אחת</li>
-          <li>מבצע לזמן מוגבל</li>
-        </ul>
-        <a class="btn btn-block" href="https://wa.me/972543771767?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%9E%D7%9C%D7%95%D7%9F%20Barcelo%20Business%20Bay%20Dubai" target="_blank" rel="noopener">לפרטים</a>
+        <button class="btn btn-block" onclick="openInfo('Barcelo Business Bay Dubai')">לפרטים</button>
       </div>
     </div>
 
@@ -257,13 +217,7 @@
       <div class="hotel-body">
         <h3>Hilton Garden Inn Business Bay</h3>
         <div class="hotel-tagline">מלון 4 כוכבים בביזנס ביי · 1.7 ק"מ ממרכז דובאי · דירוג אורחים 8.8</div>
-        <ul class="hotel-features">
-          <li>ביטול בחינם, ללא מקדמה</li>
-          <li>בריכת חוץ</li>
-          <li>חדר עם 2 מיטות</li>
-          <li>מותג Hilton בינלאומי</li>
-        </ul>
-        <a class="btn btn-block" href="https://wa.me/972543771767?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%9E%D7%9C%D7%95%D7%9F%20Hilton%20Garden%20Inn%20Business%20Bay" target="_blank" rel="noopener">לפרטים</a>
+        <button class="btn btn-block" onclick="openInfo('Hilton Garden Inn Business Bay')">לפרטים</button>
       </div>
     </div>
 
@@ -289,6 +243,18 @@
     </div>
   </div>
 </main>
+
+<div class="modal-overlay" id="infoOverlay">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeInfo()" aria-label="סגירה">✕</button>
+    <h3 id="infoHotelName">שם המלון</h3>
+    <span class="vibe-badge" id="infoVibe"></span>
+    <p class="info-desc" id="infoDesc"></p>
+    <div class="modal-actions">
+      <a class="btn btn-block" id="infoWaLink" href="#" target="_blank" rel="noopener">לתיאום ופרטים בוואטסאפ</a>
+    </div>
+  </div>
+</div>
 
 <footer>
   <div><img src="images/meet-dubai-logo.png" alt="Meet Dubai" style="height:auto;width:120px;object-fit:contain;margin:0 auto;"></div>
@@ -334,6 +300,65 @@
     // אם אין תמונה מועלית בגלריה, משאירים את תמונת ברירת המחדל שכבר מוגדרת ב-HTML
   }
   HOTEL_SLOTS.forEach(loadHotelPhoto);
+</script>
+
+<script>
+  const HOTEL_INFO = {
+    "The First Collection Dubai JVC": {
+      vibe: "רגוע · מתאים למשפחות",
+      desc: "מלון שקט באזור מגורים ב-JVC, הרחק מהמולת מרכז העיר. בריכת גג נעימה עם נוף לעיר, ומחיר נוח יחסית. מתאים לזוגות ולמשפחות שמחפשים בסיס שקט לחופשה, פחות לחיי לילה."
+    },
+    "Radisson Beach Resort Palm": {
+      vibe: "רגוע · חוף פרטי · מתאים למשפחות",
+      desc: "ריזורט עם גישה לחוף פרטי בפאלם ג'ומיירה ובריכה עם נוף לקו הרקיע של דובאי. אווירה נינוחה של חופשת חוף, מתאים מאוד למשפחות ולזוגות שרוצים לבלות ימים רגועים בשמש ובים."
+    },
+    "Grand Mercure Business Bay": {
+      vibe: "רגוע · מתאים לעסקים",
+      desc: "מלון פרקטי ושקט על תעלת ביזנס ביי, קרוב מאוד למרכז העיר. אווירה עניינית ונוחה, בחירה טובה לנסיעות עסקים או לזוגות שמעדיפים מיקום מרכזי בלי רעש מיותר."
+    },
+    "Paramount Hotel Midtown": {
+      vibe: "תוסס · לזוגות וחברים · גם מועדון ילדים",
+      desc: "מלון בהשראת הוליווד עם בריכת גג ונוף לבורג' ח'ליפה, במרחק הליכה ממרכז דובאי. אווירה גלאמית ותוססת שמתאימה לזוגות ולחברים שרוצים גם פינוק וגם קרבה לחיי הלילה, ויש גם מועדון ילדים לאלו שמגיעים עם משפחה."
+    },
+    "The First Collection Business Bay": {
+      vibe: "מרכזי · מתאים למשפחות ולעסקים",
+      desc: "מלון מודרני במיקום מרכזי בביזנס ביי עם בריכה גדולה בשטח המלון. איזון טוב בין נוחות למשפחות לבין קרבה לאזורי העסקים והבילוי במרכז העיר."
+    },
+    "FIVE Jumeirah Village": {
+      vibe: "תוסס · מסיבות ולייף-סטייל",
+      desc: "מלון בוטיק יוקרתי עם בריכת אינפיניטי, מסיבות בריכה עם DJ חי ומועדון לילה משלו. מתאים בעיקר לזוגות ולחבורות שמחפשים אווירה תוססת וללייף-סטייל, פחות לחופשה משפחתית שקטה."
+    },
+    "Barcelo Business Bay Dubai": {
+      vibe: "רומנטי ושקט · גם לעסקים",
+      desc: "מלון בוטיק בביזנס ביי עם בריכת גג ונוף שקיעה מרהיב. אווירה שקטה ומפנקת שמתאימה לזוגות שמחפשים רומנטיקה, וגם לנסיעות עסקים במיקום מרכזי."
+    },
+    "Hilton Garden Inn Business Bay": {
+      vibe: "אמין ופרקטי · מתאים למשפחות ולעסקים",
+      desc: "מותג בינלאומי מוכר עם בריכה חיצונית ושירות עקבי. בחירה בטוחה ופרקטית למשפחות, לזוגות ולנוסעי עסקים כאחד — בלי הפתעות."
+    }
+  };
+
+  const infoOverlay = document.getElementById('infoOverlay');
+
+  function openInfo(name){
+    const info = HOTEL_INFO[name];
+    if (!info) return;
+    document.getElementById('infoHotelName').textContent = name;
+    document.getElementById('infoVibe').textContent = info.vibe;
+    document.getElementById('infoDesc').textContent = info.desc;
+    document.getElementById('infoWaLink').href =
+      'https://wa.me/972543771767?text=' + encodeURIComponent(`היי, אשמח לקבל פרטים על המלון ${name}`);
+    infoOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeInfo(){
+    infoOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  infoOverlay.addEventListener('click', (e) => { if (e.target === infoOverlay) closeInfo(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeInfo(); });
 </script>
 
 </body>
