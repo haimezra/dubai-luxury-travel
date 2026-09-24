@@ -213,6 +213,65 @@
     color: var(--text);
   }
 
+  /* ---------- DUBAI UPDATES PREVIEW ---------- */
+  .updates-preview{
+    display: flex; align-items: center; gap: 22px;
+    padding: 18px 0 8px;
+  }
+  .updates-preview-frame{
+    position: relative; flex: 0 0 auto;
+    width: 168px; aspect-ratio: 9 / 16;
+    border-radius: 14px; overflow: hidden;
+    background: #0d0d0e;
+    box-shadow: 0 0 0 1px rgba(217,178,92,.25), 0 10px 30px rgba(0,0,0,.4);
+    cursor: pointer;
+  }
+  .updates-preview-img{
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    opacity: 0; transition: opacity 1s ease;
+  }
+  .updates-preview-img.active{ opacity: 1; }
+  .updates-preview-zoom{
+    position: absolute; left: 8px; bottom: 8px; z-index: 2;
+    width: 26px; height: 26px; border-radius: 50%;
+    background: rgba(11,11,12,.55); color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; line-height: 1; pointer-events: none;
+  }
+  .updates-lightbox{
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(6,6,7,.94);
+    align-items: center; justify-content: center; padding: 24px;
+  }
+  .updates-lightbox.active{ display: flex; }
+  .updates-lightbox img{
+    max-width: min(92vw, 480px); max-height: 88vh; width: auto; height: auto;
+    border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,.6);
+  }
+  .updates-lightbox-close{
+    position: absolute; top: 20px; left: 20px; z-index: 1;
+    width: 40px; height: 40px; border-radius: 50%; border: none;
+    background: rgba(255,255,255,.08); color: var(--text);
+    font-size: 1.1rem; cursor: pointer;
+  }
+  .updates-preview-text{ display: flex; flex-direction: column; gap: 6px; }
+  .updates-preview-eyebrow{
+    font-family: var(--sans); letter-spacing: .18em; text-transform: uppercase;
+    font-size: .78rem; color: var(--muted);
+  }
+  .updates-preview-title{
+    font-family: var(--display); font-weight: 300; letter-spacing: .08em;
+    font-size: 1.7rem; color: var(--gold); text-transform: uppercase;
+    line-height: 1.15;
+  }
+  .updates-preview-sub{ color: var(--muted); font-size: .95rem; }
+  @media (max-width: 700px){
+    .updates-preview-frame{ width: 120px; }
+    .updates-preview-eyebrow{ font-size: .7rem; }
+    .updates-preview-title{ font-size: 1.3rem; }
+    .updates-preview-sub{ font-size: .84rem; }
+  }
+
   /* ---------- COLLECTIONS ---------- */
   .collections-grid{
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
@@ -766,6 +825,77 @@
     <p>מלווים אתכם אישית מהרגע שאתם מחליטים לטוס, במלון המושלם, בחוויות שלא שוכחים, ובזמינות מלאה לאורך כל הדרך.</p>
   </div>
 </section>
+
+<!-- ============ DUBAI UPDATES PREVIEW ============ -->
+<section class="section dubai-updates" style="padding-top:6px;padding-bottom:0;">
+  <div class="container">
+    <div class="updates-preview">
+      <div class="updates-preview-frame" id="updatesPreviewFrame" role="button" tabindex="0" aria-label="הגדלת התמונה">
+        <img src="images/dubai-update-1.jpg" alt="עדכון מדובאי" class="updates-preview-img active" loading="lazy">
+        <img src="images/dubai-update-2.jpg" alt="עדכון מדובאי" class="updates-preview-img" loading="lazy">
+        <!--
+          להוספת עוד תמונות (עד 4 בסה"כ):
+          1) העלו את קובץ התמונה לתיקיית images/, למשל images/dubai-update-3.jpg
+          2) הוסיפו כאן שורת <img> נוספת באותו פורמט, למשל:
+          <img src="images/dubai-update-3.jpg" alt="עדכון מדובאי" class="updates-preview-img" loading="lazy">
+        -->
+        <span class="updates-preview-zoom">⤢</span>
+      </div>
+      <div class="updates-preview-text">
+        <span class="updates-preview-eyebrow">Season 26/27</span>
+        <span class="updates-preview-title">Dubai Updates, Live</span>
+        <span class="updates-preview-sub">עדכונים חמים מהשטח, ישר מדובאי</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="updates-lightbox" id="updatesLightbox">
+  <button type="button" class="updates-lightbox-close" id="updatesLightboxClose" aria-label="סגירה">✕</button>
+  <img src="" alt="עדכון מדובאי" id="updatesLightboxImg">
+</div>
+
+<script>
+(function(){
+  var frame = document.getElementById('updatesPreviewFrame');
+  if(!frame) return;
+  var imgs = frame.querySelectorAll('.updates-preview-img');
+  var lightbox = document.getElementById('updatesLightbox');
+  var lightboxImg = document.getElementById('updatesLightboxImg');
+  var lightboxClose = document.getElementById('updatesLightboxClose');
+
+  if(imgs.length >= 2){
+    var i = 0;
+    setInterval(function(){
+      imgs[i].classList.remove('active');
+      i = (i + 1) % imgs.length;
+      imgs[i].classList.add('active');
+    }, 3200);
+  }
+
+  function openLightbox(){
+    var current = frame.querySelector('.updates-preview-img.active') || imgs[0];
+    if(!current) return;
+    lightboxImg.src = current.src;
+    lightbox.classList.add('active');
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('active');
+  }
+
+  frame.addEventListener('click', openLightbox);
+  frame.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openLightbox(); }
+  });
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e){
+    if(e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeLightbox();
+  });
+})();
+</script>
 
 <!-- ============ COLLECTIONS ============ -->
 <section class="section" id="collections" style="padding-top:20px;">
