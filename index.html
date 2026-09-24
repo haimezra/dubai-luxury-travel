@@ -24,6 +24,7 @@
     --sans: 'Outfit', 'Rubik', sans-serif;
     --ease: cubic-bezier(.2,.6,.2,1);
     --logo-shift: 7px;
+    --radius: 6px;
   }
 
   *{ box-sizing: border-box; }
@@ -81,7 +82,7 @@
     color: var(--text);
     background: transparent;
     border: 1px solid var(--gold);
-    border-radius: 2px;
+    border-radius: var(--radius);
     cursor: pointer;
     transition: background .4s var(--ease), color .4s var(--ease);
   }
@@ -221,7 +222,7 @@
     position: relative; display: block; overflow: hidden;
     aspect-ratio: 4 / 5;
     background: linear-gradient(160deg, #1b1a17, #0d0d0e);
-    border-radius: 2px;
+    border-radius: var(--radius);
     cursor: pointer;
   }
   .col-card img, .col-card video{
@@ -316,17 +317,17 @@
   }
 
   @media (max-width: 700px){
-    .collections-grid{ gap: 12px; }
-    .col-info{ right: 14px; left: 14px; bottom: 16px; }
+    .collections-grid{ gap: 18px; }
+    .col-info{ right: 16px; left: 16px; bottom: 18px; }
     .col-info h3{ font-size: 1.4rem; }
     .col-sub{ font-size: .8rem; line-height: 1.5; }
-    .col-go{ font-size: .8rem; margin-top: 8px; }
+    .col-go{ font-size: .8rem; margin-top: 10px; }
   }
 
   /* ---------- KOSHER PREVIEW ---------- */
   .kosher-card{
     display: grid; grid-template-columns: 1.05fr 1fr; align-items: stretch;
-    margin-top: 20px; overflow: hidden; border-radius: 2px;
+    margin-top: 20px; overflow: hidden; border-radius: var(--radius);
     background: linear-gradient(160deg, #1b1a17, #0d0d0e);
   }
   .kosher-media{ position: relative; min-height: 380px; overflow: hidden; }
@@ -385,7 +386,7 @@
     position: relative; overflow: hidden;
     aspect-ratio: 16 / 9;
     background: var(--bg);
-    border-radius: 2px;
+    border-radius: var(--radius);
     box-shadow: 0 0 0 1px var(--line);
   }
   .video-cube video{
@@ -448,7 +449,7 @@
   .feature-grid.four{ grid-template-columns: repeat(4, 1fr); gap: 24px; }
   .feature-card{ cursor: pointer; }
   .feature-card .media{
-    aspect-ratio: 4 / 3; overflow: hidden; background: var(--surface); border-radius: 2px;
+    aspect-ratio: 4 / 3; overflow: hidden; background: var(--surface); border-radius: var(--radius);
   }
   .feature-card img{ width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
   .feature-card .media{ position: relative; }
@@ -460,7 +461,7 @@
     background: rgba(11,11,12,.72);
     backdrop-filter: blur(6px);
     border: 1px solid var(--gold);
-    border-radius: 2px;
+    border-radius: var(--radius);
     transition: background .4s var(--ease), color .4s var(--ease);
   }
   .card-btn:hover{ background: var(--gold); color: #0B0B0C; }
@@ -483,7 +484,7 @@
   .abudhabi-cards{ padding: 0 0 130px; }
   .abu{ padding-bottom: 80px; }
   .abu-layout{ display: grid; grid-template-columns: 1.1fr .9fr; gap: 72px; align-items: center; }
-  .abu-photo{ aspect-ratio: 4 / 3; overflow: hidden; background: var(--surface); border-radius: 2px; }
+  .abu-photo{ aspect-ratio: 4 / 3; overflow: hidden; background: var(--surface); border-radius: var(--radius); }
   .abu-photo img{ width: 100%; height: 100%; object-fit: cover; }
   .abu-text{ min-width: 0; }
   .abu-text h2{ font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
@@ -538,8 +539,8 @@
   .review-card{
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: 3px;
-    padding: 28px 26px;
+    border-radius: var(--radius);
+    padding: 30px 28px;
     display: flex; flex-direction: column;
     position: relative;
     flex: 0 0 300px; scroll-snap-align: start;
@@ -672,7 +673,7 @@
   .modal-box h3{ font-size: 1.8rem; padding-left: 50px; }
   .modal-sub{ color: var(--muted); margin: 14px 0 0; }
   .modal-grid{ margin-top: 34px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .modal-grid figure{ margin: 0; position: relative; overflow: hidden; aspect-ratio: 1 / 1; background: var(--bg); border-radius: 2px; }
+  .modal-grid figure{ margin: 0; position: relative; overflow: hidden; aspect-ratio: 1 / 1; background: var(--bg); border-radius: var(--radius); }
   .modal-grid img, .modal-grid video{ width: 100%; height: 100%; object-fit: cover; display: block; }
   .modal-grid figure.lightbox-item{ cursor: pointer; }
   @media (max-width: 640px){
@@ -690,7 +691,7 @@
     display: none; align-items: center; justify-content: center; padding: 30px;
   }
   .lightbox-overlay.active{ display: flex; }
-  .lightbox-overlay img{ max-width: 90vw; max-height: 84vh; border-radius: 2px; }
+  .lightbox-overlay img{ max-width: 90vw; max-height: 84vh; border-radius: var(--radius); }
   .lightbox-close{
     position: absolute; top: 26px; left: 26px;
     width: 42px; height: 42px; border-radius: 50%;
@@ -721,7 +722,7 @@
   .quiz-options{ display: flex; flex-direction: column; gap: 12px; }
   .quiz-option-btn{
     text-align: right; padding: 15px 20px;
-    border-radius: 2px; background: transparent; color: var(--text);
+    border-radius: var(--radius); background: transparent; color: var(--text);
     border: 1px solid var(--line);
     font-family: var(--sans); font-size: 1rem; font-weight: 300; cursor: pointer;
     transition: border-color .3s ease, background .3s ease, color .3s ease;
@@ -747,15 +748,19 @@
   .exp-panel > *, .contact-grid > *, .feature-grid > *, .journey-grid > *, .collections-grid > *{ min-width: 0; }
   @media (max-width: 700px){
     :root{ --logo-shift: 3px; }
-    .container{ padding: 0 22px; }
-    .section{ padding: 90px 0; }
-    .intro{ padding: 100px 0 90px; }
-    .section-head{ margin-bottom: 52px; }
+    .container{ padding: 0 24px; }
+    .section{ padding: 108px 0; }
+    .intro{ padding: 112px 0 100px; }
+    .section-head{ margin-bottom: 60px; }
     .site-nav{ padding: 14px 20px; }
     .site-nav.scrolled{ padding: 10px 20px; }
     .menu-toggle .lbl{ display: none; }
     .hero-inner{ padding-top: 130px; padding-bottom: 60px; }
     .float-cta{ bottom: 18px; left: 18px; }
+    .feature-grid{ gap: 40px; }
+    .feature-card h3{ margin-top: 26px; }
+    .feature-card p, .feature-card .tag{ margin-top: 10px; }
+    .journey-grid{ gap: 52px; }
   }
   @media (prefers-reduced-motion: reduce){
     *{ animation: none !important; transition-duration: .01ms !important; }
