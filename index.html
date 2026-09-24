@@ -351,7 +351,14 @@
   }
 
   /* ---------- EXPERIENCES SHOWCASE ---------- */
-  .showcase{ background: var(--surface); }
+  .showcase{
+    background:
+      linear-gradient(180deg, var(--bg) 0%, rgba(18,18,19,0) 100%) top / 100% 160px no-repeat,
+      var(--surface);
+  }
+  @media (max-width: 700px){
+    .showcase{ background: linear-gradient(180deg, var(--bg) 0%, rgba(18,18,19,0) 100%) top / 100% 100px no-repeat, var(--surface); }
+  }
   .showcase-links{ display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
   .exp-tabs{
     display: flex; gap: 6px; justify-content: center;
