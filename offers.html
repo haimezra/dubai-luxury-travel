@@ -33,11 +33,12 @@
 
   .btn{
     display:inline-block; padding: 13px 26px; border-radius: 999px;
-    font-size: .95rem; font-weight: 700; border:none; cursor:pointer; font-family:inherit;
-    background: var(--gold); color:#14110c; box-shadow: 0 0 18px var(--gold-glow);
-    transition: all .3s ease; text-align:center;
+    font-size: .95rem; font-weight: 600; cursor:pointer; font-family:inherit;
+    background: transparent; color: var(--gold-bright);
+    border: 1px solid rgba(217,178,92,0.5); box-shadow: none;
+    transition: all .25s ease; text-align:center;
   }
-  .btn:hover{ background: var(--gold-bright); box-shadow: 0 0 26px var(--gold-glow); }
+  .btn:hover{ background: rgba(217,178,92,0.1); border-color: var(--gold-bright); box-shadow: 0 0 14px rgba(217,178,92,0.2); }
   .btn-outline{
     display:inline-block; padding:12px 24px; border-radius:999px; font-size:.92rem; font-weight:700;
     color:var(--gold-bright); background:rgba(217,178,92,0.06); box-shadow:inset 0 0 0 1px rgba(217,178,92,0.4);
