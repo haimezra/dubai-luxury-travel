@@ -3,730 +3,262 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>עמוד חירום דובאי | HAY DUBAI</title>
-<meta name="description" content="עמוד חירום לתיירים בדובאי: חיוג מהיר למשטרה ואמבולנס, שיתוף מיקום מיידי, וטיפים למקרה של דרכון שאבד.">
+<title>מוקד חירום דובאי | HAY DUBAI</title>
+<meta name="description" content="מוקד חירום לישראלים בדובאי: חיוג מהיר, וואטסאפ ומידע חשוב.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0B0B0C;
-    --card: #141416;
-    --sand-deep: #1B1B1D;
-    --card-line: rgba(255,255,255,.09);
-    --gold: #C8A96A;
-    --gold-bright: #DEC28C;
-    --red: #B8412F;
-    --red-deep: #93321F;
-    --whatsapp: #22884E;
+:root{
+  --bg:#0E0E0F; --panel:#171718; --line:rgba(255,255,255,.1);
+  --red:#E8302A; --red-deep:#B81F1A; --amber:#FFB400;
+  --text:#F5F2EB; --muted:#A3A19B; --wa:#1FA85A;
+  --font:'Rubik','Arial Hebrew',Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:var(--font); line-height:1.6; -webkit-font-smoothing:antialiased;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:560px;margin:0 auto;padding:0 18px 48px}
 
-    --serif: 'Outfit', 'Rubik', sans-serif;
-    --sans: 'Outfit', 'Rubik', sans-serif;
+/* HERO: image on top, headline below */
+.hero-img{position:relative;aspect-ratio:4/3;max-height:320px;width:100%;overflow:hidden;background:#000}
+.hero-img img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.8) contrast(1.05)}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,var(--bg) 100%)}
+.hero-img::before{content:"";position:absolute;top:0;right:0;left:0;height:3px;background:var(--red);z-index:2}
+.hero-text{padding:6px 0 4px}
+h1{font-weight:800;font-size:clamp(30px,9vw,44px);line-height:1.1;margin:0 0 14px;letter-spacing:-.5px}
+h1 span{display:block;font-weight:300;color:var(--amber);font-size:.62em;margin-top:6px;letter-spacing:0}
 
-    --text: #F4F1EA;
-    --text-on-panel: #F4F1EA;
-    --muted: #9A9A9A;
-    --muted-on-panel: rgba(244,241,234,0.72);
+/* 24/7 notice */
+.notice{
+  border:1px solid rgba(255,180,0,.45);
+  border-right:4px solid var(--amber);
+  background:rgba(255,180,0,.06);
+  padding:16px 18px; border-radius:6px; margin:18px 0 0;
+  font-size:17px; font-weight:600; line-height:1.5;
+}
+.notice small{display:block;margin-top:6px;font-weight:300;font-size:13.5px;color:var(--muted)}
 
-    box-sizing: border-box;
-    padding-top: env(safe-area-inset-top, 0px);
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
+section{padding-top:32px}
+h2{font-size:19px;font-weight:600;margin:0 0 4px}
+.sub{margin:0 0 14px;color:var(--muted);font-size:14px}
 
-  html { scroll-padding-top: env(safe-area-inset-top, 0px); height: 100%; }
-  * { box-sizing: border-box; }
+/* CODE GATE */
+.gate{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:20px}
+.gate-row{display:flex;gap:10px}
+.gate input{
+  flex:1;min-width:0;background:#0A0A0B;color:var(--text);
+  border:1px solid rgba(255,255,255,.2);border-radius:6px;
+  padding:14px;font:600 18px var(--font);letter-spacing:3px;text-align:center;direction:ltr;
+}
+.gate input::placeholder{letter-spacing:0;font-weight:300;color:#666;font-size:15px}
+.gate input:focus{outline:2px solid var(--amber);outline-offset:1px}
+.btn-unlock{
+  border:0;border-radius:6px;background:var(--amber);color:#111;
+  font:600 16px var(--font);padding:0 22px;cursor:pointer;
+}
+.btn-unlock:active{opacity:.85}
+.gate-msg{min-height:20px;margin-top:10px;font-size:13.5px;color:var(--muted)}
+.gate-msg.ok{color:#6FD397;font-weight:500}
+.gate-msg.err{color:#FF7A6E;font-weight:500}
 
-  body {
-    margin: 0;
-    min-height: 100%;
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-  }
+/* CALL BUTTONS */
+.stack{display:grid;gap:12px}
+.call{
+  display:flex;align-items:center;gap:14px;border-radius:8px;padding:16px 18px;
+  background:var(--panel);border:1px solid var(--line);
+}
+.call .ic{font-size:26px;flex:0 0 auto}
+.call .tx{flex:1;min-width:0}
+.call .t{font-weight:600;font-size:16.5px}
+.call .d{font-size:13px;color:var(--muted)}
+.call .num{
+  flex:0 0 auto;direction:ltr;font-weight:800;font-size:24px;
+  background:var(--red);color:#fff;padding:8px 16px;border-radius:6px;
+}
+.call.sos{background:linear-gradient(0deg,rgba(232,48,42,.12),rgba(232,48,42,.12)),var(--panel);border-color:rgba(232,48,42,.55)}
+.call:active{transform:scale(.98)}
 
-  a { color: inherit; }
+/* locked state */
+.lockable{position:relative}
+.lockable.locked{opacity:.45;pointer-events:none;filter:grayscale(.6)}
+.lockable.locked .num{background:#444}
+.lock-tag{display:none;font-size:12px;color:var(--amber);font-weight:500}
+.lockable.locked .lock-tag{display:block}
 
-  .wrap {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 0 20px 120px;
-  }
+.wa{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--wa);color:#fff;border-radius:8px;padding:17px;
+  font-weight:600;font-size:17px;margin-top:2px;
+}
+.wa.hot{background:var(--red)}
+.wa.locked{opacity:.45;pointer-events:none;filter:grayscale(.6)}
 
-  /* ---------- SITE NAV ---------- */
-  header.site-nav{
-    position:fixed; top:0; right:0; left:0; z-index:70;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:10px 20px; background: rgba(11,11,12,0.88);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--card-line);
-  }
-  header.site-nav .brand-logo{ width:36px; height:36px; object-fit:contain; }
-  header.site-nav .nav-cta{
-    padding:8px 16px; border-radius:999px; font-size:.82rem; font-weight:500;
-    color: var(--gold-bright); border:1px solid rgba(222,194,140,0.45);
-    text-decoration:none; white-space:nowrap;
-  }
+/* location */
+.loc-btn{
+  width:100%;background:transparent;color:var(--amber);border:1.5px solid var(--amber);
+  border-radius:8px;padding:15px;font:600 16px var(--font);cursor:pointer;
+}
+.loc-btn:active{background:rgba(255,180,0,.1)}
+.loc-status{min-height:20px;margin-top:10px;font-size:13.5px;color:var(--muted)}
 
-  /* ---------- HERO ---------- */
-  .hero {
-    position: relative;
-    margin-top: 58px;
-    overflow: hidden;
-    background:
-      radial-gradient(ellipse at 30% -10%, rgba(184,65,47,0.20), transparent 55%),
-      radial-gradient(ellipse at 92% 115%, rgba(222,194,140,0.14), transparent 60%),
-      linear-gradient(160deg, #141416 0%, #0B0B0C 100%);
-    color: var(--text-on-panel);
-    padding: 36px 20px 30px;
-    border-bottom: 3px solid var(--red);
-  }
-  .hero-media{
-    position: absolute; inset: 0; z-index: 0;
-    opacity: .16;
-  }
-  .hero-media img{ width: 100%; height: 100%; object-fit: cover; }
-  .hero-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+/* guidelines */
+.guides{display:grid;gap:10px}
+.g{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:15px 16px;font-size:14.5px}
+.g b{color:var(--amber);font-weight:600}
+.g ol{margin:8px 0 0;padding-inline-start:20px;color:var(--muted)}
+.g ol li{margin-bottom:4px}
+.g ol a{color:var(--amber);text-decoration:underline;text-underline-offset:2px}
+.g.warn{border-color:rgba(232,48,42,.5);background:rgba(232,48,42,.07)}
 
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(222,194,140,0.12);
-    border: 1px solid rgba(222,194,140,0.4);
-    color: var(--gold-bright);
-    padding: 6px 14px;
-    border-radius: 999px;
-    font-size: 13px;
-    font-weight: 500;
-    margin-bottom: 18px;
-  }
-  .badge .dot {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: #4CD97B;
-    box-shadow: 0 0 0 3px rgba(76,217,123,0.25);
-  }
+footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
 
-  .hero h1 {
-    font-family: var(--serif);
-    font-weight: 600;
-    font-size: clamp(28px, 8vw, 40px);
-    line-height: 1.15;
-    margin: 0 0 14px;
-  }
-
-  .hero p {
-    font-size: 16.5px;
-    color: var(--muted-on-panel);
-    margin: 0 0 6px;
-    max-width: 46ch;
-    font-weight: 300;
-  }
-
-  .hero .signoff {
-    margin-top: 18px;
-    font-size: 14.5px;
-    color: rgba(244,241,234,0.45);
-  }
-
-  /* ---------- SECTION HEADS ---------- */
-  section { padding-top: 34px; }
-  .section-head {
-    margin-bottom: 14px;
-  }
-  .section-head h2 {
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 20px;
-    margin: 0 0 4px;
-  }
-  .section-head p {
-    margin: 0;
-    color: var(--muted);
-    font-size: 14.5px;
-  }
-
-  /* ---------- CALL CARDS ---------- */
-  .call-grid {
-    display: grid;
-    gap: 12px;
-  }
-  .call-card {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    background: var(--card);
-    border: 1px solid var(--card-line);
-    border-radius: 4px;
-    padding: 16px 16px;
-    text-decoration: none;
-    color: var(--text);
-    transition: transform .15s ease, border-color .2s ease;
-  }
-  .call-card:active { transform: scale(0.98); }
-
-  .call-card.urgent {
-    border-color: rgba(184,65,47,0.4);
-    background: linear-gradient(0deg, rgba(184,65,47,0.07), rgba(184,65,47,0.07)), var(--card);
-  }
-
-  .call-icon {
-    flex: 0 0 auto;
-    width: 46px; height: 46px;
-    border-radius: 4px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 21px;
-    background: var(--sand-deep);
-  }
-  .call-card.urgent .call-icon { background: rgba(184,65,47,0.16); }
-
-  .call-body { flex: 1 1 auto; min-width: 0; }
-  .call-body .label { font-weight: 500; font-size: 16px; }
-  .call-body .desc { font-size: 13.5px; color: var(--muted); margin-top: 2px; }
-
-  .call-number {
-    flex: 0 0 auto;
-    font-family: var(--serif);
-    font-weight: 600;
-    font-size: 18px;
-    direction: ltr;
-    background: var(--sand-deep);
-    padding: 8px 14px;
-    border-radius: 4px;
-  }
-  .call-card.urgent .call-number { background: var(--red); color: #fff; }
-
-  .dial-note {
-    margin-top: 14px;
-    background: var(--sand-deep);
-    border-radius: 4px;
-    border: 1px solid var(--card-line);
-    padding: 16px 18px;
-  }
-  .dial-note-title {
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 15px;
-    margin-bottom: 8px;
-    color: var(--gold-bright);
-  }
-  .dial-note p {
-    margin: 0 0 8px;
-    font-size: 13.5px;
-    color: var(--muted);
-  }
-  .dial-note p:last-child { margin-bottom: 0; }
-
-  .family-note {
-    margin-top: 26px;
-    background: var(--card);
-    border: 1px solid var(--card-line);
-    border-radius: 4px;
-    padding: 20px;
-  }
-  .family-table-wrap {
-    overflow-x: auto;
-    border-radius: 4px;
-    border: 1px solid var(--card-line);
-  }
-  table.family-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13.5px;
-    min-width: 480px;
-  }
-  table.family-table th {
-    text-align: right;
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 12.5px;
-    color: var(--muted);
-    background: var(--sand-deep);
-    padding: 10px 12px;
-    white-space: nowrap;
-  }
-  table.family-table td {
-    padding: 12px;
-    border-top: 1px solid var(--card-line);
-    vertical-align: top;
-  }
-  table.family-table tr.row-highlight td {
-    background: rgba(184,65,47,0.08);
-    font-weight: 500;
-  }
-  table.family-table td a {
-    color: var(--gold-bright);
-    font-weight: 600;
-    direction: ltr;
-    display: inline-block;
-    text-decoration: none;
-  }
-  .family-footnote {
-    margin: 14px 0 0;
-    font-size: 13.5px;
-    color: var(--muted);
-  }
-
-  /* ---------- LOCATION SOS ---------- */
-  .sos-card {
-    position: relative;
-    background: var(--card);
-    border: 1px solid var(--card-line);
-    border-radius: 4px;
-    padding: 22px;
-    overflow: hidden;
-  }
-  .sos-media{
-    position: absolute; inset: 0; z-index: 0;
-  }
-  .sos-media img{ width: 100%; height: 100%; object-fit: cover; opacity: .22; }
-  .sos-media::after{
-    content: ""; position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(20,20,22,.35), var(--card) 78%);
-  }
-  .sos-card > *:not(.sos-media){ position: relative; z-index: 1; }
-  .sos-card h3 {
-    margin: 0 0 6px;
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 18px;
-  }
-  .sos-card p {
-    margin: 0 0 18px;
-    color: var(--muted);
-    font-size: 14.5px;
-  }
-  .sos-btn {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background: var(--whatsapp);
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 16px 18px;
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  .sos-btn:active { opacity: .88; }
-  .sos-status {
-    margin-top: 12px;
-    font-size: 13.5px;
-    color: var(--muted);
-    min-height: 18px;
-  }
-  .sos-status.ok { color: #6FD397; font-weight: 500; }
-  .sos-status.err { color: #E08064; font-weight: 500; }
-
-  /* ---------- TIPS ---------- */
-  .tips {
-    display: grid;
-    gap: 10px;
-  }
-  .tip {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    background: var(--card);
-    border: 1px solid var(--card-line);
-    border-radius: 4px;
-    padding: 14px 16px;
-    font-size: 14.5px;
-  }
-  .tip .emoji { font-size: 18px; flex: 0 0 auto; }
-  .tip.passport-tip { align-items: flex-start; flex-direction: column; gap: 12px; }
-  .tip.passport-tip .passport-head{ display:flex; gap:12px; align-items:flex-start; }
-  .passport-media{
-    width: 100%; border-radius: 4px; overflow: hidden;
-    aspect-ratio: 16/6; border: 1px solid var(--card-line);
-  }
-  .passport-media img{ width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.85); }
-  .tip.passport-tip ol {
-    margin: 0;
-    padding-inline-start: 20px;
-    display: grid;
-    gap: 6px;
-  }
-  .tip.passport-tip li { color: var(--muted); }
-  .tip.passport-tip a {
-    color: var(--gold-bright);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    font-weight: 500;
-  }
-
-  /* ---------- SAVE / SHARE ---------- */
-  .save-card {
-    text-align: center;
-    background: var(--card);
-    border: 1px solid var(--card-line);
-    border-radius: 4px;
-    padding: 24px 20px;
-  }
-  .save-card h3 {
-    margin: 0 0 6px;
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 18px;
-  }
-  .save-card p {
-    margin: 0 0 16px;
-    color: var(--muted);
-    font-size: 14px;
-  }
-  .save-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--gold);
-    border-radius: 999px;
-    padding: 14px 26px;
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 15px;
-    cursor: pointer;
-    transition: background .3s ease, color .3s ease;
-  }
-  .save-btn:hover { background: var(--gold); color: #0B0B0C; }
-  .save-btn:active { opacity: .88; }
-  .save-status {
-    margin-top: 10px;
-    font-size: 13px;
-    color: var(--muted);
-    min-height: 16px;
-  }
-  .save-status.ok { color: #6FD397; font-weight: 500; }
-
-  /* ---------- FOOTER ---------- */
-  footer {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid var(--card-line);
-    font-size: 12.5px;
-    color: var(--muted);
-  }
-
-  /* ---------- FLOATING WHATSAPP ---------- */
-  .float-wa {
-    position: fixed;
-    left: 18px;
-    bottom: calc(18px + env(safe-area-inset-bottom, 0px));
-    z-index: 40;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--whatsapp);
-    color: #fff;
-    text-decoration: none;
-    padding: 14px 18px;
-    border-radius: 999px;
-    box-shadow: 0 10px 24px rgba(0,0,0,0.4);
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 14.5px;
-  }
-  .float-wa svg { width: 20px; height: 20px; flex: 0 0 auto; }
-
-  @media (max-width: 380px) {
-    .float-wa span.long { display: none; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .call-card { transition: none; }
-  }
-
-  a:focus-visible, button:focus-visible {
-    outline: 2px solid var(--gold-bright);
-    outline-offset: 2px;
-  }
+a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
 
-<header class="site-nav">
-  <a href="index.html"><img src="images/meet-dubai-logo.png" alt="Meet Dubai" class="brand-logo"></a>
-  <a class="nav-cta" href="index.html">← חזרה לאתר</a>
-</header>
+<div class="hero-img">
+  <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop" alt="קו הרקיע של דובאי בשעת דמדומים">
+</div>
 
-  <div class="hero">
-    <div class="hero-media" aria-hidden="true">
-      <img src="https://images.unsplash.com/photo-1542243640-919556bca940?q=80&w=1200&auto=format&fit=crop" alt="">
-    </div>
-    <div class="hero-inner">
-      <div class="badge"><span class="dot"></span> זמינים 24/7</div>
-      <h1>נשמו עמוק. אתם בדובאי, לא על הירח.</h1>
-      <p>
-        קרה משהו? מעולה, כלומר לא מעולה, אבל אתם במקום הנכון. העמוד הזה הוא כפתור הפאניקה
-        המסודר שלכם: לחיצה אחת ומחייגים למי שצריך, לחיצה אחת ושולחים את המיקום המדויק שלכם,
-        ולחיצה אחת ומדברים איתנו בוואטסאפ. אין צורך לצעוק "הלפ" לגמל הקרוב, יש לנו פתרון יעיל יותר.
-      </p>
-      <div class="signoff">צוות הסיוע שלנו זמין 24/7, גם אם השעון בישראל אומר משהו אחר.</div>
+<div class="wrap">
+
+  <div class="hero-text">
+    <h1>מוקד חירום לישראלים בדובאי<span>אנחנו איתכם, בכל שעה</span></h1>
+    <div class="notice">
+      המוקד מקבל שיחות 24/7 עם קוד ייעודי לזמינות שיחות 24/7 ללקוחותינו בלבד.
+      <small>מצב מסכן חיים? חייגו קודם 999 או 998. הם פתוחים לכולם, בלי קוד.</small>
     </div>
   </div>
 
-  <div class="wrap">
+  <section id="emergency">
+    <h2>חיוג חירום רשמי</h2>
+    <p class="sub">פתוח תמיד. לחיצה מחייגת ישירות מהטלפון.</p>
+    <div class="stack">
+      <a class="call sos" href="tel:999">
+        <span class="ic">🚓</span>
+        <span class="tx"><div class="t">משטרת דובאי</div><div class="d">סכנה מיידית, תאונה, פציעה</div></span>
+        <span class="num">999</span>
+      </a>
+      <a class="call sos" href="tel:998">
+        <span class="ic">🚑</span>
+        <span class="tx"><div class="t">אמבולנס / הצלה</div><div class="d">מצב רפואי דחוף</div></span>
+        <span class="num">998</span>
+      </a>
+    </div>
+  </section>
 
-    <section id="tips">
-      <div class="section-head">
-        <h2>בזמן שאתם מחכים</h2>
+  <section id="code">
+    <h2>קוד לקוח</h2>
+    <p class="sub">הזינו את הקוד שקיבלתם מאיתנו כדי לפתוח חיוג מהיר ומענה ישיר במוקד.</p>
+    <div class="gate">
+      <div class="gate-row">
+        <input id="codeInput" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" maxlength="16" placeholder="הזינו קוד" aria-label="קוד לקוח">
+        <button class="btn-unlock" id="unlockBtn" type="button">אימות</button>
       </div>
-      <div class="tips">
-        <div class="tip"><span class="emoji">🫧</span><span>תנשמו. דובאי היא אחת הערים הבטוחות בעולם, הסבירות שמדובר באי־נעימות זמנית גבוהה בהרבה מאסון.</span></div>
-        <div class="tip"><span class="emoji">🧊</span><span>אם מדובר בבעיה רפואית לא דחופה, שתו מים וחפשו צל. החום כאן יודע להתחזות למשבר בפני עצמו.</span></div>
-        <div class="tip passport-tip">
-          <div class="passport-media">
-            <img src="https://images.unsplash.com/photo-1487637419635-a2a471ff5c7b?q=80&w=900&auto=format&fit=crop" alt="פנקס דרכון">
-          </div>
-          <div class="passport-head">
-            <span class="emoji">🛂</span>
-            <div>
-              <div><strong>איבדתם דרכון?</strong> שלושה צעדים בסדר הנכון:</div>
-              <ol>
-                <li>דווחו למשטרת דובאי וקבלו אישור משטרתי על האובדן או הגניבה, דרך הקו 901 או המספר <a href="tel:8004438">8004438</a>.</li>
-                <li><a href="https://www.gov.il/BlobFolder/generalpage/services_forms/he/DR3.pdf" target="_blank" rel="noopener">הורידו ומלאו את טופס ההצהרה הרשמי (DR3)</a> של רשות האוכלוסין וההגירה על אובדן/גניבת דרכון.</li>
-                <li>עם האישור המשטרתי והטופס המלא, <a href="https://new.embassies.gov.il/dubai/en/contacts" target="_blank" rel="noopener">פנו לקונסוליה הכללית של ישראל בדובאי</a> לתיאום פגישה להנפקת דרכון/תעודת מעבר חדשים.</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-        <div class="tip"><span class="emoji">💬</span><span>לא בטוחים אם זה מקרה חירום אמיתי? עדיף לשלוח הודעה בוואטסאפ ולתת לנו להחליט יחד איתכם.</span></div>
+      <div class="gate-msg" id="gateMsg" role="status"></div>
+    </div>
+  </section>
+
+  <section id="hotline">
+    <h2>המוקד שלנו</h2>
+    <p class="sub">נפתח לאחר הזנת קוד לקוח תקין.</p>
+    <div class="stack">
+      <a class="call lockable locked" id="hotlineCall" href="tel:+972543771767">
+        <span class="ic">☎️</span>
+        <span class="tx"><div class="t">חיוג מהיר למוקד</div><div class="d">מענה 24/7 ללקוחות</div><span class="lock-tag">🔒 נדרש קוד לקוח</span></span>
+        <span class="num">חייגו</span>
+      </a>
+      <a class="wa hot locked" id="waBtn" href="https://wa.me/972543771767?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A0%D7%99%20%D7%A6%D7%A8%D7%99%D7%9A%2F%D7%94%20%D7%A2%D7%96%D7%A8%D7%94%20%D7%93%D7%97%D7%95%D7%A4%D7%94" target="_blank" rel="noopener">
+        <span>💬</span><span>פנייה דחופה בוואטסאפ</span>
+      </a>
+      <button class="loc-btn" id="locBtn" type="button">📍 שלחו לנו את המיקום שלי</button>
+      <div class="loc-status" id="locStatus" role="status"></div>
+    </div>
+  </section>
+
+  <section id="guidelines">
+    <h2>הנחיות חירום ומידע חשוב</h2>
+    <p class="sub">קצר וברור, למקרה שצריך.</p>
+    <div class="guides">
+      <div class="g warn"><b>ראשית:</b> שמרו על קור רוח, עברו למקום בטוח ושלחו מיקום. דובאי היא עיר בטוחה, ורוב המקרים נפתרים מהר.</div>
+      <div class="g"><b>בעיה רפואית לא דחופה?</b> שתו מים, חפשו מקום מקורר ופנו לקבלה במלון. אם המצב מחמיר, חייגו 998.</div>
+      <div class="g">
+        <b>איבדתם דרכון?</b>
+        <ol>
+          <li>דווחו למשטרה וקבלו אישור על האובדן או הגניבה (קו 901).</li>
+          <li><a href="https://www.gov.il/BlobFolder/generalpage/services_forms/he/DR3.pdf" target="_blank" rel="noopener">מלאו את טופס ההצהרה DR3</a>.</li>
+          <li><a href="https://new.embassies.gov.il/dubai/en/contacts" target="_blank" rel="noopener">פנו לקונסוליה הישראלית בדובאי</a> לתיאום הנפקה חדשה.</li>
+        </ol>
       </div>
-    </section>
+      <div class="g"><b>חיוג נכון:</b> 999, 998 ו-901 הם מספרים מקומיים. חייגו אותם כפי שהם, בלי +971, ורק מטלפון שנמצא פיזית באיחוד האמירויות.</div>
+      <div class="g"><b>בן משפחה בישראל?</b> ימשיך אלינו בוואטסאפ, או ל<a href="tel:+971524785136" style="color:var(--amber);text-decoration:underline">קו החירום הקונסולרי (‎+971 52 478 5136‎)</a>.</div>
+    </div>
+  </section>
 
-    <section id="call">
-      <div class="section-head">
-        <h2>חיוג מהיר למקרה אמת</h2>
-        <p>לחיצה על המספר פותחת חיוג ישירות מהטלפון שלכם.</p>
-      </div>
-      <div class="call-grid">
-        <a class="call-card urgent" href="tel:999">
-          <div class="call-icon">🚓</div>
-          <div class="call-body">
-            <div class="label">משטרת דובאי</div>
-            <div class="desc">תאונת דרכים, פציעה, סכנה מיידית</div>
-          </div>
-          <div class="call-number">999</div>
-        </a>
-
-        <a class="call-card urgent" href="tel:998">
-          <div class="call-icon">🚑</div>
-          <div class="call-body">
-            <div class="label">אמבולנס / הצלה</div>
-            <div class="desc">מצב רפואי דחוף</div>
-          </div>
-          <div class="call-number">998</div>
-        </a>
-
-        <a class="call-card" href="tel:901">
-          <div class="call-icon">👮</div>
-          <div class="call-body">
-            <div class="label">משטרת דובאי, קו לא דחוף (901)</div>
-            <div class="desc">הקו הרשמי לתיירים: אחרי החיוג בוחרים שפה, ואז מגיעים לענף "משטרת תיירים"</div>
-          </div>
-          <div class="call-number">901</div>
-        </a>
-
-        <a class="call-card" href="tel:8004438">
-          <div class="call-icon">🧭</div>
-          <div class="call-body">
-            <div class="label">מוקד סיוע לתיירים</div>
-            <div class="desc">מספר חינם נוסף שמפורסם עבור סיוע לתיירים בדובאי</div>
-          </div>
-          <div class="call-number">8004438</div>
-        </a>
-      </div>
-
-      <div class="dial-note">
-        <div class="dial-note-title">איך בדיוק מחייגים?</div>
-        <p>
-          כל המספרים בעמוד הזה (999, 998, 901, 8004438) הם מספרי חינם מקומיים באיחוד האמירויות.
-          חייגו אותם בדיוק כפי שהם כתובים כאן, בלי + ובלי קידומת 971, מכל טלפון שנמצא פיזית
-          בתוך איחוד האמירויות, גם אם הוא עדיין רשום על קו ישראלי בנדידה בינלאומית (רומינג).
-        </p>
-        <p>
-          אם מנסים לחייג למספרים האלה מישראל, כלומר בלי להיות פיזית בדובאי, למשל בן משפחה שרוצה
-          ליצור קשר, הם בדרך כלל לא יעבדו: אלו מספרי שירות מקומיים ולא בינלאומיים. במקרה כזה עדיפה
-          פנייה בוואטסאפ או במייל לקונסוליה, או בקשה מהמלון או מתייר אחר בדובאי לחייג במקומכם.
-        </p>
-      </div>
-
-      <div class="family-note">
-        <div class="section-head" style="margin-bottom:10px;">
-          <h2>בן משפחה בישראל רוצה לעזור?</h2>
-          <p>
-            מספרים מקומיים כמו 999, 901 או 8004438 לא עובדים מחוץ לאיחוד האמירויות. כדי שמישהו
-            בישראל יוכל להתקשר בעצמו ולטפל בשבילכם במסמכים, הוא צריך מספר "גיאוגרפי" או נייד
-            בפורמט מלא (971+), שכן זה עובד גם בינלאומית. אלה המספרים הרשמיים והמאומתים של הקונסוליה
-            הכללית של ישראל בדובאי ושל משטרת התיירים:
-          </p>
-        </div>
-        <div class="family-table-wrap">
-          <table class="family-table">
-            <thead>
-              <tr>
-                <th>מטרה</th>
-                <th>מספר</th>
-                <th>הערה</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="row-highlight">
-                <td>חירום קונסולרי בלבד (למשל דרכון שאבד)</td>
-                <td><a href="tel:+971524785136">971 52 478 5136+</a></td>
-                <td>ניתן להתקשר או לשלוח הודעת וואטסאפ</td>
-              </tr>
-              <tr>
-                <td>מדור קונסולרי, לא דחוף</td>
-                <td><a href="tel:+97145560918">971 4 556 0918+</a></td>
-                <td>לתיאום פגישה</td>
-              </tr>
-              <tr>
-                <td>מייל למדור הקונסולרי</td>
-                <td><a href="mailto:info@dubai.mfa.gov.il">info@dubai.mfa.gov.il</a></td>
-                <td>לפניות שאינן דחופות</td>
-              </tr>
-              <tr>
-                <td>משטרת תיירים בדובאי (עניין משטרתי ולא קונסולרי)</td>
-                <td><a href="tel:+97146096239">971 4 609 6239+</a></td>
-                <td>מקור: האתר הרשמי u.ae</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="family-footnote">
-          כלומר: בן משפחה שרוצה לטפל בשבילכם בענייני דרכון או מסמכים ישראליים מתקשר או שולח
-          וואטסאפ למספר החירום הקונסולרי, 971 52 478 5136+. לעניינים שאינם דחופים עדיף מייל
-          למדור הקונסולרי. אם מדובר בעניין משטרתי (לא דרכון), פונים למשטרת התיירים במספר
-          הבינלאומי שלהם.
-        </p>
-      </div>
-    </section>
-
-    <section id="location">
-      <div class="section-head">
-        <h2>לא בטוחים איפה בדיוק אתם?</h2>
-        <p>קורה גם לניווטי GPS מקצועיים. שלחו לנו נקודה על המפה ואנחנו נמצא אתכם.</p>
-      </div>
-
-      <div class="sos-card">
-        <div class="sos-media" aria-hidden="true">
-          <img src="https://images.unsplash.com/photo-1446776899648-aa78eefe8ed0?q=80&w=1200&auto=format&fit=crop" alt="">
-        </div>
-        <h3>שיתוף מיקום מיידי</h3>
-        <p>
-          לוחצים, מאשרים גישה למיקום, ונפתחת הודעת וואטסאפ מוכנה עם הקואורדינטות המדויקות שלכם,
-          מוכנה לשליחה לצוות שלנו או למשפחה בבית.
-        </p>
-        <button class="sos-btn" id="locBtn" type="button">
-          <span>📍</span>
-          <span>שלחו את המיקום שלי בוואטסאפ</span>
-        </button>
-        <div class="sos-status" id="locStatus"></div>
-      </div>
-    </section>
-
-    <section id="save">
-      <div class="save-card">
-        <h3>שמרו את הדף הזה לעצמכם</h3>
-        <p>כך הוא יהיה זמין אצלכם גם אם תצטרכו אותו שוב, בלי לחפש מחדש.</p>
-        <button class="save-btn" id="saveBtn" type="button">
-          <span>🔖</span>
-          <span id="saveBtnLabel">שמרו / שתפו את העמוד</span>
-        </button>
-        <div class="save-status" id="saveStatus"></div>
-      </div>
-    </section>
-
-    <footer>
-      עמוד זה מיועד לסיוע ראשוני בלבד ואינו תחליף לשירותי חירום רשמיים. במצב מסכן חיים התקשרו קודם ל-999 או 998, ורק אחר כך אלינו.
-    </footer>
-  </div>
-
-  <a class="float-wa" id="floatWa" href="https://wa.me/972543771767?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A0%D7%99%20%D7%A6%D7%A8%D7%99%D7%9A%2F%D7%94%20%D7%A2%D7%96%D7%A8%D7%94%20%D7%93%D7%97%D7%95%D7%A4%D7%94" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.29-.15-1.7-.84-1.96-.94-.26-.1-.46-.15-.65.15-.2.29-.75.93-.92 1.13-.17.2-.34.22-.63.07-.29-.15-1.22-.45-2.32-1.43-.86-.76-1.44-1.71-1.6-2-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.51-.07-.15-.65-1.58-.9-2.16-.24-.57-.48-.49-.65-.5-.17-.01-.37-.01-.56-.01-.2 0-.51.07-.78.37-.26.29-1.02 1-1.02 2.44s1.05 2.83 1.2 3.03c.15.2 2.06 3.15 5 4.42.7.3 1.24.48 1.67.61.7.22 1.34.19 1.84.12.56-.08 1.7-.7 1.94-1.37.24-.68.24-1.26.17-1.38-.07-.12-.26-.2-.55-.34z"/><path d="M12.02 2C6.5 2 2 6.48 2 11.98c0 1.86.5 3.6 1.38 5.1L2 22l5.06-1.33a10 10 0 0 0 4.96 1.31h.01c5.52 0 10-4.48 10-9.99C22.03 6.5 17.54 2 12.02 2zm0 18.16h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3 .79.8-2.92-.2-.3a8.15 8.15 0 0 1-1.26-4.4c0-4.5 3.68-8.17 8.2-8.17 2.19 0 4.24.85 5.79 2.4a8.1 8.1 0 0 1 2.4 5.78c0 4.51-3.68 8.15-8.24 8.15z"/></svg>
-    <span class="long">צרו קשר דחוף בוואטסאפ</span>
-  </a>
+  <footer>
+    עמוד זה מיועד לסיוע ראשוני ואינו תחליף לשירותי החירום הרשמיים. במצב מסכן חיים חייגו קודם 999 או 998.
+  </footer>
+</div>
 
 <script>
-(function () {
-  var btn = document.getElementById('locBtn');
-  var status = document.getElementById('locStatus');
-  var AGENCY_PHONE = '972543771767';
+(function(){
+  // >>> החליפו לקודי הלקוחות שלכם (בדיקה בצד הלקוח בלבד, ראו הערה בהודעה) <<<
+  var CODES = ['HAY247'];
 
-  btn.addEventListener('click', function () {
-    if (!('geolocation' in navigator)) {
-      status.textContent = 'הדפדפן הזה לא תומך באיתור מיקום. אפשר לשלוח לנו כתובת בכתב בוואטסאפ.';
-      status.className = 'sos-status err';
-      return;
+  var input = document.getElementById('codeInput');
+  var msg = document.getElementById('gateMsg');
+  var hot = document.getElementById('hotlineCall');
+  var wa = document.getElementById('waBtn');
+  var KEY = 'hay_unlocked';
+
+  function unlock(silent){
+    hot.classList.remove('locked');
+    wa.classList.remove('locked');
+    if(!silent){ msg.textContent = 'הקוד אומת. החיוג המהיר והוואטסאפ פתוחים.'; msg.className = 'gate-msg ok'; }
+    else { msg.textContent = 'קוד לקוח פעיל.'; msg.className = 'gate-msg ok'; }
+  }
+
+  try { if(localStorage.getItem(KEY) === '1') unlock(true); } catch(e){}
+
+  function check(){
+    var v = input.value.trim().toUpperCase();
+    if(!v){ msg.textContent = 'נא להזין קוד.'; msg.className = 'gate-msg err'; return; }
+    if(CODES.indexOf(v) > -1){
+      unlock(false);
+      try { localStorage.setItem(KEY,'1'); } catch(e){}
+    } else {
+      msg.textContent = 'הקוד לא תקין. בדקו את הקוד שקיבלתם או פנו לנציג שלכם.';
+      msg.className = 'gate-msg err';
     }
-    status.textContent = 'מאתר מיקום…';
-    status.className = 'sos-status';
+  }
+  document.getElementById('unlockBtn').addEventListener('click', check);
+  input.addEventListener('keydown', function(e){ if(e.key === 'Enter') check(); });
 
-    navigator.geolocation.getCurrentPosition(
-      function (pos) {
-        var lat = pos.coords.latitude.toFixed(6);
-        var lng = pos.coords.longitude.toFixed(6);
-        var mapsLink = 'https://maps.google.com/?q=' + lat + ',' + lng;
-        var text = 'שלום, אני זקוק/ה לעזרה. המיקום שלי כרגע: ' + mapsLink;
-        var waUrl = 'https://wa.me/' + AGENCY_PHONE + '?text=' + encodeURIComponent(text);
-        status.textContent = 'המיקום נמצא, פותח וואטסאפ...';
-        status.className = 'sos-status ok';
-        window.open(waUrl, '_blank');
-      },
-      function (err) {
-        status.textContent = 'לא הצלחנו לקבל הרשאה למיקום. אפשר לתאר בקצרה איפה אתם, ואנחנו נאתר יחד.';
-        status.className = 'sos-status err';
-      },
-      { enableHighAccuracy: true, timeout: 10000 }
-    );
-  });
-})();
-(function () {
-  var saveBtn = document.getElementById('saveBtn');
-  var saveStatus = document.getElementById('saveStatus');
-
-  saveBtn.addEventListener('click', function () {
-    var pageUrl = window.location.href;
-    var pageTitle = document.title || 'עמוד חירום דובאי';
-
-    if (navigator.share) {
-      navigator.share({ title: pageTitle, url: pageUrl })
-        .then(function () {
-          saveStatus.textContent = 'שותף בהצלחה.';
-          saveStatus.className = 'save-status ok';
-        })
-        .catch(function () {
-          /* user cancelled the share sheet, no error needed */
-        });
-      return;
-    }
-
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(pageUrl)
-        .then(function () {
-          saveStatus.textContent = 'הקישור הועתק. אפשר להדביק אותו בהערות או בהודעה לעצמכם.';
-          saveStatus.className = 'save-status ok';
-        })
-        .catch(function () {
-          saveStatus.textContent = 'לא הצלחנו להעתיק אוטומטית. אפשר לסמן את הדף (Bookmark) מדפדפן הטלפון.';
-          saveStatus.className = 'save-status';
-        });
-      return;
-    }
-
-    saveStatus.textContent = 'אפשר לשמור את הדף בסימניות (Bookmark) של הדפדפן.';
-    saveStatus.className = 'save-status';
+  // Location share via WhatsApp (open to everyone, so anyone can send a location)
+  var locBtn = document.getElementById('locBtn');
+  var st = document.getElementById('locStatus');
+  locBtn.addEventListener('click', function(){
+    if(!('geolocation' in navigator)){ st.textContent = 'הדפדפן לא תומך באיתור מיקום. שלחו כתובת בכתב.'; return; }
+    st.textContent = 'מאתר מיקום…';
+    navigator.geolocation.getCurrentPosition(function(p){
+      var link = 'https://maps.google.com/?q=' + p.coords.latitude.toFixed(6) + ',' + p.coords.longitude.toFixed(6);
+      var text = 'שלום, אני זקוק/ה לעזרה. המיקום שלי: ' + link;
+      st.textContent = 'המיקום נמצא, פותח וואטסאפ…';
+      window.open('https://wa.me/972543771767?text=' + encodeURIComponent(text), '_blank');
+    }, function(){
+      st.textContent = 'אין הרשאת מיקום. תארו בקצרה איפה אתם ונאתר יחד.';
+    }, {enableHighAccuracy:true, timeout:10000});
   });
 })();
 </script>
-
 </body>
 </html>
