@@ -30,7 +30,28 @@ a{color:inherit;text-decoration:none}
 .hero-img{position:relative;aspect-ratio:4/3;max-height:320px;width:100%;overflow:hidden;background:#000}
 .hero-img img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.8) contrast(1.05)}
 .hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,var(--bg) 100%)}
-.hero-img::before{content:"";position:absolute;top:0;right:0;left:0;height:3px;background:var(--red);z-index:2}
+/* transparent top nav */
+.site-nav{
+  position:fixed;top:0;right:0;left:0;z-index:70;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:calc(10px + env(safe-area-inset-top,0px)) 20px 10px;
+  background:linear-gradient(180deg,rgba(0,0,0,.5),rgba(0,0,0,0));
+  transition:background .25s ease,backdrop-filter .25s ease;
+}
+.site-nav.solid{background:rgba(14,14,15,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav-logo{width:36px;height:36px;object-fit:contain}
+.nav-cta{
+  padding:8px 16px;border-radius:999px;font-size:.82rem;font-weight:500;white-space:nowrap;
+  color:var(--amber);border:1px solid rgba(255,180,0,.5);
+}
+.hero-img .hero-logo{
+  position:absolute;z-index:2;right:50%;bottom:14px;transform:translateX(50%);
+  height:84px;width:auto;max-width:70%;object-fit:contain;filter:none;
+}
+.hero-text{text-align:center}
+.hero-text .notice{text-align:right}
+.passport-media{border-radius:6px;overflow:hidden;aspect-ratio:16/6;border:1px solid var(--line);margin-bottom:12px}
+.passport-media img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.85)}
 .hero-text{padding:6px 0 4px}
 h1{font-weight:800;font-size:clamp(30px,9vw,44px);line-height:1.1;margin:0 0 14px;letter-spacing:-.5px}
 h1 span{display:block;font-weight:300;color:var(--amber);font-size:.62em;margin-top:6px;letter-spacing:0}
@@ -125,8 +146,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offs
 </head>
 <body>
 
+<header class="site-nav" id="siteNav">
+  <a href="index.html"><img src="images/meet-dubai-logo.png" alt="Meet Dubai" class="nav-logo"></a>
+  <a class="nav-cta" href="index.html">← חזרה לאתר</a>
+</header>
+
 <div class="hero-img">
   <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop" alt="קו הרקיע של דובאי בשעת דמדומים">
+  <img class="hero-logo" src="images/meet-dubai-logo.png" alt="Meet Dubai">
 </div>
 
 <div class="wrap">
@@ -192,6 +219,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offs
       <div class="g warn"><b>ראשית:</b> שמרו על קור רוח, עברו למקום בטוח ושלחו מיקום. דובאי היא עיר בטוחה, ורוב המקרים נפתרים מהר.</div>
       <div class="g"><b>בעיה רפואית לא דחופה?</b> שתו מים, חפשו מקום מקורר ופנו לקבלה במלון. אם המצב מחמיר, חייגו 998.</div>
       <div class="g">
+        <div class="passport-media"><img src="https://images.unsplash.com/photo-1487637419635-a2a471ff5c7b?q=80&w=900&auto=format&fit=crop" alt="פנקס דרכון"></div>
         <b>איבדתם דרכון?</b>
         <ol>
           <li>דווחו למשטרה וקבלו אישור על האובדן או הגניבה (קו 901).</li>
@@ -210,6 +238,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offs
 </div>
 
 <script>
+(function(){
+  var nav = document.getElementById('siteNav');
+  function onScroll(){ nav.classList.toggle('solid', window.scrollY > 40); }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
 (function(){
   // >>> החליפו לקודי הלקוחות שלכם (בדיקה בצד הלקוח בלבד, ראו הערה בהודעה) <<<
   var CODES = ['HAY247'];
